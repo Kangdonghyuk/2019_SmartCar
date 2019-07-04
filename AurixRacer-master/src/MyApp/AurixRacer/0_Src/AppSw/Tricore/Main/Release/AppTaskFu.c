@@ -59,6 +59,7 @@ void appTaskfu_10ms(void)
 		BasicPort_run();
 		BasicGtmTom_run();
 		BasicVadcBgScan_run();
+		lineCentering_run();
 
 		if(IR_Ctrl.basicTest == FALSE){
 			#if CODE == CODE_HAND
