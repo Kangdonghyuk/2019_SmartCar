@@ -45,6 +45,7 @@ IFX_EXTERN IR_Encoder_t IR_Encoder;
 /******************************************************************************/
 IFX_EXTERN void BasicGpt12Enc_init(void);
 IFX_EXTERN void BasicGpt12Enc_run(void);
+IFX_EXTERN void PID_Control(double goal);
 
 #ifdef ENCODER_EMUL
 IFX_EXTERN void EncoderEmul_init(void);
