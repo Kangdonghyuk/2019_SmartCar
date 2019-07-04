@@ -11,3 +11,5 @@ AurixRacer_SB_TC27D/.project
 AurixRacer_SB_TC27D/Makefile
 *.mk
 *.opt
+.metadata/
+RemoteSystemsTempFiles/
