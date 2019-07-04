@@ -9,6 +9,7 @@
 /******************************************************************************/
 
 #include <stdio.h>
+#include <math.h>
 #include "BasicGpt12Enc.h"
 #include "_Utilities/Ifx_Assert.h"
 #include "Port/Std/IfxPort.h"
@@ -143,21 +144,58 @@ void BasicGpt12Enc_init(void)
  * This function is call from the main, background loop
  */
 
-volatile int encoderCounter = 0;
-volatile float memoryEncoder = 0;
-volatile int initCounter = 0;
+volatile uint32 encoder = 0.0;
+volatile uint32 beforeEncoder = 0.0;
 void BasicGpt12Enc_run(void){
-	encoderCounter = (encoderCounter + 1) % 1000;
-
 	IfxGpt12_IncrEnc_update(&g_Gpt12Enc.incrEnc);
 
 	IR_Encoder.speed       = IfxGpt12_IncrEnc_getSpeed(&g_Gpt12Enc.incrEnc);
 	IR_Encoder.rawPosition = (float32) IfxGpt12_IncrEnc_getRawPosition(&g_Gpt12Enc.incrEnc);
 	IR_Encoder.direction   = IfxGpt12_IncrEnc_getDirection(&g_Gpt12Enc.incrEnc);
 
-	memoryEncoder += IR_Encoder.speed;
+
+	encoder = ((uint32)IR_Encoder.speed - beforeEncoder + 8388607) % 8388607;
+
+	beforeEncoder = IR_Encoder.speed;
+
 }
 
+double PID_PWM;
+double err, prev_err = 0;
+double Kp = 0.1, Ki = 1.0, Kd = 0.04; // PID gain value
+double Kp_tmp, Ki_tmp, Kd_tmp;
+double dt = 0.01;
+double dc_duty = 0.0, dc_pwm;
+double current = 0.0;
+
+void PID_Control(double goal){
+
+	current = encoder/(1.6*21.0*15);
+	// error
+	err = goal - current;
+
+	// P
+	Kp_tmp = Kp * err;
+
+	// I
+	Ki_tmp = Ki * (err * dt);
+
+	// D
+	Kd_tmp = Kd * ((err - prev_err)/dt);
+
+	prev_err = err;
+
+	PID_PWM = (Kp_tmp + Ki_tmp + Kd_tmp);
+
+	dc_duty += PID_PWM * 10;
+	if (dc_duty >= 2000) dc_duty = 2000;
+
+	// make range -1.0 ~ 1.0
+	// dc_pwm = tanh(dc_duty);
+	dc_duty /= 2000;
+
+	//IR_setMotor0Vol((float)dc_duty);
+}
 
 /******************************************************************************/
 /* The following code is conditional compiled area.

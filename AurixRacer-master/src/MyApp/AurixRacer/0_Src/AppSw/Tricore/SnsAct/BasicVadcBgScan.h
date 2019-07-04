@@ -40,5 +40,6 @@ IFX_EXTERN float32 IR_AdcResult[];
 /******************************************************************************/
 IFX_EXTERN void BasicVadcBgScan_init(void);
 IFX_EXTERN void BasicVadcBgScan_run(void);
+IFX_EXTERN int GetAvoid(void);
 
 #endif

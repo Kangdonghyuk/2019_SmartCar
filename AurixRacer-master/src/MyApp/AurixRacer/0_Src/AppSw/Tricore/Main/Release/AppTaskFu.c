@@ -22,9 +22,11 @@ void appTaskfu_init(void){
     tft_app_init(1);
     perf_meas_init();
 #elif BOARD == SHIELD_BUDDY
-    IR_setSrvAngle(0.2f);
+    IR_setSrvAngle(0.1953f);
     IR_setMotor0En(TRUE);
-    IR_setMotor0Vol(1.0f);
+    IR_setMotor0Vol(0.6f);
+    //IR_setMotor0Vol(1.0f);
+    //IR_setMotor0Vol(0.5f);
 #endif
 
 #if CODE == CODE_HAND
@@ -45,7 +47,7 @@ void appTaskfu_1ms(void)
 
 }
 
-
+int AEB = 0;
 void appTaskfu_10ms(void)
 {
 	task_cnt_10m++;
@@ -59,6 +61,20 @@ void appTaskfu_10ms(void)
 		BasicPort_run();
 		BasicGtmTom_run();
 		BasicVadcBgScan_run();
+
+		if(GetAvoid() >= 200) {
+			if(AEB <= 5) {
+				IR_setMotor0Vol(-1.0f);
+				AEB += 1;
+			}
+			else if(AEB > 5) {
+				IR_setMotor0Vol(0.0f);
+			}
+		}
+		else {
+			IR_setMotor0Vol(0.6f);
+			AEB = 0;
+		}
 
 		if(IR_Ctrl.basicTest == FALSE){
 			#if CODE == CODE_HAND
@@ -76,6 +92,7 @@ void appTaskfu_10ms(void)
 
 void appTaskfu_100ms(void)
 {
+
 	task_cnt_100m++;
 	if(task_cnt_100m == 1000){
 		task_cnt_100m = 0;
@@ -95,7 +112,7 @@ volatile int state = -1;
 volatile int start = 0;
 void appTaskfu_1000ms(void)
 {
-	if(start == 10) {
+	/*if(start == 10) {
 		IR_setMotor0En(TRUE);
 		IR_setMotor0Vol(-0.5f);
 	}
@@ -117,7 +134,7 @@ void appTaskfu_1000ms(void)
 			IR_setSrvAngle(0.3f);
 		}
 
-		state = (state + 1) % 4;
+		state = (state + 1) % 4;*/
 
 	task_cnt_1000m++;
 	if(task_cnt_1000m == 1000){
