@@ -24,7 +24,7 @@ void appTaskfu_init(void){
 #elif BOARD == SHIELD_BUDDY
     IR_setSrvAngle(0.2f);
     IR_setMotor0En(TRUE);
-    IR_setMotor0Vol(1.0f);
+    IR_setMotor0Vol(0.3f);
 #endif
 
 #if CODE == CODE_HAND
@@ -96,30 +96,6 @@ volatile int state = -1;
 volatile int start = 0;
 void appTaskfu_1000ms(void)
 {
-	if(start == 10) {
-		IR_setMotor0En(TRUE);
-		IR_setMotor0Vol(-0.5f);
-	}
-	start += 1;
-
-		if(state == -1) {
-			IR_setSrvAngle(0.2f);
-		}
-		else if(state == 0) {
-			IR_setSrvAngle(0.3f);
-		}
-		else if(state == 1) {
-			IR_setSrvAngle(0.1f);
-		}
-		else if(state == 2) {
-			IR_setSrvAngle(0.1f);
-		}
-		else if(state == 3) {
-			IR_setSrvAngle(0.3f);
-		}
-
-		state = (state + 1) % 4;
-
 	task_cnt_1000m++;
 	if(task_cnt_1000m == 1000){
 		task_cnt_1000m = 0;

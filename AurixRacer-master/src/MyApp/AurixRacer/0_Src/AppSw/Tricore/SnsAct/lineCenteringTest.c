@@ -1,5 +1,7 @@
 #include "lineCenteringTest.h"
 
+#define SIZE 128
+
 /* stretch value */
 void Stretching(int array[], int _max) {
    int i, max = array[0], min = array[0];
@@ -83,23 +85,32 @@ int getLineFirstIndex(int array[]){
 	return idx;
 }
 
+int index = 0;
+int rightCamera[128];
+int leftCamera[128];
 void lineCentering_run(void)
 {
 
 	float currentSrvAngle = IR_getSrvAngle();
-	int rightCamera[128] = IR_getUsrAdcChn0();
-	int leftCamera[128] = IR_getUsrAdcChn1();
 	int cutRightCamera[116];
 	int cutLeftCamera[116];
 	int i;
-	int index;
 	int count = 0;
 
+	for(i=0; i<128; i++) {
+		rightCamera[i] = IR_LineScan.adcResult[0][i];
+		leftCamera[i] = IR_LineScan.adcResult[1][i];
+	}
 
+
+	Stretching(rightCamera, 4096);
+	MedianFiltering(rightCamera);
 	Sharpening(rightCamera);
 	// MedianFiltering(rightCamera);
 	Stretching(rightCamera, THRESHOLD);
 	
+	Stretching(leftCamera, 4096);
+	MedianFiltering(leftCamera);
 	Sharpening(leftCamera);
 	// MedianFiltering(leftCamera);
 	Stretching(leftCamera, THRESHOLD);
@@ -108,24 +119,34 @@ void lineCentering_run(void)
 	{
 		cutRightCamera[i] = rightCamera[i + 6];
 		cutLeftCamera[i] = leftCamera[i + 6];
-		if(cutRightCamera[i] > THRESHOLD && count == 0){
+		if(cutRightCamera[i] >= THRESHOLD && count == 0){
 			index = i;
 			count++;
 		}
 	}
 
-	// Sharpening(cutRightCamera);
-	// // MedianFiltering(cutRightCamera);
-	// Stretching(cutRightCamera, THRESHOLD);
+	/*Sharpening(cutRightCamera);
+	MedianFiltering(cutRightCamera);
+	Stretching(cutRightCamera, THRESHOLD);
 	
-	// Sharpening(cutLeftCamera);
-	// // MedianFiltering(cutLeftCamera);
-	// Stretching(cutLeftCamera, THRESHOLD);
+	Sharpening(cutLeftCamera);
+	MedianFiltering(cutLeftCamera);
+	Stretching(cutLeftCamera, THRESHOLD);*/
 
-	if(index < 68){
-		IR_setSrvAngle(currentSrvAngle - 0.05);
+
+	if (index <= 30){
+		IR_setSrvAngle(currentSrvAngle - 0.03);
 	}
-	else if(index > 73){
-		IR_setSrvAngle(currentSrvAngle + 0.05);
+	else if(30 < index && index <= 68){
+		IR_setSrvAngle(currentSrvAngle - 0.005);
+	}
+	else if(68 < index && index <= 73){
+		IR_setSrvAngle(0.1953);
+	}
+	else if(73 < index && index <= 105){
+		IR_setSrvAngle(currentSrvAngle + 0.005);
+	}
+	else{
+		IR_setSrvAngle(currentSrvAngle + 0.03);
 	}
 }
