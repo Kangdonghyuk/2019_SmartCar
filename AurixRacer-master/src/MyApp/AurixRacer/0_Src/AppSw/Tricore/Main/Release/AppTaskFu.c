@@ -22,7 +22,7 @@ void appTaskfu_init(void){
     tft_app_init(1);
     perf_meas_init();
 #elif BOARD == SHIELD_BUDDY
-    IR_setSrvAngle(0.2f);
+    IR_setSrvAngle(0.1953f);
     IR_setMotor0En(TRUE);
     IR_setMotor0Vol(0.3f);
 #endif
