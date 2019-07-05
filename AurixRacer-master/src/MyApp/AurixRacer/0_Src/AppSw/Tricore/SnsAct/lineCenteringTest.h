@@ -9,18 +9,18 @@ typedef struct _datafile
 	char filename[30];
 }datafile;
 
-void Stretching(int array[], int _max);
+//void Stretching(int array[], int _max);
 
 
-int getMax(int array[]);
+//int getMax(int array[]);
 
 /* x-axis inversion */
-void Sharpening(int array[]);
+//void Sharpening(int array[]);
 
-int GetMedian(int array[5]);
+//int GetMedian(int array[5]);
 
 /* reduce noise */
-void MedianFiltering(int array[]);
+//void MedianFiltering(int array[]);
 
 int getLineFirstIndex(int array[]);
 

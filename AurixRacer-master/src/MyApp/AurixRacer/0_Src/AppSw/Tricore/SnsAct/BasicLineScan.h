@@ -38,5 +38,7 @@ IFX_EXTERN IR_LineScan_t IR_LineScan;
 /******************************************************************************/
 IFX_EXTERN void BasicLineScan_init(void);
 IFX_EXTERN void BasicLineScan_run(void);
+IFX_EXTERN int LineDetecting(void);
+IFX_EXTERN int DIFF(int a, int b);
 
 #endif

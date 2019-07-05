@@ -45,7 +45,7 @@ void appTaskfu_1ms(void)
 
 }
 
-
+float changeAngle = 60.0f;
 void appTaskfu_10ms(void)
 {
 	task_cnt_10m++;
@@ -59,7 +59,10 @@ void appTaskfu_10ms(void)
 		BasicPort_run();
 		BasicGtmTom_run();
 		BasicVadcBgScan_run();
-		lineCentering_run();
+		//lineCentering_run();
+		changeAngle = (((float)LineDetecting() - 64.0f) / 100.0f) * 2.8f + 0.1953f;
+
+		IR_setSrvAngle(changeAngle);
 
 		if(IR_Ctrl.basicTest == FALSE){
 			#if CODE == CODE_HAND

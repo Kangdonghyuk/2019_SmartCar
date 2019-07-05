@@ -30,6 +30,7 @@
 /******************************************************************************/
 
 #define CAMERACHANNEL 3
+#define LINESIZE 128
 
 typedef struct
 {
@@ -157,16 +158,154 @@ void BasicLineScan_init(void)
 
 }
 
+void Sharpening2(int array[]) {
+	int MAX = getMax(array);
+   int i, j;
+   int minus, add, square;
+   int temp[LINESIZE];
+
+   for (i = 0; i < LINESIZE; i++)
+         temp[i] = array[i];
+
+   for(i=3; i<LINESIZE - 3; i++) {
+      minus = 0, add = 0, square = 0;
+      for(j = -3; j <= 3; j++) {
+         if(j <= -2 || j >= 2) minus += (array[i+j] * (-3));
+         if(j == -1 || j == 1) add += (array[i+j] * 3);
+         if(j == 0) square += (array[i+j] * 6);
+      }
+      temp[i] = minus + add + square;
+   }
+   for(i=0; i<LINESIZE; i++)
+   		array[i] = temp[i];
+}
+
+void Stretching2(int array[], int _max) {
+   int i, max = array[0], min = array[0];
+
+   for (i = 0; i < LINESIZE; i++) {
+      max = (array[i] > max) ? array[i] : max;
+      min = (array[i] < min) ? array[i] : min;
+   }
+   for (i = 0; i < LINESIZE; i++)
+      array[i] = ((float)_max / (float)(max - min)) * (array[i] - min);
+}
+
+int GetMedian2(int array[5]) {
+   int i, j, temp;
+   for (i = 0; i < 5; i++) {
+      for (j = i; j < 5; j++) {
+         if (array[i] > array[j]) {
+            temp = array[i];
+            array[i] = array[j];
+            array[j] = temp;
+         }
+      }
+   }
+   return array[2];
+}
+
+/* reduce noise */
+void MedianFiltering2(int array[]) {
+   int i, j, t;
+   int _array[5];
+   for (i = 0 + 2; i < LINESIZE - 2; i++) {
+      for (j = -2, t = 0; j <= 2; j++, t++)
+         _array[t] = array[i + j];
+      array[i] = GetMedian2(_array);
+   }
+}
+
+int lineValues[3][LINESIZE];
+int leftLineIndex, rightLineIndex, centerLineIndex = 64, beforeCenterLineIndex = 64, leftCount = 0, rightCount = 0;
+int centerList[5] = {64, 64, 64, 64, 64}, centerIndex = 0;
+
+int DIFF(int a, int b) {
+	return (a >= b ? a : b) - (a >= b ? b : a);
+}
+
+int LineDetecting() {
+	int i;
+	for(i=0; i<LINESIZE; i++) {
+		lineValues[0][i] = 4096 - IR_LineScan.adcResult[1][i];
+		lineValues[1][i] = 4096 - IR_LineScan.adcResult[0][i];
+		lineValues[2][i] = 4096 - IR_LineScan.adcResult[2][i];
+	}
+
+	Stretching2(lineValues[0], 4096);
+	Stretching2(lineValues[1], 4096);
+	Stretching2(lineValues[2], 4096);
+	MedianFiltering2(lineValues[0]);
+	MedianFiltering2(lineValues[1]);
+	MedianFiltering2(lineValues[2]);
+	Sharpening2(lineValues[0]);
+	Sharpening2(lineValues[1]);
+	Sharpening2(lineValues[2]);
+	MedianFiltering2(lineValues[0]);
+	MedianFiltering2(lineValues[1]);
+	MedianFiltering2(lineValues[2]);
+	Stretching2(lineValues[0], 100000);
+	Stretching2(lineValues[1], 100000);
+	Stretching2(lineValues[2], 100000);
+
+	rightLineIndex = -1;
+	leftLineIndex = 128;
+	leftCount = 0;
+	rightCount = 0;
+
+	for(i=0; i<120; i++) {
+		if(lineValues[0][i] >= 85000) {
+			if(leftLineIndex == LINESIZE)
+				leftLineIndex = i;
+		}
+		if(lineValues[0][i] >= 70000)
+			leftCount += 1;
+		if(lineValues[1][i] >= 85000) {
+			if(rightLineIndex == -1)
+				rightLineIndex = i;
+		}
+		if(lineValues[1][i] >= 70000)
+			rightCount += 1;
+	}
+
+	if(leftCount >= 12)
+		leftLineIndex = LINESIZE;
+	if(rightCount >= 12)
+		rightLineIndex = -1;
+
+
+	/*for(i=0; i<64; i++) {
+		if(lineValues[2][64 - i - 1] >= 85000 && leftLineIndex == 128) {
+			leftLineIndex = 64 - i - 1;
+		}
+		if(lineValues[2][64 + i] >= 85000 && rightLineIndex == -1) {
+			rightLineIndex = 64 + i;
+		}
+	}*/
+
+	if(leftLineIndex != 128 && rightLineIndex != -1)
+		centerLineIndex = (leftLineIndex + rightLineIndex) / 2;
+	else if(leftLineIndex != 128 && rightLineIndex == -1)
+		centerLineIndex = (leftLineIndex + 40);
+	else if(leftLineIndex == 128 && rightLineIndex != -1)
+		centerLineIndex = (rightLineIndex - 40);
+	else
+		centerLineIndex = 64;
+
+	centerList[centerIndex] = centerLineIndex;
+	centerIndex = (centerIndex + 1) % 5;
+
+	return (centerList[0] + centerList[1] + centerList[2] + centerList[3] + centerList[4]) / 5;
+}
+
+
 
 /** \brief Demo run API
  *
  * This function is called from main, background loop
  */
-volatile int getLine[128];
-volatile int c = 0;
 void BasicLineScan_run(void)
 {
-	c = (c + 1) % 10000;
 	uint32 chnIx;
 	uint32 idx;
 
@@ -207,7 +346,6 @@ void BasicLineScan_run(void)
             } while (!conversionResult.B.VF);
 
             IR_LineScan.adcResult[chnIx][idx] = conversionResult.B.RESULT;
-            getLine[idx] = IR_LineScan.adcResult[2][idx];
         }
 
 	}
