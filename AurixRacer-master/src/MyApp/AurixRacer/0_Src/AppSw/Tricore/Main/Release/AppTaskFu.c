@@ -10,6 +10,11 @@ boolean task_flag_10m = FALSE;
 boolean task_flag_100m = FALSE;
 boolean task_flag_1000m = FALSE;
 
+typedef enum zone {
+	SPEED = 0, LIMIT = 1
+}ZONE;
+ZONE zoneState;
+
 void appTaskfu_init(void){
 	BasicLineScan_init();
 	BasicPort_init();
@@ -17,6 +22,8 @@ void appTaskfu_init(void){
     BasicVadcBgScan_init();
     BasicGpt12Enc_init();
     AsclinShellInterface_init();
+
+    zoneState = SPEED;
 
 #if BOARD == APPLICATION_KIT_TC237
     tft_app_init(1);
@@ -45,7 +52,8 @@ void appTaskfu_1ms(void)
 
 }
 
-float changeAngle = 60.0f;
+float lineCenter = 64.0f;
+float servoValue = 0.0f;
 void appTaskfu_10ms(void)
 {
 	task_cnt_10m++;
@@ -60,21 +68,43 @@ void appTaskfu_10ms(void)
 		BasicGtmTom_run();
 		BasicVadcBgScan_run();
 		//lineCentering_run();
-		changeAngle = (((float)LineDetecting() - 64.0f) / 100.0f) * 2.8f + 0.1953f;
 
-		IR_setSrvAngle(changeAngle);
+		lineCenter = (float)GetCameraCenter();
+
+		if(zoneState == SPEED) {
+			IR_setSrvAngle(((lineCenter - 60.0f) / 100.0f) * 1.0f + 0.1953f);
+			servoValue = IR_getSrvAngle();
+			IR_setMotor0Vol(0.6f);
+			if(GetInfraredSensorValue() > 200) {
+				IR_setMotor0Vol(0.0f);
+			}
+			zoneState = IsLimitZone();
+		}
+		else if(zoneState == LIMIT) {
+			IR_setMotor0Vol(0.3f);
+			if(GetInfraredSensorValue() > 200) {
+				IR_setSrvAngle(0.1953f + GetDashLine() * 0.3f);
+			}
+		}
 
 		if(IR_Ctrl.basicTest == FALSE){
 			#if CODE == CODE_HAND
-				InfineonRacer_control();
+				//InfineonRacer_control();
 			#elif CODE == CODE_ERT
 				IR_Controller_step();
 			#else
 
 			#endif
 		}
-		AsclinShellInterface_runLineScan();
+		//AsclinShellInterface_runLineScan();
 	}
+}
+
+void SpeedZone() {
+
+}
+
+void LimitZone() {
 
 }
 

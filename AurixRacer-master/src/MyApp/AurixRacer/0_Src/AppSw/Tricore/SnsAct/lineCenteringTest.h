@@ -1,4 +1,4 @@
-#include <stdio.h>
+/*#include <stdio.h>
 #include <string.h>
 #include "Basic.h"
 
@@ -7,7 +7,7 @@
 typedef struct _datafile
 {
 	char filename[30];
-}datafile;
+}datafile;*/
 
 //void Stretching(int array[], int _max);
 
@@ -21,7 +21,8 @@ typedef struct _datafile
 
 /* reduce noise */
 //void MedianFiltering(int array[]);
-
+/*
 int getLineFirstIndex(int array[]);
 
 void lineCentering_run(void);
+*/

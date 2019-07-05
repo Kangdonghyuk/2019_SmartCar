@@ -29,9 +29,6 @@
 /*-----------------------------Data Structures--------------------------------*/
 /******************************************************************************/
 
-#define CAMERACHANNEL 3
-#define LINESIZE 128
-
 typedef struct
 {
     IfxVadc_Adc vadc; /* VADC handle */
@@ -156,149 +153,196 @@ void BasicLineScan_init(void)
 
     }
 
+    Camera_Initialization();
 }
 
-void Sharpening2(int array[]) {
-	int MAX = getMax(array);
-   int i, j;
-   int minus, add, square;
-   int temp[LINESIZE];
+cam_infomation cam_info[LINES];
+int debugLine[LINESIZE];
+int nowIndex;
+int cntTotal, cntLeft;
+int isLimitZone = 0, dashLine = 0;
+int leftIndexCount = 0, rightIndexCount = 0;
 
+void CopyPrevLine(cam_infomation * _cam_info, cam_infomation _prev_info) {
+   int i;
    for (i = 0; i < LINESIZE; i++)
-         temp[i] = array[i];
-
-   for(i=3; i<LINESIZE - 3; i++) {
-      minus = 0, add = 0, square = 0;
-      for(j = -3; j <= 3; j++) {
-         if(j <= -2 || j >= 2) minus += (array[i+j] * (-3));
-         if(j == -1 || j == 1) add += (array[i+j] * 3);
-         if(j == 0) square += (array[i+j] * 6);
-      }
-      temp[i] = minus + add + square;
-   }
-   for(i=0; i<LINESIZE; i++)
-   		array[i] = temp[i];
+      _cam_info->cam_scan[i] = _prev_info.cam_scan[i];
+   _cam_info->center = _prev_info.center;
 }
 
-void Stretching2(int array[], int _max) {
-   int i, max = array[0], min = array[0];
-
-   for (i = 0; i < LINESIZE; i++) {
-      max = (array[i] > max) ? array[i] : max;
-      min = (array[i] < min) ? array[i] : min;
-   }
-   for (i = 0; i < LINESIZE; i++)
-      array[i] = ((float)_max / (float)(max - min)) * (array[i] - min);
-}
-
-int GetMedian2(int array[5]) {
+int GetMedian(int _array[5]) {
    int i, j, temp;
    for (i = 0; i < 5; i++) {
       for (j = i; j < 5; j++) {
-         if (array[i] > array[j]) {
-            temp = array[i];
-            array[i] = array[j];
-            array[j] = temp;
+         if (_array[i] > _array[j]) {
+            temp = _array[i];
+            _array[i] = _array[j];
+            _array[j] = temp;
          }
       }
    }
-   return array[2];
+   return _array[2];
 }
 
-/* reduce noise */
-void MedianFiltering2(int array[]) {
+void Stretching(int(*_line)[LINESIZE], int _max) {
+   int i, max = (*_line)[0], min = (*_line)[0];
+
+   for (i = 0; i < LINESIZE; i++) {
+      max = ((*_line)[i] > max) ? (*_line)[i] : max;
+      min = ((*_line)[i] < min) ? (*_line)[i] : min;
+   }
+   for (i = 0; i < LINESIZE; i++)
+      (*_line)[i] = ((float)_max / (float)(max - min)) * ((*_line)[i] - min);
+}
+
+void MedianFiltering(int(*_line)[LINESIZE]) {
    int i, j, t;
-   int _array[5];
+   int array[5];
    for (i = 0 + 2; i < LINESIZE - 2; i++) {
       for (j = -2, t = 0; j <= 2; j++, t++)
-         _array[t] = array[i + j];
-      array[i] = GetMedian2(_array);
+         array[t] = (*_line)[i + j];
+      (*_line)[i] = GetMedian(array);
    }
 }
+void Sharpening(int(*_line)[LINESIZE]) {
+	int i, j;
+	int minus, add, square;
+	int temp[LINESIZE];
 
-int lineValues[3][LINESIZE];
-int leftLineIndex, rightLineIndex, centerLineIndex = 64, beforeCenterLineIndex = 64, leftCount = 0, rightCount = 0;
-int centerList[5] = {64, 64, 64, 64, 64}, centerIndex = 0;
-
-int DIFF(int a, int b) {
-	return (a >= b ? a : b) - (a >= b ? b : a);
-}
-
-int LineDetecting() {
-	int i;
-	for(i=0; i<LINESIZE; i++) {
-		lineValues[0][i] = 4096 - IR_LineScan.adcResult[1][i];
-		lineValues[1][i] = 4096 - IR_LineScan.adcResult[0][i];
-		lineValues[2][i] = 4096 - IR_LineScan.adcResult[2][i];
+	for (i = 0; i < LINESIZE; i++) {
+	      (*_line)[i] = MAXVALUE - (*_line)[i];
+	      temp[i] = (*_line)[i];
 	}
 
-	Stretching2(lineValues[0], 4096);
-	Stretching2(lineValues[1], 4096);
-	Stretching2(lineValues[2], 4096);
-	MedianFiltering2(lineValues[0]);
-	MedianFiltering2(lineValues[1]);
-	MedianFiltering2(lineValues[2]);
-	Sharpening2(lineValues[0]);
-	Sharpening2(lineValues[1]);
-	Sharpening2(lineValues[2]);
-	MedianFiltering2(lineValues[0]);
-	MedianFiltering2(lineValues[1]);
-	MedianFiltering2(lineValues[2]);
-	Stretching2(lineValues[0], 100000);
-	Stretching2(lineValues[1], 100000);
-	Stretching2(lineValues[2], 100000);
-
-	rightLineIndex = -1;
-	leftLineIndex = 128;
-	leftCount = 0;
-	rightCount = 0;
-
-	for(i=0; i<120; i++) {
-		if(lineValues[0][i] >= 85000) {
-			if(leftLineIndex == LINESIZE)
-				leftLineIndex = i;
+	for(i=3; i<LINESIZE-3; i++) {
+		minus = 0, add = 0, square = 0;
+		for(j = -3; j <= 3; j++) {
+			if(j <= -2 || j >= 2) minus += ((*_line)[i+j] * (-3));
+			if(j == -1 || j == 1) add += ((*_line)[i+j] * 3);
+			if(j == 0) square += ((*_line)[i+j] * 6);
 		}
-		if(lineValues[0][i] >= 70000)
-			leftCount += 1;
-		if(lineValues[1][i] >= 85000) {
-			if(rightLineIndex == -1)
-				rightLineIndex = i;
-		}
-		if(lineValues[1][i] >= 70000)
-			rightCount += 1;
+		temp[i] = minus + add + square;
 	}
 
-	if(leftCount >= 12)
-		leftLineIndex = LINESIZE;
-	if(rightCount >= 12)
-		rightLineIndex = -1;
-
-
-	/*for(i=0; i<64; i++) {
-		if(lineValues[2][64 - i - 1] >= 85000 && leftLineIndex == 128) {
-			leftLineIndex = 64 - i - 1;
-		}
-		if(lineValues[2][64 + i] >= 85000 && rightLineIndex == -1) {
-			rightLineIndex = 64 + i;
-		}
-	}*/
-
-	if(leftLineIndex != 128 && rightLineIndex != -1)
-		centerLineIndex = (leftLineIndex + rightLineIndex) / 2;
-	else if(leftLineIndex != 128 && rightLineIndex == -1)
-		centerLineIndex = (leftLineIndex + 40);
-	else if(leftLineIndex == 128 && rightLineIndex != -1)
-		centerLineIndex = (rightLineIndex - 40);
-	else
-		centerLineIndex = 64;
-
-	centerList[centerIndex] = centerLineIndex;
-	centerIndex = (centerIndex + 1) % 5;
-
-	return (centerList[0] + centerList[1] + centerList[2] + centerList[3] + centerList[4]) / 5;
+	for(i=0; i<LINESIZE; i++)
+		(*_line)[i] = temp[i];
 }
 
+void Camera_Initialization() {
+   int i=0, j=0;
+   for(i=0; i < LINES; i++) {
+      cam_info[i].center = LINECENTER;
+      for(j=0; j<LINESIZE; j++)
+         cam_info[i].cam_scan[j] = 0;
+   }
 
+   nowIndex = 0;
+   cntTotal = 0;
+   cntLeft = 0;
+}
+
+int GetCameraCenter() {
+   int i=0;
+
+   //GetCamera(&cam_info[nowIndex]);
+
+   for(i=0; i<LINESIZE; i++)
+	   cam_info[nowIndex].cam_scan[i] = IR_LineScan.adcResult[0][i];
+   cam_info[nowIndex].center = LINECENTER;
+
+   Stretching(&(cam_info[nowIndex].cam_scan), 4096);
+   MedianFiltering(&cam_info[nowIndex].cam_scan);
+   Sharpening(&cam_info[nowIndex].cam_scan);
+   Stretching(&(cam_info[nowIndex].cam_scan), 100000);
+
+   cam_info[nowIndex].center = FindCenter(&(cam_info[nowIndex].cam_scan));
+
+   if(cam_info[nowIndex].center == -1 || cam_info[nowIndex].center == 0) {
+      CopyPrevLine(&(cam_info[nowIndex]), cam_info[(nowIndex + LINES - 1) % LINES]);
+      cam_info[nowIndex].center = cam_info[(nowIndex + LINES - 1) % LINES].center;
+   }
+
+   for(i=0; i<LINESIZE; i++)
+	   debugLine[i] = cam_info[nowIndex].cam_scan[i];
+
+   nowIndex = (nowIndex+1)%LINES;
+
+   return cam_info[(nowIndex + 4) % 5].center;
+}
+
+int FindCenter(int(*_line)[LINESIZE]) {
+   int i, index = 0, leftIndex = 0, rightIndex = 127, zeroCount = 0;
+
+   for (i = 0; i < LINESIZE; i++) {
+      if((*_line)[i] < 0)
+         (*_line)[i] = 0;
+      if ((*_line)[i] < THRESHOLD) {
+    	  zeroCount++;
+         (*_line)[i] = 0;
+      }
+   }
+
+   //if(zeroCount <= 118) isLimitZone = 1;
+   if(zeroCount <= 120) return -1;
+
+   for(i=1; i<LINECENTER; i++) {
+      if((LINECENTER - i - 1) >= 1) {
+         if(leftIndex == 0 && (*_line)[LINECENTER - i] != 0 && (*_line)[LINECENTER - i - 1] == 0)
+        	 leftIndex = LINECENTER - i;
+      }
+      if((LINECENTER + i + 1) <= 126) {
+         if(rightIndex == 127 && (*_line)[LINECENTER + i] != 0 && (*_line)[LINECENTER + i + 1] == 0)
+        	 rightIndex = LINECENTER + i;
+      }
+   }
+
+   if(isLimitZone == 1) {
+	   if(leftIndex == 0)
+	   		leftIndexCount++;
+	   	if(rightIndex == 127)
+	   		rightIndexCount++;
+   }
+
+   if(leftIndex >= 1) {
+      index = leftIndex + 55;
+      if(leftIndex >= 55) index = -1;
+   }
+   else if(rightIndex <= 126) {
+      index = rightIndex - 55;
+      if(rightIndex <= 65) index = -1;
+   }
+   else if(leftIndex != 0 && rightIndex != 127)
+	   index = (leftIndex + rightIndex) / 2;
+   else
+	   index = -1;
+   if(index <= 10 || index >= 118)
+	   index = -1;
+
+   return index;
+}
+
+int IsLimitZone() {
+	int i = 0;
+	int count = 0;
+
+	for (i = 0; i < LINESIZE - 1; ++i) {
+		if (cam_info[(nowIndex+4)%5].cam_scan[i] == 0 && cam_info[(nowIndex+4)%5].cam_scan[i] != cam_info[(nowIndex+4)%5].cam_scan[i+1]){
+//		if (DABS(cam_info[(nowIndex+4)%5].cam_scan[i] - cam_info[(nowIndex+4)%5].cam_scan[i+1]) >= 25000)
+			count++;}
+		if (count >= 5) {
+			isLimitZone ^= 1;
+			leftIndexCount = 0;
+			rightIndexCount = 0;
+			break;
+		}
+	}
+
+	return isLimitZone;
+}
+
+int GetDashLine() {
+	return leftIndexCount >= rightIndexCount ? 1 : -1;
+}
 
 /** \brief Demo run API
  *

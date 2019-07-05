@@ -162,3 +162,7 @@ void BasicVadcBgScan_run(void)
 
         }
 }
+
+int GetInfraredSensorValue(void) {
+	return avoidSen[3];
+}

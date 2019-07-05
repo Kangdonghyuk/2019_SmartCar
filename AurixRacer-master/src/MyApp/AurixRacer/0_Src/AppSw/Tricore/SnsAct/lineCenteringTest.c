@@ -1,8 +1,7 @@
-#include "lineCenteringTest.h"
+/*#include "lineCenteringTest.h"
 
 SIZE=232;
 
-/* stretch value */
 void Stretching(int array[], int _max) {
    int i, max = array[0], min = array[0];
 
@@ -23,7 +22,6 @@ int getMax(int array[]){
    return max;
 }
 
-/* x-axis inversion */
 void Sharpening(int array[]) {
    int MAX = getMax(array);
    int i, j;
@@ -50,7 +48,6 @@ int GetMedian(int array[5]) {
    return array[2];
 }
 
-/* reduce noise */
 void MedianFiltering(int array[]) {
    int i, j, t;
    int _array[5];
@@ -98,7 +95,7 @@ void lineCentering_run(void)
    // MedianFiltering(totalCamera);
    Stretching(totalCamera, 10000);
 
-   IR_setSrvAngle(currentSrvAngle - 0.1);
+   IR_setSrvAngle(currentSrvAngle - 0.1);*/
    /*
 
    for(i = 116; i > 0; --i){
@@ -246,5 +243,5 @@ void lineCentering_run(void)
          IR_setSrvAngle(currentSrvAngle + 0.03);
       }
    }
-   */
-}
+
+}*/
