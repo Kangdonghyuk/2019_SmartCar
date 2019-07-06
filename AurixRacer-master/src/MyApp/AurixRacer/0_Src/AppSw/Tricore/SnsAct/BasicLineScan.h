@@ -42,13 +42,19 @@ IFX_EXTERN void BasicLineScan_run(void);
 #define CAMERACHANNEL 3
 #define LINESIZE 128
 #define LINES 5
+#define CAMS 3
 #define MAXVALUE 4096
 #define DABS(n) ((n < 0) ? -n : n)
 #define DSQUARE(n) (n*n)
-#define THRESHOLD 70000
+#define THRESHOLD 85000
+#define C_THRESHOLD 70000
+//#define THRESHOLD 3500
+//#define C_THRESHOLD 1700
 #define LEFTMAXCOUNT 300
 #define LEFTTHRESHOLD 197
 #define LINECENTER 60
+//#define LIMIT_THRESHOLD 44
+#define LIMIT_THRESHOLD 84
 
 typedef struct CAM_INFOMATION {
    int cam_scan[LINESIZE];
@@ -68,6 +74,9 @@ void MedianFiltering(int(*_line)[LINESIZE]);
 void Sharpening(int(*_line)[LINESIZE]);
 IFX_EXTERN int FindCenter(int(*line)[LINESIZE]);
 
+//void MakeIdxZero(int(*_line)[LINESIZE]);
+void MakeIdxZero(int(*_line)[LINESIZE], int threshold);
+void MakeIdxMax(int(*_line)[LINESIZE], int threshold);
 IFX_EXTERN int IsLimitZone();
 IFX_EXTERN int GetDashLine();
 
