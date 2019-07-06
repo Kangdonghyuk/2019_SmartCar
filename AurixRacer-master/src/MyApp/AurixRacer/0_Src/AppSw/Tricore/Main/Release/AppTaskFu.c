@@ -72,7 +72,17 @@ void appTaskfu_10ms(void)
 		lineCenter = (float)GetCameraCenter();
 
 		if(zoneState == SPEED) {
-			IR_setSrvAngle(((lineCenter - 60.0f) / 100.0f) * 1.0f + 0.1953f);
+			//IR_setSrvAngle(((lineCenter - 60.0f) / 100.0f) * 1.5f + 0.1953f);
+			if(lineCenter >= 55 && lineCenter < 65)
+				IR_setSrvAngle(0.1953);
+			else if(lineCenter >= 65 && lineCenter < 75)
+				IR_setSrvAngle(0.25f);
+			else if(lineCenter >= 75)
+				IR_setSrvAngle(0.6f);
+			else if(lineCenter >= 45 && lineCenter < 55)
+				IR_setSrvAngle(0.145f);
+			else if(lineCenter < 45)
+				IR_setSrvAngle(-0.345f);
 			servoValue = IR_getSrvAngle();
 			IR_setMotor0Vol(0.6f);
 			if(GetInfraredSensorValue() > 200) {
@@ -81,7 +91,18 @@ void appTaskfu_10ms(void)
 			zoneState = IsLimitZone();
 		}
 		else if(zoneState == LIMIT) {
-			IR_setMotor0Vol(0.3f);
+			//IR_setSrvAngle(((lineCenter - 60.0f) / 100.0f) * 1.5f + 0.1953f);
+			if(lineCenter >= 55 && lineCenter < 65)
+							IR_setSrvAngle(0.1953);
+						else if(lineCenter >= 65 && lineCenter < 75)
+							IR_setSrvAngle(0.25f);
+						else if(lineCenter >= 75)
+							IR_setSrvAngle(0.6f);
+						else if(lineCenter >= 45 && lineCenter < 55)
+							IR_setSrvAngle(0.145f);
+						else if(lineCenter < 45)
+							IR_setSrvAngle(-0.345f);
+			IR_setMotor0Vol(0.4f);
 			if(GetInfraredSensorValue() > 200) {
 				IR_setSrvAngle(0.1953f + GetDashLine() * 0.3f);
 			}

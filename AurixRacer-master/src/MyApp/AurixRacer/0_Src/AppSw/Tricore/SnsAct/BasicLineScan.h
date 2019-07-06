@@ -45,7 +45,7 @@ IFX_EXTERN void BasicLineScan_run(void);
 #define MAXVALUE 4096
 #define DABS(n) ((n < 0) ? -n : n)
 #define DSQUARE(n) (n*n)
-#define THRESHOLD 85000
+#define THRESHOLD 70000
 #define LEFTMAXCOUNT 300
 #define LEFTTHRESHOLD 197
 #define LINECENTER 60

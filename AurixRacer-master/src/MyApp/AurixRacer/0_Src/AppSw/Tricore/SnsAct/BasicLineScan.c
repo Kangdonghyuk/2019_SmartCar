@@ -303,13 +303,13 @@ int FindCenter(int(*_line)[LINESIZE]) {
 	   		rightIndexCount++;
    }
 
-   if(leftIndex >= 1) {
+   if(rightIndex <= 126) {
+         index = rightIndex - 55;
+         if(rightIndex <= 65) index = -1;
+      }
+   else if(leftIndex >= 5) {
       index = leftIndex + 55;
       if(leftIndex >= 55) index = -1;
-   }
-   else if(rightIndex <= 126) {
-      index = rightIndex - 55;
-      if(rightIndex <= 65) index = -1;
    }
    else if(leftIndex != 0 && rightIndex != 127)
 	   index = (leftIndex + rightIndex) / 2;
