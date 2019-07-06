@@ -54,7 +54,7 @@ IFX_EXTERN void BasicLineScan_run(void);
 #define LEFTTHRESHOLD 197
 #define LINECENTER 60
 //#define LIMIT_THRESHOLD 44
-#define LIMIT_THRESHOLD 84
+#define LIMIT_THRESHOLD 109
 
 typedef struct CAM_INFOMATION {
    int cam_scan[LINESIZE];
@@ -77,6 +77,7 @@ IFX_EXTERN int FindCenter(int(*line)[LINESIZE]);
 //void MakeIdxZero(int(*_line)[LINESIZE]);
 void MakeIdxZero(int(*_line)[LINESIZE], int threshold);
 void MakeIdxMax(int(*_line)[LINESIZE], int threshold);
+IFX_EXTERN void CheckLimitZone(int nowState);
 IFX_EXTERN int IsLimitZone();
 IFX_EXTERN int GetDashLine();
 

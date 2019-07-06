@@ -14,8 +14,10 @@ boolean task_flag_1000m = FALSE;
 typedef enum zone {
 	SPEED = 0, LIMIT = 1
 }ZONE;
+
 ZONE zoneState = SPEED, beforeZoneState = SPEED;
 
+int delayCountForCheckDetectZone = 0;
 int delayCountForIsDetectZone = 0;
 
 void appTaskfu_init(void){
@@ -27,6 +29,9 @@ void appTaskfu_init(void){
     AsclinShellInterface_init();
 
     zoneState = SPEED;
+    beforeZoneState = SPEED;
+
+    delayCountForIsDetectZone = 1;
 
 #if BOARD == APPLICATION_KIT_TC237
     tft_app_init(1);
@@ -74,34 +79,49 @@ void appTaskfu_10ms(void)
 
 		lineCenter = (float)GetCameraCenter();
 
-		beforeZoneState = IsLimitZone();
+		if(delayCountForCheckDetectZone == 0)
+			CheckLimitZone(zoneState);
 
-		if(delayCountForIsDetectZone == 0 && beforeZoneState != zoneState) {
+		if(delayCountForIsDetectZone == 0) {
+			delayCountForIsDetectZone += 4; // delay 400ms
+			beforeZoneState = IsLimitZone();
+		}
+
+		if(beforeZoneState != zoneState) {
+			delayCountForCheckDetectZone += 40; // delay 4000ms
+			delayCountForIsDetectZone += 40;
 			zoneState = beforeZoneState;
-			delayCountForIsDetectZone = 2;
 		}
 
 		if(zoneState == SPEED) {
+			IR_setMotor0Vol(0.72f);
 			//IR_setSrvAngle(((lineCenter - 60.0f) / 100.0f) * 1.5f + 0.1953f);
 			if(lineCenter >= 55 && lineCenter < 65)
 				IR_setSrvAngle(0.1953);
-			else if(lineCenter >= 65 && lineCenter < 75)
+			else if(lineCenter >= 65 && lineCenter < 75) {
 				IR_setSrvAngle(0.25f);
-			else if(lineCenter >= 75)
+				IR_setMotor0Vol(0.6f);
+			}
+			else if(lineCenter >= 75) {
 				IR_setSrvAngle(0.6f);
-			else if(lineCenter >= 45 && lineCenter < 55)
+				IR_setMotor0Vol(0.4f);
+			}
+			else if(lineCenter >= 45 && lineCenter < 55) {
 				IR_setSrvAngle(0.145f);
-			else if(lineCenter < 45)
+				IR_setMotor0Vol(0.6f);
+			}
+			else if(lineCenter < 45) {
 				IR_setSrvAngle(-0.345f);
+				IR_setMotor0Vol(0.4f);
+			}
 			servoValue = IR_getSrvAngle();
-			IR_setMotor0Vol(0.6f);
 			// AEB
-			if(GetInfraredSensorValue() > 200) {
+			if(GetInfraredSensorValue() > 300) {
 				IR_setMotor0Vol(0.0f);
-				IR_setMotor0En(FALSE);
 			}
 		}
 		else if(zoneState == LIMIT) {
+			IR_setMotor0Vol(0.35f);
 			//IR_setSrvAngle(((lineCenter - 60.0f) / 100.0f) * 1.5f + 0.1953f);
 			if(lineCenter >= 55 && lineCenter < 65)
 				IR_setSrvAngle(0.1953);
@@ -113,11 +133,10 @@ void appTaskfu_10ms(void)
 				IR_setSrvAngle(0.145f);
 			else if(lineCenter < 45)
 				IR_setSrvAngle(-0.345f);
-			IR_setMotor0Vol(-0.5f);
-			if(GetInfraredSensorValue() > 200) {
+			if(GetInfraredSensorValue() > 200)
 				IR_setSrvAngle(0.1953f + GetDashLine() * 0.3f);
-			}
 		}
+
 
 		if(IR_Ctrl.basicTest == FALSE){
 			#if CODE == CODE_HAND
@@ -143,6 +162,18 @@ void LimitZone() {
 
 void appTaskfu_100ms(void)
 {
+	if(delayCountForIsDetectZone > 0)
+		delayCountForIsDetectZone -= 1;
+
+	if(delayCountForIsDetectZone < 0)
+		delayCountForIsDetectZone = 0;
+
+	if(delayCountForCheckDetectZone > 0)
+		delayCountForCheckDetectZone -= 1;
+
+	if(delayCountForCheckDetectZone < 0)
+		delayCountForCheckDetectZone = 0;
+
 	task_cnt_100m++;
 	if(task_cnt_100m == 1000){
 		task_cnt_100m = 0;
@@ -162,9 +193,6 @@ volatile int state = -1;
 volatile int start = 0;
 void appTaskfu_1000ms(void)
 {
-	if(delayCountForIsDetectZone > 0)
-		delayCountForIsDetectZone -= 1;
-
 	task_cnt_1000m++;
 	if(task_cnt_1000m == 1000){
 		task_cnt_1000m = 0;

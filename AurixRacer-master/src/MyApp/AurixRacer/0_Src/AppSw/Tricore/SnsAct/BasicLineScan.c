@@ -160,11 +160,12 @@ void BasicLineScan_init(void)
 }
 
 cam_infomation cam_info[CAMS][LINES];
-int debugLine[LINESIZE];
+int debugLine[LINESIZE], speedLimitLine[LINESIZE];
 int nowIndex;
 int cntTotal, cntLeft;
 int isLimitZone = 0, dashLine = 0;
 int leftIndexCount = 0, rightIndexCount = 0;
+int zeroCnt = 0;
 
 void CopyPrevLine(cam_infomation * _cam_info, cam_infomation _prev_info) {
 	int i;
@@ -247,7 +248,6 @@ void Camera_Initialization() {
 }
 
 int GetCameraCenter() {
-	int depth = 0;
 	int i=0;
 
 	//GetCamera(&cam_info[nowIndex]);
@@ -278,6 +278,8 @@ int GetCameraCenter() {
 	MakeIdxZero(&(cam_info[1][nowIndex].cam_scan), THRESHOLD);
 	MakeIdxZero(&(cam_info[2][nowIndex].cam_scan), THRESHOLD);
 
+	for(i=0; i<LINESIZE; i++)
+		speedLimitLine[i] = cam_info[0][nowIndex].cam_scan[i];
 
 	if(cam_info[0][nowIndex].center == -1 || cam_info[0][nowIndex].center == 0) {
 		CopyPrevLine(&(cam_info[0][nowIndex]), cam_info[0][(nowIndex + LINES - 1) % LINES]);
@@ -368,20 +370,20 @@ int FindCenter(int(*_line)[LINESIZE]) {
 	return index;
 }
 
-int add;
-int IsLimitZone() {
+void CheckLimitZone(int nowState) {
 	int i = 0;
-	add = 0;
+	zeroCnt = 0;
 	for(i = 0; i < LINESIZE; i++){
-		if(cam_info[0][(nowIndex + 4) % 5].cam_scan[i] == 0){
-			add++;
-		}
+		if(speedLimitLine[i] == 0)
+			zeroCnt++;
 		//add += cam_info[0][(nowIndex + 4) % 5].cam_scan[i] / 10000;
-		FILTERED_CENTER_LINE[i] = cam_info[0][(nowIndex + 4) % 5].cam_scan[i];
+//		FILTERED_CENTER_LINE[i] = speedLimitLine[i];
 	}
-	if(add <= LIMIT_THRESHOLD){
-		isLimitZone ^= 1;
-	}
+	if(zeroCnt <= LIMIT_THRESHOLD)
+		isLimitZone = nowState ^ 1;
+}
+
+int IsLimitZone() {
 	return isLimitZone;
 }
 
