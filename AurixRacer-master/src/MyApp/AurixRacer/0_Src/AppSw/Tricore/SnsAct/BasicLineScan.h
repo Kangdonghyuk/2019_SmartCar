@@ -80,5 +80,7 @@ void MakeIdxMax(int(*_line)[LINESIZE], int threshold);
 IFX_EXTERN void CheckLimitZone(int nowState);
 IFX_EXTERN int IsLimitZone();
 IFX_EXTERN int GetDashLine();
+IFX_EXTERN int FindCenter(int(*_line)[LINESIZE]);
+IFX_EXTERN int FindOneLine(int line[LINESIZE]);
 
 #endif

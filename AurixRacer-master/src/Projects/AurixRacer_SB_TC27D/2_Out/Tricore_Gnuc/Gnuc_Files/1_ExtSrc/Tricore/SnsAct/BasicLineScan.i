@@ -17072,6 +17072,8 @@ void MakeIdxMax(int(*_line)[128], int threshold);
 extern void CheckLimitZone(int nowState);
 extern int IsLimitZone();
 extern int GetDashLine();
+extern int FindCenter(int(*_line)[128]);
+extern int FindOneLine(int line[128]);
 # 19 "../../MyApp/AurixRacer/0_Src/AppSw/Tricore/SnsAct/BasicLineScan.c" 2
 # 1 "../../MyApp/AurixRacer/0_Src/AppSw/Tricore/Cfg_Illd/Configuration.h" 1
 # 13 "../../MyApp/AurixRacer/0_Src/AppSw/Tricore/Cfg_Illd/Configuration.h"
@@ -28114,6 +28116,62 @@ void BasicLineScan_init(void)
  Camera_Initialization();
 }
 
+
+
+
+
+void BasicLineScan_run(void)
+{
+ uint32 chnIx;
+ uint32 idx;
+
+ IfxPort_setPinState(IfxPort_P14_0.port, IfxPort_P14_0.pinIndex, IfxPort_State_high);
+ IfxPort_setPinState(IfxPort_P14_1.port, IfxPort_P14_1.pinIndex, IfxPort_State_low);
+ waitTime(5*(TimeConst[(1)]));
+
+ IfxPort_setPinState(IfxPort_P14_0.port, IfxPort_P14_0.pinIndex, IfxPort_State_high);
+ IfxPort_setPinState(IfxPort_P14_1.port, IfxPort_P14_1.pinIndex, IfxPort_State_high);
+ waitTime(5*(TimeConst[(1)]));
+
+ IfxPort_setPinState(IfxPort_P14_0.port, IfxPort_P14_0.pinIndex, IfxPort_State_low);
+ IfxPort_setPinState(IfxPort_P14_1.port, IfxPort_P14_1.pinIndex, IfxPort_State_high);
+ waitTime(5*(TimeConst[(1)]));
+ IfxVadc_Adc_startScan(&g_VadcAutoScan.adcGroup);
+
+
+ for(idx = 0; idx < 128 ; ++idx)
+ {
+
+  IfxPort_setPinState(IfxPort_P14_0.port, IfxPort_P14_0.pinIndex, IfxPort_State_low);
+  IfxPort_setPinState(IfxPort_P14_1.port, IfxPort_P14_1.pinIndex, IfxPort_State_low);
+  waitTime(3*(TimeConst[(2)]));
+
+  IfxPort_setPinState(IfxPort_P14_0.port, IfxPort_P14_0.pinIndex, IfxPort_State_low);
+  IfxPort_setPinState(IfxPort_P14_1.port, IfxPort_P14_1.pinIndex, IfxPort_State_high);
+  waitTime(2*(TimeConst[(2)]));
+
+
+  for (chnIx = 0; chnIx < 3; ++chnIx)
+  {
+
+   Ifx_VADC_G_RES conversionResult;
+
+   do
+   {
+    conversionResult = IfxVadc_Adc_getResult(&g_VadcAutoScan.adcChannel[chnIx]);
+   } while (!conversionResult.B.VF);
+
+   IR_LineScan.adcResult[chnIx][idx] = conversionResult.B.RESULT;
+  }
+
+ }
+
+ IfxPort_setPinState(IfxPort_P14_0.port, IfxPort_P14_0.pinIndex, IfxPort_State_low);
+ IfxPort_setPinState(IfxPort_P14_1.port, IfxPort_P14_1.pinIndex, IfxPort_State_low);
+
+
+}
+
 cam_infomation cam_info[3][5];
 int debugLine[128], speedLimitLine[128];
 int nowIndex;
@@ -28205,15 +28263,13 @@ void Camera_Initialization() {
 int GetCameraCenter() {
  int i=0;
 
-
-
  for(i=0; i<128; i++){
   cam_info[0][nowIndex].cam_scan[i] = IR_LineScan.adcResult[0][i];
   cam_info[1][nowIndex].cam_scan[i] = IR_LineScan.adcResult[1][i];
   cam_info[2][nowIndex].cam_scan[i] = IR_LineScan.adcResult[2][i];
  }
  cam_info[0][nowIndex].center = 60;
-# 270 "../../MyApp/AurixRacer/0_Src/AppSw/Tricore/SnsAct/BasicLineScan.c"
+
  for(i=0; i<3; i++){
   Stretching(&(cam_info[i][nowIndex].cam_scan), 4096);
   MedianFiltering(&cam_info[i][nowIndex].cam_scan);
@@ -28221,9 +28277,8 @@ int GetCameraCenter() {
   Stretching(&(cam_info[i][nowIndex].cam_scan), 100000);
  }
  cam_info[0][nowIndex].center = FindCenter(&(cam_info[0][nowIndex].cam_scan));
-
-
-
+ FindOneLine(cam_info[1][nowIndex].cam_scan);
+ FindOneLine(cam_info[2][nowIndex].cam_scan);
 
  for(i=0; i<128; i++)
   speedLimitLine[i] = cam_info[0][nowIndex].cam_scan[i];
@@ -28240,7 +28295,7 @@ int GetCameraCenter() {
 
  return cam_info[0][(nowIndex + 4) % 5].center;
 }
-# 321 "../../MyApp/AurixRacer/0_Src/AppSw/Tricore/SnsAct/BasicLineScan.c"
+
 int FindCenter(int(*_line)[128]) {
  int i, index = 0, leftIndex = 0, rightIndex = 127, zeroCount = 0;
 
@@ -28293,14 +28348,29 @@ int FindCenter(int(*_line)[128]) {
  return index;
 }
 
+int FindOneLine(int line[128]) {
+ int i, zeroCount = 0;
+
+ for (i = 0; i < 128; i++) {
+  if(line[i] < 0)
+   line[i] = 0;
+  if (line[i] < 70000) {
+   zeroCount+=1;
+   line[i] = 0;
+  }
+ }
+
+ if(zeroCount <= 122)
+  return -1;
+
+}
+
 void CheckLimitZone(int nowState) {
  int i = 0;
  zeroCnt = 0;
  for(i = 0; i < 128; i++){
   if(speedLimitLine[i] == 0)
    zeroCnt++;
-
-
  }
  if(zeroCnt <= 109)
   isLimitZone = nowState ^ 1;
@@ -28312,60 +28382,4 @@ int IsLimitZone() {
 
 int GetDashLine() {
  return leftIndexCount >= rightIndexCount ? -1 : 1;
-}
-
-
-
-
-
-void BasicLineScan_run(void)
-{
- uint32 chnIx;
- uint32 idx;
-
- IfxPort_setPinState(IfxPort_P14_0.port, IfxPort_P14_0.pinIndex, IfxPort_State_high);
- IfxPort_setPinState(IfxPort_P14_1.port, IfxPort_P14_1.pinIndex, IfxPort_State_low);
- waitTime(5*(TimeConst[(1)]));
-
- IfxPort_setPinState(IfxPort_P14_0.port, IfxPort_P14_0.pinIndex, IfxPort_State_high);
- IfxPort_setPinState(IfxPort_P14_1.port, IfxPort_P14_1.pinIndex, IfxPort_State_high);
- waitTime(5*(TimeConst[(1)]));
-
- IfxPort_setPinState(IfxPort_P14_0.port, IfxPort_P14_0.pinIndex, IfxPort_State_low);
- IfxPort_setPinState(IfxPort_P14_1.port, IfxPort_P14_1.pinIndex, IfxPort_State_high);
- waitTime(5*(TimeConst[(1)]));
- IfxVadc_Adc_startScan(&g_VadcAutoScan.adcGroup);
-
-
- for(idx = 0; idx < 128 ; ++idx)
- {
-
-  IfxPort_setPinState(IfxPort_P14_0.port, IfxPort_P14_0.pinIndex, IfxPort_State_low);
-  IfxPort_setPinState(IfxPort_P14_1.port, IfxPort_P14_1.pinIndex, IfxPort_State_low);
-  waitTime(3*(TimeConst[(2)]));
-
-  IfxPort_setPinState(IfxPort_P14_0.port, IfxPort_P14_0.pinIndex, IfxPort_State_low);
-  IfxPort_setPinState(IfxPort_P14_1.port, IfxPort_P14_1.pinIndex, IfxPort_State_high);
-  waitTime(2*(TimeConst[(2)]));
-
-
-  for (chnIx = 0; chnIx < 3; ++chnIx)
-  {
-
-   Ifx_VADC_G_RES conversionResult;
-
-   do
-   {
-    conversionResult = IfxVadc_Adc_getResult(&g_VadcAutoScan.adcChannel[chnIx]);
-   } while (!conversionResult.B.VF);
-
-   IR_LineScan.adcResult[chnIx][idx] = conversionResult.B.RESULT;
-  }
-
- }
-
- IfxPort_setPinState(IfxPort_P14_0.port, IfxPort_P14_0.pinIndex, IfxPort_State_low);
- IfxPort_setPinState(IfxPort_P14_1.port, IfxPort_P14_1.pinIndex, IfxPort_State_low);
-
-
 }

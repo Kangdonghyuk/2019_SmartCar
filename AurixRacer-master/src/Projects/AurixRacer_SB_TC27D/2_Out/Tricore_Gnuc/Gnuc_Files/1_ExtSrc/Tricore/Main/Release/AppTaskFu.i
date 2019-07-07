@@ -15515,6 +15515,8 @@ void MakeIdxMax(int(*_line)[128], int threshold);
 extern void CheckLimitZone(int nowState);
 extern int IsLimitZone();
 extern int GetDashLine();
+extern int FindCenter(int(*_line)[128]);
+extern int FindOneLine(int line[128]);
 # 5 "../../MyApp/AurixRacer/0_Src/AppSw/Tricore/SnsAct/Basic.h" 2
 # 1 "../../MyApp/AurixRacer/0_Src/AppSw/Tricore/SnsAct/BasicPort.h" 1
 # 14 "../../MyApp/AurixRacer/0_Src/AppSw/Tricore/SnsAct/BasicPort.h"
@@ -35612,6 +35614,8 @@ void appTaskfu_100ms(void);
 void appTaskfu_1000ms(void);
 void appTaskfu_idle(void);
 void appIsrCb_1ms(void);
+
+extern void FollowingLine();
 # 2 "../../MyApp/AurixRacer/0_Src/AppSw/Tricore/Main/Release/AppTaskFu.c" 2
 
 
@@ -35633,6 +35637,11 @@ ZONE zoneState = SPEED, beforeZoneState = SPEED;
 
 int delayCountForCheckDetectZone = 0;
 int delayCountForIsDetectZone = 0;
+
+int g_nowCenterIndex = 60;
+int g_prevCenterIndex = 60;
+int g_cntDiffNowPrevCenterIndex = 0;
+float g_servoValue = 60.0f;
 
 void appTaskfu_init(void){
  BasicLineScan_init();
@@ -35675,7 +35684,6 @@ void appTaskfu_1ms(void)
 }
 float g_line_center_value = 0;
 
-float lineCenter = 64.0f;
 float servoValue = 0.0f;
 void appTaskfu_10ms(void)
 {
@@ -35692,9 +35700,8 @@ void appTaskfu_10ms(void)
   BasicVadcBgScan_run();
 
 
-  lineCenter = (float)GetCameraCenter();
-
-  g_line_center_value = lineCenter;
+  g_nowCenterIndex = GetCameraCenter();
+  FollowingLine();
 
   if(delayCountForCheckDetectZone == 0)
    CheckLimitZone(zoneState);
@@ -35712,25 +35719,11 @@ void appTaskfu_10ms(void)
 
   if(zoneState == SPEED) {
    IR_setMotor0Vol(0.72f);
-
-   if(lineCenter >= 55 && lineCenter < 65)
+   IR_setSrvAngle((((float)g_nowCenterIndex - 60.0f) / 100.0f) * 2.5f + 0.1953f);
+   if(g_nowCenterIndex >= 58 && g_nowCenterIndex < 63)
     IR_setSrvAngle(0.1953);
-   else if(lineCenter >= 65 && lineCenter < 75) {
-    IR_setSrvAngle(0.25f);
-    IR_setMotor0Vol(0.6f);
-   }
-   else if(lineCenter >= 75) {
-    IR_setSrvAngle(0.6f);
-    IR_setMotor0Vol(0.4f);
-   }
-   else if(lineCenter >= 45 && lineCenter < 55) {
-    IR_setSrvAngle(0.145f);
-    IR_setMotor0Vol(0.6f);
-   }
-   else if(lineCenter < 45) {
-    IR_setSrvAngle(-0.345f);
-    IR_setMotor0Vol(0.4f);
-   }
+   else if(g_nowCenterIndex< 58 || g_nowCenterIndex >= 63)
+    IR_setMotor0Vol(0.35f);
    servoValue = IR_Srv.Angle;
 
    if(GetInfraredSensorValue() > 300) {
@@ -35739,17 +35732,7 @@ void appTaskfu_10ms(void)
   }
   else if(zoneState == LIMIT) {
    IR_setMotor0Vol(0.35f);
-
-   if(lineCenter >= 55 && lineCenter < 65)
-    IR_setSrvAngle(0.1953);
-   else if(lineCenter >= 65 && lineCenter < 75)
-    IR_setSrvAngle(0.25f);
-   else if(lineCenter >= 75)
-    IR_setSrvAngle(0.6f);
-   else if(lineCenter >= 45 && lineCenter < 55)
-    IR_setSrvAngle(0.145f);
-   else if(lineCenter < 45)
-    IR_setSrvAngle(-0.345f);
+   IR_setSrvAngle((((float)g_nowCenterIndex - 60.0f) / 100.0f) * 2.5f + 0.1953f);
    if(GetInfraredSensorValue() > 200)
     IR_setSrvAngle(0.1953f + GetDashLine() * 0.3f);
   }
@@ -35768,6 +35751,24 @@ void appTaskfu_10ms(void)
  }
 }
 
+void FollowingLine() {
+ if(g_nowCenterIndex <= 0 || g_nowCenterIndex >= 200)
+  g_nowCenterIndex = g_prevCenterIndex;
+
+ if(g_nowCenterIndex >= 65 || g_nowCenterIndex < 55) {
+  if(((g_nowCenterIndex - g_prevCenterIndex < 0) ? -g_nowCenterIndex - g_prevCenterIndex : g_nowCenterIndex - g_prevCenterIndex) >= 30) {
+   g_cntDiffNowPrevCenterIndex += 1;
+   if(g_cntDiffNowPrevCenterIndex >= 20) {
+    g_prevCenterIndex = g_nowCenterIndex;
+    g_cntDiffNowPrevCenterIndex = 0;
+   }
+  }
+  else
+   g_cntDiffNowPrevCenterIndex = 0;
+ }
+
+ g_prevCenterIndex = g_nowCenterIndex;
+}
 
 void SpeedZone() {
 
@@ -35795,7 +35796,7 @@ void appTaskfu_100ms(void)
  if(task_cnt_100m == 1000){
   task_cnt_100m = 0;
  }
-# 192 "../../MyApp/AurixRacer/0_Src/AppSw/Tricore/Main/Release/AppTaskFu.c"
+# 189 "../../MyApp/AurixRacer/0_Src/AppSw/Tricore/Main/Release/AppTaskFu.c"
 }
 
 volatile int velocity = 0;

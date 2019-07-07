@@ -28007,6 +28007,8 @@ void MakeIdxMax(int(*_line)[128], int threshold);
 extern void CheckLimitZone(int nowState);
 extern int IsLimitZone();
 extern int GetDashLine();
+extern int FindCenter(int(*_line)[128]);
+extern int FindOneLine(int line[128]);
 # 5 "../../MyApp/AurixRacer/0_Src/AppSw/Tricore/SnsAct/Basic.h" 2
 # 1 "../../MyApp/AurixRacer/0_Src/AppSw/Tricore/SnsAct/BasicPort.h" 1
 # 46 "../../MyApp/AurixRacer/0_Src/AppSw/Tricore/SnsAct/BasicPort.h"
@@ -35627,6 +35629,8 @@ void appTaskfu_100ms(void);
 void appTaskfu_1000ms(void);
 void appTaskfu_idle(void);
 void appIsrCb_1ms(void);
+
+extern void FollowingLine();
 # 17 "../../MyApp/AurixRacer/0_Src/AppSw/Tricore/SnsAct/BasicStm.c" 2
 # 29 "../../MyApp/AurixRacer/0_Src/AppSw/Tricore/SnsAct/BasicStm.c"
 typedef struct

@@ -15666,6 +15666,8 @@ void MakeIdxMax(int(*_line)[128], int threshold);
 extern void CheckLimitZone(int nowState);
 extern int IsLimitZone();
 extern int GetDashLine();
+extern int FindCenter(int(*_line)[128]);
+extern int FindOneLine(int line[128]);
 # 5 "../../MyApp/AurixRacer/0_Src/AppSw/Tricore/SnsAct/Basic.h" 2
 # 1 "../../MyApp/AurixRacer/0_Src/AppSw/Tricore/SnsAct/BasicPort.h" 1
 # 13 "../../MyApp/AurixRacer/0_Src/AppSw/Tricore/SnsAct/BasicPort.h"
