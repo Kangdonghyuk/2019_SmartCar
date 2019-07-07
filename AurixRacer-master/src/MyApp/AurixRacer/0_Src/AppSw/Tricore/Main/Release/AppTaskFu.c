@@ -59,6 +59,7 @@ void appTaskfu_1ms(void)
 	}
 
 }
+float g_line_center_value = 0;
 
 float lineCenter = 64.0f;
 float servoValue = 0.0f;
@@ -78,6 +79,8 @@ void appTaskfu_10ms(void)
 		//lineCentering_run();
 
 		lineCenter = (float)GetCameraCenter();
+
+		g_line_center_value = lineCenter;
 
 		if(delayCountForCheckDetectZone == 0)
 			CheckLimitZone(zoneState);

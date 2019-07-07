@@ -275,8 +275,8 @@ int GetCameraCenter() {
 	}
 	cam_info[0][nowIndex].center = FindCenter(&(cam_info[0][nowIndex].cam_scan));
 
-	MakeIdxZero(&(cam_info[1][nowIndex].cam_scan), THRESHOLD);
-	MakeIdxZero(&(cam_info[2][nowIndex].cam_scan), THRESHOLD);
+	//MakeIdxZero(&(cam_info[1][nowIndex].cam_scan), THRESHOLD);
+	//MakeIdxZero(&(cam_info[2][nowIndex].cam_scan), THRESHOLD);
 
 	for(i=0; i<LINESIZE; i++)
 		speedLimitLine[i] = cam_info[0][nowIndex].cam_scan[i];
@@ -294,7 +294,7 @@ int GetCameraCenter() {
 	return cam_info[0][(nowIndex + 4) % 5].center;
 }
 
-void MakeIdxZero(int(*_line)[LINESIZE], int threshold) {
+/*void MakeIdxZero(int(*_line)[LINESIZE], int threshold) {
 	int i;
 
 	// make points less than THRESHOLD zero
@@ -316,7 +316,7 @@ void MakeIdxMax(int(*_line)[LINESIZE], int threshold) {
 		if ((*_line)[i] < threshold)
 			(*_line)[i] = 4096;
 	}
-}
+}*/
 
 int FindCenter(int(*_line)[LINESIZE]) {
 	int i, index = 0, leftIndex = 0, rightIndex = 127, zeroCount = 0;
