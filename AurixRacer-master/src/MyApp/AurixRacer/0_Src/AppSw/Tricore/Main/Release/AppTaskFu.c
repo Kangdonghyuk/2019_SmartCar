@@ -82,7 +82,7 @@ void appTaskfu_10ms(void)
 		BasicVadcBgScan_run();
 		//lineCentering_run();
 
-		g_nowCenterIndex = GetCameraCenter();
+		g_nowCenterIndex = GetCameraCenter(g_prevCenterIndex, g_cntDiffNowPrevCenterIndex);
 		FollowingLine();
 
 		if(delayCountForCheckDetectZone == 0)

@@ -15497,7 +15497,7 @@ typedef struct CAM_INFOMATION {
 }cam_infomation;
 
 void Camera_Initialization();
-int GetCameraCenter();
+int GetCameraCenter(int prevServo, int cntDiff);
 enum DIRECTION GetCameraDash();
 
 void GetCamera(cam_infomation * _cam_info);
@@ -35700,7 +35700,7 @@ void appTaskfu_10ms(void)
   BasicVadcBgScan_run();
 
 
-  g_nowCenterIndex = GetCameraCenter();
+  g_nowCenterIndex = GetCameraCenter(g_prevCenterIndex, g_cntDiffNowPrevCenterIndex);
   FollowingLine();
 
   if(delayCountForCheckDetectZone == 0)
@@ -35720,7 +35720,7 @@ void appTaskfu_10ms(void)
   if(zoneState == SPEED) {
    IR_setMotor0Vol(0.72f);
    IR_setSrvAngle((((float)g_nowCenterIndex - 60.0f) / 100.0f) * 2.5f + 0.1953f);
-   if(g_nowCenterIndex >= 58 && g_nowCenterIndex < 63)
+   if(g_nowCenterIndex >= 55 && g_nowCenterIndex < 66)
     IR_setSrvAngle(0.1953);
    else if(g_nowCenterIndex< 58 || g_nowCenterIndex >= 63)
     IR_setMotor0Vol(0.35f);
@@ -35733,6 +35733,8 @@ void appTaskfu_10ms(void)
   else if(zoneState == LIMIT) {
    IR_setMotor0Vol(0.35f);
    IR_setSrvAngle((((float)g_nowCenterIndex - 60.0f) / 100.0f) * 2.5f + 0.1953f);
+   if(g_nowCenterIndex >= 55 && g_nowCenterIndex < 66)
+     IR_setSrvAngle(0.1953);
    if(GetInfraredSensorValue() > 200)
     IR_setSrvAngle(0.1953f + GetDashLine() * 0.3f);
   }
@@ -35796,7 +35798,7 @@ void appTaskfu_100ms(void)
  if(task_cnt_100m == 1000){
   task_cnt_100m = 0;
  }
-# 189 "../../MyApp/AurixRacer/0_Src/AppSw/Tricore/Main/Release/AppTaskFu.c"
+# 191 "../../MyApp/AurixRacer/0_Src/AppSw/Tricore/Main/Release/AppTaskFu.c"
 }
 
 volatile int velocity = 0;

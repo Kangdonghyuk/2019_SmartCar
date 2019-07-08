@@ -91,54 +91,54 @@ appTaskfu_1ms:
 	.type	FollowingLine, @function
 FollowingLine:
 .LFB727:
-	.loc 1 136 0
-	.loc 1 137 0
+	.loc 1 138 0
+	.loc 1 139 0
 	movh.a	%a2, hi:g_nowCenterIndex
 	ld.w	%d15, [%a2] lo:g_nowCenterIndex
 	movh.a	%a15, hi:g_prevCenterIndex
 	add	%d2, %d15, -1
 	lt.u	%d2, %d2, 199
 	jnz	%d2, .L8
-	.loc 1 138 0
+	.loc 1 140 0
 	ld.w	%d15, [%a15] lo:g_prevCenterIndex
 	st.w	[%a2] lo:g_nowCenterIndex, %d15
 .L8:
-	.loc 1 140 0
+	.loc 1 142 0
 	addi	%d2, %d15, -55
 	jlt.u	%d2, 10, .L10
-	.loc 1 141 0
+	.loc 1 143 0
 	ld.w	%d4, [%a15] lo:g_prevCenterIndex
 	sub	%d3, %d15, %d4
 	ge	%d2, %d3, 30
 	jltz	%d3, .L19
-	.loc 1 142 0 discriminator 4
+	.loc 1 144 0 discriminator 4
 	movh.a	%a2, hi:g_cntDiffNowPrevCenterIndex
-	.loc 1 141 0 discriminator 4
+	.loc 1 143 0 discriminator 4
 	jz	%d2, .L13
 .L20:
-	.loc 1 142 0
+	.loc 1 144 0
 	ld.w	%d2, [%a2] lo:g_cntDiffNowPrevCenterIndex
 	add	%d2, 1
 	st.w	[%a2] lo:g_cntDiffNowPrevCenterIndex, %d2
-	.loc 1 143 0
+	.loc 1 145 0
 	lt	%d2, %d2, 20
 	jnz	%d2, .L10
 .L13:
-	.loc 1 145 0
+	.loc 1 147 0
 	mov	%d2, 0
 	st.w	[%a2] lo:g_cntDiffNowPrevCenterIndex, %d2
 .L10:
-	.loc 1 152 0
+	.loc 1 154 0
 	st.w	[%a15] lo:g_prevCenterIndex, %d15
 	ret
 .L19:
-	.loc 1 141 0 discriminator 1
+	.loc 1 143 0 discriminator 1
 	rsub	%d2, %d15, 0
 	sub	%d2, %d4
 	ge	%d2, %d2, 30
-	.loc 1 142 0 discriminator 1
+	.loc 1 144 0 discriminator 1
 	movh.a	%a2, hi:g_cntDiffNowPrevCenterIndex
-	.loc 1 141 0 discriminator 1
+	.loc 1 143 0 discriminator 1
 	jz	%d2, .L13
 	j	.L20
 .LFE727:
@@ -159,12 +159,12 @@ appTaskfu_10ms:
 	add	%d15, 1
 	st.w	[%a15] lo:task_cnt_10m, %d15
 	.loc 1 73 0
-	jeq	%d15, %d2, .L37
+	jeq	%d15, %d2, .L38
 	.loc 1 77 0
 	jz.t	%d15, 0, .L23
 .L21:
 	ret
-.L37:
+.L38:
 	.loc 1 74 0
 	mov	%d15, 0
 	st.w	[%a15] lo:task_cnt_10m, %d15
@@ -172,6 +172,8 @@ appTaskfu_10ms:
 	.loc 1 78 0
 	call	BasicLineScan_run
 .LVL10:
+	.loc 1 85 0
+	movh.a	%a15, hi:g_prevCenterIndex
 	.loc 1 79 0
 	call	InfineonRacer_detectLane
 .LVL11:
@@ -185,9 +187,12 @@ appTaskfu_10ms:
 	call	BasicVadcBgScan_run
 .LVL14:
 	.loc 1 85 0
+	ld.w	%d4, [%a15] lo:g_prevCenterIndex
+	movh.a	%a15, hi:g_cntDiffNowPrevCenterIndex
+	ld.w	%d5, [%a15] lo:g_cntDiffNowPrevCenterIndex
+	movh.a	%a13, hi:g_nowCenterIndex
 	call	GetCameraCenter
 .LVL15:
-	movh.a	%a13, hi:g_nowCenterIndex
 	.loc 1 88 0
 	movh.a	%a12, hi:delayCountForCheckDetectZone
 	.loc 1 85 0
@@ -198,14 +203,14 @@ appTaskfu_10ms:
 	.loc 1 88 0
 	ld.w	%d15, [%a12] lo:delayCountForCheckDetectZone
 	movh.a	%a14, hi:zoneState
-	jz	%d15, .L38
+	jz	%d15, .L39
 .L25:
 	.loc 1 91 0
 	movh.a	%a15, hi:delayCountForIsDetectZone
 	ld.w	%d15, [%a15] lo:delayCountForIsDetectZone
 	movh.a	%a2, hi:beforeZoneState
 	ld.bu	%d2, [%a2] lo:beforeZoneState
-	jz	%d15, .L39
+	jz	%d15, .L40
 .L27:
 	.loc 1 96 0
 	ld.bu	%d15, [%a14] lo:zoneState
@@ -225,7 +230,7 @@ appTaskfu_10ms:
 	st.w	[%a15] lo:delayCountForIsDetectZone, %d15
 .L28:
 	.loc 1 102 0
-	jz	%d2, .L40
+	jz	%d2, .L41
 	.loc 1 115 0
 	jne	%d2, 1, .L21
 	.loc 1 116 0
@@ -248,21 +253,28 @@ appTaskfu_10ms:
 	call	IR_setSrvAngle
 .LVL18:
 	.loc 1 118 0
+	ld.w	%d2, [%a13] lo:g_nowCenterIndex
+	addi	%d2, %d2, -55
+	jlt.u	%d2, 11, .L42
+.L33:
+	.loc 1 120 0
 	call	GetInfraredSensorValue
 .LVL19:
 	lt	%d2, %d2, 201
 	jnz	%d2, .L21
-	.loc 1 119 0
+	.loc 1 121 0
 	call	GetDashLine
 .LVL20:
 	itof	%d2, %d2
 	movh	%d4, 16026
 	addi	%d4, %d4, -26214
 	mul.f	%d4, %d2, %d4
+	movh	%d15, 15944
+	addi	%d15, %d15, -839
 	add.f	%d4, %d4, %d15
 	j	IR_setSrvAngle
 .LVL21:
-.L40:
+.L41:
 	.loc 1 103 0
 	movh	%d4, 16184
 	addi	%d4, %d4, 20972
@@ -284,8 +296,8 @@ appTaskfu_10ms:
 .LVL23:
 	.loc 1 105 0
 	ld.w	%d2, [%a13] lo:g_nowCenterIndex
-	addi	%d2, %d2, -58
-	jlt.u	%d2, 5, .L41
+	addi	%d2, %d2, -55
+	jlt.u	%d2, 11, .L43
 	.loc 1 108 0
 	movh	%d4, 16051
 	addi	%d4, %d4, 13107
@@ -306,7 +318,7 @@ appTaskfu_10ms:
 	mov	%d4, 0
 	j	IR_setMotor0Vol
 .LVL26:
-.L39:
+.L40:
 	.loc 1 92 0
 	mov	%d15, 4
 	st.w	[%a15] lo:delayCountForIsDetectZone, %d15
@@ -317,17 +329,23 @@ appTaskfu_10ms:
 	movh.a	%a2, hi:beforeZoneState
 	st.b	[%a2] lo:beforeZoneState, %d2
 	j	.L27
-.L38:
+.L39:
 	.loc 1 89 0
 	ld.bu	%d4, [%a14] lo:zoneState
 	call	CheckLimitZone
 .LVL28:
 	j	.L25
-.L41:
-	.loc 1 106 0
+.L42:
+	.loc 1 119 0
 	mov	%d4, %d15
 	call	IR_setSrvAngle
 .LVL29:
+	j	.L33
+.L43:
+	.loc 1 106 0
+	mov	%d4, %d15
+	call	IR_setSrvAngle
+.LVL30:
 	j	.L31
 .LFE726:
 	.size	appTaskfu_10ms, .-appTaskfu_10ms
@@ -337,7 +355,7 @@ appTaskfu_10ms:
 	.type	SpeedZone, @function
 SpeedZone:
 .LFB728:
-	.loc 1 155 0
+	.loc 1 157 0
 	ret
 .LFE728:
 	.size	SpeedZone, .-SpeedZone
@@ -347,7 +365,7 @@ SpeedZone:
 	.type	LimitZone, @function
 LimitZone:
 .LFB729:
-	.loc 1 159 0
+	.loc 1 161 0
 	ret
 .LFE729:
 	.size	LimitZone, .-LimitZone
@@ -357,51 +375,51 @@ LimitZone:
 	.type	appTaskfu_100ms, @function
 appTaskfu_100ms:
 .LFB730:
-	.loc 1 164 0
-	.loc 1 165 0
+	.loc 1 166 0
+	.loc 1 167 0
 	movh.a	%a15, hi:delayCountForIsDetectZone
 	ld.w	%d15, [%a15] lo:delayCountForIsDetectZone
-	jlez	%d15, .L45
-	.loc 1 166 0
+	jlez	%d15, .L47
+	.loc 1 168 0
 	add	%d15, -1
 	st.w	[%a15] lo:delayCountForIsDetectZone, %d15
-.L46:
-	.loc 1 171 0
+.L48:
+	.loc 1 173 0
 	movh.a	%a15, hi:delayCountForCheckDetectZone
 	ld.w	%d15, [%a15] lo:delayCountForCheckDetectZone
-	jlez	%d15, .L47
-	.loc 1 172 0
+	jlez	%d15, .L49
+	.loc 1 174 0
 	add	%d15, -1
 	st.w	[%a15] lo:delayCountForCheckDetectZone, %d15
-.L48:
-	.loc 1 177 0
+.L50:
+	.loc 1 179 0
 	movh.a	%a15, hi:task_cnt_100m
 	ld.w	%d15, [%a15] lo:task_cnt_100m
-	.loc 1 178 0
+	.loc 1 180 0
 	mov	%d2, 1000
-	.loc 1 177 0
-	add	%d15, 1
-	.loc 1 178 0
-	jne	%d15, %d2, .L51
 	.loc 1 179 0
+	add	%d15, 1
+	.loc 1 180 0
+	jne	%d15, %d2, .L53
+	.loc 1 181 0
 	mov	%d15, 0
-.L51:
+.L53:
 	st.w	[%a15] lo:task_cnt_100m, %d15
 	ret
-.L47:
-	.loc 1 174 0
-	jgez	%d15, .L48
-	.loc 1 175 0
+.L49:
+	.loc 1 176 0
+	jgez	%d15, .L50
+	.loc 1 177 0
 	mov	%d15, 0
 	st.w	[%a15] lo:delayCountForCheckDetectZone, %d15
-	j	.L48
-.L45:
-	.loc 1 168 0
-	jgez	%d15, .L46
-	.loc 1 169 0
+	j	.L50
+.L47:
+	.loc 1 170 0
+	jgez	%d15, .L48
+	.loc 1 171 0
 	mov	%d15, 0
 	st.w	[%a15] lo:delayCountForIsDetectZone, %d15
-	j	.L46
+	j	.L48
 .LFE730:
 	.size	appTaskfu_100ms, .-appTaskfu_100ms
 .section .text.appTaskfu_1000ms,"ax",@progbits
@@ -410,19 +428,19 @@ appTaskfu_100ms:
 	.type	appTaskfu_1000ms, @function
 appTaskfu_1000ms:
 .LFB731:
-	.loc 1 195 0
-	.loc 1 196 0
+	.loc 1 197 0
+	.loc 1 198 0
 	movh.a	%a15, hi:task_cnt_1000m
 	ld.w	%d15, [%a15] lo:task_cnt_1000m
-	.loc 1 197 0
+	.loc 1 199 0
 	mov	%d2, 1000
-	.loc 1 196 0
-	add	%d15, 1
-	.loc 1 197 0
-	jne	%d15, %d2, .L55
 	.loc 1 198 0
+	add	%d15, 1
+	.loc 1 199 0
+	jne	%d15, %d2, .L57
+	.loc 1 200 0
 	mov	%d15, 0
-.L55:
+.L57:
 	st.w	[%a15] lo:task_cnt_1000m, %d15
 	ret
 .LFE731:
@@ -433,10 +451,10 @@ appTaskfu_1000ms:
 	.type	appTaskfu_idle, @function
 appTaskfu_idle:
 .LFB732:
-	.loc 1 203 0
-	.loc 1 204 0
+	.loc 1 205 0
+	.loc 1 206 0
 	j	AsclinShellInterface_run
-.LVL30:
+.LVL31:
 .LFE732:
 	.size	appTaskfu_idle, .-appTaskfu_idle
 .section .text.appIsrCb_1ms,"ax",@progbits
@@ -445,10 +463,10 @@ appTaskfu_idle:
 	.type	appIsrCb_1ms, @function
 appIsrCb_1ms:
 .LFB733:
-	.loc 1 213 0
-	.loc 1 214 0
+	.loc 1 215 0
+	.loc 1 216 0
 	j	BasicGpt12Enc_run
-.LVL31:
+.LVL32:
 .LFE733:
 	.size	appIsrCb_1ms, .-appIsrCb_1ms
 	.global	start
@@ -701,7 +719,7 @@ task_cnt_1m:
 	.file 15 "../../MyApp/AurixRacer/0_Src/AppSw/Tricore/SnsAct/AsclinShellInterface.h"
 .section .debug_info,"",@progbits
 .Ldebug_info0:
-	.uaword	0x1161
+	.uaword	0x1181
 	.uahalf	0x3
 	.uaword	.Ldebug_abbrev0
 	.byte	0x4
@@ -1296,28 +1314,28 @@ task_cnt_1m:
 	.uaword	0xa22
 	.uleb128 0x12
 	.uaword	.LVL0
-	.uaword	0xf0d
+	.uaword	0xf23
 	.uleb128 0x12
 	.uaword	.LVL1
-	.uaword	0xf26
+	.uaword	0xf3c
 	.uleb128 0x12
 	.uaword	.LVL2
-	.uaword	0xf3b
+	.uaword	0xf51
 	.uleb128 0x12
 	.uaword	.LVL3
-	.uaword	0xf52
+	.uaword	0xf68
 	.uleb128 0x12
 	.uaword	.LVL4
-	.uaword	0xf6d
+	.uaword	0xf83
 	.uleb128 0x12
 	.uaword	.LVL5
-	.uaword	0xf86
+	.uaword	0xf9c
 	.uleb128 0x12
 	.uaword	.LVL6
-	.uaword	0xfa6
+	.uaword	0xfbc
 	.uleb128 0x13
 	.uaword	.LVL7
-	.uaword	0xfc5
+	.uaword	0xfdb
 	.uaword	0xa0e
 	.uleb128 0x14
 	.byte	0x1
@@ -1328,11 +1346,11 @@ task_cnt_1m:
 	.byte	0
 	.uleb128 0x12
 	.uaword	.LVL8
-	.uaword	0xfe4
+	.uaword	0xffa
 	.uleb128 0x15
 	.uaword	.LVL9
 	.byte	0x1
-	.uaword	0x1004
+	.uaword	0x101a
 	.byte	0
 	.uleb128 0x16
 	.byte	0x1
@@ -1349,7 +1367,7 @@ task_cnt_1m:
 	.byte	0x1
 	.string	"FollowingLine"
 	.byte	0x1
-	.byte	0x88
+	.byte	0x8a
 	.uaword	.LFB727
 	.uaword	.LFE727
 	.byte	0x1
@@ -1366,60 +1384,60 @@ task_cnt_1m:
 	.byte	0x1
 	.byte	0x9c
 	.byte	0x1
-	.uaword	0xb51
+	.uaword	0xb67
 	.uleb128 0x12
 	.uaword	.LVL10
-	.uaword	0x101d
+	.uaword	0x1033
 	.uleb128 0x12
 	.uaword	.LVL11
-	.uaword	0x1035
+	.uaword	0x104b
 	.uleb128 0x12
 	.uaword	.LVL12
-	.uaword	0x1054
+	.uaword	0x106a
 	.uleb128 0x12
 	.uaword	.LVL13
-	.uaword	0x1068
-	.uleb128 0x12
-	.uaword	.LVL14
 	.uaword	0x107e
 	.uleb128 0x12
+	.uaword	.LVL14
+	.uaword	0x1094
+	.uleb128 0x12
 	.uaword	.LVL15
-	.uaword	0x1098
+	.uaword	0x10ae
 	.uleb128 0x12
 	.uaword	.LVL16
 	.uaword	0xa40
 	.uleb128 0x12
 	.uaword	.LVL17
-	.uaword	0xfe4
+	.uaword	0xffa
 	.uleb128 0x12
 	.uaword	.LVL18
-	.uaword	0xfa6
+	.uaword	0xfbc
 	.uleb128 0x12
 	.uaword	.LVL19
-	.uaword	0x10b7
+	.uaword	0x10d7
 	.uleb128 0x12
 	.uaword	.LVL20
-	.uaword	0x10d8
+	.uaword	0x10f8
 	.uleb128 0x15
 	.uaword	.LVL21
 	.byte	0x1
-	.uaword	0xfa6
+	.uaword	0xfbc
 	.uleb128 0x12
 	.uaword	.LVL22
-	.uaword	0xfe4
+	.uaword	0xffa
 	.uleb128 0x12
 	.uaword	.LVL23
-	.uaword	0xfa6
+	.uaword	0xfbc
 	.uleb128 0x12
 	.uaword	.LVL24
-	.uaword	0xfe4
+	.uaword	0xffa
 	.uleb128 0x12
 	.uaword	.LVL25
-	.uaword	0x10b7
+	.uaword	0x10d7
 	.uleb128 0x18
 	.uaword	.LVL26
 	.byte	0x1
-	.uaword	0xfe4
+	.uaword	0xffa
 	.uaword	0xb2c
 	.uleb128 0x14
 	.byte	0x1
@@ -1432,13 +1450,25 @@ task_cnt_1m:
 	.byte	0
 	.uleb128 0x12
 	.uaword	.LVL27
-	.uaword	0x10f3
+	.uaword	0x1113
 	.uleb128 0x12
 	.uaword	.LVL28
-	.uaword	0x110e
-	.uleb128 0x19
+	.uaword	0x112e
+	.uleb128 0x13
 	.uaword	.LVL29
-	.uaword	0xfa6
+	.uaword	0xfbc
+	.uaword	0xb54
+	.uleb128 0x14
+	.byte	0x1
+	.byte	0x54
+	.byte	0x4
+	.byte	0xf5
+	.uleb128 0xf
+	.uleb128 0x1b4
+	.byte	0
+	.uleb128 0x19
+	.uaword	.LVL30
+	.uaword	0xfbc
 	.uleb128 0x14
 	.byte	0x1
 	.byte	0x54
@@ -1452,7 +1482,7 @@ task_cnt_1m:
 	.byte	0x1
 	.string	"SpeedZone"
 	.byte	0x1
-	.byte	0x9b
+	.byte	0x9d
 	.uaword	.LFB728
 	.uaword	.LFE728
 	.byte	0x1
@@ -1462,7 +1492,7 @@ task_cnt_1m:
 	.byte	0x1
 	.string	"LimitZone"
 	.byte	0x1
-	.byte	0x9f
+	.byte	0xa1
 	.uaword	.LFB729
 	.uaword	.LFE729
 	.byte	0x1
@@ -1472,7 +1502,7 @@ task_cnt_1m:
 	.byte	0x1
 	.string	"appTaskfu_100ms"
 	.byte	0x1
-	.byte	0xa3
+	.byte	0xa5
 	.byte	0x1
 	.uaword	.LFB730
 	.uaword	.LFE730
@@ -1483,7 +1513,7 @@ task_cnt_1m:
 	.byte	0x1
 	.string	"appTaskfu_1000ms"
 	.byte	0x1
-	.byte	0xc2
+	.byte	0xc4
 	.byte	0x1
 	.uaword	.LFB731
 	.uaword	.LFE731
@@ -1494,35 +1524,35 @@ task_cnt_1m:
 	.byte	0x1
 	.string	"appTaskfu_idle"
 	.byte	0x1
-	.byte	0xcb
+	.byte	0xcd
 	.byte	0x1
 	.uaword	.LFB732
 	.uaword	.LFE732
 	.byte	0x1
 	.byte	0x9c
 	.byte	0x1
-	.uaword	0xbf2
+	.uaword	0xc08
 	.uleb128 0x15
-	.uaword	.LVL30
+	.uaword	.LVL31
 	.byte	0x1
-	.uaword	0x112d
+	.uaword	0x114d
 	.byte	0
 	.uleb128 0x11
 	.byte	0x1
 	.string	"appIsrCb_1ms"
 	.byte	0x1
-	.byte	0xd5
+	.byte	0xd7
 	.byte	0x1
 	.uaword	.LFB733
 	.uaword	.LFE733
 	.byte	0x1
 	.byte	0x9c
 	.byte	0x1
-	.uaword	0xc1e
+	.uaword	0xc34
 	.uleb128 0x15
-	.uaword	.LVL31
+	.uaword	.LVL32
 	.byte	0x1
-	.uaword	0x114c
+	.uaword	0x116c
 	.byte	0
 	.uleb128 0x1a
 	.string	"task_cnt_1m"
@@ -1558,7 +1588,7 @@ task_cnt_1m:
 	.uaword	task_cnt_1000m
 	.uleb128 0x1b
 	.uaword	0x30f
-	.uaword	0xc98
+	.uaword	0xcae
 	.uleb128 0x1c
 	.uaword	0x339
 	.byte	0x2
@@ -1567,11 +1597,11 @@ task_cnt_1m:
 	.string	"IfxCpu_cfg_indexMap"
 	.byte	0x9
 	.byte	0x96
-	.uaword	0xcb5
+	.uaword	0xccb
 	.byte	0x1
 	.byte	0x1
 	.uleb128 0x1e
-	.uaword	0xc88
+	.uaword	0xc9e
 	.uleb128 0x1d
 	.string	"Assert_verboseLevel"
 	.byte	0xa
@@ -1729,8 +1759,8 @@ task_cnt_1m:
 	.uleb128 0x1f
 	.string	"velocity"
 	.byte	0x1
-	.byte	0xbf
-	.uaword	0xee0
+	.byte	0xc1
+	.uaword	0xef6
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
@@ -1740,8 +1770,8 @@ task_cnt_1m:
 	.uleb128 0x1f
 	.string	"state"
 	.byte	0x1
-	.byte	0xc0
-	.uaword	0xee0
+	.byte	0xc2
+	.uaword	0xef6
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
@@ -1749,8 +1779,8 @@ task_cnt_1m:
 	.uleb128 0x1f
 	.string	"start"
 	.byte	0x1
-	.byte	0xc1
-	.uaword	0xee0
+	.byte	0xc3
+	.uaword	0xef6
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
@@ -1804,7 +1834,7 @@ task_cnt_1m:
 	.byte	0x76
 	.byte	0x1
 	.byte	0x1
-	.uaword	0xfc5
+	.uaword	0xfdb
 	.uleb128 0xe
 	.uaword	0x252
 	.byte	0
@@ -1815,7 +1845,7 @@ task_cnt_1m:
 	.byte	0x5c
 	.byte	0x1
 	.byte	0x1
-	.uaword	0xfe4
+	.uaword	0xffa
 	.uleb128 0xe
 	.uaword	0x26b
 	.byte	0
@@ -1826,7 +1856,7 @@ task_cnt_1m:
 	.byte	0x74
 	.byte	0x1
 	.byte	0x1
-	.uaword	0x1004
+	.uaword	0x101a
 	.uleb128 0xe
 	.uaword	0x252
 	.byte	0
@@ -1877,12 +1907,16 @@ task_cnt_1m:
 	.string	"GetCameraCenter"
 	.byte	0xb
 	.byte	0x41
+	.byte	0x1
 	.uaword	0x1de
 	.byte	0x1
-	.uaword	0x10b7
-	.uleb128 0x23
+	.uaword	0x10d7
+	.uleb128 0xe
+	.uaword	0x1de
+	.uleb128 0xe
+	.uaword	0x1de
 	.byte	0
-	.uleb128 0x24
+	.uleb128 0x23
 	.byte	0x1
 	.string	"GetInfraredSensorValue"
 	.byte	0xd
@@ -1890,25 +1924,25 @@ task_cnt_1m:
 	.byte	0x1
 	.uaword	0x1de
 	.byte	0x1
-	.uleb128 0x22
+	.uleb128 0x24
 	.byte	0x1
 	.string	"GetDashLine"
 	.byte	0xb
 	.byte	0x52
 	.uaword	0x1de
 	.byte	0x1
-	.uaword	0x10f3
-	.uleb128 0x23
+	.uaword	0x1113
+	.uleb128 0x25
 	.byte	0
-	.uleb128 0x22
+	.uleb128 0x24
 	.byte	0x1
 	.string	"IsLimitZone"
 	.byte	0xb
 	.byte	0x51
 	.uaword	0x1de
 	.byte	0x1
-	.uaword	0x110e
-	.uleb128 0x23
+	.uaword	0x112e
+	.uleb128 0x25
 	.byte	0
 	.uleb128 0x21
 	.byte	0x1
@@ -1917,7 +1951,7 @@ task_cnt_1m:
 	.byte	0x50
 	.byte	0x1
 	.byte	0x1
-	.uaword	0x112d
+	.uaword	0x114d
 	.uleb128 0xe
 	.uaword	0x1de
 	.byte	0
@@ -2370,6 +2404,8 @@ task_cnt_1m:
 	.uleb128 0xb
 	.uleb128 0x3b
 	.uleb128 0xb
+	.uleb128 0x27
+	.uleb128 0xc
 	.uleb128 0x49
 	.uleb128 0x13
 	.uleb128 0x3c
@@ -2379,11 +2415,6 @@ task_cnt_1m:
 	.byte	0
 	.byte	0
 	.uleb128 0x23
-	.uleb128 0x18
-	.byte	0
-	.byte	0
-	.byte	0
-	.uleb128 0x24
 	.uleb128 0x2e
 	.byte	0
 	.uleb128 0x3f
@@ -2400,6 +2431,30 @@ task_cnt_1m:
 	.uleb128 0x13
 	.uleb128 0x3c
 	.uleb128 0xc
+	.byte	0
+	.byte	0
+	.uleb128 0x24
+	.uleb128 0x2e
+	.byte	0x1
+	.uleb128 0x3f
+	.uleb128 0xc
+	.uleb128 0x3
+	.uleb128 0x8
+	.uleb128 0x3a
+	.uleb128 0xb
+	.uleb128 0x3b
+	.uleb128 0xb
+	.uleb128 0x49
+	.uleb128 0x13
+	.uleb128 0x3c
+	.uleb128 0xc
+	.uleb128 0x1
+	.uleb128 0x13
+	.byte	0
+	.byte	0
+	.uleb128 0x25
+	.uleb128 0x18
+	.byte	0
 	.byte	0
 	.byte	0
 	.byte	0

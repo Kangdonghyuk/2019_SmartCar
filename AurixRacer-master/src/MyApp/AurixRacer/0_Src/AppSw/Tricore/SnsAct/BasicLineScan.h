@@ -62,7 +62,7 @@ typedef struct CAM_INFOMATION {
 }cam_infomation;
 
 void Camera_Initialization();
-int GetCameraCenter();
+int GetCameraCenter(int prevServo, int cntDiff);
 enum DIRECTION GetCameraDash();
 
 void GetCamera(cam_infomation * _cam_info);

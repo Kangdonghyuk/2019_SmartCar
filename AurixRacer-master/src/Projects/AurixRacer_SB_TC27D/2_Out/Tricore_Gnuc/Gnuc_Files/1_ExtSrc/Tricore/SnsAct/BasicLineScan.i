@@ -17054,7 +17054,7 @@ typedef struct CAM_INFOMATION {
 }cam_infomation;
 
 void Camera_Initialization();
-int GetCameraCenter();
+int GetCameraCenter(int prevServo, int cntDiff);
 enum DIRECTION GetCameraDash();
 
 void GetCamera(cam_infomation * _cam_info);
@@ -28179,6 +28179,7 @@ int cntTotal, cntLeft;
 int isLimitZone = 0, dashLine = 0;
 int leftIndexCount = 0, rightIndexCount = 0;
 int zeroCnt = 0;
+int g_cameraDirection = 0;
 
 void CopyPrevLine(cam_infomation * _cam_info, cam_infomation _prev_info) {
  int i;
@@ -28260,8 +28261,15 @@ void Camera_Initialization() {
  cntLeft = 0;
 }
 
-int GetCameraCenter() {
+int GetCameraCenter(int prevServo, int cntDiff) {
  int i=0;
+
+ if(cntDiff >= 2) {
+  if(prevServo >= 60)
+   g_cameraDirection = 0;
+  else if(prevServo < 60)
+   g_cameraDirection = 1;
+ }
 
  for(i=0; i<128; i++){
   cam_info[0][nowIndex].cam_scan[i] = IR_LineScan.adcResult[0][i];
@@ -28277,8 +28285,8 @@ int GetCameraCenter() {
   Stretching(&(cam_info[i][nowIndex].cam_scan), 100000);
  }
  cam_info[0][nowIndex].center = FindCenter(&(cam_info[0][nowIndex].cam_scan));
- FindOneLine(cam_info[1][nowIndex].cam_scan);
- FindOneLine(cam_info[2][nowIndex].cam_scan);
+ cam_info[1][nowIndex].center = FindOneLine(cam_info[1][nowIndex].cam_scan);
+ cam_info[2][nowIndex].center = FindOneLine(cam_info[2][nowIndex].cam_scan);
 
  for(i=0; i<128; i++)
   speedLimitLine[i] = cam_info[0][nowIndex].cam_scan[i];
@@ -28286,6 +28294,10 @@ int GetCameraCenter() {
  if(cam_info[0][nowIndex].center == -1 || cam_info[0][nowIndex].center == 0) {
   CopyPrevLine(&(cam_info[0][nowIndex]), cam_info[0][(nowIndex + 5 - 1) % 5]);
   cam_info[0][nowIndex].center = cam_info[0][(nowIndex + 5 - 1) % 5].center;
+  if(g_cameraDirection == 0)
+   cam_info[0][nowIndex].center = cam_info[1][nowIndex].center + 40;
+  else if(g_cameraDirection == 1)
+   cam_info[0][nowIndex].center = cam_info[2][nowIndex].center - 40;
  }
 
  for(i=0; i<128; i++)
@@ -28350,6 +28362,7 @@ int FindCenter(int(*_line)[128]) {
 
 int FindOneLine(int line[128]) {
  int i, zeroCount = 0;
+ int lineIndex = 0;
 
  for (i = 0; i < 128; i++) {
   if(line[i] < 0)
@@ -28363,6 +28376,14 @@ int FindOneLine(int line[128]) {
  if(zeroCount <= 122)
   return -1;
 
+ for(i=2; i<126; i++) {
+  if(lineIndex == 0 && line[i] != 0 && line[i+1] == 0)
+   lineIndex = i;
+  else if(lineIndex != 0 && line[i] != 0 && line[i+1] == 0 && line[lineIndex] <= line[i])
+   lineIndex = i;
+ }
+
+ return lineIndex;
 }
 
 void CheckLimitZone(int nowState) {

@@ -412,11 +412,11 @@ BasicLineScan_run:
 	.type	CopyPrevLine, @function
 CopyPrevLine:
 .LFB429:
-	.loc 1 226 0
+	.loc 1 227 0
 .LVL41:
 	lea	%SP, [%SP] -520
 .LCFI0:
-	.loc 1 226 0
+	.loc 1 227 0
 	lea	%a6, [%SP] 4
 	mov.aa	%a2, %a6
 	ld.w	%d4, [%a5] 512
@@ -429,25 +429,25 @@ CopyPrevLine:
 	ld.w	%d2, [%a5+]4
 	st.w	[%a2+]4, %d2
 .LVL42:
-	.loc 1 228 0
+	.loc 1 229 0
 	mov	%d15, 0
 	lea	%a15, 127
 .LVL43:
 .L11:
-	.loc 1 229 0 discriminator 3
+	.loc 1 230 0 discriminator 3
 	sh	%d2, %d15, 2
 	mov.a	%a2, %d2
-	.loc 1 228 0 discriminator 3
+	.loc 1 229 0 discriminator 3
 	add	%d15, 1
 .LVL44:
-	.loc 1 229 0 discriminator 3
+	.loc 1 230 0 discriminator 3
 	add.a	%a3, %a4, %a2
 	add.a	%a2, %a6
 	ld.w	%d2, [%a2]0
 	st.w	[%a3]0, %d2
-	.loc 1 228 0 discriminator 3
+	.loc 1 229 0 discriminator 3
 	loop	%a15, .L11
-	.loc 1 230 0
+	.loc 1 231 0
 	st.w	[%a4] 512, %d4
 	ret
 .LFE429:
@@ -458,39 +458,39 @@ CopyPrevLine:
 	.type	GetMedian, @function
 GetMedian:
 .LFB430:
-	.loc 1 233 0
+	.loc 1 234 0
 .LVL45:
 	mov.aa	%a3, %a4
-	.loc 1 235 0
+	.loc 1 236 0
 	mov	%d3, 0
 	mov.a	%a5, 4
 .LVL46:
 .L14:
-	.loc 1 233 0
+	.loc 1 234 0
 	rsub	%d15, %d3, 4
 	mov.a	%a15, %d15
 	mov.aa	%a2, %a3
 .LVL47:
 .L16:
-	.loc 1 237 0
+	.loc 1 238 0
 	ld.w	%d15, [%a3]0
 	ld.w	%d2, [%a2]0
 	jge	%d2, %d15, .L15
 .LVL48:
-	.loc 1 239 0
-	st.w	[%a3]0, %d2
 	.loc 1 240 0
+	st.w	[%a3]0, %d2
+	.loc 1 241 0
 	st.w	[%a2]0, %d15
 .LVL49:
 .L15:
 	add.a	%a2, 4
 	loop	%a15, .L16
-	.loc 1 235 0 discriminator 2
+	.loc 1 236 0 discriminator 2
 	add	%d3, 1
 .LVL50:
 	add.a	%a3, 4
 	loop	%a5, .L14
-	.loc 1 245 0
+	.loc 1 246 0
 	ld.w	%d2, [%a4] 8
 	ret
 .LFE430:
@@ -501,28 +501,28 @@ GetMedian:
 	.type	Stretching, @function
 Stretching:
 .LFB431:
-	.loc 1 247 0
-.LVL51:
 	.loc 1 248 0
+.LVL51:
+	.loc 1 249 0
 	ld.w	%d6, [%a4]0
 .LVL52:
-	.loc 1 250 0
+	.loc 1 251 0
 	mov	%d5, 0
-	.loc 1 248 0
+	.loc 1 249 0
 	mov	%d2, %d6
 	mov	%d15, %d6
 	mov	%d3, %d6
-	.loc 1 250 0
+	.loc 1 251 0
 	lea	%a15, 127
 .LVL53:
 .L24:
-	.loc 1 251 0 discriminator 3
+	.loc 1 252 0 discriminator 3
 	max	%d3, %d3, %d2
 .LVL54:
-	.loc 1 252 0 discriminator 3
+	.loc 1 253 0 discriminator 3
 	min	%d15, %d15, %d2
 .LVL55:
-	.loc 1 250 0 discriminator 3
+	.loc 1 251 0 discriminator 3
 	add	%d5, 1
 .LVL56:
 	loop	%a15, .L28
@@ -532,25 +532,25 @@ Stretching:
 	itof	%d3, %d3
 	itof	%d4, %d4
 .LVL59:
-	.loc 1 250 0 is_stmt 0
+	.loc 1 251 0 is_stmt 0
 	mov	%d2, 0
 	div.f	%d4, %d4, %d3
 	lea	%a15, 127
 	mov	%d3, %d6
 .LVL60:
 .L26:
-	.loc 1 255 0 is_stmt 1 discriminator 3
+	.loc 1 256 0 is_stmt 1 discriminator 3
 	sub	%d3, %d15
 	itof	%d3, %d3
 	addsc.a	%a2, %a4, %d2, 2
 	mul.f	%d3, %d3, %d4
-	.loc 1 254 0 discriminator 3
+	.loc 1 255 0 discriminator 3
 	add	%d2, 1
 .LVL61:
-	.loc 1 255 0 discriminator 3
+	.loc 1 256 0 discriminator 3
 	ftoiz	%d3, %d3
 	st.w	[%a2]0, %d3
-	.loc 1 254 0 discriminator 3
+	.loc 1 255 0 discriminator 3
 	loop	%a15, .L27
 	ret
 .LVL62:
@@ -570,45 +570,45 @@ Stretching:
 	.type	MedianFiltering, @function
 MedianFiltering:
 .LFB432:
-	.loc 1 258 0
+	.loc 1 259 0
 .LVL64:
 	sub.a	%SP, 24
 .LCFI1:
-	.loc 1 258 0
+	.loc 1 259 0
 	mov.aa	%a12, %a4
-	.loc 1 261 0
+	.loc 1 262 0
 	mov	%d8, 2
 .LVL65:
 .L33:
-	.loc 1 258 0
+	.loc 1 259 0
 	mov	%d15, 0
 	mov.a	%a15, 4
 .LVL66:
 .L34:
-	.loc 1 263 0 discriminator 3
+	.loc 1 264 0 discriminator 3
 	add	%d2, %d15, %d8
 	lea	%a2, [%SP] 24
 	addsc.a	%a3, %a2, %d15, 2
 	addsc.a	%a2, %a12, %d2, 2
-	.loc 1 262 0 discriminator 3
+	.loc 1 263 0 discriminator 3
 	add	%d15, 1
 .LVL67:
-	.loc 1 263 0 discriminator 3
+	.loc 1 264 0 discriminator 3
 	ld.w	%d2, [%a2] -8
 	st.w	[%a3] -20, %d2
-	.loc 1 262 0 discriminator 3
+	.loc 1 263 0 discriminator 3
 	loop	%a15, .L34
-	.loc 1 264 0 discriminator 2
+	.loc 1 265 0 discriminator 2
 	addsc.a	%a15, %a12, %d8, 2
 	lea	%a4, [%SP] 4
 	call	GetMedian
 .LVL68:
-	.loc 1 261 0 discriminator 2
+	.loc 1 262 0 discriminator 2
 	add	%d8, 1
 .LVL69:
-	.loc 1 264 0 discriminator 2
+	.loc 1 265 0 discriminator 2
 	st.w	[%a15]0, %d2
-	.loc 1 261 0 discriminator 2
+	.loc 1 262 0 discriminator 2
 	eq	%d15, %d8, 126
 .LVL70:
 	jz	%d15, .L33
@@ -621,67 +621,67 @@ MedianFiltering:
 	.type	Sharpening, @function
 Sharpening:
 .LFB433:
-	.loc 1 267 0
+	.loc 1 268 0
 .LVL71:
 	lea	%SP, [%SP] -512
 .LCFI2:
-	.loc 1 272 0
-	mov	%d15, 0
 	.loc 1 273 0
+	mov	%d15, 0
+	.loc 1 274 0
 	mov	%d4, 4096
 	lea	%a15, 127
 .LVL72:
 .L38:
 	sh	%d3, %d15, 2
 	addsc.a	%a2, %a4, %d3, 0
-	.loc 1 274 0 discriminator 3
+	.loc 1 275 0 discriminator 3
 	lea	%a3, [%SP] 512
-	.loc 1 273 0 discriminator 3
+	.loc 1 274 0 discriminator 3
 	ld.w	%d2, [%a2]0
-	.loc 1 272 0 discriminator 3
+	.loc 1 273 0 discriminator 3
 	add	%d15, 1
 .LVL73:
-	.loc 1 273 0 discriminator 3
+	.loc 1 274 0 discriminator 3
 	sub	%d2, %d4, %d2
 	st.w	[%a2]0, %d2
-	.loc 1 274 0 discriminator 3
+	.loc 1 275 0 discriminator 3
 	addsc.a	%a2, %a3, %d3, 0
 	st.w	[%a2] -512, %d2
-	.loc 1 272 0 discriminator 3
+	.loc 1 273 0 discriminator 3
 	loop	%a15, .L38
 	mov	%d4, 3
-	.loc 1 272 0 is_stmt 0
+	.loc 1 273 0 is_stmt 0
 	lea	%a2, 121
 .LVL74:
 .L39:
 	sh	%d6, %d4, 2
-	.loc 1 282 0 is_stmt 1
+	.loc 1 283 0 is_stmt 1
 	addsc.a	%a3, %a4, %d6, 0
 	addi	%d2, %d4, -3
-	.loc 1 272 0
+	.loc 1 273 0
 	mov	%d15, -2
 	mov	%d7, 0
 	mov	%d5, 0
 	mov	%d0, 0
 .LVL75:
 .L45:
-	.loc 1 280 0
+	.loc 1 281 0
 	jge.u	%d15, 3, .L52
 .LVL76:
 .L40:
-	.loc 1 281 0
+	.loc 1 282 0
 	andn	%d3, %d15, ~(-3)
 	jnz	%d3, .L41
-	.loc 1 281 0 is_stmt 0 discriminator 1
+	.loc 1 282 0 is_stmt 0 discriminator 1
 	addsc.a	%a15, %a4, %d2, 2
 	ld.w	%d3, [%a15]0
 	madd	%d5, %d5, %d3, 3
 .LVL77:
 .L41:
-	.loc 1 282 0 is_stmt 1
+	.loc 1 283 0 is_stmt 1
 	jeq	%d2, %d4, .L53
 .LVL78:
-	.loc 1 279 0 discriminator 2
+	.loc 1 280 0 discriminator 2
 	jeq	%d15, 4, .L54
 .L43:
 	add	%d15, 1
@@ -690,25 +690,25 @@ Sharpening:
 	j	.L45
 .LVL80:
 .L54:
-	.loc 1 284 0
+	.loc 1 285 0
 	add	%d5, %d0
 .LVL81:
 	lea	%a5, [%SP] 512
 	add	%d5, %d7
 	addsc.a	%a15, %a5, %d6, 0
-	.loc 1 277 0
+	.loc 1 278 0
 	add	%d4, 1
 .LVL82:
-	.loc 1 284 0
+	.loc 1 285 0
 	st.w	[%a15] -512, %d5
-	.loc 1 277 0
+	.loc 1 278 0
 	loop	%a2, .L39
 	mov	%d15, 0
 .LVL83:
 	lea	%a15, 127
 .LVL84:
 .L44:
-	.loc 1 288 0 discriminator 3
+	.loc 1 289 0 discriminator 3
 	sh	%d2, %d15, 2
 	mov.a	%a2, %d2
 	lea	%a5, [%SP] 512
@@ -716,22 +716,22 @@ Sharpening:
 	add.a	%a2, %a5
 	ld.w	%d2, [%a2] -512
 	st.w	[%a3]0, %d2
-	.loc 1 287 0 discriminator 3
+	.loc 1 288 0 discriminator 3
 	add	%d15, 1
 .LVL85:
 	loop	%a15, .L44
-	.loc 1 289 0
+	.loc 1 290 0
 	ret
 .LVL86:
 .L53:
-	.loc 1 282 0 discriminator 1
+	.loc 1 283 0 discriminator 1
 	ld.w	%d3, [%a3]0
 	madd	%d7, %d7, %d3, 6
 .LVL87:
 	j	.L43
 .LVL88:
 .L52:
-	.loc 1 280 0 discriminator 1
+	.loc 1 281 0 discriminator 1
 	addsc.a	%a15, %a4, %d2, 2
 	ld.w	%d3, [%a15]0
 	mul	%d3, %d3, -3
@@ -746,35 +746,35 @@ Sharpening:
 	.type	Camera_Initialization, @function
 Camera_Initialization:
 .LFB434:
-	.loc 1 291 0
+	.loc 1 292 0
 .LVL90:
 	movh.a	%a4, hi:cam_info
-	.loc 1 293 0
+	.loc 1 294 0
 	mov	%d6, 0
 	lea	%a4, [%a4] lo:cam_info
 	mov	%d7, 2580
-	.loc 1 295 0
+	.loc 1 296 0
 	mov	%d4, 516
 	mov	%d5, 60
 .LVL91:
 .L56:
 	mul	%d3, %d6, %d7
-	.loc 1 291 0
+	.loc 1 292 0
 	mov	%d15, 0
-	.loc 1 295 0
+	.loc 1 296 0
 	mov.a	%a15, 4
 	addsc.a	%a2, %a4, %d3, 0
 .LVL92:
 .L57:
-	.loc 1 295 0 is_stmt 0 discriminator 3
+	.loc 1 296 0 is_stmt 0 discriminator 3
 	madd	%d2, %d3, %d15, %d4
-	.loc 1 294 0 is_stmt 1 discriminator 3
+	.loc 1 295 0 is_stmt 1 discriminator 3
 	add	%d15, 1
 .LVL93:
-	.loc 1 295 0 discriminator 3
+	.loc 1 296 0 discriminator 3
 	addsc.a	%a3, %a4, %d2, 0
 	st.w	[%a3] 512, %d5
-	.loc 1 296 0 discriminator 3
+	.loc 1 297 0 discriminator 3
 	mov.aa	%a3, %a2
 	mov	%e0, 0
 	lea	%a5, 64-1
@@ -783,29 +783,29 @@ Camera_Initialization:
 	loop	%a5, 0b
 	lea	%a2, [%a2] 516
 	loop	%a15, .L57
-	.loc 1 293 0 discriminator 2
+	.loc 1 294 0 discriminator 2
 	add	%d6, 1
 .LVL94:
 	jne	%d6, 3, .L56
-	.loc 1 299 0
+	.loc 1 300 0
 	movh.a	%a15, hi:FILTERED_CENTER_LINE
-	.loc 1 301 0
+	.loc 1 302 0
 	mov	%d15, 0
 .LVL95:
-	.loc 1 299 0
+	.loc 1 300 0
 	lea	%a15, [%a15] lo:FILTERED_CENTER_LINE
 	mov	%e0, 0
 	lea	%a2, 64-1
 	0:
 	st.d	[%a15+]8, %e0
 	loop	%a2, 0b
-	.loc 1 301 0
+	.loc 1 302 0
 	movh.a	%a15, hi:nowIndex
 	st.w	[%a15] lo:nowIndex, %d15
-	.loc 1 302 0
+	.loc 1 303 0
 	movh.a	%a15, hi:cntTotal
 	st.w	[%a15] lo:cntTotal, %d15
-	.loc 1 303 0
+	.loc 1 304 0
 	movh.a	%a15, hi:cntLeft
 	st.w	[%a15] lo:cntLeft, %d15
 	ret
@@ -1053,33 +1053,33 @@ BasicLineScan_init:
 	.type	FindCenter, @function
 FindCenter:
 .LFB436:
-	.loc 1 342 0
+	.loc 1 354 0
 .LVL123:
-	.loc 1 349 0
+	.loc 1 361 0
 	movh	%d3, 1
-	.loc 1 343 0
+	.loc 1 355 0
 	mov	%d5, 0
-	.loc 1 346 0
+	.loc 1 358 0
 	mov	%d15, 0
-	.loc 1 351 0
+	.loc 1 363 0
 	mov	%d4, 0
-	.loc 1 349 0
+	.loc 1 361 0
 	addi	%d3, %d3, 4464
 	lea	%a15, 127
 .LVL124:
 .L64:
 	addsc.a	%a2, %a4, %d15, 2
-	.loc 1 347 0
+	.loc 1 359 0
 	ld.w	%d2, [%a2]0
 	jltz	%d2, .L62
-	.loc 1 349 0
+	.loc 1 361 0
 	jlt	%d2, %d3, .L62
 .L63:
-	.loc 1 346 0 discriminator 2
+	.loc 1 358 0 discriminator 2
 	add	%d15, 1
 .LVL125:
 	loop	%a15, .L64
-	.loc 1 356 0
+	.loc 1 368 0
 	lt	%d5, %d5, 121
 .LVL126:
 	mov	%d2, -1
@@ -1090,23 +1090,23 @@ FindCenter:
 	lea	%a15, 58
 .LVL128:
 .L68:
-	.loc 1 360 0
+	.loc 1 372 0
 	eq	%d4, %d3, 0
 	and.ne	%d4, %d15, 0
 	jz	%d4, .L66
 .LVL129:
 	add	%d3, %d15, 1
-	.loc 1 360 0 is_stmt 0 discriminator 1
+	.loc 1 372 0 is_stmt 0 discriminator 1
 	addsc.a	%a2, %a4, %d3, 2
 	ld.w	%d4, [%a2]0
 	jz	%d4, .L79
-	.loc 1 360 0 discriminator 2
+	.loc 1 372 0 discriminator 2
 	addsc.a	%a2, %a4, %d15, 2
 	ld.w	%d4, [%a2]0
 	seln	%d3, %d4, %d3, 0
 .LVL130:
 .L66:
-	.loc 1 364 0 is_stmt 1
+	.loc 1 376 0 is_stmt 1
 	ne	%d4, %d2, 127
 	jz	%d4, .L92
 .LVL131:
@@ -1114,82 +1114,82 @@ FindCenter:
 	add	%d15, -1
 .LVL132:
 	loop	%a15, .L68
-	.loc 1 369 0
+	.loc 1 381 0
 	movh.a	%a15, hi:isLimitZone
 	ld.w	%d15, [%a15] lo:isLimitZone
 .LVL133:
 	jeq	%d15, 1, .L93
-	.loc 1 376 0
+	.loc 1 388 0
 	ne	%d15, %d2, 127
 	jnz	%d15, .L75
 .L74:
-	.loc 1 380 0
+	.loc 1 392 0
 	add	%d15, %d3, -5
 	lt.u	%d15, %d15, 50
 	jz	%d15, .L72
 .LVL134:
-	.loc 1 381 0
+	.loc 1 393 0
 	addi	%d2, %d3, 55
 .LVL135:
 	ret
 .LVL136:
 .L62:
-	.loc 1 350 0
+	.loc 1 362 0
 	add	%d5, 1
 .LVL137:
-	.loc 1 351 0
+	.loc 1 363 0
 	st.w	[%a2]0, %d4
 	j	.L63
 .LVL138:
 .L92:
 	rsub	%d4, %d15, 119
-	.loc 1 364 0 discriminator 1
+	.loc 1 376 0 discriminator 1
 	addsc.a	%a2, %a4, %d4, 2
 	ld.w	%d5, [%a2]0
 	jz	%d5, .L67
 	rsub	%d5, %d15, 120
-	.loc 1 364 0 is_stmt 0 discriminator 2
+	.loc 1 376 0 is_stmt 0 discriminator 2
 	addsc.a	%a2, %a4, %d5, 2
 	ld.w	%d5, [%a2]0
-	.loc 1 365 0 is_stmt 1 discriminator 2
+	.loc 1 377 0 is_stmt 1 discriminator 2
 	sel	%d2, %d5, %d2, %d4
 .LVL139:
 	j	.L67
 .LVL140:
 .L85:
-	.loc 1 392 0
+	.loc 1 404 0
 	ret
 .LVL141:
 .L93:
-	.loc 1 370 0
+	.loc 1 382 0
 	jnz	%d3, .L70
-	.loc 1 371 0
+	.loc 1 383 0
 	movh.a	%a15, hi:leftIndexCount
 	ld.w	%d15, [%a15] lo:leftIndexCount
 	add	%d15, 1
 	st.w	[%a15] lo:leftIndexCount, %d15
 .L70:
-	.loc 1 372 0
+	.loc 1 384 0
 	eq	%d15, %d2, 127
 	jnz	%d15, .L71
 .L75:
 .LVL142:
-	.loc 1 378 0
+	.loc 1 390 0
 	lt	%d15, %d2, 66
 	jnz	%d15, .L72
-	.loc 1 377 0
+	.loc 1 389 0
 	addi	%d2, %d2, -55
 .LVL143:
 	ret
 .LVL144:
 .L72:
-	.loc 1 389 0
+	.loc 1 401 0
 	mov	%d2, -1
 .LVL145:
 	ret
 .LVL146:
 .L71:
-	.loc 1 373 0
+	.loc 1 385 0
 	movh.a	%a15, hi:rightIndexCount
 	ld.w	%d15, [%a15] lo:rightIndexCount
 	add	%d15, 1
@@ -1207,46 +1207,83 @@ FindCenter:
 	.type	FindOneLine, @function
 FindOneLine:
 .LFB437:
-	.loc 1 394 0
+	.loc 1 406 0
 .LVL148:
-	.loc 1 400 0
+	.loc 1 413 0
 	movh	%d2, 1
-	.loc 1 395 0
+	mov.aa	%a2, %a4
+	.loc 1 407 0
 	mov	%d4, 0
-	.loc 1 402 0
+	.loc 1 415 0
 	mov	%d3, 0
-	.loc 1 400 0
+	.loc 1 413 0
 	addi	%d2, %d2, 4464
 	lea	%a15, 127
 .LVL149:
 .L97:
-	.loc 1 398 0
-	ld.w	%d15, [%a4]0
+	.loc 1 411 0
+	ld.w	%d15, [%a2]0
 	jltz	%d15, .L95
-	.loc 1 400 0
+	.loc 1 413 0
 	jlt	%d15, %d2, .L95
 .L96:
-	add.a	%a4, 4
+	add.a	%a2, 4
 	loop	%a15, .L97
-	.loc 1 406 0
-	ge	%d4, %d4, 123
+	.loc 1 419 0
+	lt	%d4, %d4, 123
 .LVL150:
-	jnz	%d4, .L98
-	.loc 1 407 0
+	.loc 1 420 0
 	mov	%d2, -1
-	ret
+	.loc 1 419 0
+	jnz	%d4, .L98
+	lea	%a3, [%a4] 12
+	lea	%a2, [%a4] 8
+	mov	%d2, 0
+	mov	%d5, 2
+	lea	%a15, 123
 .LVL151:
-.L95:
-	.loc 1 401 0
-	add	%d4, 1
+.L101:
+	.loc 1 423 0
+	ld.w	%d3, [%a2]0
+	jz	%d2, .L111
+	.loc 1 425 0 discriminator 1
+	jz	%d3, .L100
+	.loc 1 425 0 is_stmt 0 discriminator 2
+	ld.w	%d4, [%a3]0
+	jnz	%d4, .L100
+	.loc 1 425 0 discriminator 3
+	addsc.a	%a5, %a4, %d2, 2
+	ld.w	%d4, [%a5]0
+	lt	%d3, %d3, %d4
+	sel	%d2, %d3, %d2, %d5
 .LVL152:
-	.loc 1 402 0
-	st.w	[%a4]0, %d3
-	j	.L96
+.L100:
+	.loc 1 422 0 is_stmt 1 discriminator 2
+	add	%d5, 1
 .LVL153:
+	add.a	%a3, 4
+	add.a	%a2, 4
+	loop	%a15, .L101
+.LVL154:
 .L98:
-	.loc 1 409 0
+	.loc 1 430 0
 	ret
+.LVL155:
+.L95:
+	.loc 1 414 0
+	add	%d4, 1
+.LVL156:
+	.loc 1 415 0
+	st.w	[%a2]0, %d3
+	j	.L96
+.LVL157:
+.L111:
+	.loc 1 423 0 discriminator 1
+	jz	%d3, .L100
+	.loc 1 423 0 is_stmt 0 discriminator 2
+	ld.w	%d15, [%a3]0
+	cmovn	%d2, %d15, %d5
+	j	.L100
 .LFE437:
 	.size	FindOneLine, .-FindOneLine
 .section .text.GetCameraCenter,"ax",@progbits
@@ -1255,211 +1292,263 @@ FindOneLine:
 	.type	GetCameraCenter, @function
 GetCameraCenter:
 .LFB435:
-	.loc 1 306 0
-.LVL154:
+	.loc 1 307 0 is_stmt 1
+.LVL158:
+	.loc 1 310 0
+	jlt	%d5, 2, .L113
+	.loc 1 311 0
+	lt	%d4, %d4, 60
+.LVL159:
+	jnz	%d4, .L114
+	.loc 1 312 0
+	mov	%d15, 0
+	movh.a	%a15, hi:g_cameraDirection
+	st.w	[%a15] lo:g_cameraDirection, %d15
+.L113:
 	movh.a	%a14, hi:nowIndex
 	ld.w	%d4, [%a14] lo:nowIndex
 	movh.a	%a15, hi:cam_info
 	mul	%d3, %d4, 129
 	lea	%a15, [%a15] lo:cam_info
 	movh.a	%a3, hi:IR_LineScan
-	.loc 1 309 0
+	.loc 1 307 0 discriminator 1
 	mov	%d15, 0
 	lea	%a3, [%a3] lo:IR_LineScan
-	.loc 1 310 0
+	.loc 1 318 0 discriminator 1
 	mov.d	%d5, %a15
+.LVL160:
 	lea	%a2, 127
-.LVL155:
-.L101:
-	.loc 1 310 0 is_stmt 0 discriminator 3
+.LVL161:
+.L115:
+	.loc 1 318 0 is_stmt 0 discriminator 3
 	addsc.a	%a4, %a3, %d15, 2
 	add	%d2, %d15, %d3
 	addsc.a	%a5, %a15, %d2, 2
 	ld.w	%d6, [%a4]0
 	st.w	[%a5]0, %d6
-	.loc 1 312 0 is_stmt 1 discriminator 3
+	.loc 1 320 0 is_stmt 1 discriminator 3
 	ld.w	%d2, [%a4] 1024
-	.loc 1 311 0 discriminator 3
+	.loc 1 319 0 discriminator 3
 	ld.w	%d6, [%a4] 512
 	st.w	[%a5] 2580, %d6
-	.loc 1 312 0 discriminator 3
+	.loc 1 320 0 discriminator 3
 	st.w	[%a5] 5160, %d2
-	.loc 1 309 0 discriminator 3
+	.loc 1 317 0 discriminator 3
 	add	%d15, 1
-.LVL156:
-	loop	%a2, .L101
-	.loc 1 314 0
+.LVL162:
+	loop	%a2, .L115
+	.loc 1 322 0
 	mov	%d15, 516
-.LVL157:
+.LVL163:
 	madd	%d3, %d5, %d4, %d15
 	mov	%d15, 60
 	movh.a	%a12, hi:nowIndex
 	mov.a	%a2, %d3
 	lea	%a12, [%a12] lo:nowIndex
 	st.w	[%a2] 512, %d15
-.LVL158:
-	.loc 1 316 0
+.LVL164:
+	.loc 1 324 0
 	mov	%d9, 0
-	.loc 1 317 0
+	.loc 1 325 0
 	mov	%d8, 516
 	mov	%d12, 2580
 	mov.d	%d11, %a15
-	.loc 1 318 0
+	.loc 1 326 0
 	mov.aa	%a13, %a12
-.LVL159:
-.L103:
-	.loc 1 317 0 discriminator 3
+.LVL165:
+.L117:
+	.loc 1 325 0 discriminator 3
 	mul	%d15, %d9, %d12
-	.loc 1 316 0 discriminator 3
+	.loc 1 324 0 discriminator 3
 	add	%d9, 1
-.LVL160:
-	.loc 1 317 0 discriminator 3
+.LVL166:
+	.loc 1 325 0 discriminator 3
 	mov	%d10, 516
 	madd	%d4, %d15, %d4, %d8
 	addsc.a	%a4, %a15, %d4, 0
 	mov	%d4, 4096
 	call	Stretching
-.LVL161:
-	.loc 1 318 0 discriminator 3
+.LVL167:
+	.loc 1 326 0 discriminator 3
 	ld.w	%d2, [%a12]0
 	madd	%d2, %d15, %d2, %d8
 	addsc.a	%a4, %a15, %d2, 0
 	call	MedianFiltering
-.LVL162:
-	.loc 1 319 0 discriminator 3
+.LVL168:
+	.loc 1 327 0 discriminator 3
 	ld.w	%d2, [%a12]0
 	madd	%d2, %d15, %d2, %d8
 	addsc.a	%a4, %a15, %d2, 0
 	call	Sharpening
-.LVL163:
-	.loc 1 320 0 discriminator 3
+.LVL169:
+	.loc 1 328 0 discriminator 3
 	ld.w	%d2, [%a12]0
 	movh	%d4, 2
 	madd	%d15, %d15, %d2, %d8
 	addi	%d4, %d4, -31072
 	addsc.a	%a4, %a15, %d15, 0
 	call	Stretching
-.LVL164:
-	.loc 1 316 0 discriminator 3
-	jeq	%d9, 3, .L102
+.LVL170:
+	.loc 1 324 0 discriminator 3
+	jeq	%d9, 3, .L116
 	ld.w	%d4, [%a13]0
-	j	.L103
-.L102:
-	.loc 1 322 0
+	j	.L117
+.L116:
+	.loc 1 330 0
 	ld.w	%d15, [%a13]0
-	.loc 1 327 0
+	.loc 1 335 0
 	mov.d	%d8, %a15
-	.loc 1 322 0
+	.loc 1 330 0
 	madd	%d6, %d11, %d15, %d10
 	mov.a	%a4, %d6
 	mov.a	%a12, %d6
 	call	FindCenter
-.LVL165:
-	.loc 1 323 0
-	ld.w	%d15, [%a13]0
-	.loc 1 322 0
-	st.w	[%a12] 512, %d2
-	.loc 1 323 0
-	madd	%d2, %d11, %d15, %d10
-	mov.a	%a4, %d2
-	lea	%a4, [%a4] 2580
-	call	FindOneLine
-.LVL166:
-	.loc 1 324 0
-	ld.w	%d15, [%a13]0
-	madd	%d3, %d11, %d15, %d10
-	.loc 1 326 0
-	mov	%d15, 0
-	.loc 1 324 0
-	mov.a	%a4, %d3
-	lea	%a4, [%a4] 5160
-	call	FindOneLine
-.LVL167:
-	ld.w	%d4, [%a13]0
-	movh.a	%a5, hi:speedLimitLine
-	mul	%d3, %d4, 129
-	lea	%a5, [%a5] lo:speedLimitLine
-	.loc 1 327 0
-	lea	%a2, 127
-.LVL168:
-.L104:
-	.loc 1 327 0 is_stmt 0 discriminator 3
-	add	%d2, %d15, %d3
-	addsc.a	%a3, %a15, %d2, 2
-	addsc.a	%a4, %a5, %d15, 2
-	ld.w	%d6, [%a3]0
-	st.w	[%a4]0, %d6
-	.loc 1 326 0 is_stmt 1 discriminator 3
-	add	%d15, 1
-.LVL169:
-	loop	%a2, .L104
-	.loc 1 329 0
-	mov	%d15, 516
-.LVL170:
-	madd	%d2, %d8, %d4, %d15
-	mov.a	%a4, %d2
-	ld.w	%d2, [%a4] 512
-	add	%d2, 1
-	jlt.u	%d2, 2, .L110
-.L105:
 .LVL171:
-	movh.a	%a5, hi:debugLine
-	.loc 1 326 0 discriminator 1
-	mov	%d15, 0
-	lea	%a5, [%a5] lo:debugLine
-	.loc 1 335 0 discriminator 1
-	mov.d	%d5, %a15
-	lea	%a2, 127
+	.loc 1 331 0
+	ld.w	%d15, [%a13]0
+	.loc 1 330 0
+	st.w	[%a12] 512, %d2
+	.loc 1 331 0
+	mul	%d15, %d10
+	mov.a	%a2, %d15
+	lea	%a4, [%a2] 2580
+	addsc.a	%a4, %a4, %d11, 0
+	call	FindOneLine
 .LVL172:
-.L106:
+	mov.a	%a3, %d11
+	addsc.a	%a2, %a3, %d15, 0
+	.loc 1 332 0
+	ld.w	%d15, [%a13]0
+	.loc 1 331 0
+	st.w	[%a2] 3092, %d2
+	.loc 1 332 0
+	mul	%d10, %d15
+	.loc 1 334 0
+	mov	%d15, 0
+	.loc 1 332 0
+	mov.a	%a2, %d10
+	lea	%a4, [%a2] 5160
+	addsc.a	%a4, %a4, %d11, 0
+	call	FindOneLine
+.LVL173:
+	mov.a	%a3, %d11
+	ld.w	%d4, [%a13]0
+	addsc.a	%a2, %a3, %d10, 0
+	mul	%d3, %d4, 129
+	movh.a	%a5, hi:speedLimitLine
+	st.w	[%a2] 5672, %d2
+.LVL174:
+	lea	%a5, [%a5] lo:speedLimitLine
+	.loc 1 335 0
+	lea	%a2, 127
+.LVL175:
+.L118:
 	.loc 1 335 0 is_stmt 0 discriminator 3
 	add	%d2, %d15, %d3
 	addsc.a	%a3, %a15, %d2, 2
 	addsc.a	%a4, %a5, %d15, 2
-	ld.w	%d6, [%a3]0
-	st.w	[%a4]0, %d6
+	ld.w	%d2, [%a3]0
+	st.w	[%a4]0, %d2
 	.loc 1 334 0 is_stmt 1 discriminator 3
 	add	%d15, 1
-.LVL173:
-	loop	%a2, .L106
+.LVL176:
+	loop	%a2, .L118
 	.loc 1 337 0
+	mov	%d15, 516
+.LVL177:
+	madd	%d6, %d8, %d4, %d15
+	mov.a	%a4, %d6
+	ld.w	%d2, [%a4] 512
+	add	%d2, 1
+	jlt.u	%d2, 2, .L126
+.L119:
+.LVL178:
+	movh.a	%a5, hi:debugLine
+	.loc 1 334 0 discriminator 1
+	mov	%d15, 0
+	lea	%a5, [%a5] lo:debugLine
+	.loc 1 347 0 discriminator 1
+	mov.d	%d5, %a15
+	lea	%a2, 127
+.LVL179:
+.L121:
+	.loc 1 347 0 is_stmt 0 discriminator 3
+	add	%d2, %d15, %d3
+	addsc.a	%a3, %a15, %d2, 2
+	addsc.a	%a4, %a5, %d15, 2
+	ld.w	%d6, [%a3]0
+	st.w	[%a4]0, %d6
+	.loc 1 346 0 is_stmt 1 discriminator 3
+	add	%d15, 1
+.LVL180:
+	loop	%a2, .L121
+	.loc 1 349 0
 	mov	%d15, 5
-.LVL174:
+.LVL181:
 	addi	%d2, %d4, 1
 	div	%e2, %d2, %d15
-	.loc 1 339 0
+	.loc 1 351 0
 	addi	%d2, %d3, 4
-	.loc 1 337 0
+	.loc 1 349 0
 	st.w	[%a14] lo:nowIndex, %d3
-	.loc 1 339 0
+	.loc 1 351 0
 	div	%e2, %d2, %d15
 	mov	%d2, 516
 	madd	%d3, %d5, %d3, %d2
 	mov.a	%a15, %d3
-	.loc 1 340 0
+	.loc 1 352 0
 	ld.w	%d2, [%a15] 512
 	ret
-.L110:
-	.loc 1 330 0
+.LVL182:
+.L114:
+	.loc 1 314 0
+	mov	%d15, 1
+	movh.a	%a15, hi:g_cameraDirection
+	st.w	[%a15] lo:g_cameraDirection, %d15
+	j	.L113
+.LVL183:
+.L126:
+	.loc 1 338 0
 	mov	%d9, 5
 	add	%d4, 4
 	div	%e4, %d4, %d9
 	madd	%d3, %d8, %d5, %d15
 	mov.a	%a5, %d3
 	call	CopyPrevLine
-.LVL175:
-	.loc 1 331 0
+.LVL184:
+	.loc 1 339 0
 	ld.w	%d4, [%a14] lo:nowIndex
+	.loc 1 340 0
+	movh.a	%a3, hi:g_cameraDirection
+	.loc 1 339 0
 	addi	%d2, %d4, 4
 	div	%e2, %d2, %d9
 	madd	%d6, %d8, %d3, %d15
 	madd	%d3, %d8, %d4, %d15
+	.loc 1 340 0
+	ld.w	%d15, [%a3] lo:g_cameraDirection
+	.loc 1 339 0
 	mov.a	%a2, %d6
 	ld.w	%d2, [%a2] 512
 	mov.a	%a2, %d3
-	mul	%d3, %d4, 129
 	st.w	[%a2] 512, %d2
-	j	.L105
+	.loc 1 340 0
+	jnz	%d15, .L120
+	.loc 1 341 0
+	ld.w	%d6, [%a2] 3092
+	mul	%d3, %d4, 129
+	addi	%d15, %d6, 40
+	st.w	[%a2] 512, %d15
+	j	.L119
+.L120:
+	mul	%d3, %d4, 129
+	.loc 1 342 0
+	jne	%d15, 1, .L119
+	.loc 1 343 0
+	ld.w	%d2, [%a2] 5672
+	addi	%d15, %d2, -40
+	st.w	[%a2] 512, %d15
+	j	.L119
 .LFE435:
 	.size	GetCameraCenter, .-GetCameraCenter
 .section .text.CheckLimitZone,"ax",@progbits
@@ -1468,42 +1557,42 @@ GetCameraCenter:
 	.type	CheckLimitZone, @function
 CheckLimitZone:
 .LFB438:
-	.loc 1 411 0
-.LVL176:
+	.loc 1 432 0
+.LVL185:
 	movh.a	%a3, hi:speedLimitLine
-	.loc 1 411 0
+	.loc 1 432 0
 	mov	%d5, 0
 	mov	%d3, 0
-	.loc 1 414 0
+	.loc 1 435 0
 	mov	%d15, 0
 	lea	%a3, [%a3] lo:speedLimitLine
 	lea	%a15, 127
-.LVL177:
-.L113:
-	.loc 1 415 0
+.LVL186:
+.L129:
+	.loc 1 436 0
 	addsc.a	%a2, %a3, %d15, 2
 	ld.w	%d2, [%a2]0
-	jnz	%d2, .L112
-	.loc 1 416 0
+	jnz	%d2, .L128
+	.loc 1 437 0
 	add	%d3, 1
 	mov	%d5, %d3
-.L112:
-	.loc 1 414 0 discriminator 2
+.L128:
+	.loc 1 435 0 discriminator 2
 	add	%d15, 1
-.LVL178:
-	loop	%a15, .L113
+.LVL187:
+	loop	%a15, .L129
 	movh.a	%a15, hi:zeroCnt
 	st.w	[%a15] lo:zeroCnt, %d5
-	.loc 1 418 0
+	.loc 1 439 0
 	ge	%d3, %d3, 110
-	jnz	%d3, .L111
-	.loc 1 419 0
+	jnz	%d3, .L127
+	.loc 1 440 0
 	xor	%d4, %d4, 1
-.LVL179:
+.LVL188:
 	movh.a	%a15, hi:isLimitZone
 	st.w	[%a15] lo:isLimitZone, %d4
-.LVL180:
-.L111:
+.LVL189:
+.L127:
 	ret
 .LFE438:
 	.size	CheckLimitZone, .-CheckLimitZone
@@ -1513,8 +1602,8 @@ CheckLimitZone:
 	.type	IsLimitZone, @function
 IsLimitZone:
 .LFB439:
-	.loc 1 422 0
-	.loc 1 424 0
+	.loc 1 443 0
+	.loc 1 445 0
 	movh.a	%a15, hi:isLimitZone
 	ld.w	%d2, [%a15] lo:isLimitZone
 	ret
@@ -1526,19 +1615,26 @@ IsLimitZone:
 	.type	GetDashLine, @function
 GetDashLine:
 .LFB440:
-	.loc 1 426 0
-	.loc 1 427 0
+	.loc 1 447 0
+	.loc 1 448 0
 	movh.a	%a15, hi:leftIndexCount
 	ld.w	%d2, [%a15] lo:leftIndexCount
 	movh.a	%a15, hi:rightIndexCount
 	ld.w	%d15, [%a15] lo:rightIndexCount
 	ge	%d2, %d2, %d15
-	.loc 1 428 0
+	.loc 1 449 0
 	mov	%d15, -1
 	sel	%d2, %d2, %d15, 1
 	ret
 .LFE440:
 	.size	GetDashLine, .-GetDashLine
+	.global	g_cameraDirection
+.section .bss.g_cameraDirection,"aw",@nobits
+	.align 2
+	.type	g_cameraDirection, @object
+	.size	g_cameraDirection, 4
+g_cameraDirection:
+	.zero	4
 	.global	zeroCnt
 .section .bss.zeroCnt,"aw",@nobits
 	.align 2
@@ -1802,7 +1898,7 @@ g_VadcAutoScan:
 	.file 15 "../../_LibSrc/iLLD_1_0_1_8_0__TC27D/Src/BaseSw/Service/CpuGeneric/SysSe/Bsp/Bsp.h"
 .section .debug_info,"",@progbits
 .Ldebug_info0:
-	.uaword	0xa4d3
+	.uaword	0xa540
 	.uahalf	0x3
 	.uaword	.Ldebug_abbrev0
 	.byte	0x4
@@ -16112,25 +16208,25 @@ g_VadcAutoScan:
 	.byte	0
 	.uleb128 0x38
 	.uaword	.LVL5
-	.uaword	0xa2c1
+	.uaword	0xa32e
 	.uleb128 0x38
 	.uaword	.LVL10
-	.uaword	0xa2c1
+	.uaword	0xa32e
 	.uleb128 0x38
 	.uaword	.LVL15
-	.uaword	0xa2c1
+	.uaword	0xa32e
 	.uleb128 0x38
 	.uaword	.LVL22
-	.uaword	0xa2c1
+	.uaword	0xa32e
 	.uleb128 0x38
 	.uaword	.LVL27
-	.uaword	0xa2c1
+	.uaword	0xa32e
 	.byte	0
 	.uleb128 0x29
 	.byte	0x1
 	.string	"CopyPrevLine"
 	.byte	0x1
-	.byte	0xe2
+	.byte	0xe3
 	.byte	0x1
 	.uaword	.LFB429
 	.uaword	.LFE429
@@ -16141,14 +16237,14 @@ g_VadcAutoScan:
 	.uleb128 0x39
 	.string	"_cam_info"
 	.byte	0x1
-	.byte	0xe2
+	.byte	0xe3
 	.uaword	0x98d8
 	.byte	0x1
 	.byte	0x64
 	.uleb128 0x39
 	.string	"_prev_info"
 	.byte	0x1
-	.byte	0xe2
+	.byte	0xe3
 	.uaword	0x937f
 	.byte	0x2
 	.byte	0x85
@@ -16156,7 +16252,7 @@ g_VadcAutoScan:
 	.uleb128 0x2a
 	.string	"i"
 	.byte	0x1
-	.byte	0xe3
+	.byte	0xe4
 	.uaword	0x20a
 	.uaword	.LLST17
 	.byte	0
@@ -16167,7 +16263,7 @@ g_VadcAutoScan:
 	.byte	0x1
 	.string	"GetMedian"
 	.byte	0x1
-	.byte	0xe9
+	.byte	0xea
 	.byte	0x1
 	.uaword	0x20a
 	.uaword	.LFB430
@@ -16179,26 +16275,26 @@ g_VadcAutoScan:
 	.uleb128 0x39
 	.string	"_array"
 	.byte	0x1
-	.byte	0xe9
+	.byte	0xea
 	.uaword	0x993b
 	.byte	0x1
 	.byte	0x64
 	.uleb128 0x2a
 	.string	"i"
 	.byte	0x1
-	.byte	0xea
+	.byte	0xeb
 	.uaword	0x20a
 	.uaword	.LLST18
 	.uleb128 0x2a
 	.string	"j"
 	.byte	0x1
-	.byte	0xea
+	.byte	0xeb
 	.uaword	0x20a
 	.uaword	.LLST19
 	.uleb128 0x2a
 	.string	"temp"
 	.byte	0x1
-	.byte	0xea
+	.byte	0xeb
 	.uaword	0x20a
 	.uaword	.LLST20
 	.byte	0
@@ -16209,7 +16305,7 @@ g_VadcAutoScan:
 	.byte	0x1
 	.string	"Stretching"
 	.byte	0x1
-	.byte	0xf7
+	.byte	0xf8
 	.byte	0x1
 	.uaword	.LFB431
 	.uaword	.LFE431
@@ -16220,32 +16316,32 @@ g_VadcAutoScan:
 	.uleb128 0x3b
 	.uaword	.LASF43
 	.byte	0x1
-	.byte	0xf7
+	.byte	0xf8
 	.uaword	0x99a9
 	.byte	0x1
 	.byte	0x64
 	.uleb128 0x3c
 	.string	"_max"
 	.byte	0x1
-	.byte	0xf7
+	.byte	0xf8
 	.uaword	0x20a
 	.uaword	.LLST21
 	.uleb128 0x2a
 	.string	"i"
 	.byte	0x1
-	.byte	0xf8
+	.byte	0xf9
 	.uaword	0x20a
 	.uaword	.LLST22
 	.uleb128 0x2a
 	.string	"max"
 	.byte	0x1
-	.byte	0xf8
+	.byte	0xf9
 	.uaword	0x20a
 	.uaword	.LLST23
 	.uleb128 0x2a
 	.string	"min"
 	.byte	0x1
-	.byte	0xf8
+	.byte	0xf9
 	.uaword	0x20a
 	.uaword	.LLST24
 	.byte	0
@@ -16256,7 +16352,7 @@ g_VadcAutoScan:
 	.byte	0x1
 	.string	"MedianFiltering"
 	.byte	0x1
-	.uahalf	0x102
+	.uahalf	0x103
 	.byte	0x1
 	.uaword	.LFB432
 	.uaword	.LFE432
@@ -16267,31 +16363,31 @@ g_VadcAutoScan:
 	.uleb128 0x3e
 	.uaword	.LASF43
 	.byte	0x1
-	.uahalf	0x102
+	.uahalf	0x103
 	.uaword	0x99a9
 	.uaword	.LLST25
 	.uleb128 0x3f
 	.string	"i"
 	.byte	0x1
-	.uahalf	0x103
+	.uahalf	0x104
 	.uaword	0x20a
 	.uaword	.LLST26
 	.uleb128 0x3f
 	.string	"j"
 	.byte	0x1
-	.uahalf	0x103
+	.uahalf	0x104
 	.uaword	0x20a
 	.uaword	.LLST27
 	.uleb128 0x3f
 	.string	"t"
 	.byte	0x1
-	.uahalf	0x103
+	.uahalf	0x104
 	.uaword	0x20a
 	.uaword	.LLST28
 	.uleb128 0x40
 	.string	"array"
 	.byte	0x1
-	.uahalf	0x104
+	.uahalf	0x105
 	.uaword	0x9a30
 	.byte	0x2
 	.byte	0x91
@@ -16318,7 +16414,7 @@ g_VadcAutoScan:
 	.byte	0x1
 	.string	"Sharpening"
 	.byte	0x1
-	.uahalf	0x10b
+	.uahalf	0x10c
 	.byte	0x1
 	.uaword	.LFB433
 	.uaword	.LFE433
@@ -16329,44 +16425,44 @@ g_VadcAutoScan:
 	.uleb128 0x43
 	.uaword	.LASF43
 	.byte	0x1
-	.uahalf	0x10b
+	.uahalf	0x10c
 	.uaword	0x99a9
 	.byte	0x1
 	.byte	0x64
 	.uleb128 0x3f
 	.string	"i"
 	.byte	0x1
-	.uahalf	0x10c
+	.uahalf	0x10d
 	.uaword	0x20a
 	.uaword	.LLST29
 	.uleb128 0x3f
 	.string	"j"
 	.byte	0x1
-	.uahalf	0x10c
+	.uahalf	0x10d
 	.uaword	0x20a
 	.uaword	.LLST30
 	.uleb128 0x3f
 	.string	"minus"
 	.byte	0x1
-	.uahalf	0x10d
+	.uahalf	0x10e
 	.uaword	0x20a
 	.uaword	.LLST31
 	.uleb128 0x3f
 	.string	"add"
 	.byte	0x1
-	.uahalf	0x10d
+	.uahalf	0x10e
 	.uaword	0x20a
 	.uaword	.LLST32
 	.uleb128 0x3f
 	.string	"square"
 	.byte	0x1
-	.uahalf	0x10d
+	.uahalf	0x10e
 	.uaword	0x20a
 	.uaword	.LLST33
 	.uleb128 0x40
 	.string	"temp"
 	.byte	0x1
-	.uahalf	0x10e
+	.uahalf	0x10f
 	.uaword	0x936f
 	.byte	0x3
 	.byte	0x91
@@ -16376,7 +16472,7 @@ g_VadcAutoScan:
 	.byte	0x1
 	.string	"Camera_Initialization"
 	.byte	0x1
-	.uahalf	0x123
+	.uahalf	0x124
 	.uaword	.LFB434
 	.uaword	.LFE434
 	.byte	0x1
@@ -16386,13 +16482,13 @@ g_VadcAutoScan:
 	.uleb128 0x3f
 	.string	"i"
 	.byte	0x1
-	.uahalf	0x124
+	.uahalf	0x125
 	.uaword	0x20a
 	.uaword	.LLST34
 	.uleb128 0x3f
 	.string	"j"
 	.byte	0x1
-	.uahalf	0x124
+	.uahalf	0x125
 	.uaword	0x20a
 	.uaword	.LLST35
 	.byte	0
@@ -16471,7 +16567,7 @@ g_VadcAutoScan:
 	.uaword	.LLST39
 	.uleb128 0x38
 	.uaword	.LVL103
-	.uaword	0xa2da
+	.uaword	0xa347
 	.byte	0
 	.uleb128 0x2c
 	.uaword	0x9485
@@ -16494,7 +16590,7 @@ g_VadcAutoScan:
 	.uaword	.LLST41
 	.uleb128 0x38
 	.uaword	.LVL107
-	.uaword	0xa2da
+	.uaword	0xa347
 	.byte	0
 	.uleb128 0x2c
 	.uaword	0x9485
@@ -16517,7 +16613,7 @@ g_VadcAutoScan:
 	.uaword	.LLST43
 	.uleb128 0x41
 	.uaword	.LVL111
-	.uaword	0xa2da
+	.uaword	0xa347
 	.uleb128 0x42
 	.byte	0x1
 	.byte	0x55
@@ -16570,7 +16666,7 @@ g_VadcAutoScan:
 	.byte	0
 	.uleb128 0x46
 	.uaword	.LVL96
-	.uaword	0xa305
+	.uaword	0xa372
 	.uaword	0x9cf1
 	.uleb128 0x42
 	.byte	0x1
@@ -16587,7 +16683,7 @@ g_VadcAutoScan:
 	.byte	0
 	.uleb128 0x46
 	.uaword	.LVL97
-	.uaword	0xa33e
+	.uaword	0xa3ab
 	.uaword	0x9d0c
 	.uleb128 0x42
 	.byte	0x1
@@ -16604,7 +16700,7 @@ g_VadcAutoScan:
 	.byte	0
 	.uleb128 0x46
 	.uaword	.LVL98
-	.uaword	0xa380
+	.uaword	0xa3ed
 	.uaword	0x9d27
 	.uleb128 0x42
 	.byte	0x1
@@ -16621,7 +16717,7 @@ g_VadcAutoScan:
 	.byte	0
 	.uleb128 0x46
 	.uaword	.LVL99
-	.uaword	0xa3b8
+	.uaword	0xa425
 	.uaword	0x9d42
 	.uleb128 0x42
 	.byte	0x1
@@ -16638,7 +16734,7 @@ g_VadcAutoScan:
 	.byte	0
 	.uleb128 0x46
 	.uaword	.LVL100
-	.uaword	0xa3f3
+	.uaword	0xa460
 	.uaword	0x9d5d
 	.uleb128 0x42
 	.byte	0x1
@@ -16655,7 +16751,7 @@ g_VadcAutoScan:
 	.byte	0
 	.uleb128 0x46
 	.uaword	.LVL101
-	.uaword	0xa42d
+	.uaword	0xa49a
 	.uaword	0x9d78
 	.uleb128 0x42
 	.byte	0x1
@@ -16672,7 +16768,7 @@ g_VadcAutoScan:
 	.byte	0
 	.uleb128 0x46
 	.uaword	.LVL104
-	.uaword	0xa3f3
+	.uaword	0xa460
 	.uaword	0x9d92
 	.uleb128 0x42
 	.byte	0x1
@@ -16689,7 +16785,7 @@ g_VadcAutoScan:
 	.byte	0
 	.uleb128 0x46
 	.uaword	.LVL105
-	.uaword	0xa42d
+	.uaword	0xa49a
 	.uaword	0x9dac
 	.uleb128 0x42
 	.byte	0x1
@@ -16706,7 +16802,7 @@ g_VadcAutoScan:
 	.byte	0
 	.uleb128 0x46
 	.uaword	.LVL108
-	.uaword	0xa3f3
+	.uaword	0xa460
 	.uaword	0x9dc6
 	.uleb128 0x42
 	.byte	0x1
@@ -16723,7 +16819,7 @@ g_VadcAutoScan:
 	.byte	0
 	.uleb128 0x46
 	.uaword	.LVL109
-	.uaword	0xa42d
+	.uaword	0xa49a
 	.uaword	0x9de0
 	.uleb128 0x42
 	.byte	0x1
@@ -16740,10 +16836,10 @@ g_VadcAutoScan:
 	.byte	0
 	.uleb128 0x38
 	.uaword	.LVL112
-	.uaword	0xa46a
+	.uaword	0xa4d7
 	.uleb128 0x46
 	.uaword	.LVL113
-	.uaword	0xa479
+	.uaword	0xa4e6
 	.uaword	0x9dfd
 	.uleb128 0x42
 	.byte	0x1
@@ -16754,7 +16850,7 @@ g_VadcAutoScan:
 	.byte	0
 	.uleb128 0x46
 	.uaword	.LVL114
-	.uaword	0xa4a7
+	.uaword	0xa514
 	.uaword	0x9e10
 	.uleb128 0x42
 	.byte	0x1
@@ -16764,7 +16860,7 @@ g_VadcAutoScan:
 	.byte	0
 	.uleb128 0x46
 	.uaword	.LVL118
-	.uaword	0xa479
+	.uaword	0xa4e6
 	.uaword	0x9e24
 	.uleb128 0x42
 	.byte	0x1
@@ -16775,7 +16871,7 @@ g_VadcAutoScan:
 	.byte	0
 	.uleb128 0x46
 	.uaword	.LVL119
-	.uaword	0xa4a7
+	.uaword	0xa514
 	.uaword	0x9e37
 	.uleb128 0x42
 	.byte	0x1
@@ -16799,7 +16895,7 @@ g_VadcAutoScan:
 	.byte	0x1
 	.string	"FindCenter"
 	.byte	0x1
-	.uahalf	0x156
+	.uahalf	0x162
 	.byte	0x1
 	.uaword	0x20a
 	.uaword	.LFB436
@@ -16811,38 +16907,38 @@ g_VadcAutoScan:
 	.uleb128 0x43
 	.uaword	.LASF43
 	.byte	0x1
-	.uahalf	0x156
+	.uahalf	0x162
 	.uaword	0x99a9
 	.byte	0x1
 	.byte	0x64
 	.uleb128 0x3f
 	.string	"i"
 	.byte	0x1
-	.uahalf	0x157
+	.uahalf	0x163
 	.uaword	0x20a
 	.uaword	.LLST47
 	.uleb128 0x3f
 	.string	"index"
 	.byte	0x1
-	.uahalf	0x157
+	.uahalf	0x163
 	.uaword	0x20a
 	.uaword	.LLST48
 	.uleb128 0x3f
 	.string	"leftIndex"
 	.byte	0x1
-	.uahalf	0x157
+	.uahalf	0x163
 	.uaword	0x20a
 	.uaword	.LLST49
 	.uleb128 0x3f
 	.string	"rightIndex"
 	.byte	0x1
-	.uahalf	0x157
+	.uahalf	0x163
 	.uaword	0x20a
 	.uaword	.LLST50
 	.uleb128 0x49
 	.uaword	.LASF44
 	.byte	0x1
-	.uahalf	0x157
+	.uahalf	0x163
 	.uaword	0x20a
 	.uaword	.LLST51
 	.byte	0
@@ -16850,7 +16946,7 @@ g_VadcAutoScan:
 	.byte	0x1
 	.string	"FindOneLine"
 	.byte	0x1
-	.uahalf	0x18a
+	.uahalf	0x196
 	.byte	0x1
 	.uaword	0x20a
 	.uaword	.LFB437
@@ -16858,48 +16954,68 @@ g_VadcAutoScan:
 	.byte	0x1
 	.byte	0x9c
 	.byte	0x1
-	.uaword	0x9f37
+	.uaword	0x9f4b
 	.uleb128 0x4a
 	.string	"line"
 	.byte	0x1
-	.uahalf	0x18a
+	.uahalf	0x196
 	.uaword	0x993b
-	.uaword	.LLST52
+	.byte	0x1
+	.byte	0x64
 	.uleb128 0x3f
 	.string	"i"
 	.byte	0x1
-	.uahalf	0x18b
+	.uahalf	0x197
 	.uaword	0x20a
-	.uaword	.LLST53
+	.uaword	.LLST52
 	.uleb128 0x49
 	.uaword	.LASF44
 	.byte	0x1
-	.uahalf	0x18b
+	.uahalf	0x197
+	.uaword	0x20a
+	.uaword	.LLST53
+	.uleb128 0x3f
+	.string	"lineIndex"
+	.byte	0x1
+	.uahalf	0x198
 	.uaword	0x20a
 	.uaword	.LLST54
 	.byte	0
-	.uleb128 0x4b
+	.uleb128 0x48
 	.byte	0x1
 	.string	"GetCameraCenter"
 	.byte	0x1
-	.uahalf	0x132
+	.uahalf	0x133
+	.byte	0x1
 	.uaword	0x20a
 	.uaword	.LFB435
 	.uaword	.LFE435
 	.byte	0x1
 	.byte	0x9c
 	.byte	0x1
-	.uaword	0x9ff8
-	.uleb128 0x3f
-	.string	"i"
+	.uaword	0xa045
+	.uleb128 0x4b
+	.string	"prevServo"
 	.byte	0x1
 	.uahalf	0x133
 	.uaword	0x20a
 	.uaword	.LLST55
+	.uleb128 0x4b
+	.string	"cntDiff"
+	.byte	0x1
+	.uahalf	0x133
+	.uaword	0x20a
+	.uaword	.LLST56
+	.uleb128 0x3f
+	.string	"i"
+	.byte	0x1
+	.uahalf	0x134
+	.uaword	0x20a
+	.uaword	.LLST57
 	.uleb128 0x46
-	.uaword	.LVL161
+	.uaword	.LVL167
 	.uaword	0x9941
-	.uaword	0x9f82
+	.uaword	0x9fc1
 	.uleb128 0x42
 	.byte	0x1
 	.byte	0x54
@@ -16908,15 +17024,15 @@ g_VadcAutoScan:
 	.uahalf	0x1000
 	.byte	0
 	.uleb128 0x38
-	.uaword	.LVL162
+	.uaword	.LVL168
 	.uaword	0x99af
 	.uleb128 0x38
-	.uaword	.LVL163
+	.uaword	.LVL169
 	.uaword	0x9a40
 	.uleb128 0x46
-	.uaword	.LVL164
+	.uaword	.LVL170
 	.uaword	0x9941
-	.uaword	0x9fb4
+	.uaword	0x9ff3
 	.uleb128 0x42
 	.byte	0x1
 	.byte	0x54
@@ -16934,9 +17050,9 @@ g_VadcAutoScan:
 	.byte	0x22
 	.byte	0
 	.uleb128 0x46
-	.uaword	.LVL165
+	.uaword	.LVL171
 	.uaword	0x9e52
-	.uaword	0x9fc8
+	.uaword	0xa007
 	.uleb128 0x42
 	.byte	0x1
 	.byte	0x64
@@ -16945,61 +17061,71 @@ g_VadcAutoScan:
 	.sleb128 0
 	.byte	0
 	.uleb128 0x46
-	.uaword	.LVL166
+	.uaword	.LVL172
 	.uaword	0x9ee2
-	.uaword	0x9fe5
+	.uaword	0xa021
 	.uleb128 0x42
 	.byte	0x1
 	.byte	0x64
-	.byte	0xb
-	.byte	0x7f
-	.sleb128 0
-	.byte	0x7a
-	.sleb128 0
-	.byte	0x1e
+	.byte	0x8
 	.byte	0x7b
+	.sleb128 0
+	.byte	0x7f
 	.sleb128 0
 	.byte	0x22
 	.byte	0x23
 	.uleb128 0xa14
 	.byte	0
-	.uleb128 0x38
-	.uaword	.LVL167
+	.uleb128 0x46
+	.uaword	.LVL173
 	.uaword	0x9ee2
+	.uaword	0xa03b
+	.uleb128 0x42
+	.byte	0x1
+	.byte	0x64
+	.byte	0x8
+	.byte	0x7b
+	.sleb128 0
+	.byte	0x7a
+	.sleb128 0
+	.byte	0x22
+	.byte	0x23
+	.uleb128 0x1428
+	.byte	0
 	.uleb128 0x38
-	.uaword	.LVL175
+	.uaword	.LVL184
 	.uaword	0x9881
 	.byte	0
 	.uleb128 0x3d
 	.byte	0x1
 	.string	"CheckLimitZone"
 	.byte	0x1
-	.uahalf	0x19b
+	.uahalf	0x1b0
 	.byte	0x1
 	.uaword	.LFB438
 	.uaword	.LFE438
 	.byte	0x1
 	.byte	0x9c
 	.byte	0x1
-	.uaword	0xa040
-	.uleb128 0x4a
+	.uaword	0xa08d
+	.uleb128 0x4b
 	.string	"nowState"
 	.byte	0x1
-	.uahalf	0x19b
+	.uahalf	0x1b0
 	.uaword	0x20a
-	.uaword	.LLST56
+	.uaword	.LLST58
 	.uleb128 0x3f
 	.string	"i"
 	.byte	0x1
-	.uahalf	0x19c
+	.uahalf	0x1b1
 	.uaword	0x20a
-	.uaword	.LLST57
+	.uaword	.LLST59
 	.byte	0
 	.uleb128 0x4c
 	.byte	0x1
 	.string	"IsLimitZone"
 	.byte	0x1
-	.uahalf	0x1a6
+	.uahalf	0x1bb
 	.uaword	0x20a
 	.uaword	.LFB439
 	.uaword	.LFE439
@@ -17010,7 +17136,7 @@ g_VadcAutoScan:
 	.byte	0x1
 	.string	"GetDashLine"
 	.byte	0x1
-	.uahalf	0x1aa
+	.uahalf	0x1bf
 	.uaword	0x20a
 	.uaword	.LFB440
 	.uaword	.LFE440
@@ -17019,7 +17145,7 @@ g_VadcAutoScan:
 	.byte	0x1
 	.uleb128 0x3
 	.uaword	0x344
-	.uaword	0xa090
+	.uaword	0xa0dd
 	.uleb128 0x4
 	.uaword	0x268
 	.byte	0x2
@@ -17028,11 +17154,11 @@ g_VadcAutoScan:
 	.string	"IfxCpu_cfg_indexMap"
 	.byte	0x8
 	.byte	0x96
-	.uaword	0xa0ad
+	.uaword	0xa0fa
 	.byte	0x1
 	.byte	0x1
 	.uleb128 0x20
-	.uaword	0xa080
+	.uaword	0xa0cd
 	.uleb128 0x4d
 	.string	"Assert_verboseLevel"
 	.byte	0xd
@@ -17056,7 +17182,7 @@ g_VadcAutoScan:
 	.byte	0x1
 	.uleb128 0x3
 	.uaword	0x2f9
-	.uaword	0xa10d
+	.uaword	0xa15a
 	.uleb128 0x4
 	.uaword	0x268
 	.byte	0xa
@@ -17065,7 +17191,7 @@ g_VadcAutoScan:
 	.string	"TimeConst"
 	.byte	0xf
 	.byte	0x94
-	.uaword	0xa0fd
+	.uaword	0xa14a
 	.byte	0x1
 	.byte	0x1
 	.uleb128 0x4e
@@ -17106,7 +17232,7 @@ g_VadcAutoScan:
 	.uaword	Zero_center_line
 	.uleb128 0x3
 	.uaword	0x937f
-	.uaword	0xa1af
+	.uaword	0xa1fc
 	.uleb128 0x4
 	.uaword	0x268
 	.byte	0x2
@@ -17118,7 +17244,7 @@ g_VadcAutoScan:
 	.string	"cam_info"
 	.byte	0x1
 	.byte	0xda
-	.uaword	0xa199
+	.uaword	0xa1e6
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
@@ -17213,6 +17339,15 @@ g_VadcAutoScan:
 	.byte	0x5
 	.byte	0x3
 	.uaword	zeroCnt
+	.uleb128 0x4e
+	.string	"g_cameraDirection"
+	.byte	0x1
+	.byte	0xe1
+	.uaword	0x20a
+	.byte	0x1
+	.byte	0x5
+	.byte	0x3
+	.uaword	g_cameraDirection
 	.uleb128 0x4f
 	.byte	0x1
 	.string	"waitTime"
@@ -17220,7 +17355,7 @@ g_VadcAutoScan:
 	.byte	0xaa
 	.byte	0x1
 	.byte	0x1
-	.uaword	0xa2da
+	.uaword	0xa347
 	.uleb128 0x50
 	.uaword	0x2f9
 	.byte	0
@@ -17231,7 +17366,7 @@ g_VadcAutoScan:
 	.uahalf	0x39d
 	.byte	0x1
 	.byte	0x1
-	.uaword	0xa305
+	.uaword	0xa372
 	.uleb128 0x50
 	.uaword	0x8df6
 	.uleb128 0x50
@@ -17246,9 +17381,9 @@ g_VadcAutoScan:
 	.uahalf	0x28c
 	.byte	0x1
 	.byte	0x1
-	.uaword	0xa338
+	.uaword	0xa3a5
 	.uleb128 0x50
-	.uaword	0xa338
+	.uaword	0xa3a5
 	.uleb128 0x50
 	.uaword	0x795d
 	.byte	0
@@ -17263,18 +17398,18 @@ g_VadcAutoScan:
 	.byte	0x1
 	.uaword	0x88eb
 	.byte	0x1
-	.uaword	0xa36f
+	.uaword	0xa3dc
 	.uleb128 0x50
-	.uaword	0xa36f
+	.uaword	0xa3dc
 	.uleb128 0x50
-	.uaword	0xa375
+	.uaword	0xa3e2
 	.byte	0
 	.uleb128 0x6
 	.byte	0x4
 	.uaword	0x8ba3
 	.uleb128 0x6
 	.byte	0x4
-	.uaword	0xa37b
+	.uaword	0xa3e8
 	.uleb128 0x20
 	.uaword	0x91e8
 	.uleb128 0x51
@@ -17284,11 +17419,11 @@ g_VadcAutoScan:
 	.uahalf	0x33d
 	.byte	0x1
 	.byte	0x1
-	.uaword	0xa3b2
+	.uaword	0xa41f
 	.uleb128 0x50
-	.uaword	0xa3b2
+	.uaword	0xa41f
 	.uleb128 0x50
-	.uaword	0xa36f
+	.uaword	0xa3dc
 	.byte	0
 	.uleb128 0x6
 	.byte	0x4
@@ -17301,15 +17436,15 @@ g_VadcAutoScan:
 	.byte	0x1
 	.uaword	0x88eb
 	.byte	0x1
-	.uaword	0xa3e8
+	.uaword	0xa455
 	.uleb128 0x50
 	.uaword	0x94c9
 	.uleb128 0x50
-	.uaword	0xa3e8
+	.uaword	0xa455
 	.byte	0
 	.uleb128 0x6
 	.byte	0x4
-	.uaword	0xa3ee
+	.uaword	0xa45b
 	.uleb128 0x20
 	.uaword	0x92ce
 	.uleb128 0x51
@@ -17319,9 +17454,9 @@ g_VadcAutoScan:
 	.uahalf	0x388
 	.byte	0x1
 	.byte	0x1
-	.uaword	0xa427
+	.uaword	0xa494
 	.uleb128 0x50
-	.uaword	0xa427
+	.uaword	0xa494
 	.uleb128 0x50
 	.uaword	0x8f28
 	.byte	0
@@ -17336,15 +17471,15 @@ g_VadcAutoScan:
 	.byte	0x1
 	.uaword	0x88eb
 	.byte	0x1
-	.uaword	0xa45f
+	.uaword	0xa4cc
 	.uleb128 0x50
 	.uaword	0x947f
 	.uleb128 0x50
-	.uaword	0xa45f
+	.uaword	0xa4cc
 	.byte	0
 	.uleb128 0x6
 	.byte	0x4
-	.uaword	0xa465
+	.uaword	0xa4d2
 	.uleb128 0x20
 	.uaword	0x9105
 	.uleb128 0x53
@@ -17361,7 +17496,7 @@ g_VadcAutoScan:
 	.uahalf	0x163
 	.byte	0x1
 	.byte	0x1
-	.uaword	0xa4a7
+	.uaword	0xa514
 	.uleb128 0x50
 	.uaword	0x26c2
 	.uleb128 0x50
@@ -18417,14 +18552,12 @@ g_VadcAutoScan:
 	.uleb128 0x49
 	.uleb128 0x13
 	.uleb128 0x2
-	.uleb128 0x6
+	.uleb128 0xa
 	.byte	0
 	.byte	0
 	.uleb128 0x4b
-	.uleb128 0x2e
-	.byte	0x1
-	.uleb128 0x3f
-	.uleb128 0xc
+	.uleb128 0x5
+	.byte	0
 	.uleb128 0x3
 	.uleb128 0x8
 	.uleb128 0x3a
@@ -18433,16 +18566,8 @@ g_VadcAutoScan:
 	.uleb128 0x5
 	.uleb128 0x49
 	.uleb128 0x13
-	.uleb128 0x11
-	.uleb128 0x1
-	.uleb128 0x12
-	.uleb128 0x1
-	.uleb128 0x40
-	.uleb128 0xa
-	.uleb128 0x2117
-	.uleb128 0xc
-	.uleb128 0x1
-	.uleb128 0x13
+	.uleb128 0x2
+	.uleb128 0x6
 	.byte	0
 	.byte	0
 	.uleb128 0x4c
@@ -19446,26 +19571,20 @@ g_VadcAutoScan:
 .LLST52:
 	.uaword	.LVL148
 	.uaword	.LVL149
-	.uahalf	0x1
-	.byte	0x64
-	.uaword	.LVL149
-	.uaword	.LFE437
-	.uahalf	0x4
-	.byte	0xf3
-	.uleb128 0x1
-	.byte	0x64
-	.byte	0x9f
-	.uaword	0
-	.uaword	0
-.LLST53:
-	.uaword	.LVL148
-	.uaword	.LVL149
 	.uahalf	0x2
 	.byte	0x30
 	.byte	0x9f
+	.uaword	.LVL151
+	.uaword	.LVL154
+	.uahalf	0x1
+	.byte	0x55
+	.uaword	.LVL157
+	.uaword	.LFE437
+	.uahalf	0x1
+	.byte	0x55
 	.uaword	0
 	.uaword	0
-.LLST54:
+.LLST53:
 	.uaword	.LVL148
 	.uaword	.LVL149
 	.uahalf	0x2
@@ -19475,75 +19594,136 @@ g_VadcAutoScan:
 	.uaword	.LVL150
 	.uahalf	0x1
 	.byte	0x54
-	.uaword	.LVL151
-	.uaword	.LVL153
+	.uaword	.LVL155
+	.uaword	.LVL157
 	.uahalf	0x1
 	.byte	0x54
 	.uaword	0
 	.uaword	0
-.LLST55:
-	.uaword	.LVL154
-	.uaword	.LVL155
+.LLST54:
+	.uaword	.LVL148
+	.uaword	.LVL151
 	.uahalf	0x2
 	.byte	0x30
 	.byte	0x9f
-	.uaword	.LVL155
-	.uaword	.LVL157
+	.uaword	.LVL151
+	.uaword	.LVL154
 	.uahalf	0x1
-	.byte	0x5f
+	.byte	0x52
+	.uaword	.LVL155
+	.uaword	.LFE437
+	.uahalf	0x2
+	.byte	0x30
+	.byte	0x9f
+	.uaword	0
+	.uaword	0
+.LLST55:
 	.uaword	.LVL158
 	.uaword	.LVL159
+	.uahalf	0x1
+	.byte	0x54
+	.uaword	.LVL159
+	.uaword	.LFE435
+	.uahalf	0x4
+	.byte	0xf3
+	.uleb128 0x1
+	.byte	0x54
+	.byte	0x9f
+	.uaword	0
+	.uaword	0
+.LLST56:
+	.uaword	.LVL158
+	.uaword	.LVL160
+	.uahalf	0x1
+	.byte	0x55
+	.uaword	.LVL160
+	.uaword	.LVL182
+	.uahalf	0x4
+	.byte	0xf3
+	.uleb128 0x1
+	.byte	0x55
+	.byte	0x9f
+	.uaword	.LVL182
+	.uaword	.LVL183
+	.uahalf	0x1
+	.byte	0x55
+	.uaword	.LVL183
+	.uaword	.LFE435
+	.uahalf	0x4
+	.byte	0xf3
+	.uleb128 0x1
+	.byte	0x55
+	.byte	0x9f
+	.uaword	0
+	.uaword	0
+.LLST57:
+	.uaword	.LVL158
+	.uaword	.LVL161
 	.uahalf	0x2
 	.byte	0x30
 	.byte	0x9f
-	.uaword	.LVL159
-	.uaword	.LVL160
+	.uaword	.LVL161
+	.uaword	.LVL163
+	.uahalf	0x1
+	.byte	0x5f
+	.uaword	.LVL164
+	.uaword	.LVL165
+	.uahalf	0x2
+	.byte	0x30
+	.byte	0x9f
+	.uaword	.LVL165
+	.uaword	.LVL166
 	.uahalf	0x1
 	.byte	0x59
-	.uaword	.LVL160
-	.uaword	.LVL164
+	.uaword	.LVL166
+	.uaword	.LVL170
 	.uahalf	0x3
 	.byte	0x79
 	.sleb128 -1
 	.byte	0x9f
-	.uaword	.LVL164
-	.uaword	.LVL167
-	.uahalf	0x1
-	.byte	0x59
-	.uaword	.LVL167
-	.uaword	.LVL168
-	.uahalf	0x2
-	.byte	0x30
-	.byte	0x9f
-	.uaword	.LVL168
 	.uaword	.LVL170
-	.uahalf	0x1
-	.byte	0x5f
-	.uaword	.LVL171
-	.uaword	.LVL172
-	.uahalf	0x2
-	.byte	0x30
-	.byte	0x9f
-	.uaword	.LVL172
 	.uaword	.LVL174
 	.uahalf	0x1
+	.byte	0x59
+	.uaword	.LVL174
+	.uaword	.LVL175
+	.uahalf	0x2
+	.byte	0x30
+	.byte	0x9f
+	.uaword	.LVL175
+	.uaword	.LVL177
+	.uahalf	0x1
 	.byte	0x5f
-	.uaword	0
-	.uaword	0
-.LLST56:
-	.uaword	.LVL176
+	.uaword	.LVL178
 	.uaword	.LVL179
+	.uahalf	0x2
+	.byte	0x30
+	.byte	0x9f
+	.uaword	.LVL179
+	.uaword	.LVL181
+	.uahalf	0x1
+	.byte	0x5f
+	.uaword	.LVL182
+	.uaword	.LVL183
+	.uahalf	0x2
+	.byte	0x30
+	.byte	0x9f
+	.uaword	0
+	.uaword	0
+.LLST58:
+	.uaword	.LVL185
+	.uaword	.LVL188
 	.uahalf	0x1
 	.byte	0x54
-	.uaword	.LVL179
-	.uaword	.LVL180
+	.uaword	.LVL188
+	.uaword	.LVL189
 	.uahalf	0x5
 	.byte	0x74
 	.sleb128 0
 	.byte	0x31
 	.byte	0x27
 	.byte	0x9f
-	.uaword	.LVL180
+	.uaword	.LVL189
 	.uaword	.LFE438
 	.uahalf	0x4
 	.byte	0xf3
@@ -19552,13 +19732,13 @@ g_VadcAutoScan:
 	.byte	0x9f
 	.uaword	0
 	.uaword	0
-.LLST57:
-	.uaword	.LVL176
-	.uaword	.LVL177
+.LLST59:
+	.uaword	.LVL185
+	.uaword	.LVL186
 	.uahalf	0x2
 	.byte	0x30
 	.byte	0x9f
-	.uaword	.LVL177
+	.uaword	.LVL186
 	.uaword	.LFE438
 	.uahalf	0x1
 	.byte	0x5f
