@@ -123,7 +123,7 @@ void lineCentering_run(void)
    _diff = diff;
    */
 
-   /*
+/*
    //shin
    float c = -0.03;
    if(rIndex == -1 && lIndex != -1){
@@ -138,8 +138,8 @@ void lineCentering_run(void)
    else{
       IR_setSrvAngle(0.1953 + (116 - (rIndex + lIndex)/2) * c);
    }
+*/
 
-   */
 
    /*
    // nam

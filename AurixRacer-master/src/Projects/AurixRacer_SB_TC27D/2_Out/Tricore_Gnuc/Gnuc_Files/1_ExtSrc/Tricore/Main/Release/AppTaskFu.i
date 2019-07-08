@@ -15517,6 +15517,10 @@ extern int IsLimitZone();
 extern int GetDashLine();
 extern int FindCenter(int(*_line)[128]);
 extern int FindOneLine(int line[128]);
+extern int GetCountPassedObject();
+extern void SetCountPassedObject(int cpo);
+extern int GetDottedLine();
+extern void SetDottedLine(int dl);
 # 5 "../../MyApp/AurixRacer/0_Src/AppSw/Tricore/SnsAct/Basic.h" 2
 # 1 "../../MyApp/AurixRacer/0_Src/AppSw/Tricore/SnsAct/BasicPort.h" 1
 # 14 "../../MyApp/AurixRacer/0_Src/AppSw/Tricore/SnsAct/BasicPort.h"
@@ -35687,10 +35691,23 @@ void appTaskfu_1ms(void)
 }
 float g_line_center_value = 0;
 float servoValue = 0.0f;
+int g_leftIndex;
+int g_rightIndex;
 void appTaskfu_10ms(void)
 {
  int dottedLine;
  int countPassedObject;
+
+ float currentSrvAngle = IR_Srv.Angle;
+ int lStdValue[4] = {25, 63, 67, 99};
+ int rStdValue[4] = {25, 63, 67, 99};
+ int lIndex = 0;
+ int rIndex = 0;
+ int lcount = 0;
+ int rcount = 0;
+ int totalCamera[232];
+ int i = 0;
+
 
  task_cnt_10m++;
  if(task_cnt_10m == 1000){
@@ -35724,20 +35741,93 @@ void appTaskfu_10ms(void)
 
   if(zoneState == SPEED) {
    IR_setMotor0Vol(0.72f);
-   IR_setSrvAngle((((float)g_nowCenterIndex - 60.0f) / 100.0f) * 1.5f + 0.1953f);
-   if(g_nowCenterIndex >= 55 && g_nowCenterIndex < 66)
-    IR_setSrvAngle(0.1953);
-   else if(g_nowCenterIndex< 58 || g_nowCenterIndex >= 63)
-    IR_setMotor0Vol(0.35f);
+
+
+   for(i = 0; i < 116; i++) {
+     totalCamera[i] = IR_LineScan.adcResult[1][i + 6];
+     }
+     for(i = 0; i < 116; i++){
+     totalCamera[i + 116] = IR_LineScan.adcResult[0][i + 6];
+     }
+
+
+     Stretching(totalCamera, 4096);
+     MedianFiltering(totalCamera);
+     Sharpening(totalCamera);
+     Stretching(totalCamera, 100000);
 
 
 
+     for(i = 116; i > 0; --i){
+     if(totalCamera[i] >= 50000){
+      if(lcount == 0){
+       lIndex = i;
+      }
+     lcount++;
+     if(lcount > 4){
+      lIndex = -1;
+      break;
+     }
+     }
+     }
+     for(i = 116; i < 232; ++i){
+     if(totalCamera[i] >= 50000){
+      if(rcount == 0){
+       rIndex = i - 116;
+      }
+     rcount++;
+     if(rcount > 4){
+      rIndex = -1;
+     }
+     }
+     }
 
 
+   if(lIndex == -1 && rIndex != -1){
+     if (rIndex <= rStdValue[0]){
+     IR_setSrvAngle(currentSrvAngle - 0.03);
+     }
+     else if(rStdValue[0] < rIndex && rIndex <= rStdValue[1]){
+     IR_setSrvAngle(currentSrvAngle - 0.005);
+     }
+     else if(rStdValue[1] < rIndex && rIndex <= rStdValue[2]){
+     IR_setSrvAngle(0.1953);
+     }
+     else if(rStdValue[2] < rIndex && rIndex <= rStdValue[3]){
+     IR_setSrvAngle(currentSrvAngle + 0.005);
+     }
+     else{
+     IR_setSrvAngle(currentSrvAngle + 0.03);
+     }
+     }
 
+     else if(rIndex == -1 && lIndex != -1){
+     if (lIndex <= lStdValue[0]){
+     IR_setSrvAngle(currentSrvAngle - 0.03);
+     }
+     else if(lStdValue[0] < lIndex && lIndex <= lStdValue[1]){
+     IR_setSrvAngle(currentSrvAngle - 0.005);
+     }
+     else if(lStdValue[1] < lIndex && lIndex <= lStdValue[2]){
+     IR_setSrvAngle(0.1953);
+     }
+     else if(lStdValue[2] < lIndex && lIndex <= lStdValue[3]){
+     IR_setSrvAngle(currentSrvAngle + 0.005);
+     }
+     else{
+     IR_setSrvAngle(currentSrvAngle + 0.03);
+     }
+     }
+     else if(rIndex != -1 && lIndex != -1){
+      IR_setSrvAngle((((float)g_nowCenterIndex - 60.0f) / 100.0f) * 1.5f + 0.1953f);
+     }
+     else{
+      IR_setSrvAngle((((float)g_nowCenterIndex - 60.0f) / 100.0f) * 1.5f + 0.1953f);
+     }
+# 216 "../../MyApp/AurixRacer/0_Src/AppSw/Tricore/Main/Release/AppTaskFu.c"
    servoValue = IR_Srv.Angle;
 
-   if(GetInfraredSensorValue() > 120) {
+   if(GetInfraredSensorValue() > 150) {
     IR_setMotor0Vol(0.0f);
     IR_setMotor0En(0);
    }
@@ -35753,7 +35843,7 @@ void appTaskfu_10ms(void)
    }
 
    if(delayCountForPassedObject == 0) {
-    if(GetInfraredSensorValue() > 120){
+    if(GetInfraredSensorValue() > 150){
      if(countPassedObject == 0){
       dottedLine = GetDashLine();
       countPassedObject += 1;
@@ -35785,6 +35875,9 @@ void appTaskfu_10ms(void)
   }
   AsclinShellInterface_runLineScan();
  }
+
+ g_leftIndex = lIndex;
+ g_rightIndex = rIndex;
 }
 
 void FollowingLine() {
@@ -35839,7 +35932,7 @@ void appTaskfu_100ms(void)
  if(task_cnt_100m == 1000){
   task_cnt_100m = 0;
  }
-# 232 "../../MyApp/AurixRacer/0_Src/AppSw/Tricore/Main/Release/AppTaskFu.c"
+# 331 "../../MyApp/AurixRacer/0_Src/AppSw/Tricore/Main/Release/AppTaskFu.c"
 }
 
 volatile int velocity = 0;

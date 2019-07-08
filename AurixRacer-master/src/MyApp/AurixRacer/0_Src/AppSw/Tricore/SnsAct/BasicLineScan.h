@@ -46,7 +46,7 @@ IFX_EXTERN void BasicLineScan_run(void);
 #define MAXVALUE 4096
 #define DABS(n) ((n < 0) ? -n : n)
 #define DSQUARE(n) (n*n)
-#define THRESHOLD 85000
+#define THRESHOLD 50000
 #define C_THRESHOLD 70000
 //#define THRESHOLD 3500
 //#define C_THRESHOLD 1700
@@ -82,5 +82,10 @@ IFX_EXTERN int IsLimitZone();
 IFX_EXTERN int GetDashLine();
 IFX_EXTERN int FindCenter(int(*_line)[LINESIZE]);
 IFX_EXTERN int FindOneLine(int line[LINESIZE]);
+IFX_EXTERN int GetCountPassedObject();
+IFX_EXTERN void SetCountPassedObject(int cpo);
+IFX_EXTERN int GetDottedLine();
+IFX_EXTERN void SetDottedLine(int dl);
+
 
 #endif

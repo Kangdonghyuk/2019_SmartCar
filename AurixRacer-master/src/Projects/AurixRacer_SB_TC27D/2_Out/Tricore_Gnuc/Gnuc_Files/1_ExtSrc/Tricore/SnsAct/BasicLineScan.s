@@ -12,77 +12,77 @@ BasicLineScan_run:
 	.loc 1 175 0
 	movh	%d13, hi:IfxPort_P14_0
 	mov.a	%a2, %d13
+.LBB59:
 .LBB60:
-.LBB61:
 	.file 2 "../../_LibSrc/iLLD_1_0_1_8_0__TC27D/Src/BaseSw/iLLD/TC27D/Tricore/Port/Std/IfxPort.h"
 	.loc 2 574 0
 	mov	%d15, 1
-.LBE61:
 .LBE60:
+.LBE59:
 	.loc 1 175 0
 	lea	%a14, [%a2] lo:IfxPort_P14_0
-.LBB65:
-.LBB62:
+.LBB64:
+.LBB61:
 	.loc 2 574 0
 	ld.bu	%d2, [%a14] 4
-.LBE62:
-.LBE65:
+.LBE61:
+.LBE64:
 	.loc 1 175 0
 	ld.a	%a15, [%a2] lo:IfxPort_P14_0
 .LVL0:
-.LBB66:
-.LBB63:
+.LBB65:
+.LBB62:
 	.loc 2 574 0
 	sh	%d15, %d15, %d2
-.LBE63:
-.LBE66:
+.LBE62:
+.LBE65:
 	.loc 1 176 0
 	movh	%d12, hi:IfxPort_P14_1
 	.loc 1 177 0
 	movh.a	%a12, hi:TimeConst
-.LBB67:
-.LBB64:
+.LBB66:
+.LBB63:
 	.loc 2 574 0
 	st.w	[%a15] 4, %d15
 .LVL1:
-.LBE64:
-.LBE67:
+.LBE63:
+.LBE66:
 	.loc 1 176 0
 	mov.a	%a15, %d12
 .LVL2:
+.LBB67:
 .LBB68:
-.LBB69:
 	.loc 2 574 0
 	movh	%d15, 1
-.LBE69:
 .LBE68:
+.LBE67:
 	.loc 1 176 0
 	lea	%a13, [%a15] lo:IfxPort_P14_1
-.LBB73:
-.LBB70:
+.LBB72:
+.LBB69:
 	.loc 2 574 0
 	ld.bu	%d2, [%a13] 4
-.LBE70:
-.LBE73:
+.LBE69:
+.LBE72:
 	.loc 1 176 0
 	ld.a	%a15, [%a15] lo:IfxPort_P14_1
 .LVL3:
-.LBB74:
-.LBB71:
+.LBB73:
+.LBB70:
 	.loc 2 574 0
 	sh	%d2, %d15, %d2
-.LBE71:
-.LBE74:
+.LBE70:
+.LBE73:
 	.loc 1 177 0
 	lea	%a12, [%a12] lo:TimeConst
 	movh	%d10, hi:g_VadcAutoScan
-.LBB75:
-.LBB72:
+.LBB74:
+.LBB71:
 	.loc 2 574 0
 	st.w	[%a15] 4, %d2
 .LVL4:
-.LBE72:
-.LBE75:
+.LBE71:
+.LBE74:
 	.loc 1 177 0
 	ld.w	%d4, [%a12] 8
 	ld.w	%d2, [%a12] 12
@@ -96,60 +96,60 @@ BasicLineScan_run:
 	.loc 1 177 0
 	call	waitTime
 .LVL5:
+.LBB75:
 .LBB76:
-.LBB77:
 	.loc 2 574 0
 	ld.bu	%d3, [%a14] 4
-.LBE77:
 .LBE76:
+.LBE75:
 	.loc 1 179 0
 	mov.a	%a2, %d13
-.LBB81:
-.LBB78:
+.LBB80:
+.LBB77:
 	.loc 2 574 0
 	mov	%d2, 1
-.LBE78:
-.LBE81:
+.LBE77:
+.LBE80:
 	.loc 1 179 0
 	ld.a	%a15, [%a2] lo:IfxPort_P14_0
 .LVL6:
-.LBB82:
-.LBB79:
+.LBB81:
+.LBB78:
 	.loc 2 574 0
 	sh	%d2, %d2, %d3
-.LBE79:
-.LBE82:
+.LBE78:
+.LBE81:
 	.loc 1 180 0
 	mov.a	%a2, %d12
+.LBB82:
 .LBB83:
-.LBB84:
 	.loc 2 574 0
 	movh	%d9, 1
-.LBE84:
 .LBE83:
-.LBB87:
-.LBB80:
+.LBE82:
+.LBB86:
+.LBB79:
 	st.w	[%a15] 4, %d2
 .LVL7:
-.LBE80:
-.LBE87:
+.LBE79:
+.LBE86:
+.LBB87:
 .LBB88:
-.LBB89:
 	ld.bu	%d3, [%a13] 4
 	mov	%d2, 1
-.LBE89:
 .LBE88:
+.LBE87:
 	.loc 1 180 0
 	ld.a	%a15, [%a2] lo:IfxPort_P14_1
 .LVL8:
-.LBB91:
 .LBB90:
+.LBB89:
 	.loc 2 574 0
 	sh	%d2, %d2, %d3
 	st.w	[%a15] 4, %d2
 .LVL9:
+.LBE89:
 .LBE90:
-.LBE91:
 	.loc 1 181 0
 	ld.w	%d4, [%a12] 8
 	ld.w	%d2, [%a12] 12
@@ -157,49 +157,49 @@ BasicLineScan_run:
 	madd	%d5, %d5, %d2, 5
 	call	waitTime
 .LVL10:
+.LBB91:
 .LBB92:
-.LBB93:
 	.loc 2 574 0
 	ld.bu	%d2, [%a14] 4
-.LBE93:
 .LBE92:
+.LBE91:
 	.loc 1 183 0
 	mov.a	%a2, %d13
-.LBB96:
-.LBB94:
+.LBB95:
+.LBB93:
 	.loc 2 574 0
 	sh	%d15, %d15, %d2
-.LBE94:
-.LBE96:
+.LBE93:
+.LBE95:
 	.loc 1 183 0
 	ld.a	%a15, [%a2] lo:IfxPort_P14_0
 .LVL11:
 	.loc 1 184 0
 	mov.a	%a2, %d12
-.LBB97:
-.LBB95:
+.LBB96:
+.LBB94:
 	.loc 2 574 0
 	st.w	[%a15] 4, %d15
 .LVL12:
-.LBE95:
-.LBE97:
+.LBE94:
+.LBE96:
+.LBB97:
 .LBB98:
-.LBB99:
 	ld.bu	%d2, [%a13] 4
 	mov	%d15, 1
-.LBE99:
 .LBE98:
+.LBE97:
 	.loc 1 184 0
 	ld.a	%a15, [%a2] lo:IfxPort_P14_1
 .LVL13:
-.LBB101:
 .LBB100:
+.LBB99:
 	.loc 2 574 0
 	sh	%d15, %d15, %d2
 	st.w	[%a15] 4, %d15
 .LVL14:
+.LBE99:
 .LBE100:
-.LBE101:
 	.loc 1 185 0
 	ld.w	%d4, [%a12] 8
 	ld.w	%d15, [%a12] 12
@@ -210,9 +210,9 @@ BasicLineScan_run:
 	mov.a	%a2, %d10
 	ld.a	%a15, [%a2] 8
 .LVL16:
+.LBB101:
 .LBB102:
 .LBB103:
-.LBB104:
 	.file 3 "../../_LibSrc/iLLD_1_0_1_8_0__TC27D/Src/BaseSw/iLLD/TC27D/Tricore/Vadc/Std/IfxVadc.h"
 	.loc 3 2415 0
 	ld.w	%d15, [%a15] 164
@@ -220,42 +220,42 @@ BasicLineScan_run:
 	st.w	[%a15] 164, %d15
 .LVL17:
 .L4:
-.LBE104:
 .LBE103:
 .LBE102:
-.LBB105:
-.LBB85:
+.LBE101:
+.LBB104:
+.LBB84:
 	.loc 2 574 0
 	ld.bu	%d15, [%a14] 4
-.LBE85:
-.LBE105:
+.LBE84:
+.LBE104:
 	.loc 1 192 0
 	ld.a	%a15, [%a14]0
 .LVL18:
-.LBB106:
-.LBB86:
+.LBB105:
+.LBB85:
 	.loc 2 574 0
 	sh	%d15, %d9, %d15
 	st.w	[%a15] 4, %d15
 .LVL19:
-.LBE86:
-.LBE106:
+.LBE85:
+.LBE105:
+.LBB106:
 .LBB107:
-.LBB108:
 	ld.bu	%d15, [%a13] 4
-.LBE108:
 .LBE107:
+.LBE106:
 	.loc 1 193 0
 	ld.a	%a15, [%a13]0
 .LVL20:
-.LBB110:
 .LBB109:
+.LBB108:
 	.loc 2 574 0
 	sh	%d15, %d9, %d15
 	st.w	[%a15] 4, %d15
 .LVL21:
+.LBE108:
 .LBE109:
-.LBE110:
 	.loc 1 194 0
 	ld.w	%d4, [%a12] 16
 	ld.w	%d15, [%a12] 20
@@ -263,40 +263,40 @@ BasicLineScan_run:
 	madd	%d5, %d5, %d15, 3
 	call	waitTime
 .LVL22:
+.LBB110:
 .LBB111:
-.LBB112:
 	.loc 2 574 0
 	ld.bu	%d15, [%a14] 4
-.LBE112:
 .LBE111:
+.LBE110:
 	.loc 1 196 0
 	ld.a	%a15, [%a14]0
 .LVL23:
-.LBB114:
 .LBB113:
+.LBB112:
 	.loc 2 574 0
 	sh	%d15, %d9, %d15
 	st.w	[%a15] 4, %d15
 .LVL24:
+.LBE112:
 .LBE113:
-.LBE114:
+.LBB114:
 .LBB115:
-.LBB116:
 	ld.bu	%d2, [%a13] 4
 	mov	%d15, 1
-.LBE116:
 .LBE115:
+.LBE114:
 	.loc 1 197 0
 	ld.a	%a15, [%a13]0
 .LVL25:
-.LBB118:
 .LBB117:
+.LBB116:
 	.loc 2 574 0
 	sh	%d15, %d15, %d2
 	st.w	[%a15] 4, %d15
 .LVL26:
+.LBE116:
 .LBE117:
-.LBE118:
 	.loc 1 198 0
 	ld.w	%d4, [%a12] 16
 	ld.w	%d5, [%a12] 20
@@ -315,10 +315,10 @@ BasicLineScan_run:
 	ld.bu	%d15, [%a2] 1
 	ld.a	%a3, [%a15] 4
 	addi	%d15, %d15, 160
+.LBB118:
 .LBB119:
 .LBB120:
 .LBB121:
-.LBB122:
 	.loc 3 2036 0
 	addsc.a	%a15, %a3, %d15, 2
 .L2:
@@ -328,9 +328,9 @@ BasicLineScan_run:
 .LVL30:
 	extr.u	%d2, %d15, 0, 16
 .LVL31:
-.LBE122:
 .LBE121:
 .LBE120:
+.LBE119:
 	.loc 1 209 0 is_stmt 1 discriminator 1
 	jgez	%d15, .L2
 	.loc 1 211 0
@@ -338,15 +338,15 @@ BasicLineScan_run:
 .LVL32:
 	mov.a	%a2, %d11
 .LVL33:
-.LBE119:
+.LBE118:
 	.loc 1 201 0
 	add	%d3, 1
 .LVL34:
-.LBB123:
+.LBB122:
 	.loc 1 211 0
 	addsc.a	%a15, %a2, %d15, 2
 	st.w	[%a15]0, %d2
-.LBE123:
+.LBE122:
 	.loc 1 201 0
 	jne	%d3, 3, .L3
 	.loc 1 189 0 discriminator 2
@@ -354,56 +354,56 @@ BasicLineScan_run:
 .LVL35:
 	ne	%d15, %d8, 128
 	jnz	%d15, .L4
+.LBB123:
 .LBB124:
-.LBB125:
 	.loc 2 574 0
 	ld.bu	%d2, [%a14] 4
 .LVL36:
-.LBE125:
 .LBE124:
+.LBE123:
 	.loc 1 216 0
 	mov.a	%a2, %d13
-.LBB129:
-.LBB126:
+.LBB128:
+.LBB125:
 	.loc 2 574 0
 	movh	%d15, 1
-.LBE126:
-.LBE129:
+.LBE125:
+.LBE128:
 	.loc 1 216 0
 	ld.a	%a15, [%a2] lo:IfxPort_P14_0
 .LVL37:
+.LBB129:
+.LBB126:
+	.loc 2 574 0
+	sh	%d2, %d15, %d2
+.LBE126:
+.LBE129:
+	.loc 1 217 0
+	mov.a	%a2, %d12
 .LBB130:
 .LBB127:
 	.loc 2 574 0
-	sh	%d2, %d15, %d2
-.LBE127:
-.LBE130:
-	.loc 1 217 0
-	mov.a	%a2, %d12
-.LBB131:
-.LBB128:
-	.loc 2 574 0
 	st.w	[%a15] 4, %d2
 .LVL38:
-.LBE128:
-.LBE131:
+.LBE127:
+.LBE130:
+.LBB131:
 .LBB132:
-.LBB133:
 	ld.bu	%d2, [%a13] 4
-.LBE133:
 .LBE132:
+.LBE131:
 	.loc 1 217 0
 	ld.a	%a15, [%a2] lo:IfxPort_P14_1
 .LVL39:
-.LBB135:
 .LBB134:
+.LBB133:
 	.loc 2 574 0
 	sh	%d15, %d15, %d2
 	st.w	[%a15] 4, %d15
 .LVL40:
 	ret
+.LBE133:
 .LBE134:
-.LBE135:
 .LFE428:
 	.size	BasicLineScan_run, .-BasicLineScan_run
 .section .text.CopyPrevLine,"ax",@progbits
@@ -809,22 +809,22 @@ Camera_Initialization:
 	movh.a	%a15, hi:cntLeft
 	st.w	[%a15] lo:cntLeft, %d15
 .LVL96:
+.LBB135:
 .LBB136:
-.LBB137:
 	.loc 1 494 0
 	movh.a	%a15, hi:countPassedObject
 	st.w	[%a15] lo:countPassedObject, %d15
 .LVL97:
-.LBE137:
 .LBE136:
+.LBE135:
+.LBB137:
 .LBB138:
-.LBB139:
 	.loc 1 500 0
 	movh.a	%a15, hi:dottedLine
 	st.w	[%a15] lo:dottedLine, %d15
 	ret
-.LBE139:
 .LBE138:
+.LBE137:
 .LFE434:
 	.size	Camera_Initialization, .-Camera_Initialization
 .section .text.BasicLineScan_init,"ax",@progbits
@@ -893,25 +893,25 @@ BasicLineScan_init:
 .LVL103:
 	.loc 1 118 0
 	ld.b	%d2, [%SP] 108
+.LBB139:
 .LBB140:
-.LBB141:
 	.file 4 "../../_LibSrc/iLLD_1_0_1_8_0__TC27D/Src/BaseSw/iLLD/TC27D/Tricore/Vadc/Adc/IfxVadc_Adc.h"
 	.loc 4 1265 0
 	ld.a	%a4, [%a15] 8
-.LBE141:
 .LBE140:
+.LBE139:
 	.loc 1 118 0
 	mov	%d4, 1
 	sh	%d4, %d4, %d2
 .LVL104:
-.LBB143:
 .LBB142:
+.LBB141:
 	.loc 4 1265 0
 	mov	%d5, %d4
 	call	IfxVadc_setScan
 .LVL105:
+.LBE141:
 .LBE142:
-.LBE143:
 	.loc 1 118 0
 	mov	%d15, 1
 	.loc 1 123 0
@@ -931,24 +931,24 @@ BasicLineScan_init:
 .LVL107:
 	.loc 1 131 0
 	ld.b	%d2, [%SP] 132
+.LBB143:
 .LBB144:
-.LBB145:
 	.loc 4 1265 0
 	ld.a	%a4, [%a15] 8
-.LBE145:
 .LBE144:
+.LBE143:
 	.loc 1 131 0
 	mov	%d4, 1
 	sh	%d4, %d4, %d2
 .LVL108:
-.LBB147:
 .LBB146:
+.LBB145:
 	.loc 4 1265 0
 	mov	%d5, %d4
 	call	IfxVadc_setScan
 .LVL109:
+.LBE145:
 .LBE146:
-.LBE147:
 	.loc 1 136 0
 	mov.aa	%a5, %a12
 	lea	%a4, [%SP] 144
@@ -966,24 +966,24 @@ BasicLineScan_init:
 .LVL111:
 	.loc 1 144 0
 	ld.b	%d15, [%SP] 156
+.LBB147:
 .LBB148:
-.LBB149:
 	.loc 4 1265 0
 	ld.a	%a4, [%a15] 8
-.LBE149:
 .LBE148:
+.LBE147:
 	.loc 1 144 0
 	mov	%d4, 1
 	sh	%d4, %d4, %d15
 .LVL112:
-.LBB151:
 .LBB150:
+.LBB149:
 	.loc 4 1265 0
 	mov	%d5, %d4
 	call	IfxVadc_setScan
 .LVL113:
+.LBE149:
 .LBE150:
-.LBE151:
 	.loc 1 153 0
 	movh.a	%a12, hi:IfxPort_P14_0
 	.loc 1 151 0
@@ -1002,33 +1002,33 @@ BasicLineScan_init:
 	mov	%d5, 0
 	call	IfxPort_setPinPadDriver
 .LVL116:
+.LBB151:
 .LBB152:
-.LBB153:
 	.loc 2 574 0
 	ld.bu	%d2, [%a15] 4
 	movh	%d15, 1
 .LVL117:
-.LBE153:
 .LBE152:
+.LBE151:
 	.loc 1 155 0
 	ld.a	%a2, [%a12] lo:IfxPort_P14_0
 .LVL118:
-.LBB156:
-.LBB154:
+.LBB155:
+.LBB153:
 	.loc 2 574 0
 	sh	%d2, %d15, %d2
-.LBE154:
-.LBE156:
+.LBE153:
+.LBE155:
 	.loc 1 157 0
 	movh.a	%a12, hi:IfxPort_P14_1
 	lea	%a15, [%a12] lo:IfxPort_P14_1
-.LBB157:
-.LBB155:
+.LBB156:
+.LBB154:
 	.loc 2 574 0
 	st.w	[%a2] 4, %d2
 .LVL119:
-.LBE155:
-.LBE157:
+.LBE154:
+.LBE156:
 	.loc 1 157 0
 	ld.a	%a4, [%a12] lo:IfxPort_P14_1
 	ld.bu	%d4, [%a15] 4
@@ -1041,23 +1041,23 @@ BasicLineScan_init:
 	mov	%d5, 0
 	call	IfxPort_setPinPadDriver
 .LVL121:
+.LBB157:
 .LBB158:
-.LBB159:
 	.loc 2 574 0
 	ld.bu	%d2, [%a15] 4
-.LBE159:
 .LBE158:
+.LBE157:
 	.loc 1 159 0
 	ld.a	%a2, [%a12] lo:IfxPort_P14_1
 .LVL122:
-.LBB161:
 .LBB160:
+.LBB159:
 	.loc 2 574 0
 	sh	%d15, %d15, %d2
 	st.w	[%a2] 4, %d15
 .LVL123:
+.LBE159:
 .LBE160:
-.LBE161:
 	.loc 1 163 0
 	j	Camera_Initialization
 .LVL124:
@@ -1178,13 +1178,12 @@ FindCenter:
 	ret
 .LVL143:
 .L93:
+.LBB161:
 .LBB162:
-.LBB163:
-.LBB164:
 	.loc 1 491 0
 	movh.a	%a15, hi:countPassedObject
-.LBE164:
-.LBE163:
+.LBE162:
+.LBE161:
 	.loc 1 416 0
 	ld.w	%d15, [%a15] lo:countPassedObject
 	jnz	%d15, .L69
@@ -1201,7 +1200,6 @@ FindCenter:
 	jnz	%d15, .L71
 .L75:
 .LVL144:
-.LBE162:
 	.loc 1 426 0
 	lt	%d15, %d2, 66
 	jnz	%d15, .L72
@@ -1217,7 +1215,6 @@ FindCenter:
 	ret
 .LVL148:
 .L71:
-.LBB165:
 	.loc 1 420 0
 	movh.a	%a15, hi:rightIndexCount
 	ld.w	%d15, [%a15] lo:rightIndexCount
@@ -1226,7 +1223,6 @@ FindCenter:
 	j	.L74
 .LVL149:
 .L79:
-.LBE165:
 	mov	%d3, 0
 	j	.L66
 .LFE436:
@@ -2012,7 +2008,7 @@ g_VadcAutoScan:
 	.file 15 "../../_LibSrc/iLLD_1_0_1_8_0__TC27D/Src/BaseSw/Service/CpuGeneric/SysSe/Bsp/Bsp.h"
 .section .debug_info,"",@progbits
 .Ldebug_info0:
-	.uaword	0xa6ac
+	.uaword	0xa696
 	.uahalf	0x3
 	.uaword	.Ldebug_abbrev0
 	.byte	0x4
@@ -2021,7 +2017,7 @@ g_VadcAutoScan:
 	.byte	0x1
 	.string	"../../MyApp/AurixRacer/0_Src/AppSw/Tricore/SnsAct/BasicLineScan.c"
 	.string	"C:\\\\Users\\\\kdh95\\\\Desktop\\\\SmartCar\\\\AurixRacer-master\\\\src\\\\Projects\\\\AurixRacer_SB_TC27D"
-	.uaword	.Ldebug_ranges0+0x220
+	.uaword	.Ldebug_ranges0+0x208
 	.uaword	0
 	.uaword	0
 	.uaword	.Ldebug_line0
@@ -16039,19 +16035,19 @@ g_VadcAutoScan:
 	.byte	0
 	.uleb128 0x29
 	.byte	0x1
-	.uaword	.LASF47
+	.string	"GetCountPassedObject"
 	.byte	0x1
 	.uahalf	0x1ea
 	.uaword	0x20a
 	.byte	0x1
 	.uleb128 0x2a
 	.byte	0x1
-	.uaword	.LASF43
+	.string	"SetCountPassedObject"
 	.byte	0x1
 	.uahalf	0x1ed
 	.byte	0x1
 	.byte	0x1
-	.uaword	0x9596
+	.uaword	0x95b8
 	.uleb128 0x26
 	.string	"cpo"
 	.byte	0x1
@@ -16060,12 +16056,12 @@ g_VadcAutoScan:
 	.byte	0
 	.uleb128 0x2a
 	.byte	0x1
-	.uaword	.LASF44
+	.string	"SetDottedLine"
 	.byte	0x1
 	.uahalf	0x1f3
 	.byte	0x1
 	.byte	0x1
-	.uaword	0x95b1
+	.uaword	0x95dd
 	.uleb128 0x26
 	.string	"dl"
 	.byte	0x1
@@ -16083,7 +16079,7 @@ g_VadcAutoScan:
 	.byte	0x1
 	.byte	0x9c
 	.byte	0x1
-	.uaword	0x98c6
+	.uaword	0x98f2
 	.uleb128 0x2c
 	.string	"chnIx"
 	.byte	0x1
@@ -16099,11 +16095,11 @@ g_VadcAutoScan:
 	.byte	0x58
 	.uleb128 0x2e
 	.uaword	0x9525
-	.uaword	.LBB60
+	.uaword	.LBB59
 	.uaword	.Ldebug_ranges0+0
 	.byte	0x1
 	.byte	0xaf
-	.uaword	0x961d
+	.uaword	0x9649
 	.uleb128 0x2f
 	.uaword	0x955c
 	.byte	0x1
@@ -16115,11 +16111,11 @@ g_VadcAutoScan:
 	.byte	0
 	.uleb128 0x2e
 	.uaword	0x9525
-	.uaword	.LBB68
+	.uaword	.LBB67
 	.uaword	.Ldebug_ranges0+0x28
 	.byte	0x1
 	.byte	0xb0
-	.uaword	0x9648
+	.uaword	0x9674
 	.uleb128 0x32
 	.uaword	0x955c
 	.uaword	0x10000
@@ -16131,11 +16127,11 @@ g_VadcAutoScan:
 	.byte	0
 	.uleb128 0x2e
 	.uaword	0x9525
-	.uaword	.LBB76
+	.uaword	.LBB75
 	.uaword	.Ldebug_ranges0+0x50
 	.byte	0x1
 	.byte	0xb3
-	.uaword	0x9670
+	.uaword	0x969c
 	.uleb128 0x2f
 	.uaword	0x955c
 	.byte	0x1
@@ -16147,11 +16143,11 @@ g_VadcAutoScan:
 	.byte	0
 	.uleb128 0x2e
 	.uaword	0x9525
-	.uaword	.LBB83
+	.uaword	.LBB82
 	.uaword	.Ldebug_ranges0+0x78
 	.byte	0x1
 	.byte	0xc0
-	.uaword	0x969b
+	.uaword	0x96c7
 	.uleb128 0x32
 	.uaword	0x955c
 	.uaword	0x10000
@@ -16163,11 +16159,11 @@ g_VadcAutoScan:
 	.byte	0
 	.uleb128 0x2e
 	.uaword	0x9525
-	.uaword	.LBB88
+	.uaword	.LBB87
 	.uaword	.Ldebug_ranges0+0x98
 	.byte	0x1
 	.byte	0xb4
-	.uaword	0x96c3
+	.uaword	0x96ef
 	.uleb128 0x2f
 	.uaword	0x955c
 	.byte	0x1
@@ -16179,11 +16175,11 @@ g_VadcAutoScan:
 	.byte	0
 	.uleb128 0x2e
 	.uaword	0x9525
-	.uaword	.LBB92
+	.uaword	.LBB91
 	.uaword	.Ldebug_ranges0+0xb0
 	.byte	0x1
 	.byte	0xb7
-	.uaword	0x96ee
+	.uaword	0x971a
 	.uleb128 0x32
 	.uaword	0x955c
 	.uaword	0x10000
@@ -16195,11 +16191,11 @@ g_VadcAutoScan:
 	.byte	0
 	.uleb128 0x2e
 	.uaword	0x9525
-	.uaword	.LBB98
+	.uaword	.LBB97
 	.uaword	.Ldebug_ranges0+0xd0
 	.byte	0x1
 	.byte	0xb8
-	.uaword	0x9716
+	.uaword	0x9742
 	.uleb128 0x2f
 	.uaword	0x955c
 	.byte	0x1
@@ -16211,11 +16207,11 @@ g_VadcAutoScan:
 	.byte	0
 	.uleb128 0x33
 	.uaword	0x94f8
-	.uaword	.LBB102
-	.uaword	.LBE102
+	.uaword	.LBB101
+	.uaword	.LBE101
 	.byte	0x1
 	.byte	0xba
-	.uaword	0x9750
+	.uaword	0x977c
 	.uleb128 0x34
 	.uaword	0x9518
 	.byte	0x6
@@ -16224,8 +16220,8 @@ g_VadcAutoScan:
 	.byte	0x9f
 	.uleb128 0x35
 	.uaword	0x94cf
-	.uaword	.LBB103
-	.uaword	.LBE103
+	.uaword	.LBB102
+	.uaword	.LBE102
 	.byte	0x4
 	.uahalf	0x503
 	.uleb128 0x31
@@ -16235,11 +16231,11 @@ g_VadcAutoScan:
 	.byte	0
 	.uleb128 0x2e
 	.uaword	0x9525
-	.uaword	.LBB107
+	.uaword	.LBB106
 	.uaword	.Ldebug_ranges0+0xe8
 	.byte	0x1
 	.byte	0xc1
-	.uaword	0x977b
+	.uaword	0x97a7
 	.uleb128 0x32
 	.uaword	0x955c
 	.uaword	0x10000
@@ -16251,11 +16247,11 @@ g_VadcAutoScan:
 	.byte	0
 	.uleb128 0x2e
 	.uaword	0x9525
-	.uaword	.LBB111
+	.uaword	.LBB110
 	.uaword	.Ldebug_ranges0+0x100
 	.byte	0x1
 	.byte	0xc4
-	.uaword	0x97a6
+	.uaword	0x97d2
 	.uleb128 0x32
 	.uaword	0x955c
 	.uaword	0x10000
@@ -16267,11 +16263,11 @@ g_VadcAutoScan:
 	.byte	0
 	.uleb128 0x2e
 	.uaword	0x9525
-	.uaword	.LBB115
+	.uaword	.LBB114
 	.uaword	.Ldebug_ranges0+0x118
 	.byte	0x1
 	.byte	0xc5
-	.uaword	0x97ce
+	.uaword	0x97fa
 	.uleb128 0x2f
 	.uaword	0x955c
 	.byte	0x1
@@ -16283,7 +16279,7 @@ g_VadcAutoScan:
 	.byte	0
 	.uleb128 0x36
 	.uaword	.Ldebug_ranges0+0x130
-	.uaword	0x9844
+	.uaword	0x9870
 	.uleb128 0x2c
 	.string	"conversionResult"
 	.byte	0x1
@@ -16292,8 +16288,8 @@ g_VadcAutoScan:
 	.uaword	.LLST12
 	.uleb128 0x37
 	.uaword	0x944a
-	.uaword	.LBB120
-	.uaword	.LBE120
+	.uaword	.LBB119
+	.uaword	.LBE119
 	.byte	0x1
 	.byte	0xd0
 	.uleb128 0x31
@@ -16304,8 +16300,8 @@ g_VadcAutoScan:
 	.uaword	.LLST13
 	.uleb128 0x35
 	.uaword	0x93f9
-	.uaword	.LBB121
-	.uaword	.LBE121
+	.uaword	.LBB120
+	.uaword	.LBE120
 	.byte	0x4
 	.uahalf	0x4d3
 	.uleb128 0x31
@@ -16314,8 +16310,8 @@ g_VadcAutoScan:
 	.uleb128 0x30
 	.uaword	0x9419
 	.uleb128 0x38
-	.uaword	.LBB122
-	.uaword	.LBE122
+	.uaword	.LBB121
+	.uaword	.LBE121
 	.uleb128 0x39
 	.uaword	0x9437
 	.byte	0
@@ -16324,11 +16320,11 @@ g_VadcAutoScan:
 	.byte	0
 	.uleb128 0x2e
 	.uaword	0x9525
-	.uaword	.LBB124
+	.uaword	.LBB123
 	.uaword	.Ldebug_ranges0+0x148
 	.byte	0x1
 	.byte	0xd8
-	.uaword	0x986f
+	.uaword	0x989b
 	.uleb128 0x32
 	.uaword	0x955c
 	.uaword	0x10000
@@ -16340,11 +16336,11 @@ g_VadcAutoScan:
 	.byte	0
 	.uleb128 0x2e
 	.uaword	0x9525
-	.uaword	.LBB132
+	.uaword	.LBB131
 	.uaword	.Ldebug_ranges0+0x170
 	.byte	0x1
 	.byte	0xd9
-	.uaword	0x9898
+	.uaword	0x98c4
 	.uleb128 0x32
 	.uaword	0x955c
 	.uaword	0x10000
@@ -16357,19 +16353,19 @@ g_VadcAutoScan:
 	.byte	0
 	.uleb128 0x3a
 	.uaword	.LVL5
-	.uaword	0xa49a
+	.uaword	0xa484
 	.uleb128 0x3a
 	.uaword	.LVL10
-	.uaword	0xa49a
+	.uaword	0xa484
 	.uleb128 0x3a
 	.uaword	.LVL15
-	.uaword	0xa49a
+	.uaword	0xa484
 	.uleb128 0x3a
 	.uaword	.LVL22
-	.uaword	0xa49a
+	.uaword	0xa484
 	.uleb128 0x3a
 	.uaword	.LVL27
-	.uaword	0xa49a
+	.uaword	0xa484
 	.byte	0
 	.uleb128 0x2b
 	.byte	0x1
@@ -16382,12 +16378,12 @@ g_VadcAutoScan:
 	.byte	0x1
 	.byte	0x9c
 	.byte	0x1
-	.uaword	0x991d
+	.uaword	0x9949
 	.uleb128 0x3b
 	.string	"_cam_info"
 	.byte	0x1
 	.byte	0xe7
-	.uaword	0x991d
+	.uaword	0x9949
 	.byte	0x1
 	.byte	0x64
 	.uleb128 0x3b
@@ -16420,12 +16416,12 @@ g_VadcAutoScan:
 	.byte	0x1
 	.byte	0x9c
 	.byte	0x1
-	.uaword	0x9980
+	.uaword	0x99ac
 	.uleb128 0x3b
 	.string	"_array"
 	.byte	0x1
 	.byte	0xee
-	.uaword	0x9980
+	.uaword	0x99ac
 	.byte	0x1
 	.byte	0x64
 	.uleb128 0x2c
@@ -16461,12 +16457,12 @@ g_VadcAutoScan:
 	.byte	0x1
 	.byte	0x9c
 	.byte	0x1
-	.uaword	0x99ee
+	.uaword	0x9a1a
 	.uleb128 0x3d
-	.uaword	.LASF45
+	.uaword	.LASF43
 	.byte	0x1
 	.byte	0xfc
-	.uaword	0x99ee
+	.uaword	0x9a1a
 	.byte	0x1
 	.byte	0x64
 	.uleb128 0x3e
@@ -16508,12 +16504,12 @@ g_VadcAutoScan:
 	.byte	0x1
 	.byte	0x9c
 	.byte	0x1
-	.uaword	0x9a75
+	.uaword	0x9aa1
 	.uleb128 0x40
-	.uaword	.LASF45
+	.uaword	.LASF43
 	.byte	0x1
 	.uahalf	0x107
-	.uaword	0x99ee
+	.uaword	0x9a1a
 	.uaword	.LLST25
 	.uleb128 0x41
 	.string	"i"
@@ -16537,13 +16533,13 @@ g_VadcAutoScan:
 	.string	"array"
 	.byte	0x1
 	.uahalf	0x109
-	.uaword	0x9a75
+	.uaword	0x9aa1
 	.byte	0x2
 	.byte	0x91
 	.sleb128 -20
 	.uleb128 0x43
 	.uaword	.LVL68
-	.uaword	0x9923
+	.uaword	0x994f
 	.uleb128 0x44
 	.byte	0x1
 	.byte	0x64
@@ -16554,7 +16550,7 @@ g_VadcAutoScan:
 	.byte	0
 	.uleb128 0x3
 	.uaword	0x20a
-	.uaword	0x9a85
+	.uaword	0x9ab1
 	.uleb128 0x4
 	.uaword	0x268
 	.byte	0x4
@@ -16570,12 +16566,12 @@ g_VadcAutoScan:
 	.byte	0x1
 	.byte	0x9c
 	.byte	0x1
-	.uaword	0x9b16
+	.uaword	0x9b42
 	.uleb128 0x45
-	.uaword	.LASF45
+	.uaword	.LASF43
 	.byte	0x1
 	.uahalf	0x110
-	.uaword	0x99ee
+	.uaword	0x9a1a
 	.byte	0x1
 	.byte	0x64
 	.uleb128 0x41
@@ -16627,7 +16623,7 @@ g_VadcAutoScan:
 	.byte	0x1
 	.byte	0x9c
 	.byte	0x1
-	.uaword	0x9bb7
+	.uaword	0x9bbb
 	.uleb128 0x41
 	.string	"i"
 	.byte	0x1
@@ -16641,44 +16637,24 @@ g_VadcAutoScan:
 	.uaword	0x20a
 	.uaword	.LLST35
 	.uleb128 0x47
-	.byte	0x1
-	.uaword	.LASF43
-	.byte	0x1
-	.uahalf	0x136
-	.uaword	0x20a
-	.byte	0x1
-	.uaword	0x9b70
-	.uleb128 0x48
-	.byte	0
-	.uleb128 0x47
-	.byte	0x1
-	.uaword	.LASF44
-	.byte	0x1
-	.uahalf	0x137
-	.uaword	0x20a
-	.byte	0x1
-	.uaword	0x9b84
-	.uleb128 0x48
-	.byte	0
-	.uleb128 0x49
-	.uaword	0x957a
-	.uaword	.LBB136
-	.uaword	.LBE136
+	.uaword	0x958b
+	.uaword	.LBB135
+	.uaword	.LBE135
 	.byte	0x1
 	.uahalf	0x136
-	.uaword	0x9b9f
+	.uaword	0x9ba3
 	.uleb128 0x2f
-	.uaword	0x9589
+	.uaword	0x95ab
 	.byte	0
 	.byte	0
 	.uleb128 0x35
-	.uaword	0x9596
-	.uaword	.LBB138
-	.uaword	.LBE138
+	.uaword	0x95b8
+	.uaword	.LBB137
+	.uaword	.LBE137
 	.byte	0x1
 	.uahalf	0x137
 	.uleb128 0x2f
-	.uaword	0x95a5
+	.uaword	0x95d1
 	.byte	0
 	.byte	0
 	.byte	0
@@ -16693,7 +16669,7 @@ g_VadcAutoScan:
 	.byte	0x1
 	.byte	0x9c
 	.byte	0x1
-	.uaword	0x9ee1
+	.uaword	0x9ee5
 	.uleb128 0x2d
 	.string	"adcConfig"
 	.byte	0x1
@@ -16716,7 +16692,7 @@ g_VadcAutoScan:
 	.byte	0x65
 	.uaword	0x2a5
 	.uaword	.LLST36
-	.uleb128 0x4a
+	.uleb128 0x48
 	.uaword	.LASF42
 	.byte	0x1
 	.byte	0x66
@@ -16732,17 +16708,17 @@ g_VadcAutoScan:
 	.string	"adcChannelConfig"
 	.byte	0x1
 	.byte	0x69
-	.uaword	0x9ee1
+	.uaword	0x9ee5
 	.byte	0x3
 	.byte	0x91
 	.sleb128 -72
 	.uleb128 0x2e
 	.uaword	0x9485
-	.uaword	.LBB140
+	.uaword	.LBB139
 	.uaword	.Ldebug_ranges0+0x188
 	.byte	0x1
 	.byte	0x78
-	.uaword	0x9c94
+	.uaword	0x9c98
 	.uleb128 0x34
 	.uaword	0x94a3
 	.byte	0x6
@@ -16757,15 +16733,15 @@ g_VadcAutoScan:
 	.uaword	.LLST39
 	.uleb128 0x3a
 	.uaword	.LVL105
-	.uaword	0xa4b3
+	.uaword	0xa49d
 	.byte	0
 	.uleb128 0x2e
 	.uaword	0x9485
-	.uaword	.LBB144
+	.uaword	.LBB143
 	.uaword	.Ldebug_ranges0+0x1a0
 	.byte	0x1
 	.byte	0x85
-	.uaword	0x9ccf
+	.uaword	0x9cd3
 	.uleb128 0x34
 	.uaword	0x94a3
 	.byte	0x6
@@ -16780,15 +16756,15 @@ g_VadcAutoScan:
 	.uaword	.LLST41
 	.uleb128 0x3a
 	.uaword	.LVL109
-	.uaword	0xa4b3
+	.uaword	0xa49d
 	.byte	0
 	.uleb128 0x2e
 	.uaword	0x9485
-	.uaword	.LBB148
+	.uaword	.LBB147
 	.uaword	.Ldebug_ranges0+0x1b8
 	.byte	0x1
 	.byte	0x92
-	.uaword	0x9d1b
+	.uaword	0x9d1f
 	.uleb128 0x34
 	.uaword	0x94a3
 	.byte	0x6
@@ -16803,7 +16779,7 @@ g_VadcAutoScan:
 	.uaword	.LLST43
 	.uleb128 0x43
 	.uaword	.LVL113
-	.uaword	0xa4b3
+	.uaword	0xa49d
 	.uleb128 0x44
 	.byte	0x1
 	.byte	0x55
@@ -16824,11 +16800,11 @@ g_VadcAutoScan:
 	.byte	0
 	.uleb128 0x2e
 	.uaword	0x9525
-	.uaword	.LBB152
+	.uaword	.LBB151
 	.uaword	.Ldebug_ranges0+0x1d0
 	.byte	0x1
 	.byte	0x9b
-	.uaword	0x9d46
+	.uaword	0x9d4a
 	.uleb128 0x32
 	.uaword	0x955c
 	.uaword	0x10000
@@ -16840,11 +16816,11 @@ g_VadcAutoScan:
 	.byte	0
 	.uleb128 0x2e
 	.uaword	0x9525
-	.uaword	.LBB158
+	.uaword	.LBB157
 	.uaword	.Ldebug_ranges0+0x1f0
 	.byte	0x1
 	.byte	0x9f
-	.uaword	0x9d71
+	.uaword	0x9d75
 	.uleb128 0x32
 	.uaword	0x955c
 	.uaword	0x10000
@@ -16854,10 +16830,10 @@ g_VadcAutoScan:
 	.uaword	0x9543
 	.uaword	.LLST46
 	.byte	0
-	.uleb128 0x4b
+	.uleb128 0x49
 	.uaword	.LVL98
-	.uaword	0xa4de
-	.uaword	0x9d90
+	.uaword	0xa4c8
+	.uaword	0x9d94
 	.uleb128 0x44
 	.byte	0x1
 	.byte	0x65
@@ -16871,10 +16847,10 @@ g_VadcAutoScan:
 	.byte	0x91
 	.sleb128 -164
 	.byte	0
-	.uleb128 0x4b
+	.uleb128 0x49
 	.uaword	.LVL99
-	.uaword	0xa517
-	.uaword	0x9dab
+	.uaword	0xa501
+	.uaword	0x9daf
 	.uleb128 0x44
 	.byte	0x1
 	.byte	0x65
@@ -16888,10 +16864,10 @@ g_VadcAutoScan:
 	.byte	0x8f
 	.sleb128 0
 	.byte	0
-	.uleb128 0x4b
+	.uleb128 0x49
 	.uaword	.LVL100
-	.uaword	0xa559
-	.uaword	0x9dc6
+	.uaword	0xa543
+	.uaword	0x9dca
 	.uleb128 0x44
 	.byte	0x1
 	.byte	0x65
@@ -16905,10 +16881,10 @@ g_VadcAutoScan:
 	.byte	0x91
 	.sleb128 -128
 	.byte	0
-	.uleb128 0x4b
+	.uleb128 0x49
 	.uaword	.LVL101
-	.uaword	0xa591
-	.uaword	0x9de1
+	.uaword	0xa57b
+	.uaword	0x9de5
 	.uleb128 0x44
 	.byte	0x1
 	.byte	0x65
@@ -16922,10 +16898,10 @@ g_VadcAutoScan:
 	.byte	0x8c
 	.sleb128 0
 	.byte	0
-	.uleb128 0x4b
+	.uleb128 0x49
 	.uaword	.LVL102
-	.uaword	0xa5cc
-	.uaword	0x9dfc
+	.uaword	0xa5b6
+	.uaword	0x9e00
 	.uleb128 0x44
 	.byte	0x1
 	.byte	0x65
@@ -16939,10 +16915,10 @@ g_VadcAutoScan:
 	.byte	0x91
 	.sleb128 -72
 	.byte	0
-	.uleb128 0x4b
+	.uleb128 0x49
 	.uaword	.LVL103
-	.uaword	0xa606
-	.uaword	0x9e17
+	.uaword	0xa5f0
+	.uaword	0x9e1b
 	.uleb128 0x44
 	.byte	0x1
 	.byte	0x65
@@ -16956,10 +16932,10 @@ g_VadcAutoScan:
 	.byte	0x8f
 	.sleb128 16
 	.byte	0
-	.uleb128 0x4b
+	.uleb128 0x49
 	.uaword	.LVL106
-	.uaword	0xa5cc
-	.uaword	0x9e31
+	.uaword	0xa5b6
+	.uaword	0x9e35
 	.uleb128 0x44
 	.byte	0x1
 	.byte	0x65
@@ -16973,10 +16949,10 @@ g_VadcAutoScan:
 	.byte	0x91
 	.sleb128 -48
 	.byte	0
-	.uleb128 0x4b
+	.uleb128 0x49
 	.uaword	.LVL107
-	.uaword	0xa606
-	.uaword	0x9e4b
+	.uaword	0xa5f0
+	.uaword	0x9e4f
 	.uleb128 0x44
 	.byte	0x1
 	.byte	0x65
@@ -16990,10 +16966,10 @@ g_VadcAutoScan:
 	.byte	0x8f
 	.sleb128 24
 	.byte	0
-	.uleb128 0x4b
+	.uleb128 0x49
 	.uaword	.LVL110
-	.uaword	0xa5cc
-	.uaword	0x9e65
+	.uaword	0xa5b6
+	.uaword	0x9e69
 	.uleb128 0x44
 	.byte	0x1
 	.byte	0x65
@@ -17007,10 +16983,10 @@ g_VadcAutoScan:
 	.byte	0x91
 	.sleb128 -24
 	.byte	0
-	.uleb128 0x4b
+	.uleb128 0x49
 	.uaword	.LVL111
-	.uaword	0xa606
-	.uaword	0x9e7f
+	.uaword	0xa5f0
+	.uaword	0x9e83
 	.uleb128 0x44
 	.byte	0x1
 	.byte	0x65
@@ -17026,11 +17002,11 @@ g_VadcAutoScan:
 	.byte	0
 	.uleb128 0x3a
 	.uaword	.LVL114
-	.uaword	0xa643
-	.uleb128 0x4b
+	.uaword	0xa62d
+	.uleb128 0x49
 	.uaword	.LVL115
-	.uaword	0xa652
-	.uaword	0x9e9c
+	.uaword	0xa63c
+	.uaword	0x9ea0
 	.uleb128 0x44
 	.byte	0x1
 	.byte	0x55
@@ -17038,20 +17014,20 @@ g_VadcAutoScan:
 	.byte	0x9
 	.byte	0x80
 	.byte	0
-	.uleb128 0x4b
+	.uleb128 0x49
 	.uaword	.LVL116
-	.uaword	0xa680
-	.uaword	0x9eaf
+	.uaword	0xa66a
+	.uaword	0x9eb3
 	.uleb128 0x44
 	.byte	0x1
 	.byte	0x55
 	.byte	0x1
 	.byte	0x30
 	.byte	0
-	.uleb128 0x4b
+	.uleb128 0x49
 	.uaword	.LVL120
-	.uaword	0xa652
-	.uaword	0x9ec3
+	.uaword	0xa63c
+	.uaword	0x9ec7
 	.uleb128 0x44
 	.byte	0x1
 	.byte	0x55
@@ -17059,29 +17035,29 @@ g_VadcAutoScan:
 	.byte	0x9
 	.byte	0x80
 	.byte	0
-	.uleb128 0x4b
+	.uleb128 0x49
 	.uaword	.LVL121
-	.uaword	0xa680
-	.uaword	0x9ed6
+	.uaword	0xa66a
+	.uaword	0x9eda
 	.uleb128 0x44
 	.byte	0x1
 	.byte	0x55
 	.byte	0x1
 	.byte	0x30
 	.byte	0
-	.uleb128 0x4c
+	.uleb128 0x4a
 	.uaword	.LVL124
 	.byte	0x1
-	.uaword	0x9b16
+	.uaword	0x9b42
 	.byte	0
 	.uleb128 0x3
 	.uaword	0x9105
-	.uaword	0x9ef1
+	.uaword	0x9ef5
 	.uleb128 0x4
 	.uaword	0x268
 	.byte	0x2
 	.byte	0
-	.uleb128 0x4d
+	.uleb128 0x4b
 	.byte	0x1
 	.string	"FindCenter"
 	.byte	0x1
@@ -17093,12 +17069,12 @@ g_VadcAutoScan:
 	.byte	0x1
 	.byte	0x9c
 	.byte	0x1
-	.uaword	0x9fab
+	.uaword	0x9f95
 	.uleb128 0x45
-	.uaword	.LASF45
+	.uaword	.LASF43
 	.byte	0x1
 	.uahalf	0x184
-	.uaword	0x99ee
+	.uaword	0x9a1a
 	.byte	0x1
 	.byte	0x64
 	.uleb128 0x41
@@ -17125,33 +17101,20 @@ g_VadcAutoScan:
 	.uahalf	0x185
 	.uaword	0x20a
 	.uaword	.LLST50
-	.uleb128 0x4e
-	.uaword	.LASF46
+	.uleb128 0x4c
+	.uaword	.LASF44
 	.byte	0x1
 	.uahalf	0x185
 	.uaword	0x20a
 	.uaword	.LLST51
-	.uleb128 0x4f
-	.uaword	.Ldebug_ranges0+0x208
-	.uleb128 0x47
-	.byte	0x1
-	.uaword	.LASF47
-	.byte	0x1
-	.uahalf	0x1a0
-	.uaword	0x20a
-	.byte	0x1
-	.uaword	0x9f99
-	.uleb128 0x48
-	.byte	0
-	.uleb128 0x50
-	.uaword	0x956c
-	.uaword	.LBB163
-	.uaword	.LBE163
-	.byte	0x1
-	.uahalf	0x1a0
-	.byte	0
-	.byte	0
 	.uleb128 0x4d
+	.uaword	0x956c
+	.uaword	.LBB161
+	.uaword	.LBE161
+	.byte	0x1
+	.uahalf	0x1a0
+	.byte	0
+	.uleb128 0x4b
 	.byte	0x1
 	.string	"FindOneLine"
 	.byte	0x1
@@ -17163,12 +17126,12 @@ g_VadcAutoScan:
 	.byte	0x1
 	.byte	0x9c
 	.byte	0x1
-	.uaword	0xa014
-	.uleb128 0x51
+	.uaword	0x9ffe
+	.uleb128 0x4e
 	.string	"line"
 	.byte	0x1
 	.uahalf	0x1ba
-	.uaword	0x9980
+	.uaword	0x99ac
 	.byte	0x1
 	.byte	0x64
 	.uleb128 0x41
@@ -17177,8 +17140,8 @@ g_VadcAutoScan:
 	.uahalf	0x1bb
 	.uaword	0x20a
 	.uaword	.LLST52
-	.uleb128 0x4e
-	.uaword	.LASF46
+	.uleb128 0x4c
+	.uaword	.LASF44
 	.byte	0x1
 	.uahalf	0x1bb
 	.uaword	0x20a
@@ -17190,7 +17153,7 @@ g_VadcAutoScan:
 	.uaword	0x20a
 	.uaword	.LLST54
 	.byte	0
-	.uleb128 0x4d
+	.uleb128 0x4b
 	.byte	0x1
 	.string	"GetCameraCenter"
 	.byte	0x1
@@ -17202,14 +17165,14 @@ g_VadcAutoScan:
 	.byte	0x1
 	.byte	0x9c
 	.byte	0x1
-	.uaword	0xa10e
-	.uleb128 0x52
+	.uaword	0xa0f8
+	.uleb128 0x4f
 	.string	"prevServo"
 	.byte	0x1
 	.uahalf	0x13a
 	.uaword	0x20a
 	.uaword	.LLST55
-	.uleb128 0x52
+	.uleb128 0x4f
 	.string	"cntDiff"
 	.byte	0x1
 	.uahalf	0x13a
@@ -17221,10 +17184,10 @@ g_VadcAutoScan:
 	.uahalf	0x13b
 	.uaword	0x20a
 	.uaword	.LLST57
-	.uleb128 0x4b
+	.uleb128 0x49
 	.uaword	.LVL170
-	.uaword	0x9986
-	.uaword	0xa08a
+	.uaword	0x99b2
+	.uaword	0xa074
 	.uleb128 0x44
 	.byte	0x1
 	.byte	0x54
@@ -17234,14 +17197,14 @@ g_VadcAutoScan:
 	.byte	0
 	.uleb128 0x3a
 	.uaword	.LVL171
-	.uaword	0x99f4
+	.uaword	0x9a20
 	.uleb128 0x3a
 	.uaword	.LVL172
-	.uaword	0x9a85
-	.uleb128 0x4b
+	.uaword	0x9ab1
+	.uleb128 0x49
 	.uaword	.LVL173
-	.uaword	0x9986
-	.uaword	0xa0bc
+	.uaword	0x99b2
+	.uaword	0xa0a6
 	.uleb128 0x44
 	.byte	0x1
 	.byte	0x54
@@ -17258,10 +17221,10 @@ g_VadcAutoScan:
 	.sleb128 0
 	.byte	0x22
 	.byte	0
-	.uleb128 0x4b
+	.uleb128 0x49
 	.uaword	.LVL174
-	.uaword	0x9ef1
-	.uaword	0xa0d0
+	.uaword	0x9ef5
+	.uaword	0xa0ba
 	.uleb128 0x44
 	.byte	0x1
 	.byte	0x64
@@ -17269,10 +17232,10 @@ g_VadcAutoScan:
 	.byte	0x8c
 	.sleb128 0
 	.byte	0
-	.uleb128 0x4b
+	.uleb128 0x49
 	.uaword	.LVL175
-	.uaword	0x9fab
-	.uaword	0xa0ea
+	.uaword	0x9f95
+	.uaword	0xa0d4
 	.uleb128 0x44
 	.byte	0x1
 	.byte	0x64
@@ -17285,10 +17248,10 @@ g_VadcAutoScan:
 	.byte	0x23
 	.uleb128 0xa14
 	.byte	0
-	.uleb128 0x4b
+	.uleb128 0x49
 	.uaword	.LVL176
-	.uaword	0x9fab
-	.uaword	0xa104
+	.uaword	0x9f95
+	.uaword	0xa0ee
 	.uleb128 0x44
 	.byte	0x1
 	.byte	0x64
@@ -17303,7 +17266,7 @@ g_VadcAutoScan:
 	.byte	0
 	.uleb128 0x3a
 	.uaword	.LVL187
-	.uaword	0x98c6
+	.uaword	0x98f2
 	.byte	0
 	.uleb128 0x3f
 	.byte	0x1
@@ -17316,8 +17279,8 @@ g_VadcAutoScan:
 	.byte	0x1
 	.byte	0x9c
 	.byte	0x1
-	.uaword	0xa156
-	.uleb128 0x52
+	.uaword	0xa140
+	.uleb128 0x4f
 	.string	"nowState"
 	.byte	0x1
 	.uahalf	0x1d7
@@ -17330,7 +17293,7 @@ g_VadcAutoScan:
 	.uaword	0x20a
 	.uaword	.LLST59
 	.byte	0
-	.uleb128 0x53
+	.uleb128 0x50
 	.byte	0x1
 	.string	"IsLimitZone"
 	.byte	0x1
@@ -17341,7 +17304,7 @@ g_VadcAutoScan:
 	.byte	0x1
 	.byte	0x9c
 	.byte	0x1
-	.uleb128 0x53
+	.uleb128 0x50
 	.byte	0x1
 	.string	"GetDashLine"
 	.byte	0x1
@@ -17352,27 +17315,27 @@ g_VadcAutoScan:
 	.byte	0x1
 	.byte	0x9c
 	.byte	0x1
-	.uleb128 0x54
+	.uleb128 0x51
 	.uaword	0x956c
 	.uaword	.LFB441
 	.uaword	.LFE441
 	.byte	0x1
 	.byte	0x9c
 	.byte	0x1
-	.uleb128 0x55
-	.uaword	0x957a
+	.uleb128 0x52
+	.uaword	0x958b
 	.uaword	.LFB442
 	.uaword	.LFE442
 	.byte	0x1
 	.byte	0x9c
 	.byte	0x1
-	.uaword	0xa1c2
+	.uaword	0xa1ac
 	.uleb128 0x34
-	.uaword	0x9589
+	.uaword	0x95ab
 	.byte	0x1
 	.byte	0x54
 	.byte	0
-	.uleb128 0x53
+	.uleb128 0x50
 	.byte	0x1
 	.string	"GetDottedLine"
 	.byte	0x1
@@ -17383,50 +17346,50 @@ g_VadcAutoScan:
 	.byte	0x1
 	.byte	0x9c
 	.byte	0x1
-	.uleb128 0x55
-	.uaword	0x9596
+	.uleb128 0x52
+	.uaword	0x95b8
 	.uaword	.LFB444
 	.uaword	.LFE444
 	.byte	0x1
 	.byte	0x9c
 	.byte	0x1
-	.uaword	0xa200
+	.uaword	0xa1ea
 	.uleb128 0x34
-	.uaword	0x95a5
+	.uaword	0x95d1
 	.byte	0x1
 	.byte	0x54
 	.byte	0
 	.uleb128 0x3
 	.uaword	0x344
-	.uaword	0xa210
+	.uaword	0xa1fa
 	.uleb128 0x4
 	.uaword	0x268
 	.byte	0x2
 	.byte	0
-	.uleb128 0x56
+	.uleb128 0x53
 	.string	"IfxCpu_cfg_indexMap"
 	.byte	0x8
 	.byte	0x96
-	.uaword	0xa22d
+	.uaword	0xa217
 	.byte	0x1
 	.byte	0x1
 	.uleb128 0x20
-	.uaword	0xa200
-	.uleb128 0x56
+	.uaword	0xa1ea
+	.uleb128 0x53
 	.string	"Assert_verboseLevel"
 	.byte	0xd
 	.byte	0x79
 	.uaword	0x2a5
 	.byte	0x1
 	.byte	0x1
-	.uleb128 0x56
+	.uleb128 0x53
 	.string	"IfxPort_P14_0"
 	.byte	0xe
 	.byte	0x62
 	.uaword	0x2bd6
 	.byte	0x1
 	.byte	0x1
-	.uleb128 0x56
+	.uleb128 0x53
 	.string	"IfxPort_P14_1"
 	.byte	0xe
 	.byte	0x63
@@ -17435,19 +17398,19 @@ g_VadcAutoScan:
 	.byte	0x1
 	.uleb128 0x3
 	.uaword	0x2f9
-	.uaword	0xa28d
+	.uaword	0xa277
 	.uleb128 0x4
 	.uaword	0x268
 	.byte	0xa
 	.byte	0
-	.uleb128 0x56
+	.uleb128 0x53
 	.string	"TimeConst"
 	.byte	0xf
 	.byte	0x94
-	.uaword	0xa27d
+	.uaword	0xa267
 	.byte	0x1
 	.byte	0x1
-	.uleb128 0x57
+	.uleb128 0x54
 	.string	"IR_LineScan"
 	.byte	0x1
 	.byte	0x2d
@@ -17456,7 +17419,7 @@ g_VadcAutoScan:
 	.byte	0x5
 	.byte	0x3
 	.uaword	IR_LineScan
-	.uleb128 0x57
+	.uleb128 0x54
 	.string	"g_VadcAutoScan"
 	.byte	0x1
 	.byte	0x2b
@@ -17465,7 +17428,7 @@ g_VadcAutoScan:
 	.byte	0x5
 	.byte	0x3
 	.uaword	g_VadcAutoScan
-	.uleb128 0x57
+	.uleb128 0x54
 	.string	"FILTERED_CENTER_LINE"
 	.byte	0x1
 	.byte	0x3f
@@ -17474,7 +17437,7 @@ g_VadcAutoScan:
 	.byte	0x5
 	.byte	0x3
 	.uaword	FILTERED_CENTER_LINE
-	.uleb128 0x57
+	.uleb128 0x54
 	.string	"Zero_center_line"
 	.byte	0x1
 	.byte	0x40
@@ -17483,7 +17446,7 @@ g_VadcAutoScan:
 	.byte	0x5
 	.byte	0x3
 	.uaword	Zero_center_line
-	.uleb128 0x57
+	.uleb128 0x54
 	.string	"countPassedObject"
 	.byte	0x1
 	.byte	0x42
@@ -17492,7 +17455,7 @@ g_VadcAutoScan:
 	.byte	0x5
 	.byte	0x3
 	.uaword	countPassedObject
-	.uleb128 0x57
+	.uleb128 0x54
 	.string	"dottedLine"
 	.byte	0x1
 	.byte	0x43
@@ -17503,7 +17466,7 @@ g_VadcAutoScan:
 	.uaword	dottedLine
 	.uleb128 0x3
 	.uaword	0x937f
-	.uaword	0xa368
+	.uaword	0xa352
 	.uleb128 0x4
 	.uaword	0x268
 	.byte	0x2
@@ -17511,16 +17474,16 @@ g_VadcAutoScan:
 	.uaword	0x268
 	.byte	0x4
 	.byte	0
-	.uleb128 0x57
+	.uleb128 0x54
 	.string	"cam_info"
 	.byte	0x1
 	.byte	0xde
-	.uaword	0xa352
+	.uaword	0xa33c
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
 	.uaword	cam_info
-	.uleb128 0x57
+	.uleb128 0x54
 	.string	"debugLine"
 	.byte	0x1
 	.byte	0xdf
@@ -17529,7 +17492,7 @@ g_VadcAutoScan:
 	.byte	0x5
 	.byte	0x3
 	.uaword	debugLine
-	.uleb128 0x57
+	.uleb128 0x54
 	.string	"speedLimitLine"
 	.byte	0x1
 	.byte	0xdf
@@ -17538,7 +17501,7 @@ g_VadcAutoScan:
 	.byte	0x5
 	.byte	0x3
 	.uaword	speedLimitLine
-	.uleb128 0x57
+	.uleb128 0x54
 	.string	"nowIndex"
 	.byte	0x1
 	.byte	0xe0
@@ -17547,7 +17510,7 @@ g_VadcAutoScan:
 	.byte	0x5
 	.byte	0x3
 	.uaword	nowIndex
-	.uleb128 0x57
+	.uleb128 0x54
 	.string	"cntTotal"
 	.byte	0x1
 	.byte	0xe1
@@ -17556,7 +17519,7 @@ g_VadcAutoScan:
 	.byte	0x5
 	.byte	0x3
 	.uaword	cntTotal
-	.uleb128 0x57
+	.uleb128 0x54
 	.string	"cntLeft"
 	.byte	0x1
 	.byte	0xe1
@@ -17565,7 +17528,7 @@ g_VadcAutoScan:
 	.byte	0x5
 	.byte	0x3
 	.uaword	cntLeft
-	.uleb128 0x57
+	.uleb128 0x54
 	.string	"isLimitZone"
 	.byte	0x1
 	.byte	0xe2
@@ -17574,7 +17537,7 @@ g_VadcAutoScan:
 	.byte	0x5
 	.byte	0x3
 	.uaword	isLimitZone
-	.uleb128 0x57
+	.uleb128 0x54
 	.string	"dashLine"
 	.byte	0x1
 	.byte	0xe2
@@ -17583,7 +17546,7 @@ g_VadcAutoScan:
 	.byte	0x5
 	.byte	0x3
 	.uaword	dashLine
-	.uleb128 0x57
+	.uleb128 0x54
 	.string	"leftIndexCount"
 	.byte	0x1
 	.byte	0xe3
@@ -17592,7 +17555,7 @@ g_VadcAutoScan:
 	.byte	0x5
 	.byte	0x3
 	.uaword	leftIndexCount
-	.uleb128 0x57
+	.uleb128 0x54
 	.string	"rightIndexCount"
 	.byte	0x1
 	.byte	0xe3
@@ -17601,7 +17564,7 @@ g_VadcAutoScan:
 	.byte	0x5
 	.byte	0x3
 	.uaword	rightIndexCount
-	.uleb128 0x57
+	.uleb128 0x54
 	.string	"zeroCnt"
 	.byte	0x1
 	.byte	0xe4
@@ -17610,7 +17573,7 @@ g_VadcAutoScan:
 	.byte	0x5
 	.byte	0x3
 	.uaword	zeroCnt
-	.uleb128 0x57
+	.uleb128 0x54
 	.string	"g_cameraDirection"
 	.byte	0x1
 	.byte	0xe5
@@ -17619,49 +17582,49 @@ g_VadcAutoScan:
 	.byte	0x5
 	.byte	0x3
 	.uaword	g_cameraDirection
-	.uleb128 0x58
+	.uleb128 0x55
 	.byte	0x1
 	.string	"waitTime"
 	.byte	0xf
 	.byte	0xaa
 	.byte	0x1
 	.byte	0x1
-	.uaword	0xa4b3
-	.uleb128 0x59
+	.uaword	0xa49d
+	.uleb128 0x56
 	.uaword	0x2f9
 	.byte	0
-	.uleb128 0x5a
+	.uleb128 0x57
 	.byte	0x1
 	.string	"IfxVadc_setScan"
 	.byte	0x3
 	.uahalf	0x39d
 	.byte	0x1
 	.byte	0x1
-	.uaword	0xa4de
-	.uleb128 0x59
+	.uaword	0xa4c8
+	.uleb128 0x56
 	.uaword	0x8df6
-	.uleb128 0x59
+	.uleb128 0x56
 	.uaword	0x2a5
-	.uleb128 0x59
+	.uleb128 0x56
 	.uaword	0x2a5
 	.byte	0
-	.uleb128 0x5a
+	.uleb128 0x57
 	.byte	0x1
 	.string	"IfxVadc_Adc_initModuleConfig"
 	.byte	0x4
 	.uahalf	0x28c
 	.byte	0x1
 	.byte	0x1
-	.uaword	0xa511
-	.uleb128 0x59
-	.uaword	0xa511
-	.uleb128 0x59
+	.uaword	0xa4fb
+	.uleb128 0x56
+	.uaword	0xa4fb
+	.uleb128 0x56
 	.uaword	0x795d
 	.byte	0
 	.uleb128 0x6
 	.byte	0x4
 	.uaword	0x91e8
-	.uleb128 0x5b
+	.uleb128 0x58
 	.byte	0x1
 	.string	"IfxVadc_Adc_initModule"
 	.byte	0x4
@@ -17669,37 +17632,37 @@ g_VadcAutoScan:
 	.byte	0x1
 	.uaword	0x88eb
 	.byte	0x1
-	.uaword	0xa548
-	.uleb128 0x59
-	.uaword	0xa548
-	.uleb128 0x59
-	.uaword	0xa54e
+	.uaword	0xa532
+	.uleb128 0x56
+	.uaword	0xa532
+	.uleb128 0x56
+	.uaword	0xa538
 	.byte	0
 	.uleb128 0x6
 	.byte	0x4
 	.uaword	0x8ba3
 	.uleb128 0x6
 	.byte	0x4
-	.uaword	0xa554
+	.uaword	0xa53e
 	.uleb128 0x20
 	.uaword	0x91e8
-	.uleb128 0x5a
+	.uleb128 0x57
 	.byte	0x1
 	.string	"IfxVadc_Adc_initGroupConfig"
 	.byte	0x4
 	.uahalf	0x33d
 	.byte	0x1
 	.byte	0x1
-	.uaword	0xa58b
-	.uleb128 0x59
-	.uaword	0xa58b
-	.uleb128 0x59
-	.uaword	0xa548
+	.uaword	0xa575
+	.uleb128 0x56
+	.uaword	0xa575
+	.uleb128 0x56
+	.uaword	0xa532
 	.byte	0
 	.uleb128 0x6
 	.byte	0x4
 	.uaword	0x92ce
-	.uleb128 0x5b
+	.uleb128 0x58
 	.byte	0x1
 	.string	"IfxVadc_Adc_initGroup"
 	.byte	0x4
@@ -17707,34 +17670,34 @@ g_VadcAutoScan:
 	.byte	0x1
 	.uaword	0x88eb
 	.byte	0x1
-	.uaword	0xa5c1
-	.uleb128 0x59
+	.uaword	0xa5ab
+	.uleb128 0x56
 	.uaword	0x94c9
-	.uleb128 0x59
-	.uaword	0xa5c1
+	.uleb128 0x56
+	.uaword	0xa5ab
 	.byte	0
 	.uleb128 0x6
 	.byte	0x4
-	.uaword	0xa5c7
+	.uaword	0xa5b1
 	.uleb128 0x20
 	.uaword	0x92ce
-	.uleb128 0x5a
+	.uleb128 0x57
 	.byte	0x1
 	.string	"IfxVadc_Adc_initChannelConfig"
 	.byte	0x4
 	.uahalf	0x388
 	.byte	0x1
 	.byte	0x1
-	.uaword	0xa600
-	.uleb128 0x59
-	.uaword	0xa600
-	.uleb128 0x59
+	.uaword	0xa5ea
+	.uleb128 0x56
+	.uaword	0xa5ea
+	.uleb128 0x56
 	.uaword	0x8f28
 	.byte	0
 	.uleb128 0x6
 	.byte	0x4
 	.uaword	0x9105
-	.uleb128 0x5b
+	.uleb128 0x58
 	.byte	0x1
 	.string	"IfxVadc_Adc_initChannel"
 	.byte	0x4
@@ -17742,51 +17705,51 @@ g_VadcAutoScan:
 	.byte	0x1
 	.uaword	0x88eb
 	.byte	0x1
-	.uaword	0xa638
-	.uleb128 0x59
+	.uaword	0xa622
+	.uleb128 0x56
 	.uaword	0x947f
-	.uleb128 0x59
-	.uaword	0xa638
+	.uleb128 0x56
+	.uaword	0xa622
 	.byte	0
 	.uleb128 0x6
 	.byte	0x4
-	.uaword	0xa63e
+	.uaword	0xa628
 	.uleb128 0x20
 	.uaword	0x9105
-	.uleb128 0x5c
+	.uleb128 0x59
 	.byte	0x1
 	.string	"initTime"
 	.byte	0xf
 	.byte	0xa1
 	.byte	0x1
 	.byte	0x1
-	.uleb128 0x5a
+	.uleb128 0x57
 	.byte	0x1
 	.string	"IfxPort_setPinMode"
 	.byte	0x2
 	.uahalf	0x163
 	.byte	0x1
 	.byte	0x1
-	.uaword	0xa680
-	.uleb128 0x59
+	.uaword	0xa66a
+	.uleb128 0x56
 	.uaword	0x26c2
-	.uleb128 0x59
+	.uleb128 0x56
 	.uaword	0x27c
-	.uleb128 0x59
+	.uleb128 0x56
 	.uaword	0x2968
 	.byte	0
-	.uleb128 0x5d
+	.uleb128 0x5a
 	.byte	0x1
 	.string	"IfxPort_setPinPadDriver"
 	.byte	0x2
 	.uahalf	0x172
 	.byte	0x1
 	.byte	0x1
-	.uleb128 0x59
+	.uleb128 0x56
 	.uaword	0x26c2
-	.uleb128 0x59
+	.uleb128 0x56
 	.uaword	0x27c
-	.uleb128 0x59
+	.uleb128 0x56
 	.uaword	0x2b1d
 	.byte	0
 	.byte	0
@@ -18344,7 +18307,7 @@ g_VadcAutoScan:
 	.uleb128 0x3f
 	.uleb128 0xc
 	.uleb128 0x3
-	.uleb128 0xe
+	.uleb128 0x8
 	.uleb128 0x3a
 	.uleb128 0xb
 	.uleb128 0x3b
@@ -18361,7 +18324,7 @@ g_VadcAutoScan:
 	.uleb128 0x3f
 	.uleb128 0xc
 	.uleb128 0x3
-	.uleb128 0xe
+	.uleb128 0x8
 	.uleb128 0x3a
 	.uleb128 0xb
 	.uleb128 0x3b
@@ -18769,30 +18732,6 @@ g_VadcAutoScan:
 	.byte	0
 	.byte	0
 	.uleb128 0x47
-	.uleb128 0x2e
-	.byte	0x1
-	.uleb128 0x3f
-	.uleb128 0xc
-	.uleb128 0x3
-	.uleb128 0xe
-	.uleb128 0x3a
-	.uleb128 0xb
-	.uleb128 0x3b
-	.uleb128 0x5
-	.uleb128 0x49
-	.uleb128 0x13
-	.uleb128 0x3c
-	.uleb128 0xc
-	.uleb128 0x1
-	.uleb128 0x13
-	.byte	0
-	.byte	0
-	.uleb128 0x48
-	.uleb128 0x18
-	.byte	0
-	.byte	0
-	.byte	0
-	.uleb128 0x49
 	.uleb128 0x1d
 	.byte	0x1
 	.uleb128 0x31
@@ -18809,7 +18748,7 @@ g_VadcAutoScan:
 	.uleb128 0x13
 	.byte	0
 	.byte	0
-	.uleb128 0x4a
+	.uleb128 0x48
 	.uleb128 0x34
 	.byte	0
 	.uleb128 0x3
@@ -18824,7 +18763,7 @@ g_VadcAutoScan:
 	.uleb128 0x6
 	.byte	0
 	.byte	0
-	.uleb128 0x4b
+	.uleb128 0x49
 	.uleb128 0x4109
 	.byte	0x1
 	.uleb128 0x11
@@ -18835,7 +18774,7 @@ g_VadcAutoScan:
 	.uleb128 0x13
 	.byte	0
 	.byte	0
-	.uleb128 0x4c
+	.uleb128 0x4a
 	.uleb128 0x4109
 	.byte	0
 	.uleb128 0x11
@@ -18846,7 +18785,7 @@ g_VadcAutoScan:
 	.uleb128 0x13
 	.byte	0
 	.byte	0
-	.uleb128 0x4d
+	.uleb128 0x4b
 	.uleb128 0x2e
 	.byte	0x1
 	.uleb128 0x3f
@@ -18873,7 +18812,7 @@ g_VadcAutoScan:
 	.uleb128 0x13
 	.byte	0
 	.byte	0
-	.uleb128 0x4e
+	.uleb128 0x4c
 	.uleb128 0x34
 	.byte	0
 	.uleb128 0x3
@@ -18888,14 +18827,7 @@ g_VadcAutoScan:
 	.uleb128 0x6
 	.byte	0
 	.byte	0
-	.uleb128 0x4f
-	.uleb128 0xb
-	.byte	0x1
-	.uleb128 0x55
-	.uleb128 0x6
-	.byte	0
-	.byte	0
-	.uleb128 0x50
+	.uleb128 0x4d
 	.uleb128 0x1d
 	.byte	0
 	.uleb128 0x31
@@ -18910,7 +18842,7 @@ g_VadcAutoScan:
 	.uleb128 0x5
 	.byte	0
 	.byte	0
-	.uleb128 0x51
+	.uleb128 0x4e
 	.uleb128 0x5
 	.byte	0
 	.uleb128 0x3
@@ -18925,7 +18857,7 @@ g_VadcAutoScan:
 	.uleb128 0xa
 	.byte	0
 	.byte	0
-	.uleb128 0x52
+	.uleb128 0x4f
 	.uleb128 0x5
 	.byte	0
 	.uleb128 0x3
@@ -18940,7 +18872,7 @@ g_VadcAutoScan:
 	.uleb128 0x6
 	.byte	0
 	.byte	0
-	.uleb128 0x53
+	.uleb128 0x50
 	.uleb128 0x2e
 	.byte	0
 	.uleb128 0x3f
@@ -18963,7 +18895,7 @@ g_VadcAutoScan:
 	.uleb128 0xc
 	.byte	0
 	.byte	0
-	.uleb128 0x54
+	.uleb128 0x51
 	.uleb128 0x2e
 	.byte	0
 	.uleb128 0x31
@@ -18978,7 +18910,7 @@ g_VadcAutoScan:
 	.uleb128 0xc
 	.byte	0
 	.byte	0
-	.uleb128 0x55
+	.uleb128 0x52
 	.uleb128 0x2e
 	.byte	0x1
 	.uleb128 0x31
@@ -18995,7 +18927,7 @@ g_VadcAutoScan:
 	.uleb128 0x13
 	.byte	0
 	.byte	0
-	.uleb128 0x56
+	.uleb128 0x53
 	.uleb128 0x34
 	.byte	0
 	.uleb128 0x3
@@ -19012,7 +18944,7 @@ g_VadcAutoScan:
 	.uleb128 0xc
 	.byte	0
 	.byte	0
-	.uleb128 0x57
+	.uleb128 0x54
 	.uleb128 0x34
 	.byte	0
 	.uleb128 0x3
@@ -19029,6 +18961,51 @@ g_VadcAutoScan:
 	.uleb128 0xa
 	.byte	0
 	.byte	0
+	.uleb128 0x55
+	.uleb128 0x2e
+	.byte	0x1
+	.uleb128 0x3f
+	.uleb128 0xc
+	.uleb128 0x3
+	.uleb128 0x8
+	.uleb128 0x3a
+	.uleb128 0xb
+	.uleb128 0x3b
+	.uleb128 0xb
+	.uleb128 0x27
+	.uleb128 0xc
+	.uleb128 0x3c
+	.uleb128 0xc
+	.uleb128 0x1
+	.uleb128 0x13
+	.byte	0
+	.byte	0
+	.uleb128 0x56
+	.uleb128 0x5
+	.byte	0
+	.uleb128 0x49
+	.uleb128 0x13
+	.byte	0
+	.byte	0
+	.uleb128 0x57
+	.uleb128 0x2e
+	.byte	0x1
+	.uleb128 0x3f
+	.uleb128 0xc
+	.uleb128 0x3
+	.uleb128 0x8
+	.uleb128 0x3a
+	.uleb128 0xb
+	.uleb128 0x3b
+	.uleb128 0x5
+	.uleb128 0x27
+	.uleb128 0xc
+	.uleb128 0x3c
+	.uleb128 0xc
+	.uleb128 0x1
+	.uleb128 0x13
+	.byte	0
+	.byte	0
 	.uleb128 0x58
 	.uleb128 0x2e
 	.byte	0x1
@@ -19039,9 +19016,11 @@ g_VadcAutoScan:
 	.uleb128 0x3a
 	.uleb128 0xb
 	.uleb128 0x3b
-	.uleb128 0xb
+	.uleb128 0x5
 	.uleb128 0x27
 	.uleb128 0xc
+	.uleb128 0x49
+	.uleb128 0x13
 	.uleb128 0x3c
 	.uleb128 0xc
 	.uleb128 0x1
@@ -19049,70 +19028,23 @@ g_VadcAutoScan:
 	.byte	0
 	.byte	0
 	.uleb128 0x59
-	.uleb128 0x5
+	.uleb128 0x2e
 	.byte	0
-	.uleb128 0x49
-	.uleb128 0x13
+	.uleb128 0x3f
+	.uleb128 0xc
+	.uleb128 0x3
+	.uleb128 0x8
+	.uleb128 0x3a
+	.uleb128 0xb
+	.uleb128 0x3b
+	.uleb128 0xb
+	.uleb128 0x27
+	.uleb128 0xc
+	.uleb128 0x3c
+	.uleb128 0xc
 	.byte	0
 	.byte	0
 	.uleb128 0x5a
-	.uleb128 0x2e
-	.byte	0x1
-	.uleb128 0x3f
-	.uleb128 0xc
-	.uleb128 0x3
-	.uleb128 0x8
-	.uleb128 0x3a
-	.uleb128 0xb
-	.uleb128 0x3b
-	.uleb128 0x5
-	.uleb128 0x27
-	.uleb128 0xc
-	.uleb128 0x3c
-	.uleb128 0xc
-	.uleb128 0x1
-	.uleb128 0x13
-	.byte	0
-	.byte	0
-	.uleb128 0x5b
-	.uleb128 0x2e
-	.byte	0x1
-	.uleb128 0x3f
-	.uleb128 0xc
-	.uleb128 0x3
-	.uleb128 0x8
-	.uleb128 0x3a
-	.uleb128 0xb
-	.uleb128 0x3b
-	.uleb128 0x5
-	.uleb128 0x27
-	.uleb128 0xc
-	.uleb128 0x49
-	.uleb128 0x13
-	.uleb128 0x3c
-	.uleb128 0xc
-	.uleb128 0x1
-	.uleb128 0x13
-	.byte	0
-	.byte	0
-	.uleb128 0x5c
-	.uleb128 0x2e
-	.byte	0
-	.uleb128 0x3f
-	.uleb128 0xc
-	.uleb128 0x3
-	.uleb128 0x8
-	.uleb128 0x3a
-	.uleb128 0xb
-	.uleb128 0x3b
-	.uleb128 0xb
-	.uleb128 0x27
-	.uleb128 0xc
-	.uleb128 0x3c
-	.uleb128 0xc
-	.byte	0
-	.byte	0
-	.uleb128 0x5d
 	.uleb128 0x2e
 	.byte	0x1
 	.uleb128 0x3f
@@ -20194,140 +20126,134 @@ g_VadcAutoScan:
 	.uaword	0
 .section .debug_ranges,"",@progbits
 .Ldebug_ranges0:
-	.uaword	.LBB60
-	.uaword	.LBE60
+	.uaword	.LBB59
+	.uaword	.LBE59
+	.uaword	.LBB64
+	.uaword	.LBE64
 	.uaword	.LBB65
 	.uaword	.LBE65
 	.uaword	.LBB66
 	.uaword	.LBE66
+	.uaword	0
+	.uaword	0
 	.uaword	.LBB67
 	.uaword	.LBE67
-	.uaword	0
-	.uaword	0
-	.uaword	.LBB68
-	.uaword	.LBE68
+	.uaword	.LBB72
+	.uaword	.LBE72
 	.uaword	.LBB73
 	.uaword	.LBE73
 	.uaword	.LBB74
 	.uaword	.LBE74
+	.uaword	0
+	.uaword	0
 	.uaword	.LBB75
 	.uaword	.LBE75
-	.uaword	0
-	.uaword	0
-	.uaword	.LBB76
-	.uaword	.LBE76
+	.uaword	.LBB80
+	.uaword	.LBE80
 	.uaword	.LBB81
 	.uaword	.LBE81
+	.uaword	.LBB86
+	.uaword	.LBE86
+	.uaword	0
+	.uaword	0
 	.uaword	.LBB82
 	.uaword	.LBE82
-	.uaword	.LBB87
-	.uaword	.LBE87
-	.uaword	0
-	.uaword	0
-	.uaword	.LBB83
-	.uaword	.LBE83
+	.uaword	.LBB104
+	.uaword	.LBE104
 	.uaword	.LBB105
 	.uaword	.LBE105
-	.uaword	.LBB106
-	.uaword	.LBE106
 	.uaword	0
 	.uaword	0
-	.uaword	.LBB88
-	.uaword	.LBE88
+	.uaword	.LBB87
+	.uaword	.LBE87
+	.uaword	.LBB90
+	.uaword	.LBE90
+	.uaword	0
+	.uaword	0
 	.uaword	.LBB91
 	.uaword	.LBE91
-	.uaword	0
-	.uaword	0
-	.uaword	.LBB92
-	.uaword	.LBE92
+	.uaword	.LBB95
+	.uaword	.LBE95
 	.uaword	.LBB96
 	.uaword	.LBE96
+	.uaword	0
+	.uaword	0
 	.uaword	.LBB97
 	.uaword	.LBE97
+	.uaword	.LBB100
+	.uaword	.LBE100
 	.uaword	0
 	.uaword	0
-	.uaword	.LBB98
-	.uaword	.LBE98
-	.uaword	.LBB101
-	.uaword	.LBE101
+	.uaword	.LBB106
+	.uaword	.LBE106
+	.uaword	.LBB109
+	.uaword	.LBE109
 	.uaword	0
 	.uaword	0
-	.uaword	.LBB107
-	.uaword	.LBE107
 	.uaword	.LBB110
 	.uaword	.LBE110
+	.uaword	.LBB113
+	.uaword	.LBE113
 	.uaword	0
 	.uaword	0
-	.uaword	.LBB111
-	.uaword	.LBE111
 	.uaword	.LBB114
 	.uaword	.LBE114
+	.uaword	.LBB117
+	.uaword	.LBE117
 	.uaword	0
 	.uaword	0
-	.uaword	.LBB115
-	.uaword	.LBE115
 	.uaword	.LBB118
 	.uaword	.LBE118
+	.uaword	.LBB122
+	.uaword	.LBE122
 	.uaword	0
 	.uaword	0
-	.uaword	.LBB119
-	.uaword	.LBE119
 	.uaword	.LBB123
 	.uaword	.LBE123
-	.uaword	0
-	.uaword	0
-	.uaword	.LBB124
-	.uaword	.LBE124
+	.uaword	.LBB128
+	.uaword	.LBE128
 	.uaword	.LBB129
 	.uaword	.LBE129
 	.uaword	.LBB130
 	.uaword	.LBE130
+	.uaword	0
+	.uaword	0
 	.uaword	.LBB131
 	.uaword	.LBE131
+	.uaword	.LBB134
+	.uaword	.LBE134
 	.uaword	0
 	.uaword	0
-	.uaword	.LBB132
-	.uaword	.LBE132
-	.uaword	.LBB135
-	.uaword	.LBE135
+	.uaword	.LBB139
+	.uaword	.LBE139
+	.uaword	.LBB142
+	.uaword	.LBE142
 	.uaword	0
 	.uaword	0
-	.uaword	.LBB140
-	.uaword	.LBE140
 	.uaword	.LBB143
 	.uaword	.LBE143
+	.uaword	.LBB146
+	.uaword	.LBE146
 	.uaword	0
 	.uaword	0
-	.uaword	.LBB144
-	.uaword	.LBE144
 	.uaword	.LBB147
 	.uaword	.LBE147
+	.uaword	.LBB150
+	.uaword	.LBE150
 	.uaword	0
 	.uaword	0
-	.uaword	.LBB148
-	.uaword	.LBE148
 	.uaword	.LBB151
 	.uaword	.LBE151
-	.uaword	0
-	.uaword	0
-	.uaword	.LBB152
-	.uaword	.LBE152
+	.uaword	.LBB155
+	.uaword	.LBE155
 	.uaword	.LBB156
 	.uaword	.LBE156
+	.uaword	0
+	.uaword	0
 	.uaword	.LBB157
 	.uaword	.LBE157
-	.uaword	0
-	.uaword	0
-	.uaword	.LBB158
-	.uaword	.LBE158
-	.uaword	.LBB161
-	.uaword	.LBE161
-	.uaword	0
-	.uaword	0
-	.uaword	.LBB162
-	.uaword	.LBE162
-	.uaword	.LBB165
-	.uaword	.LBE165
+	.uaword	.LBB160
+	.uaword	.LBE160
 	.uaword	0
 	.uaword	0
 	.uaword	.LFB428
@@ -20385,10 +20311,6 @@ g_VadcAutoScan:
 	.string	"group"
 .LASF42:
 	.string	"channels"
-.LASF47:
-	.string	"GetCountPassedObject"
-.LASF43:
-	.string	"SetCountPassedObject"
 .LASF38:
 	.string	"requestSlotPrio"
 .LASF41:
@@ -20429,12 +20351,10 @@ g_VadcAutoScan:
 	.string	"reserved_29"
 .LASF36:
 	.string	"reserved_1A0"
-.LASF46:
+.LASF44:
 	.string	"zeroCount"
 .LASF30:
 	.string	"REQCHNR"
-.LASF44:
-	.string	"SetDottedLine"
 .LASF1:
 	.string	"reserved_0"
 .LASF33:
@@ -20463,7 +20383,7 @@ g_VadcAutoScan:
 	.string	"requestSlotStartMode"
 .LASF35:
 	.string	"reserved_144"
-.LASF45:
+.LASF43:
 	.string	"_line"
 .LASF32:
 	.string	"RESULT"

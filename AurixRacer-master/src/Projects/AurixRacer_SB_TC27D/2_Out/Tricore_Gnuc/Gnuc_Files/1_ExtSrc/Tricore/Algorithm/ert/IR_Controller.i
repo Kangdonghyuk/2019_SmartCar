@@ -15668,6 +15668,10 @@ extern int IsLimitZone();
 extern int GetDashLine();
 extern int FindCenter(int(*_line)[128]);
 extern int FindOneLine(int line[128]);
+extern int GetCountPassedObject();
+extern void SetCountPassedObject(int cpo);
+extern int GetDottedLine();
+extern void SetDottedLine(int dl);
 # 5 "../../MyApp/AurixRacer/0_Src/AppSw/Tricore/SnsAct/Basic.h" 2
 # 1 "../../MyApp/AurixRacer/0_Src/AppSw/Tricore/SnsAct/BasicPort.h" 1
 # 13 "../../MyApp/AurixRacer/0_Src/AppSw/Tricore/SnsAct/BasicPort.h"
