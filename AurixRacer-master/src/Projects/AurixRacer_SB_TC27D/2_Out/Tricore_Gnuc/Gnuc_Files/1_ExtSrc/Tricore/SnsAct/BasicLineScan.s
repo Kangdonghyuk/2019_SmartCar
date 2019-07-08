@@ -8,199 +8,199 @@
 BasicLineScan_run:
 .LFB428:
 	.file 1 "../../MyApp/AurixRacer/0_Src/AppSw/Tricore/SnsAct/BasicLineScan.c"
-	.loc 1 167 0
 	.loc 1 171 0
+	.loc 1 175 0
 	movh	%d13, hi:IfxPort_P14_0
 	mov.a	%a2, %d13
-.LBB53:
-.LBB54:
+.LBB60:
+.LBB61:
 	.file 2 "../../_LibSrc/iLLD_1_0_1_8_0__TC27D/Src/BaseSw/iLLD/TC27D/Tricore/Port/Std/IfxPort.h"
 	.loc 2 574 0
 	mov	%d15, 1
-.LBE54:
-.LBE53:
-	.loc 1 171 0
-	lea	%a14, [%a2] lo:IfxPort_P14_0
-.LBB58:
-.LBB55:
-	.loc 2 574 0
-	ld.bu	%d2, [%a14] 4
-.LBE55:
-.LBE58:
-	.loc 1 171 0
-	ld.a	%a15, [%a2] lo:IfxPort_P14_0
-.LVL0:
-.LBB59:
-.LBB56:
-	.loc 2 574 0
-	sh	%d15, %d15, %d2
-.LBE56:
-.LBE59:
-	.loc 1 172 0
-	movh	%d12, hi:IfxPort_P14_1
-	.loc 1 173 0
-	movh.a	%a12, hi:TimeConst
-.LBB60:
-.LBB57:
-	.loc 2 574 0
-	st.w	[%a15] 4, %d15
-.LVL1:
-.LBE57:
+.LBE61:
 .LBE60:
-	.loc 1 172 0
-	mov.a	%a15, %d12
-.LVL2:
-.LBB61:
+	.loc 1 175 0
+	lea	%a14, [%a2] lo:IfxPort_P14_0
+.LBB65:
 .LBB62:
 	.loc 2 574 0
-	movh	%d15, 1
+	ld.bu	%d2, [%a14] 4
 .LBE62:
-.LBE61:
-	.loc 1 172 0
-	lea	%a13, [%a15] lo:IfxPort_P14_1
+.LBE65:
+	.loc 1 175 0
+	ld.a	%a15, [%a2] lo:IfxPort_P14_0
+.LVL0:
 .LBB66:
 .LBB63:
 	.loc 2 574 0
-	ld.bu	%d2, [%a13] 4
+	sh	%d15, %d15, %d2
 .LBE63:
 .LBE66:
-	.loc 1 172 0
-	ld.a	%a15, [%a15] lo:IfxPort_P14_1
-.LVL3:
+	.loc 1 176 0
+	movh	%d12, hi:IfxPort_P14_1
+	.loc 1 177 0
+	movh.a	%a12, hi:TimeConst
 .LBB67:
 .LBB64:
 	.loc 2 574 0
-	sh	%d2, %d15, %d2
+	st.w	[%a15] 4, %d15
+.LVL1:
 .LBE64:
 .LBE67:
-	.loc 1 173 0
+	.loc 1 176 0
+	mov.a	%a15, %d12
+.LVL2:
+.LBB68:
+.LBB69:
+	.loc 2 574 0
+	movh	%d15, 1
+.LBE69:
+.LBE68:
+	.loc 1 176 0
+	lea	%a13, [%a15] lo:IfxPort_P14_1
+.LBB73:
+.LBB70:
+	.loc 2 574 0
+	ld.bu	%d2, [%a13] 4
+.LBE70:
+.LBE73:
+	.loc 1 176 0
+	ld.a	%a15, [%a15] lo:IfxPort_P14_1
+.LVL3:
+.LBB74:
+.LBB71:
+	.loc 2 574 0
+	sh	%d2, %d15, %d2
+.LBE71:
+.LBE74:
+	.loc 1 177 0
 	lea	%a12, [%a12] lo:TimeConst
 	movh	%d10, hi:g_VadcAutoScan
-.LBB68:
-.LBB65:
+.LBB75:
+.LBB72:
 	.loc 2 574 0
 	st.w	[%a15] 4, %d2
 .LVL4:
-.LBE65:
-.LBE68:
-	.loc 1 173 0
+.LBE72:
+.LBE75:
+	.loc 1 177 0
 	ld.w	%d4, [%a12] 8
 	ld.w	%d2, [%a12] 12
 	mul.u	%e4, %d4, 5
 	addi	%d10, %d10, lo:g_VadcAutoScan
 	movh	%d11, hi:IR_LineScan
 	madd	%d5, %d5, %d2, 5
-	.loc 1 185 0
+	.loc 1 189 0
 	mov	%d8, 0
 	addi	%d11, %d11, lo:IR_LineScan
-	.loc 1 173 0
+	.loc 1 177 0
 	call	waitTime
 .LVL5:
-.LBB69:
-.LBB70:
-	.loc 2 574 0
-	ld.bu	%d3, [%a14] 4
-.LBE70:
-.LBE69:
-	.loc 1 175 0
-	mov.a	%a2, %d13
-.LBB74:
-.LBB71:
-	.loc 2 574 0
-	mov	%d2, 1
-.LBE71:
-.LBE74:
-	.loc 1 175 0
-	ld.a	%a15, [%a2] lo:IfxPort_P14_0
-.LVL6:
-.LBB75:
-.LBB72:
-	.loc 2 574 0
-	sh	%d2, %d2, %d3
-.LBE72:
-.LBE75:
-	.loc 1 176 0
-	mov.a	%a2, %d12
 .LBB76:
 .LBB77:
 	.loc 2 574 0
-	movh	%d9, 1
+	ld.bu	%d3, [%a14] 4
 .LBE77:
 .LBE76:
+	.loc 1 179 0
+	mov.a	%a2, %d13
+.LBB81:
+.LBB78:
+	.loc 2 574 0
+	mov	%d2, 1
+.LBE78:
+.LBE81:
+	.loc 1 179 0
+	ld.a	%a15, [%a2] lo:IfxPort_P14_0
+.LVL6:
+.LBB82:
+.LBB79:
+	.loc 2 574 0
+	sh	%d2, %d2, %d3
+.LBE79:
+.LBE82:
+	.loc 1 180 0
+	mov.a	%a2, %d12
+.LBB83:
+.LBB84:
+	.loc 2 574 0
+	movh	%d9, 1
+.LBE84:
+.LBE83:
+.LBB87:
 .LBB80:
-.LBB73:
 	st.w	[%a15] 4, %d2
 .LVL7:
-.LBE73:
 .LBE80:
-.LBB81:
-.LBB82:
+.LBE87:
+.LBB88:
+.LBB89:
 	ld.bu	%d3, [%a13] 4
 	mov	%d2, 1
-.LBE82:
-.LBE81:
-	.loc 1 176 0
+.LBE89:
+.LBE88:
+	.loc 1 180 0
 	ld.a	%a15, [%a2] lo:IfxPort_P14_1
 .LVL8:
-.LBB84:
-.LBB83:
+.LBB91:
+.LBB90:
 	.loc 2 574 0
 	sh	%d2, %d2, %d3
 	st.w	[%a15] 4, %d2
 .LVL9:
-.LBE83:
-.LBE84:
-	.loc 1 177 0
+.LBE90:
+.LBE91:
+	.loc 1 181 0
 	ld.w	%d4, [%a12] 8
 	ld.w	%d2, [%a12] 12
 	mul.u	%e4, %d4, 5
 	madd	%d5, %d5, %d2, 5
 	call	waitTime
 .LVL10:
-.LBB85:
-.LBB86:
+.LBB92:
+.LBB93:
 	.loc 2 574 0
 	ld.bu	%d2, [%a14] 4
-.LBE86:
-.LBE85:
-	.loc 1 179 0
+.LBE93:
+.LBE92:
+	.loc 1 183 0
 	mov.a	%a2, %d13
-.LBB89:
-.LBB87:
+.LBB96:
+.LBB94:
 	.loc 2 574 0
 	sh	%d15, %d15, %d2
-.LBE87:
-.LBE89:
-	.loc 1 179 0
+.LBE94:
+.LBE96:
+	.loc 1 183 0
 	ld.a	%a15, [%a2] lo:IfxPort_P14_0
 .LVL11:
-	.loc 1 180 0
+	.loc 1 184 0
 	mov.a	%a2, %d12
-.LBB90:
-.LBB88:
+.LBB97:
+.LBB95:
 	.loc 2 574 0
 	st.w	[%a15] 4, %d15
 .LVL12:
-.LBE88:
-.LBE90:
-.LBB91:
-.LBB92:
+.LBE95:
+.LBE97:
+.LBB98:
+.LBB99:
 	ld.bu	%d2, [%a13] 4
 	mov	%d15, 1
-.LBE92:
-.LBE91:
-	.loc 1 180 0
+.LBE99:
+.LBE98:
+	.loc 1 184 0
 	ld.a	%a15, [%a2] lo:IfxPort_P14_1
 .LVL13:
-.LBB94:
-.LBB93:
+.LBB101:
+.LBB100:
 	.loc 2 574 0
 	sh	%d15, %d15, %d2
 	st.w	[%a15] 4, %d15
 .LVL14:
-.LBE93:
-.LBE94:
-	.loc 1 181 0
+.LBE100:
+.LBE101:
+	.loc 1 185 0
 	ld.w	%d4, [%a12] 8
 	ld.w	%d15, [%a12] 12
 	mul.u	%e4, %d4, 5
@@ -210,9 +210,9 @@ BasicLineScan_run:
 	mov.a	%a2, %d10
 	ld.a	%a15, [%a2] 8
 .LVL16:
-.LBB95:
-.LBB96:
-.LBB97:
+.LBB102:
+.LBB103:
+.LBB104:
 	.file 3 "../../_LibSrc/iLLD_1_0_1_8_0__TC27D/Src/BaseSw/iLLD/TC27D/Tricore/Vadc/Std/IfxVadc.h"
 	.loc 3 2415 0
 	ld.w	%d15, [%a15] 164
@@ -220,91 +220,91 @@ BasicLineScan_run:
 	st.w	[%a15] 164, %d15
 .LVL17:
 .L4:
-.LBE97:
-.LBE96:
-.LBE95:
-.LBB98:
-.LBB78:
+.LBE104:
+.LBE103:
+.LBE102:
+.LBB105:
+.LBB85:
 	.loc 2 574 0
 	ld.bu	%d15, [%a14] 4
-.LBE78:
-.LBE98:
-	.loc 1 188 0
+.LBE85:
+.LBE105:
+	.loc 1 192 0
 	ld.a	%a15, [%a14]0
 .LVL18:
-.LBB99:
-.LBB79:
+.LBB106:
+.LBB86:
 	.loc 2 574 0
 	sh	%d15, %d9, %d15
 	st.w	[%a15] 4, %d15
 .LVL19:
-.LBE79:
-.LBE99:
-.LBB100:
-.LBB101:
+.LBE86:
+.LBE106:
+.LBB107:
+.LBB108:
 	ld.bu	%d15, [%a13] 4
-.LBE101:
-.LBE100:
-	.loc 1 189 0
+.LBE108:
+.LBE107:
+	.loc 1 193 0
 	ld.a	%a15, [%a13]0
 .LVL20:
-.LBB103:
-.LBB102:
+.LBB110:
+.LBB109:
 	.loc 2 574 0
 	sh	%d15, %d9, %d15
 	st.w	[%a15] 4, %d15
 .LVL21:
-.LBE102:
-.LBE103:
-	.loc 1 190 0
+.LBE109:
+.LBE110:
+	.loc 1 194 0
 	ld.w	%d4, [%a12] 16
 	ld.w	%d15, [%a12] 20
 	mul.u	%e4, %d4, 3
 	madd	%d5, %d5, %d15, 3
 	call	waitTime
 .LVL22:
-.LBB104:
-.LBB105:
+.LBB111:
+.LBB112:
 	.loc 2 574 0
 	ld.bu	%d15, [%a14] 4
-.LBE105:
-.LBE104:
-	.loc 1 192 0
+.LBE112:
+.LBE111:
+	.loc 1 196 0
 	ld.a	%a15, [%a14]0
 .LVL23:
-.LBB107:
-.LBB106:
+.LBB114:
+.LBB113:
 	.loc 2 574 0
 	sh	%d15, %d9, %d15
 	st.w	[%a15] 4, %d15
 .LVL24:
-.LBE106:
-.LBE107:
-.LBB108:
-.LBB109:
+.LBE113:
+.LBE114:
+.LBB115:
+.LBB116:
 	ld.bu	%d2, [%a13] 4
 	mov	%d15, 1
-.LBE109:
-.LBE108:
-	.loc 1 193 0
+.LBE116:
+.LBE115:
+	.loc 1 197 0
 	ld.a	%a15, [%a13]0
 .LVL25:
-.LBB111:
-.LBB110:
+.LBB118:
+.LBB117:
 	.loc 2 574 0
 	sh	%d15, %d15, %d2
 	st.w	[%a15] 4, %d15
 .LVL26:
-.LBE110:
-.LBE111:
-	.loc 1 194 0
+.LBE117:
+.LBE118:
+	.loc 1 198 0
 	ld.w	%d4, [%a12] 16
 	ld.w	%d5, [%a12] 20
 	dextr	%d5, %d5, %d4, 1
 	sh	%d4, 1
 	call	waitTime
 .LVL27:
-	.loc 1 197 0
+	.loc 1 201 0
 	mov	%d3, 0
 .LVL28:
 .L3:
@@ -315,10 +315,10 @@ BasicLineScan_run:
 	ld.bu	%d15, [%a2] 1
 	ld.a	%a3, [%a15] 4
 	addi	%d15, %d15, 160
-.LBB112:
-.LBB113:
-.LBB114:
-.LBB115:
+.LBB119:
+.LBB120:
+.LBB121:
+.LBB122:
 	.loc 3 2036 0
 	addsc.a	%a15, %a3, %d15, 2
 .L2:
@@ -328,82 +328,82 @@ BasicLineScan_run:
 .LVL30:
 	extr.u	%d2, %d15, 0, 16
 .LVL31:
-.LBE115:
-.LBE114:
-.LBE113:
-	.loc 1 205 0 is_stmt 1 discriminator 1
+.LBE122:
+.LBE121:
+.LBE120:
+	.loc 1 209 0 is_stmt 1 discriminator 1
 	jgez	%d15, .L2
-	.loc 1 207 0
+	.loc 1 211 0
 	madd	%d15, %d8, %d3, 128
 .LVL32:
 	mov.a	%a2, %d11
 .LVL33:
-.LBE112:
-	.loc 1 197 0
+.LBE119:
+	.loc 1 201 0
 	add	%d3, 1
 .LVL34:
-.LBB116:
-	.loc 1 207 0
+.LBB123:
+	.loc 1 211 0
 	addsc.a	%a15, %a2, %d15, 2
 	st.w	[%a15]0, %d2
-.LBE116:
-	.loc 1 197 0
+.LBE123:
+	.loc 1 201 0
 	jne	%d3, 3, .L3
-	.loc 1 185 0 discriminator 2
+	.loc 1 189 0 discriminator 2
 	add	%d8, 1
 .LVL35:
 	ne	%d15, %d8, 128
 	jnz	%d15, .L4
-.LBB117:
-.LBB118:
+.LBB124:
+.LBB125:
 	.loc 2 574 0
 	ld.bu	%d2, [%a14] 4
 .LVL36:
-.LBE118:
-.LBE117:
-	.loc 1 212 0
+.LBE125:
+.LBE124:
+	.loc 1 216 0
 	mov.a	%a2, %d13
-.LBB122:
-.LBB119:
+.LBB129:
+.LBB126:
 	.loc 2 574 0
 	movh	%d15, 1
-.LBE119:
-.LBE122:
-	.loc 1 212 0
+.LBE126:
+.LBE129:
+	.loc 1 216 0
 	ld.a	%a15, [%a2] lo:IfxPort_P14_0
 .LVL37:
-.LBB123:
-.LBB120:
+.LBB130:
+.LBB127:
 	.loc 2 574 0
 	sh	%d2, %d15, %d2
-.LBE120:
-.LBE123:
-	.loc 1 213 0
+.LBE127:
+.LBE130:
+	.loc 1 217 0
 	mov.a	%a2, %d12
-.LBB124:
-.LBB121:
+.LBB131:
+.LBB128:
 	.loc 2 574 0
 	st.w	[%a15] 4, %d2
 .LVL38:
-.LBE121:
-.LBE124:
-.LBB125:
-.LBB126:
+.LBE128:
+.LBE131:
+.LBB132:
+.LBB133:
 	ld.bu	%d2, [%a13] 4
-.LBE126:
-.LBE125:
-	.loc 1 213 0
+.LBE133:
+.LBE132:
+	.loc 1 217 0
 	ld.a	%a15, [%a2] lo:IfxPort_P14_1
 .LVL39:
-.LBB128:
-.LBB127:
+.LBB135:
+.LBB134:
 	.loc 2 574 0
 	sh	%d15, %d15, %d2
 	st.w	[%a15] 4, %d15
 .LVL40:
 	ret
-.LBE127:
-.LBE128:
+.LBE134:
+.LBE135:
 .LFE428:
 	.size	BasicLineScan_run, .-BasicLineScan_run
 .section .text.CopyPrevLine,"ax",@progbits
@@ -412,11 +412,11 @@ BasicLineScan_run:
 	.type	CopyPrevLine, @function
 CopyPrevLine:
 .LFB429:
-	.loc 1 227 0
+	.loc 1 231 0
 .LVL41:
 	lea	%SP, [%SP] -520
 .LCFI0:
-	.loc 1 227 0
+	.loc 1 231 0
 	lea	%a6, [%SP] 4
 	mov.aa	%a2, %a6
 	ld.w	%d4, [%a5] 512
@@ -429,25 +429,25 @@ CopyPrevLine:
 	ld.w	%d2, [%a5+]4
 	st.w	[%a2+]4, %d2
 .LVL42:
-	.loc 1 229 0
+	.loc 1 233 0
 	mov	%d15, 0
 	lea	%a15, 127
 .LVL43:
 .L11:
-	.loc 1 230 0 discriminator 3
+	.loc 1 234 0 discriminator 3
 	sh	%d2, %d15, 2
 	mov.a	%a2, %d2
-	.loc 1 229 0 discriminator 3
+	.loc 1 233 0 discriminator 3
 	add	%d15, 1
 .LVL44:
-	.loc 1 230 0 discriminator 3
+	.loc 1 234 0 discriminator 3
 	add.a	%a3, %a4, %a2
 	add.a	%a2, %a6
 	ld.w	%d2, [%a2]0
 	st.w	[%a3]0, %d2
-	.loc 1 229 0 discriminator 3
+	.loc 1 233 0 discriminator 3
 	loop	%a15, .L11
-	.loc 1 231 0
+	.loc 1 235 0
 	st.w	[%a4] 512, %d4
 	ret
 .LFE429:
@@ -458,39 +458,39 @@ CopyPrevLine:
 	.type	GetMedian, @function
 GetMedian:
 .LFB430:
-	.loc 1 234 0
+	.loc 1 238 0
 .LVL45:
 	mov.aa	%a3, %a4
-	.loc 1 236 0
+	.loc 1 240 0
 	mov	%d3, 0
 	mov.a	%a5, 4
 .LVL46:
 .L14:
-	.loc 1 234 0
+	.loc 1 238 0
 	rsub	%d15, %d3, 4
 	mov.a	%a15, %d15
 	mov.aa	%a2, %a3
 .LVL47:
 .L16:
-	.loc 1 238 0
+	.loc 1 242 0
 	ld.w	%d15, [%a3]0
 	ld.w	%d2, [%a2]0
 	jge	%d2, %d15, .L15
 .LVL48:
-	.loc 1 240 0
+	.loc 1 244 0
 	st.w	[%a3]0, %d2
-	.loc 1 241 0
+	.loc 1 245 0
 	st.w	[%a2]0, %d15
 .LVL49:
 .L15:
 	add.a	%a2, 4
 	loop	%a15, .L16
-	.loc 1 236 0 discriminator 2
+	.loc 1 240 0 discriminator 2
 	add	%d3, 1
 .LVL50:
 	add.a	%a3, 4
 	loop	%a5, .L14
-	.loc 1 246 0
+	.loc 1 250 0
 	ld.w	%d2, [%a4] 8
 	ret
 .LFE430:
@@ -501,28 +501,28 @@ GetMedian:
 	.type	Stretching, @function
 Stretching:
 .LFB431:
-	.loc 1 248 0
+	.loc 1 252 0
 .LVL51:
-	.loc 1 249 0
+	.loc 1 253 0
 	ld.w	%d6, [%a4]0
 .LVL52:
-	.loc 1 251 0
+	.loc 1 255 0
 	mov	%d5, 0
-	.loc 1 249 0
+	.loc 1 253 0
 	mov	%d2, %d6
 	mov	%d15, %d6
 	mov	%d3, %d6
-	.loc 1 251 0
+	.loc 1 255 0
 	lea	%a15, 127
 .LVL53:
 .L24:
-	.loc 1 252 0 discriminator 3
+	.loc 1 256 0 discriminator 3
 	max	%d3, %d3, %d2
 .LVL54:
-	.loc 1 253 0 discriminator 3
+	.loc 1 257 0 discriminator 3
 	min	%d15, %d15, %d2
 .LVL55:
-	.loc 1 251 0 discriminator 3
+	.loc 1 255 0 discriminator 3
 	add	%d5, 1
 .LVL56:
 	loop	%a15, .L28
@@ -532,25 +532,25 @@ Stretching:
 	itof	%d3, %d3
 	itof	%d4, %d4
 .LVL59:
-	.loc 1 251 0 is_stmt 0
+	.loc 1 255 0 is_stmt 0
 	mov	%d2, 0
 	div.f	%d4, %d4, %d3
 	lea	%a15, 127
 	mov	%d3, %d6
 .LVL60:
 .L26:
-	.loc 1 256 0 is_stmt 1 discriminator 3
+	.loc 1 260 0 is_stmt 1 discriminator 3
 	sub	%d3, %d15
 	itof	%d3, %d3
 	addsc.a	%a2, %a4, %d2, 2
 	mul.f	%d3, %d3, %d4
-	.loc 1 255 0 discriminator 3
+	.loc 1 259 0 discriminator 3
 	add	%d2, 1
 .LVL61:
-	.loc 1 256 0 discriminator 3
+	.loc 1 260 0 discriminator 3
 	ftoiz	%d3, %d3
 	st.w	[%a2]0, %d3
-	.loc 1 255 0 discriminator 3
+	.loc 1 259 0 discriminator 3
 	loop	%a15, .L27
 	ret
 .LVL62:
@@ -570,45 +570,45 @@ Stretching:
 	.type	MedianFiltering, @function
 MedianFiltering:
 .LFB432:
-	.loc 1 259 0
+	.loc 1 263 0
 .LVL64:
 	sub.a	%SP, 24
 .LCFI1:
-	.loc 1 259 0
+	.loc 1 263 0
 	mov.aa	%a12, %a4
-	.loc 1 262 0
+	.loc 1 266 0
 	mov	%d8, 2
 .LVL65:
 .L33:
-	.loc 1 259 0
+	.loc 1 263 0
 	mov	%d15, 0
 	mov.a	%a15, 4
 .LVL66:
 .L34:
-	.loc 1 264 0 discriminator 3
+	.loc 1 268 0 discriminator 3
 	add	%d2, %d15, %d8
 	lea	%a2, [%SP] 24
 	addsc.a	%a3, %a2, %d15, 2
 	addsc.a	%a2, %a12, %d2, 2
-	.loc 1 263 0 discriminator 3
+	.loc 1 267 0 discriminator 3
 	add	%d15, 1
 .LVL67:
-	.loc 1 264 0 discriminator 3
+	.loc 1 268 0 discriminator 3
 	ld.w	%d2, [%a2] -8
 	st.w	[%a3] -20, %d2
-	.loc 1 263 0 discriminator 3
+	.loc 1 267 0 discriminator 3
 	loop	%a15, .L34
-	.loc 1 265 0 discriminator 2
+	.loc 1 269 0 discriminator 2
 	addsc.a	%a15, %a12, %d8, 2
 	lea	%a4, [%SP] 4
 	call	GetMedian
 .LVL68:
-	.loc 1 262 0 discriminator 2
+	.loc 1 266 0 discriminator 2
 	add	%d8, 1
 .LVL69:
-	.loc 1 265 0 discriminator 2
+	.loc 1 269 0 discriminator 2
 	st.w	[%a15]0, %d2
-	.loc 1 262 0 discriminator 2
+	.loc 1 266 0 discriminator 2
 	eq	%d15, %d8, 126
 .LVL70:
 	jz	%d15, .L33
@@ -621,67 +621,67 @@ MedianFiltering:
 	.type	Sharpening, @function
 Sharpening:
 .LFB433:
-	.loc 1 268 0
+	.loc 1 272 0
 .LVL71:
 	lea	%SP, [%SP] -512
 .LCFI2:
-	.loc 1 273 0
+	.loc 1 277 0
 	mov	%d15, 0
-	.loc 1 274 0
+	.loc 1 278 0
 	mov	%d4, 4096
 	lea	%a15, 127
 .LVL72:
 .L38:
 	sh	%d3, %d15, 2
 	addsc.a	%a2, %a4, %d3, 0
-	.loc 1 275 0 discriminator 3
+	.loc 1 279 0 discriminator 3
 	lea	%a3, [%SP] 512
-	.loc 1 274 0 discriminator 3
+	.loc 1 278 0 discriminator 3
 	ld.w	%d2, [%a2]0
-	.loc 1 273 0 discriminator 3
+	.loc 1 277 0 discriminator 3
 	add	%d15, 1
 .LVL73:
-	.loc 1 274 0 discriminator 3
+	.loc 1 278 0 discriminator 3
 	sub	%d2, %d4, %d2
 	st.w	[%a2]0, %d2
-	.loc 1 275 0 discriminator 3
+	.loc 1 279 0 discriminator 3
 	addsc.a	%a2, %a3, %d3, 0
 	st.w	[%a2] -512, %d2
-	.loc 1 273 0 discriminator 3
+	.loc 1 277 0 discriminator 3
 	loop	%a15, .L38
 	mov	%d4, 3
-	.loc 1 273 0 is_stmt 0
+	.loc 1 277 0 is_stmt 0
 	lea	%a2, 121
 .LVL74:
 .L39:
 	sh	%d6, %d4, 2
-	.loc 1 283 0 is_stmt 1
+	.loc 1 287 0 is_stmt 1
 	addsc.a	%a3, %a4, %d6, 0
 	addi	%d2, %d4, -3
-	.loc 1 273 0
+	.loc 1 277 0
 	mov	%d15, -2
 	mov	%d7, 0
 	mov	%d5, 0
 	mov	%d0, 0
 .LVL75:
 .L45:
-	.loc 1 281 0
+	.loc 1 285 0
 	jge.u	%d15, 3, .L52
 .LVL76:
 .L40:
-	.loc 1 282 0
+	.loc 1 286 0
 	andn	%d3, %d15, ~(-3)
 	jnz	%d3, .L41
-	.loc 1 282 0 is_stmt 0 discriminator 1
+	.loc 1 286 0 is_stmt 0 discriminator 1
 	addsc.a	%a15, %a4, %d2, 2
 	ld.w	%d3, [%a15]0
 	madd	%d5, %d5, %d3, 3
 .LVL77:
 .L41:
-	.loc 1 283 0 is_stmt 1
+	.loc 1 287 0 is_stmt 1
 	jeq	%d2, %d4, .L53
 .LVL78:
-	.loc 1 280 0 discriminator 2
+	.loc 1 284 0 discriminator 2
 	jeq	%d15, 4, .L54
 .L43:
 	add	%d15, 1
@@ -690,25 +690,25 @@ Sharpening:
 	j	.L45
 .LVL80:
 .L54:
-	.loc 1 285 0
+	.loc 1 289 0
 	add	%d5, %d0
 .LVL81:
 	lea	%a5, [%SP] 512
 	add	%d5, %d7
 	addsc.a	%a15, %a5, %d6, 0
-	.loc 1 278 0
+	.loc 1 282 0
 	add	%d4, 1
 .LVL82:
-	.loc 1 285 0
+	.loc 1 289 0
 	st.w	[%a15] -512, %d5
-	.loc 1 278 0
+	.loc 1 282 0
 	loop	%a2, .L39
 	mov	%d15, 0
 .LVL83:
 	lea	%a15, 127
 .LVL84:
 .L44:
-	.loc 1 289 0 discriminator 3
+	.loc 1 293 0 discriminator 3
 	sh	%d2, %d15, 2
 	mov.a	%a2, %d2
 	lea	%a5, [%SP] 512
@@ -716,22 +716,22 @@ Sharpening:
 	add.a	%a2, %a5
 	ld.w	%d2, [%a2] -512
 	st.w	[%a3]0, %d2
-	.loc 1 288 0 discriminator 3
+	.loc 1 292 0 discriminator 3
 	add	%d15, 1
 .LVL85:
 	loop	%a15, .L44
-	.loc 1 290 0
+	.loc 1 294 0
 	ret
 .LVL86:
 .L53:
-	.loc 1 283 0 discriminator 1
+	.loc 1 287 0 discriminator 1
 	ld.w	%d3, [%a3]0
 	madd	%d7, %d7, %d3, 6
 .LVL87:
 	j	.L43
 .LVL88:
 .L52:
-	.loc 1 281 0 discriminator 1
+	.loc 1 285 0 discriminator 1
 	addsc.a	%a15, %a4, %d2, 2
 	ld.w	%d3, [%a15]0
 	mul	%d3, %d3, -3
@@ -746,35 +746,35 @@ Sharpening:
 	.type	Camera_Initialization, @function
 Camera_Initialization:
 .LFB434:
-	.loc 1 292 0
+	.loc 1 296 0
 .LVL90:
 	movh.a	%a4, hi:cam_info
-	.loc 1 294 0
+	.loc 1 298 0
 	mov	%d6, 0
 	lea	%a4, [%a4] lo:cam_info
 	mov	%d7, 2580
-	.loc 1 296 0
+	.loc 1 300 0
 	mov	%d4, 516
 	mov	%d5, 60
 .LVL91:
 .L56:
 	mul	%d3, %d6, %d7
-	.loc 1 292 0
-	mov	%d15, 0
 	.loc 1 296 0
+	mov	%d15, 0
+	.loc 1 300 0
 	mov.a	%a15, 4
 	addsc.a	%a2, %a4, %d3, 0
 .LVL92:
 .L57:
-	.loc 1 296 0 is_stmt 0 discriminator 3
+	.loc 1 300 0 is_stmt 0 discriminator 3
 	madd	%d2, %d3, %d15, %d4
-	.loc 1 295 0 is_stmt 1 discriminator 3
+	.loc 1 299 0 is_stmt 1 discriminator 3
 	add	%d15, 1
 .LVL93:
-	.loc 1 296 0 discriminator 3
+	.loc 1 300 0 discriminator 3
 	addsc.a	%a3, %a4, %d2, 0
 	st.w	[%a3] 512, %d5
-	.loc 1 297 0 discriminator 3
+	.loc 1 301 0 discriminator 3
 	mov.aa	%a3, %a2
 	mov	%e0, 0
 	lea	%a5, 64-1
@@ -783,32 +783,48 @@ Camera_Initialization:
 	loop	%a5, 0b
 	lea	%a2, [%a2] 516
 	loop	%a15, .L57
-	.loc 1 294 0 discriminator 2
+	.loc 1 298 0 discriminator 2
 	add	%d6, 1
 .LVL94:
 	jne	%d6, 3, .L56
-	.loc 1 300 0
+	.loc 1 304 0
 	movh.a	%a15, hi:FILTERED_CENTER_LINE
-	.loc 1 302 0
+	.loc 1 306 0
 	mov	%d15, 0
 .LVL95:
-	.loc 1 300 0
+	.loc 1 304 0
 	lea	%a15, [%a15] lo:FILTERED_CENTER_LINE
 	mov	%e0, 0
 	lea	%a2, 64-1
 	0:
 	st.d	[%a15+]8, %e0
 	loop	%a2, 0b
-	.loc 1 302 0
+	.loc 1 306 0
 	movh.a	%a15, hi:nowIndex
 	st.w	[%a15] lo:nowIndex, %d15
-	.loc 1 303 0
+	.loc 1 307 0
 	movh.a	%a15, hi:cntTotal
 	st.w	[%a15] lo:cntTotal, %d15
-	.loc 1 304 0
+	.loc 1 308 0
 	movh.a	%a15, hi:cntLeft
 	st.w	[%a15] lo:cntLeft, %d15
+.LVL96:
+.LBB136:
+.LBB137:
+	.loc 1 494 0
+	movh.a	%a15, hi:countPassedObject
+	st.w	[%a15] lo:countPassedObject, %d15
+.LVL97:
+.LBE137:
+.LBE136:
+.LBB138:
+.LBB139:
+	.loc 1 500 0
+	movh.a	%a15, hi:dottedLine
+	st.w	[%a15] lo:dottedLine, %d15
 	ret
+.LBE139:
+.LBE138:
 .LFE434:
 	.size	Camera_Initialization, .-Camera_Initialization
 .section .text.BasicLineScan_init,"ax",@progbits
@@ -817,234 +833,234 @@ Camera_Initialization:
 	.type	BasicLineScan_init, @function
 BasicLineScan_init:
 .LFB427:
-	.loc 1 66 0
+	.loc 1 70 0
 	sub.a	%SP, 168
 .LCFI3:
-	.loc 1 71 0
+	.loc 1 75 0
 	lea	%a4, [%SP] 4
 	movh.a	%a5, 61442
-	.loc 1 74 0
+	.loc 1 78 0
 	movh.a	%a15, hi:g_VadcAutoScan
 	lea	%a15, [%a15] lo:g_VadcAutoScan
-	.loc 1 71 0
+	.loc 1 75 0
 	call	IfxVadc_Adc_initModuleConfig
-.LVL96:
-	.loc 1 74 0
+.LVL98:
+	.loc 1 78 0
 	mov.aa	%a4, %a15
 	lea	%a5, [%SP] 4
 	call	IfxVadc_Adc_initModule
-.LVL97:
-	.loc 1 78 0
+.LVL99:
+	.loc 1 82 0
 	mov.aa	%a5, %a15
 	lea	%a4, [%SP] 40
 	call	IfxVadc_Adc_initGroupConfig
-.LVL98:
-	.loc 1 81 0
-	mov	%d15, 0
+.LVL100:
 	.loc 1 85 0
+	mov	%d15, 0
+	.loc 1 89 0
 	mov	%d2, 1
-	.loc 1 95 0
+	.loc 1 99 0
 	lea	%a12, [%a15] 4
 	mov.aa	%a4, %a12
 	lea	%a5, [%SP] 40
-	.loc 1 81 0
-	st.b	[%SP] 44, %d15
-	.loc 1 82 0
-	st.b	[%SP] 45, %d15
 	.loc 1 85 0
+	st.b	[%SP] 44, %d15
+	.loc 1 86 0
+	st.b	[%SP] 45, %d15
+	.loc 1 89 0
 	st.b	[%SP] 92, %d2
-	.loc 1 88 0
+	.loc 1 92 0
 	st.b	[%SP] 64, %d2
-	.loc 1 91 0
-	st.b	[%SP] 68, %d2
 	.loc 1 95 0
+	st.b	[%SP] 68, %d2
+	.loc 1 99 0
 	call	IfxVadc_Adc_initGroup
-.LVL99:
-	.loc 1 105 0
+.LVL101:
+	.loc 1 109 0
 	mov.aa	%a5, %a12
 	lea	%a4, [%SP] 96
 	call	IfxVadc_Adc_initChannelConfig
-.LVL100:
-	.loc 1 111 0
+.LVL102:
+	.loc 1 115 0
 	lea	%a4, [%a15] 16
 	lea	%a5, [%SP] 96
-	.loc 1 107 0
-	st.b	[%SP] 108, %d15
-	.loc 1 108 0
-	st.b	[%SP] 111, %d15
 	.loc 1 111 0
+	st.b	[%SP] 108, %d15
+	.loc 1 112 0
+	st.b	[%SP] 111, %d15
+	.loc 1 115 0
 	call	IfxVadc_Adc_initChannel
-.LVL101:
-	.loc 1 114 0
+.LVL103:
+	.loc 1 118 0
 	ld.b	%d2, [%SP] 108
-.LBB129:
-.LBB130:
+.LBB140:
+.LBB141:
 	.file 4 "../../_LibSrc/iLLD_1_0_1_8_0__TC27D/Src/BaseSw/iLLD/TC27D/Tricore/Vadc/Adc/IfxVadc_Adc.h"
 	.loc 4 1265 0
 	ld.a	%a4, [%a15] 8
-.LBE130:
-.LBE129:
-	.loc 1 114 0
+.LBE141:
+.LBE140:
+	.loc 1 118 0
 	mov	%d4, 1
 	sh	%d4, %d4, %d2
-.LVL102:
-.LBB132:
-.LBB131:
+.LVL104:
+.LBB143:
+.LBB142:
 	.loc 4 1265 0
 	mov	%d5, %d4
 	call	IfxVadc_setScan
-.LVL103:
-.LBE131:
-.LBE132:
-	.loc 1 114 0
+.LVL105:
+.LBE142:
+.LBE143:
+	.loc 1 118 0
 	mov	%d15, 1
-	.loc 1 119 0
+	.loc 1 123 0
 	mov.aa	%a5, %a12
 	lea	%a4, [%SP] 120
 	call	IfxVadc_Adc_initChannelConfig
-.LVL104:
-	.loc 1 124 0
+.LVL106:
+	.loc 1 128 0
 	lea	%a4, [%a15] 24
 	lea	%a5, [%SP] 120
-	.loc 1 120 0
-	st.b	[%SP] 132, %d15
-	.loc 1 121 0
-	st.b	[%SP] 135, %d15
 	.loc 1 124 0
+	st.b	[%SP] 132, %d15
+	.loc 1 125 0
+	st.b	[%SP] 135, %d15
+	.loc 1 128 0
 	call	IfxVadc_Adc_initChannel
-.LVL105:
-	.loc 1 127 0
+.LVL107:
+	.loc 1 131 0
 	ld.b	%d2, [%SP] 132
-.LBB133:
-.LBB134:
+.LBB144:
+.LBB145:
 	.loc 4 1265 0
 	ld.a	%a4, [%a15] 8
-.LBE134:
-.LBE133:
-	.loc 1 127 0
+.LBE145:
+.LBE144:
+	.loc 1 131 0
 	mov	%d4, 1
 	sh	%d4, %d4, %d2
-.LVL106:
-.LBB136:
-.LBB135:
+.LVL108:
+.LBB147:
+.LBB146:
 	.loc 4 1265 0
 	mov	%d5, %d4
 	call	IfxVadc_setScan
-.LVL107:
-.LBE135:
-.LBE136:
-	.loc 1 132 0
+.LVL109:
+.LBE146:
+.LBE147:
+	.loc 1 136 0
 	mov.aa	%a5, %a12
 	lea	%a4, [%SP] 144
 	call	IfxVadc_Adc_initChannelConfig
-.LVL108:
-	.loc 1 137 0
+.LVL110:
+	.loc 1 141 0
 	lea	%a5, [%SP] 144
 	lea	%a4, [%a15] 32
-	.loc 1 133 0
-	st.b	[%SP] 156, %d15
-	.loc 1 134 0
-	st.b	[%SP] 159, %d15
 	.loc 1 137 0
+	st.b	[%SP] 156, %d15
+	.loc 1 138 0
+	st.b	[%SP] 159, %d15
+	.loc 1 141 0
 	call	IfxVadc_Adc_initChannel
-.LVL109:
-	.loc 1 140 0
+.LVL111:
+	.loc 1 144 0
 	ld.b	%d15, [%SP] 156
-.LBB137:
-.LBB138:
+.LBB148:
+.LBB149:
 	.loc 4 1265 0
 	ld.a	%a4, [%a15] 8
-.LBE138:
-.LBE137:
-	.loc 1 140 0
+.LBE149:
+.LBE148:
+	.loc 1 144 0
 	mov	%d4, 1
 	sh	%d4, %d4, %d15
-.LVL110:
-.LBB140:
-.LBB139:
+.LVL112:
+.LBB151:
+.LBB150:
 	.loc 4 1265 0
 	mov	%d5, %d4
 	call	IfxVadc_setScan
-.LVL111:
-.LBE139:
-.LBE140:
-	.loc 1 149 0
+.LVL113:
+.LBE150:
+.LBE151:
+	.loc 1 153 0
 	movh.a	%a12, hi:IfxPort_P14_0
-	.loc 1 147 0
+	.loc 1 151 0
 	call	initTime
-.LVL112:
-	.loc 1 149 0
+.LVL114:
+	.loc 1 153 0
 	lea	%a15, [%a12] lo:IfxPort_P14_0
 	ld.a	%a4, [%a12] lo:IfxPort_P14_0
 	ld.bu	%d4, [%a15] 4
 	mov	%d5, 128
 	call	IfxPort_setPinMode
-.LVL113:
-	.loc 1 150 0
+.LVL115:
+	.loc 1 154 0
 	ld.a	%a4, [%a12] lo:IfxPort_P14_0
 	ld.bu	%d4, [%a15] 4
 	mov	%d5, 0
 	call	IfxPort_setPinPadDriver
-.LVL114:
-.LBB141:
-.LBB142:
+.LVL116:
+.LBB152:
+.LBB153:
 	.loc 2 574 0
 	ld.bu	%d2, [%a15] 4
 	movh	%d15, 1
-.LVL115:
-.LBE142:
-.LBE141:
-	.loc 1 151 0
+.LVL117:
+.LBE153:
+.LBE152:
+	.loc 1 155 0
 	ld.a	%a2, [%a12] lo:IfxPort_P14_0
-.LVL116:
-.LBB145:
-.LBB143:
+.LVL118:
+.LBB156:
+.LBB154:
 	.loc 2 574 0
 	sh	%d2, %d15, %d2
-.LBE143:
-.LBE145:
-	.loc 1 153 0
+.LBE154:
+.LBE156:
+	.loc 1 157 0
 	movh.a	%a12, hi:IfxPort_P14_1
 	lea	%a15, [%a12] lo:IfxPort_P14_1
-.LBB146:
-.LBB144:
+.LBB157:
+.LBB155:
 	.loc 2 574 0
 	st.w	[%a2] 4, %d2
-.LVL117:
-.LBE144:
-.LBE146:
-	.loc 1 153 0
+.LVL119:
+.LBE155:
+.LBE157:
+	.loc 1 157 0
 	ld.a	%a4, [%a12] lo:IfxPort_P14_1
 	ld.bu	%d4, [%a15] 4
 	mov	%d5, 128
 	call	IfxPort_setPinMode
-.LVL118:
-	.loc 1 154 0
+.LVL120:
+	.loc 1 158 0
 	ld.a	%a4, [%a12] lo:IfxPort_P14_1
 	ld.bu	%d4, [%a15] 4
 	mov	%d5, 0
 	call	IfxPort_setPinPadDriver
-.LVL119:
-.LBB147:
-.LBB148:
+.LVL121:
+.LBB158:
+.LBB159:
 	.loc 2 574 0
 	ld.bu	%d2, [%a15] 4
-.LBE148:
-.LBE147:
-	.loc 1 155 0
+.LBE159:
+.LBE158:
+	.loc 1 159 0
 	ld.a	%a2, [%a12] lo:IfxPort_P14_1
-.LVL120:
-.LBB150:
-.LBB149:
+.LVL122:
+.LBB161:
+.LBB160:
 	.loc 2 574 0
 	sh	%d15, %d15, %d2
 	st.w	[%a2] 4, %d15
-.LVL121:
-.LBE149:
-.LBE150:
-	.loc 1 159 0
+.LVL123:
+.LBE160:
+.LBE161:
+	.loc 1 163 0
 	j	Camera_Initialization
-.LVL122:
+.LVL124:
 .LFE427:
 	.size	BasicLineScan_init, .-BasicLineScan_init
 .section .text.FindCenter,"ax",@progbits
@@ -1053,150 +1069,164 @@ BasicLineScan_init:
 	.type	FindCenter, @function
 FindCenter:
 .LFB436:
-	.loc 1 354 0
-.LVL123:
-	.loc 1 361 0
+	.loc 1 388 0
+.LVL125:
+	.loc 1 395 0
 	movh	%d3, 1
-	.loc 1 355 0
+	.loc 1 389 0
 	mov	%d5, 0
-	.loc 1 358 0
+	.loc 1 392 0
 	mov	%d15, 0
-	.loc 1 363 0
+	.loc 1 397 0
 	mov	%d4, 0
-	.loc 1 361 0
+	.loc 1 395 0
 	addi	%d3, %d3, 4464
 	lea	%a15, 127
-.LVL124:
+.LVL126:
 .L64:
 	addsc.a	%a2, %a4, %d15, 2
-	.loc 1 359 0
+	.loc 1 393 0
 	ld.w	%d2, [%a2]0
 	jltz	%d2, .L62
-	.loc 1 361 0
+	.loc 1 395 0
 	jlt	%d2, %d3, .L62
 .L63:
-	.loc 1 358 0 discriminator 2
+	.loc 1 392 0 discriminator 2
 	add	%d15, 1
-.LVL125:
+.LVL127:
 	loop	%a15, .L64
-	.loc 1 368 0
+	.loc 1 402 0
 	lt	%d5, %d5, 121
-.LVL126:
+.LVL128:
 	mov	%d2, -1
 	jnz	%d5, .L85
 	mov	%d15, 58
-.LVL127:
+.LVL129:
 	mov	%e2, 127
 	lea	%a15, 58
-.LVL128:
+.LVL130:
 .L68:
-	.loc 1 372 0
+	.loc 1 406 0
 	eq	%d4, %d3, 0
 	and.ne	%d4, %d15, 0
 	jz	%d4, .L66
-.LVL129:
+.LVL131:
 	add	%d3, %d15, 1
-	.loc 1 372 0 is_stmt 0 discriminator 1
+	.loc 1 406 0 is_stmt 0 discriminator 1
 	addsc.a	%a2, %a4, %d3, 2
 	ld.w	%d4, [%a2]0
 	jz	%d4, .L79
-	.loc 1 372 0 discriminator 2
+	.loc 1 406 0 discriminator 2
 	addsc.a	%a2, %a4, %d15, 2
 	ld.w	%d4, [%a2]0
 	seln	%d3, %d4, %d3, 0
-.LVL130:
+.LVL132:
 .L66:
-	.loc 1 376 0 is_stmt 1
+	.loc 1 410 0 is_stmt 1
 	ne	%d4, %d2, 127
 	jz	%d4, .L92
-.LVL131:
+.LVL133:
 .L67:
 	add	%d15, -1
-.LVL132:
+.LVL134:
 	loop	%a15, .L68
-	.loc 1 381 0
+	.loc 1 415 0
 	movh.a	%a15, hi:isLimitZone
 	ld.w	%d15, [%a15] lo:isLimitZone
-.LVL133:
+.LVL135:
 	jeq	%d15, 1, .L93
-	.loc 1 388 0
+.L69:
+	.loc 1 424 0
 	ne	%d15, %d2, 127
 	jnz	%d15, .L75
 .L74:
-	.loc 1 392 0
+	.loc 1 428 0
 	add	%d15, %d3, -5
 	lt.u	%d15, %d15, 50
 	jz	%d15, .L72
-.LVL134:
-	.loc 1 393 0
-	addi	%d2, %d3, 55
-.LVL135:
-	ret
 .LVL136:
-.L62:
-	.loc 1 362 0
-	add	%d5, 1
+	.loc 1 429 0
+	addi	%d2, %d3, 55
 .LVL137:
-	.loc 1 363 0
+	ret
+.LVL138:
+.L62:
+	.loc 1 396 0
+	add	%d5, 1
+.LVL139:
+	.loc 1 397 0
 	st.w	[%a2]0, %d4
 	j	.L63
-.LVL138:
+.LVL140:
 .L92:
 	rsub	%d4, %d15, 119
-	.loc 1 376 0 discriminator 1
+	.loc 1 410 0 discriminator 1
 	addsc.a	%a2, %a4, %d4, 2
 	ld.w	%d5, [%a2]0
 	jz	%d5, .L67
 	rsub	%d5, %d15, 120
-	.loc 1 376 0 is_stmt 0 discriminator 2
+	.loc 1 410 0 is_stmt 0 discriminator 2
 	addsc.a	%a2, %a4, %d5, 2
 	ld.w	%d5, [%a2]0
-	.loc 1 377 0 is_stmt 1 discriminator 2
+	.loc 1 411 0 is_stmt 1 discriminator 2
 	sel	%d2, %d5, %d2, %d4
-.LVL139:
-	j	.L67
-.LVL140:
-.L85:
-	.loc 1 404 0
-	ret
 .LVL141:
+	j	.L67
+.LVL142:
+.L85:
+	.loc 1 440 0
+	ret
+.LVL143:
 .L93:
-	.loc 1 382 0
+.LBB162:
+.LBB163:
+.LBB164:
+	.loc 1 491 0
+	movh.a	%a15, hi:countPassedObject
+.LBE164:
+.LBE163:
+	.loc 1 416 0
+	ld.w	%d15, [%a15] lo:countPassedObject
+	jnz	%d15, .L69
+	.loc 1 417 0
 	jnz	%d3, .L70
-	.loc 1 383 0
+	.loc 1 418 0
 	movh.a	%a15, hi:leftIndexCount
 	ld.w	%d15, [%a15] lo:leftIndexCount
 	add	%d15, 1
 	st.w	[%a15] lo:leftIndexCount, %d15
 .L70:
-	.loc 1 384 0
+	.loc 1 419 0
 	eq	%d15, %d2, 127
 	jnz	%d15, .L71
 .L75:
-.LVL142:
-	.loc 1 390 0
+.LVL144:
+.LBE162:
+	.loc 1 426 0
 	lt	%d15, %d2, 66
 	jnz	%d15, .L72
-	.loc 1 389 0
+	.loc 1 425 0
 	addi	%d2, %d2, -55
-.LVL143:
-	ret
-.LVL144:
-.L72:
-	.loc 1 401 0
-	mov	%d2, -1
 .LVL145:
 	ret
 .LVL146:
+.L72:
+	.loc 1 437 0
+	mov	%d2, -1
+.LVL147:
+	ret
+.LVL148:
 .L71:
-	.loc 1 385 0
+.LBB165:
+	.loc 1 420 0
 	movh.a	%a15, hi:rightIndexCount
 	ld.w	%d15, [%a15] lo:rightIndexCount
 	add	%d15, 1
 	st.w	[%a15] lo:rightIndexCount, %d15
 	j	.L74
-.LVL147:
+.LVL149:
 .L79:
+.LBE165:
 	mov	%d3, 0
 	j	.L66
 .LFE436:
@@ -1207,82 +1237,87 @@ FindCenter:
 	.type	FindOneLine, @function
 FindOneLine:
 .LFB437:
-	.loc 1 406 0
-.LVL148:
-	.loc 1 413 0
+	.loc 1 442 0
+.LVL150:
+	.loc 1 449 0
 	movh	%d2, 1
 	mov.aa	%a2, %a4
-	.loc 1 407 0
+	.loc 1 443 0
 	mov	%d4, 0
-	.loc 1 415 0
+	.loc 1 451 0
 	mov	%d3, 0
-	.loc 1 413 0
+	.loc 1 449 0
 	addi	%d2, %d2, 4464
 	lea	%a15, 127
-.LVL149:
+.LVL151:
 .L97:
-	.loc 1 411 0
+	.loc 1 447 0
 	ld.w	%d15, [%a2]0
 	jltz	%d15, .L95
-	.loc 1 413 0
+	.loc 1 449 0
 	jlt	%d15, %d2, .L95
 .L96:
 	add.a	%a2, 4
 	loop	%a15, .L97
-	.loc 1 419 0
-	lt	%d4, %d4, 123
-.LVL150:
-	.loc 1 420 0
+	.loc 1 456 0
+	ge	%d4, %d4, 122
+.LVL152:
+	.loc 1 457 0
 	mov	%d2, -1
-	.loc 1 419 0
+	.loc 1 456 0
 	jnz	%d4, .L98
 	lea	%a3, [%a4] 12
 	lea	%a2, [%a4] 8
-	mov	%d2, 0
-	mov	%d5, 2
+	mov	%d5, 0
+	mov	%d2, 2
 	lea	%a15, 123
-.LVL151:
+.LVL153:
 .L101:
-	.loc 1 423 0
+	.loc 1 460 0
 	ld.w	%d3, [%a2]0
-	jz	%d2, .L111
-	.loc 1 425 0 discriminator 1
+	jz	%d5, .L112
+	.loc 1 462 0 discriminator 1
 	jz	%d3, .L100
-	.loc 1 425 0 is_stmt 0 discriminator 2
+	.loc 1 462 0 is_stmt 0 discriminator 2
 	ld.w	%d4, [%a3]0
 	jnz	%d4, .L100
-	.loc 1 425 0 discriminator 3
-	addsc.a	%a5, %a4, %d2, 2
+	.loc 1 462 0 discriminator 3
+	addsc.a	%a5, %a4, %d5, 2
 	ld.w	%d4, [%a5]0
 	lt	%d3, %d3, %d4
-	sel	%d2, %d3, %d2, %d5
-.LVL152:
+	sel	%d5, %d3, %d5, %d2
+.LVL154:
 .L100:
-	.loc 1 422 0 is_stmt 1 discriminator 2
-	add	%d5, 1
-.LVL153:
+	.loc 1 459 0 is_stmt 1 discriminator 2
+	add	%d2, 1
+.LVL155:
 	add.a	%a3, 4
 	add.a	%a2, 4
 	loop	%a15, .L101
-.LVL154:
-.L98:
-	.loc 1 430 0
-	ret
-.LVL155:
-.L95:
-	.loc 1 414 0
-	add	%d4, 1
+	.loc 1 465 0
+	addi	%d2, %d5, -4
 .LVL156:
-	.loc 1 415 0
+	ge.u	%d2, %d2, 119
+	seln	%d2, %d2, %d5, -1
+.LVL157:
+.L98:
+	.loc 1 469 0
+	ret
+.LVL158:
+.L95:
+	.loc 1 450 0
+	add	%d4, 1
+.LVL159:
+	.loc 1 451 0
 	st.w	[%a2]0, %d3
 	j	.L96
-.LVL157:
-.L111:
-	.loc 1 423 0 discriminator 1
+.LVL160:
+.L112:
+	.loc 1 460 0 discriminator 1
 	jz	%d3, .L100
-	.loc 1 423 0 is_stmt 0 discriminator 2
+	.loc 1 460 0 is_stmt 0 discriminator 2
 	ld.w	%d15, [%a3]0
-	cmovn	%d2, %d15, %d5
+	cmovn	%d5, %d15, %d2
 	j	.L100
 .LFE437:
 	.size	FindOneLine, .-FindOneLine
@@ -1292,263 +1327,242 @@ FindOneLine:
 	.type	GetCameraCenter, @function
 GetCameraCenter:
 .LFB435:
-	.loc 1 307 0 is_stmt 1
-.LVL158:
-	.loc 1 310 0
-	jlt	%d5, 2, .L113
-	.loc 1 311 0
+	.loc 1 314 0 is_stmt 1
+.LVL161:
+	.loc 1 318 0
+	jlt	%d5, 2, .L114
+	.loc 1 319 0
 	lt	%d4, %d4, 60
-.LVL159:
-	jnz	%d4, .L114
-	.loc 1 312 0
+.LVL162:
+	jnz	%d4, .L115
+	.loc 1 320 0
 	mov	%d15, 0
 	movh.a	%a15, hi:g_cameraDirection
 	st.w	[%a15] lo:g_cameraDirection, %d15
-.L113:
+.L114:
 	movh.a	%a14, hi:nowIndex
 	ld.w	%d4, [%a14] lo:nowIndex
 	movh.a	%a15, hi:cam_info
 	mul	%d3, %d4, 129
 	lea	%a15, [%a15] lo:cam_info
 	movh.a	%a3, hi:IR_LineScan
-	.loc 1 307 0 discriminator 1
+	.loc 1 314 0 discriminator 1
 	mov	%d15, 0
 	lea	%a3, [%a3] lo:IR_LineScan
-	.loc 1 318 0 discriminator 1
+	.loc 1 326 0 discriminator 1
 	mov.d	%d5, %a15
-.LVL160:
+.LVL163:
 	lea	%a2, 127
-.LVL161:
-.L115:
-	.loc 1 318 0 is_stmt 0 discriminator 3
+.LVL164:
+.L116:
+	.loc 1 326 0 is_stmt 0 discriminator 3
 	addsc.a	%a4, %a3, %d15, 2
 	add	%d2, %d15, %d3
 	addsc.a	%a5, %a15, %d2, 2
 	ld.w	%d6, [%a4]0
 	st.w	[%a5]0, %d6
-	.loc 1 320 0 is_stmt 1 discriminator 3
+	.loc 1 328 0 is_stmt 1 discriminator 3
 	ld.w	%d2, [%a4] 1024
-	.loc 1 319 0 discriminator 3
+	.loc 1 327 0 discriminator 3
 	ld.w	%d6, [%a4] 512
 	st.w	[%a5] 2580, %d6
-	.loc 1 320 0 discriminator 3
+	.loc 1 328 0 discriminator 3
 	st.w	[%a5] 5160, %d2
-	.loc 1 317 0 discriminator 3
+	.loc 1 325 0 discriminator 3
 	add	%d15, 1
-.LVL162:
-	loop	%a2, .L115
-	.loc 1 322 0
+.LVL165:
+	loop	%a2, .L116
+	.loc 1 330 0
 	mov	%d15, 516
-.LVL163:
+.LVL166:
 	madd	%d3, %d5, %d4, %d15
 	mov	%d15, 60
 	movh.a	%a12, hi:nowIndex
 	mov.a	%a2, %d3
 	lea	%a12, [%a12] lo:nowIndex
 	st.w	[%a2] 512, %d15
-.LVL164:
-	.loc 1 324 0
+.LVL167:
+	.loc 1 332 0
 	mov	%d9, 0
-	.loc 1 325 0
+	.loc 1 333 0
 	mov	%d8, 516
 	mov	%d12, 2580
 	mov.d	%d11, %a15
-	.loc 1 326 0
+	.loc 1 334 0
 	mov.aa	%a13, %a12
-.LVL165:
-.L117:
-	.loc 1 325 0 discriminator 3
+.LVL168:
+.L118:
+	.loc 1 333 0 discriminator 3
 	mul	%d15, %d9, %d12
-	.loc 1 324 0 discriminator 3
+	.loc 1 332 0 discriminator 3
 	add	%d9, 1
-.LVL166:
-	.loc 1 325 0 discriminator 3
+.LVL169:
+	.loc 1 333 0 discriminator 3
 	mov	%d10, 516
 	madd	%d4, %d15, %d4, %d8
 	addsc.a	%a4, %a15, %d4, 0
 	mov	%d4, 4096
 	call	Stretching
-.LVL167:
-	.loc 1 326 0 discriminator 3
+.LVL170:
+	.loc 1 334 0 discriminator 3
 	ld.w	%d2, [%a12]0
 	madd	%d2, %d15, %d2, %d8
 	addsc.a	%a4, %a15, %d2, 0
 	call	MedianFiltering
-.LVL168:
-	.loc 1 327 0 discriminator 3
+.LVL171:
+	.loc 1 335 0 discriminator 3
 	ld.w	%d2, [%a12]0
 	madd	%d2, %d15, %d2, %d8
 	addsc.a	%a4, %a15, %d2, 0
 	call	Sharpening
-.LVL169:
-	.loc 1 328 0 discriminator 3
+.LVL172:
+	.loc 1 336 0 discriminator 3
 	ld.w	%d2, [%a12]0
 	movh	%d4, 2
 	madd	%d15, %d15, %d2, %d8
 	addi	%d4, %d4, -31072
 	addsc.a	%a4, %a15, %d15, 0
 	call	Stretching
-.LVL170:
-	.loc 1 324 0 discriminator 3
-	jeq	%d9, 3, .L116
+.LVL173:
+	.loc 1 332 0 discriminator 3
+	jeq	%d9, 3, .L117
 	ld.w	%d4, [%a13]0
-	j	.L117
-.L116:
-	.loc 1 330 0
+	j	.L118
+.L117:
+	.loc 1 338 0
 	ld.w	%d15, [%a13]0
-	.loc 1 335 0
+	.loc 1 343 0
 	mov.d	%d8, %a15
-	.loc 1 330 0
+	.loc 1 338 0
 	madd	%d6, %d11, %d15, %d10
 	mov.a	%a4, %d6
 	mov.a	%a12, %d6
 	call	FindCenter
-.LVL171:
-	.loc 1 331 0
+.LVL174:
+	.loc 1 339 0
 	ld.w	%d15, [%a13]0
-	.loc 1 330 0
+	.loc 1 338 0
 	st.w	[%a12] 512, %d2
-	.loc 1 331 0
+	.loc 1 339 0
 	mul	%d15, %d10
 	mov.a	%a2, %d15
 	lea	%a4, [%a2] 2580
 	addsc.a	%a4, %a4, %d11, 0
 	call	FindOneLine
-.LVL172:
+.LVL175:
 	mov.a	%a3, %d11
 	addsc.a	%a2, %a3, %d15, 0
-	.loc 1 332 0
+	.loc 1 340 0
 	ld.w	%d15, [%a13]0
-	.loc 1 331 0
+	.loc 1 339 0
 	st.w	[%a2] 3092, %d2
-	.loc 1 332 0
+	.loc 1 340 0
 	mul	%d10, %d15
-	.loc 1 334 0
+	.loc 1 342 0
 	mov	%d15, 0
-	.loc 1 332 0
+	.loc 1 340 0
 	mov.a	%a2, %d10
 	lea	%a4, [%a2] 5160
 	addsc.a	%a4, %a4, %d11, 0
 	call	FindOneLine
-.LVL173:
+.LVL176:
 	mov.a	%a3, %d11
 	ld.w	%d4, [%a13]0
 	addsc.a	%a2, %a3, %d10, 0
 	mul	%d3, %d4, 129
 	movh.a	%a5, hi:speedLimitLine
 	st.w	[%a2] 5672, %d2
-.LVL174:
+.LVL177:
 	lea	%a5, [%a5] lo:speedLimitLine
-	.loc 1 335 0
+	.loc 1 343 0
 	lea	%a2, 127
-.LVL175:
-.L118:
-	.loc 1 335 0 is_stmt 0 discriminator 3
+.LVL178:
+.L119:
+	.loc 1 343 0 is_stmt 0 discriminator 3
 	add	%d2, %d15, %d3
 	addsc.a	%a3, %a15, %d2, 2
 	addsc.a	%a4, %a5, %d15, 2
 	ld.w	%d2, [%a3]0
 	st.w	[%a4]0, %d2
-	.loc 1 334 0 is_stmt 1 discriminator 3
+	.loc 1 342 0 is_stmt 1 discriminator 3
 	add	%d15, 1
-.LVL176:
-	loop	%a2, .L118
-	.loc 1 337 0
+.LVL179:
+	loop	%a2, .L119
+	.loc 1 345 0
 	mov	%d15, 516
-.LVL177:
+.LVL180:
 	madd	%d6, %d8, %d4, %d15
 	mov.a	%a4, %d6
 	ld.w	%d2, [%a4] 512
 	add	%d2, 1
-	jlt.u	%d2, 2, .L126
-.L119:
-.LVL178:
+	jlt.u	%d2, 2, .L125
+.L120:
+.LVL181:
 	movh.a	%a5, hi:debugLine
-	.loc 1 334 0 discriminator 1
+	.loc 1 342 0 discriminator 1
 	mov	%d15, 0
 	lea	%a5, [%a5] lo:debugLine
-	.loc 1 347 0 discriminator 1
+	.loc 1 363 0 discriminator 1
 	mov.d	%d5, %a15
 	lea	%a2, 127
-.LVL179:
+.LVL182:
 .L121:
-	.loc 1 347 0 is_stmt 0 discriminator 3
+	.loc 1 363 0 is_stmt 0 discriminator 3
 	add	%d2, %d15, %d3
 	addsc.a	%a3, %a15, %d2, 2
 	addsc.a	%a4, %a5, %d15, 2
 	ld.w	%d6, [%a3]0
 	st.w	[%a4]0, %d6
-	.loc 1 346 0 is_stmt 1 discriminator 3
+	.loc 1 362 0 is_stmt 1 discriminator 3
 	add	%d15, 1
-.LVL180:
+.LVL183:
 	loop	%a2, .L121
-	.loc 1 349 0
+	.loc 1 365 0
 	mov	%d15, 5
-.LVL181:
+.LVL184:
 	addi	%d2, %d4, 1
 	div	%e2, %d2, %d15
-	.loc 1 351 0
+	.loc 1 367 0
 	addi	%d2, %d3, 4
-	.loc 1 349 0
+	.loc 1 365 0
 	st.w	[%a14] lo:nowIndex, %d3
-	.loc 1 351 0
+	.loc 1 367 0
 	div	%e2, %d2, %d15
 	mov	%d2, 516
 	madd	%d3, %d5, %d3, %d2
 	mov.a	%a15, %d3
-	.loc 1 352 0
+	.loc 1 368 0
 	ld.w	%d2, [%a15] 512
 	ret
-.LVL182:
-.L114:
-	.loc 1 314 0
+.LVL185:
+.L115:
+	.loc 1 322 0
 	mov	%d15, 1
 	movh.a	%a15, hi:g_cameraDirection
 	st.w	[%a15] lo:g_cameraDirection, %d15
-	j	.L113
-.LVL183:
-.L126:
-	.loc 1 338 0
+	j	.L114
+.LVL186:
+.L125:
+	.loc 1 354 0
 	mov	%d9, 5
 	add	%d4, 4
 	div	%e4, %d4, %d9
 	madd	%d3, %d8, %d5, %d15
 	mov.a	%a5, %d3
 	call	CopyPrevLine
-.LVL184:
-	.loc 1 339 0
+.LVL187:
+	.loc 1 355 0
 	ld.w	%d4, [%a14] lo:nowIndex
-	.loc 1 340 0
-	movh.a	%a3, hi:g_cameraDirection
-	.loc 1 339 0
 	addi	%d2, %d4, 4
 	div	%e2, %d2, %d9
 	madd	%d6, %d8, %d3, %d15
 	madd	%d3, %d8, %d4, %d15
-	.loc 1 340 0
-	ld.w	%d15, [%a3] lo:g_cameraDirection
-	.loc 1 339 0
 	mov.a	%a2, %d6
 	ld.w	%d2, [%a2] 512
 	mov.a	%a2, %d3
+	mul	%d3, %d4, 129
 	st.w	[%a2] 512, %d2
-	.loc 1 340 0
-	jnz	%d15, .L120
-	.loc 1 341 0
-	ld.w	%d6, [%a2] 3092
-	mul	%d3, %d4, 129
-	addi	%d15, %d6, 40
-	st.w	[%a2] 512, %d15
-	j	.L119
-.L120:
-	mul	%d3, %d4, 129
-	.loc 1 342 0
-	jne	%d15, 1, .L119
-	.loc 1 343 0
-	ld.w	%d2, [%a2] 5672
-	addi	%d15, %d2, -40
-	st.w	[%a2] 512, %d15
-	j	.L119
+	j	.L120
 .LFE435:
 	.size	GetCameraCenter, .-GetCameraCenter
 .section .text.CheckLimitZone,"ax",@progbits
@@ -1557,42 +1571,42 @@ GetCameraCenter:
 	.type	CheckLimitZone, @function
 CheckLimitZone:
 .LFB438:
-	.loc 1 432 0
-.LVL185:
+	.loc 1 471 0
+.LVL188:
 	movh.a	%a3, hi:speedLimitLine
-	.loc 1 432 0
+	.loc 1 471 0
 	mov	%d5, 0
 	mov	%d3, 0
-	.loc 1 435 0
+	.loc 1 474 0
 	mov	%d15, 0
 	lea	%a3, [%a3] lo:speedLimitLine
 	lea	%a15, 127
-.LVL186:
-.L129:
-	.loc 1 436 0
+.LVL189:
+.L128:
+	.loc 1 475 0
 	addsc.a	%a2, %a3, %d15, 2
 	ld.w	%d2, [%a2]0
-	jnz	%d2, .L128
-	.loc 1 437 0
+	jnz	%d2, .L127
+	.loc 1 476 0
 	add	%d3, 1
 	mov	%d5, %d3
-.L128:
-	.loc 1 435 0 discriminator 2
+.L127:
+	.loc 1 474 0 discriminator 2
 	add	%d15, 1
-.LVL187:
-	loop	%a15, .L129
+.LVL190:
+	loop	%a15, .L128
 	movh.a	%a15, hi:zeroCnt
 	st.w	[%a15] lo:zeroCnt, %d5
-	.loc 1 439 0
+	.loc 1 478 0
 	ge	%d3, %d3, 110
-	jnz	%d3, .L127
-	.loc 1 440 0
+	jnz	%d3, .L126
+	.loc 1 479 0
 	xor	%d4, %d4, 1
-.LVL188:
+.LVL191:
 	movh.a	%a15, hi:isLimitZone
 	st.w	[%a15] lo:isLimitZone, %d4
-.LVL189:
-.L127:
+.LVL192:
+.L126:
 	ret
 .LFE438:
 	.size	CheckLimitZone, .-CheckLimitZone
@@ -1602,8 +1616,8 @@ CheckLimitZone:
 	.type	IsLimitZone, @function
 IsLimitZone:
 .LFB439:
-	.loc 1 443 0
-	.loc 1 445 0
+	.loc 1 482 0
+	.loc 1 484 0
 	movh.a	%a15, hi:isLimitZone
 	ld.w	%d2, [%a15] lo:isLimitZone
 	ret
@@ -1615,19 +1629,73 @@ IsLimitZone:
 	.type	GetDashLine, @function
 GetDashLine:
 .LFB440:
-	.loc 1 447 0
-	.loc 1 448 0
+	.loc 1 486 0
+	.loc 1 487 0
 	movh.a	%a15, hi:leftIndexCount
 	ld.w	%d2, [%a15] lo:leftIndexCount
 	movh.a	%a15, hi:rightIndexCount
 	ld.w	%d15, [%a15] lo:rightIndexCount
 	ge	%d2, %d2, %d15
-	.loc 1 449 0
+	.loc 1 488 0
 	mov	%d15, -1
 	sel	%d2, %d2, %d15, 1
 	ret
 .LFE440:
 	.size	GetDashLine, .-GetDashLine
+.section .text.GetCountPassedObject,"ax",@progbits
+	.align 1
+	.global	GetCountPassedObject
+	.type	GetCountPassedObject, @function
+GetCountPassedObject:
+.LFB441:
+	.loc 1 490 0
+	.loc 1 492 0
+	movh.a	%a15, hi:countPassedObject
+	ld.w	%d2, [%a15] lo:countPassedObject
+	ret
+.LFE441:
+	.size	GetCountPassedObject, .-GetCountPassedObject
+.section .text.SetCountPassedObject,"ax",@progbits
+	.align 1
+	.global	SetCountPassedObject
+	.type	SetCountPassedObject, @function
+SetCountPassedObject:
+.LFB442:
+	.loc 1 493 0
+.LVL193:
+	.loc 1 494 0
+	movh.a	%a15, hi:countPassedObject
+	st.w	[%a15] lo:countPassedObject, %d4
+	ret
+.LFE442:
+	.size	SetCountPassedObject, .-SetCountPassedObject
+.section .text.GetDottedLine,"ax",@progbits
+	.align 1
+	.global	GetDottedLine
+	.type	GetDottedLine, @function
+GetDottedLine:
+.LFB443:
+	.loc 1 496 0
+	.loc 1 498 0
+	movh.a	%a15, hi:dottedLine
+	ld.w	%d2, [%a15] lo:dottedLine
+	ret
+.LFE443:
+	.size	GetDottedLine, .-GetDottedLine
+.section .text.SetDottedLine,"ax",@progbits
+	.align 1
+	.global	SetDottedLine
+	.type	SetDottedLine, @function
+SetDottedLine:
+.LFB444:
+	.loc 1 499 0
+.LVL194:
+	.loc 1 500 0
+	movh.a	%a15, hi:dottedLine
+	st.w	[%a15] lo:dottedLine, %d4
+	ret
+.LFE444:
+	.size	SetDottedLine, .-SetDottedLine
 	.global	g_cameraDirection
 .section .bss.g_cameraDirection,"aw",@nobits
 	.align 2
@@ -1712,6 +1780,20 @@ debugLine:
 	.size	cam_info, 7740
 cam_info:
 	.zero	7740
+	.global	dottedLine
+.section .bss.dottedLine,"aw",@nobits
+	.align 2
+	.type	dottedLine, @object
+	.size	dottedLine, 4
+dottedLine:
+	.zero	4
+	.global	countPassedObject
+.section .bss.countPassedObject,"aw",@nobits
+	.align 2
+	.type	countPassedObject, @object
+	.size	countPassedObject, 4
+countPassedObject:
+	.zero	4
 	.global	Zero_center_line
 .section .bss.Zero_center_line,"aw",@nobits
 	.align 2
@@ -1883,6 +1965,38 @@ g_VadcAutoScan:
 	.uaword	.LFE440-.LFB440
 	.align 2
 .LEFDE26:
+.LSFDE28:
+	.uaword	.LEFDE28-.LASFDE28
+.LASFDE28:
+	.uaword	.Lframe0
+	.uaword	.LFB441
+	.uaword	.LFE441-.LFB441
+	.align 2
+.LEFDE28:
+.LSFDE30:
+	.uaword	.LEFDE30-.LASFDE30
+.LASFDE30:
+	.uaword	.Lframe0
+	.uaword	.LFB442
+	.uaword	.LFE442-.LFB442
+	.align 2
+.LEFDE30:
+.LSFDE32:
+	.uaword	.LEFDE32-.LASFDE32
+.LASFDE32:
+	.uaword	.Lframe0
+	.uaword	.LFB443
+	.uaword	.LFE443-.LFB443
+	.align 2
+.LEFDE32:
+.LSFDE34:
+	.uaword	.LEFDE34-.LASFDE34
+.LASFDE34:
+	.uaword	.Lframe0
+	.uaword	.LFB444
+	.uaword	.LFE444-.LFB444
+	.align 2
+.LEFDE34:
 .section .text,"ax",@progbits
 .Letext0:
 	.file 5 "../../_LibSrc/iLLD_1_0_1_8_0__TC27D/Src/BaseSw/iLLD/TC27D/Tricore/Cpu/Std/Platform_Types.h"
@@ -1898,7 +2012,7 @@ g_VadcAutoScan:
 	.file 15 "../../_LibSrc/iLLD_1_0_1_8_0__TC27D/Src/BaseSw/Service/CpuGeneric/SysSe/Bsp/Bsp.h"
 .section .debug_info,"",@progbits
 .Ldebug_info0:
-	.uaword	0xa540
+	.uaword	0xa6ac
 	.uahalf	0x3
 	.uaword	.Ldebug_abbrev0
 	.byte	0x4
@@ -1907,7 +2021,7 @@ g_VadcAutoScan:
 	.byte	0x1
 	.string	"../../MyApp/AurixRacer/0_Src/AppSw/Tricore/SnsAct/BasicLineScan.c"
 	.string	"C:\\\\Users\\\\kdh95\\\\Desktop\\\\SmartCar\\\\AurixRacer-master\\\\src\\\\Projects\\\\AurixRacer_SB_TC27D"
-	.uaword	.Ldebug_ranges0+0x208
+	.uaword	.Ldebug_ranges0+0x220
 	.uaword	0
 	.uaword	0
 	.uaword	.Ldebug_line0
@@ -15925,345 +16039,380 @@ g_VadcAutoScan:
 	.byte	0
 	.uleb128 0x29
 	.byte	0x1
+	.uaword	.LASF47
+	.byte	0x1
+	.uahalf	0x1ea
+	.uaword	0x20a
+	.byte	0x1
+	.uleb128 0x2a
+	.byte	0x1
+	.uaword	.LASF43
+	.byte	0x1
+	.uahalf	0x1ed
+	.byte	0x1
+	.byte	0x1
+	.uaword	0x9596
+	.uleb128 0x26
+	.string	"cpo"
+	.byte	0x1
+	.uahalf	0x1ed
+	.uaword	0x20a
+	.byte	0
+	.uleb128 0x2a
+	.byte	0x1
+	.uaword	.LASF44
+	.byte	0x1
+	.uahalf	0x1f3
+	.byte	0x1
+	.byte	0x1
+	.uaword	0x95b1
+	.uleb128 0x26
+	.string	"dl"
+	.byte	0x1
+	.uahalf	0x1f3
+	.uaword	0x20a
+	.byte	0
+	.uleb128 0x2b
+	.byte	0x1
 	.string	"BasicLineScan_run"
 	.byte	0x1
-	.byte	0xa6
+	.byte	0xaa
 	.byte	0x1
 	.uaword	.LFB428
 	.uaword	.LFE428
 	.byte	0x1
 	.byte	0x9c
 	.byte	0x1
-	.uaword	0x9881
-	.uleb128 0x2a
+	.uaword	0x98c6
+	.uleb128 0x2c
 	.string	"chnIx"
 	.byte	0x1
-	.byte	0xa8
+	.byte	0xac
 	.uaword	0x2a5
 	.uaword	.LLST0
-	.uleb128 0x2b
+	.uleb128 0x2d
 	.string	"idx"
 	.byte	0x1
-	.byte	0xa9
+	.byte	0xad
 	.uaword	0x2a5
 	.byte	0x1
 	.byte	0x58
-	.uleb128 0x2c
+	.uleb128 0x2e
 	.uaword	0x9525
-	.uaword	.LBB53
+	.uaword	.LBB60
 	.uaword	.Ldebug_ranges0+0
 	.byte	0x1
-	.byte	0xab
-	.uaword	0x95d8
-	.uleb128 0x2d
+	.byte	0xaf
+	.uaword	0x961d
+	.uleb128 0x2f
 	.uaword	0x955c
 	.byte	0x1
-	.uleb128 0x2e
+	.uleb128 0x30
 	.uaword	0x9550
-	.uleb128 0x2f
+	.uleb128 0x31
 	.uaword	0x9543
 	.uaword	.LLST1
 	.byte	0
-	.uleb128 0x2c
+	.uleb128 0x2e
 	.uaword	0x9525
-	.uaword	.LBB61
+	.uaword	.LBB68
 	.uaword	.Ldebug_ranges0+0x28
 	.byte	0x1
-	.byte	0xac
-	.uaword	0x9603
-	.uleb128 0x30
+	.byte	0xb0
+	.uaword	0x9648
+	.uleb128 0x32
 	.uaword	0x955c
 	.uaword	0x10000
-	.uleb128 0x2e
+	.uleb128 0x30
 	.uaword	0x9550
-	.uleb128 0x2f
+	.uleb128 0x31
 	.uaword	0x9543
 	.uaword	.LLST2
 	.byte	0
-	.uleb128 0x2c
+	.uleb128 0x2e
 	.uaword	0x9525
-	.uaword	.LBB69
+	.uaword	.LBB76
 	.uaword	.Ldebug_ranges0+0x50
 	.byte	0x1
-	.byte	0xaf
-	.uaword	0x962b
-	.uleb128 0x2d
+	.byte	0xb3
+	.uaword	0x9670
+	.uleb128 0x2f
 	.uaword	0x955c
 	.byte	0x1
-	.uleb128 0x2e
+	.uleb128 0x30
 	.uaword	0x9550
-	.uleb128 0x2f
+	.uleb128 0x31
 	.uaword	0x9543
 	.uaword	.LLST3
 	.byte	0
-	.uleb128 0x2c
+	.uleb128 0x2e
 	.uaword	0x9525
-	.uaword	.LBB76
+	.uaword	.LBB83
 	.uaword	.Ldebug_ranges0+0x78
 	.byte	0x1
-	.byte	0xbc
-	.uaword	0x9656
-	.uleb128 0x30
+	.byte	0xc0
+	.uaword	0x969b
+	.uleb128 0x32
 	.uaword	0x955c
 	.uaword	0x10000
-	.uleb128 0x2e
+	.uleb128 0x30
 	.uaword	0x9550
-	.uleb128 0x2f
+	.uleb128 0x31
 	.uaword	0x9543
 	.uaword	.LLST4
 	.byte	0
-	.uleb128 0x2c
+	.uleb128 0x2e
 	.uaword	0x9525
-	.uaword	.LBB81
+	.uaword	.LBB88
 	.uaword	.Ldebug_ranges0+0x98
 	.byte	0x1
-	.byte	0xb0
-	.uaword	0x967e
-	.uleb128 0x2d
+	.byte	0xb4
+	.uaword	0x96c3
+	.uleb128 0x2f
 	.uaword	0x955c
 	.byte	0x1
-	.uleb128 0x2e
+	.uleb128 0x30
 	.uaword	0x9550
-	.uleb128 0x2f
+	.uleb128 0x31
 	.uaword	0x9543
 	.uaword	.LLST5
 	.byte	0
-	.uleb128 0x2c
+	.uleb128 0x2e
 	.uaword	0x9525
-	.uaword	.LBB85
+	.uaword	.LBB92
 	.uaword	.Ldebug_ranges0+0xb0
 	.byte	0x1
-	.byte	0xb3
-	.uaword	0x96a9
-	.uleb128 0x30
+	.byte	0xb7
+	.uaword	0x96ee
+	.uleb128 0x32
 	.uaword	0x955c
 	.uaword	0x10000
-	.uleb128 0x2e
+	.uleb128 0x30
 	.uaword	0x9550
-	.uleb128 0x2f
+	.uleb128 0x31
 	.uaword	0x9543
 	.uaword	.LLST6
 	.byte	0
-	.uleb128 0x2c
+	.uleb128 0x2e
 	.uaword	0x9525
-	.uaword	.LBB91
+	.uaword	.LBB98
 	.uaword	.Ldebug_ranges0+0xd0
 	.byte	0x1
-	.byte	0xb4
-	.uaword	0x96d1
-	.uleb128 0x2d
+	.byte	0xb8
+	.uaword	0x9716
+	.uleb128 0x2f
 	.uaword	0x955c
 	.byte	0x1
-	.uleb128 0x2e
+	.uleb128 0x30
 	.uaword	0x9550
-	.uleb128 0x2f
+	.uleb128 0x31
 	.uaword	0x9543
 	.uaword	.LLST7
 	.byte	0
-	.uleb128 0x31
+	.uleb128 0x33
 	.uaword	0x94f8
-	.uaword	.LBB95
-	.uaword	.LBE95
+	.uaword	.LBB102
+	.uaword	.LBE102
 	.byte	0x1
-	.byte	0xb6
-	.uaword	0x970b
-	.uleb128 0x32
+	.byte	0xba
+	.uaword	0x9750
+	.uleb128 0x34
 	.uaword	0x9518
 	.byte	0x6
 	.byte	0x3
 	.uaword	g_VadcAutoScan+4
 	.byte	0x9f
-	.uleb128 0x33
+	.uleb128 0x35
 	.uaword	0x94cf
-	.uaword	.LBB96
-	.uaword	.LBE96
+	.uaword	.LBB103
+	.uaword	.LBE103
 	.byte	0x4
 	.uahalf	0x503
-	.uleb128 0x2f
+	.uleb128 0x31
 	.uaword	0x94eb
 	.uaword	.LLST8
 	.byte	0
 	.byte	0
-	.uleb128 0x2c
+	.uleb128 0x2e
 	.uaword	0x9525
-	.uaword	.LBB100
+	.uaword	.LBB107
 	.uaword	.Ldebug_ranges0+0xe8
 	.byte	0x1
-	.byte	0xbd
-	.uaword	0x9736
-	.uleb128 0x30
+	.byte	0xc1
+	.uaword	0x977b
+	.uleb128 0x32
 	.uaword	0x955c
 	.uaword	0x10000
-	.uleb128 0x2e
+	.uleb128 0x30
 	.uaword	0x9550
-	.uleb128 0x2f
+	.uleb128 0x31
 	.uaword	0x9543
 	.uaword	.LLST9
 	.byte	0
-	.uleb128 0x2c
+	.uleb128 0x2e
 	.uaword	0x9525
-	.uaword	.LBB104
+	.uaword	.LBB111
 	.uaword	.Ldebug_ranges0+0x100
 	.byte	0x1
-	.byte	0xc0
-	.uaword	0x9761
-	.uleb128 0x30
+	.byte	0xc4
+	.uaword	0x97a6
+	.uleb128 0x32
 	.uaword	0x955c
 	.uaword	0x10000
-	.uleb128 0x2e
+	.uleb128 0x30
 	.uaword	0x9550
-	.uleb128 0x2f
+	.uleb128 0x31
 	.uaword	0x9543
 	.uaword	.LLST10
 	.byte	0
-	.uleb128 0x2c
+	.uleb128 0x2e
 	.uaword	0x9525
-	.uaword	.LBB108
+	.uaword	.LBB115
 	.uaword	.Ldebug_ranges0+0x118
 	.byte	0x1
-	.byte	0xc1
-	.uaword	0x9789
-	.uleb128 0x2d
+	.byte	0xc5
+	.uaword	0x97ce
+	.uleb128 0x2f
 	.uaword	0x955c
 	.byte	0x1
-	.uleb128 0x2e
+	.uleb128 0x30
 	.uaword	0x9550
-	.uleb128 0x2f
+	.uleb128 0x31
 	.uaword	0x9543
 	.uaword	.LLST11
 	.byte	0
-	.uleb128 0x34
+	.uleb128 0x36
 	.uaword	.Ldebug_ranges0+0x130
-	.uaword	0x97ff
-	.uleb128 0x2a
+	.uaword	0x9844
+	.uleb128 0x2c
 	.string	"conversionResult"
 	.byte	0x1
-	.byte	0xc8
+	.byte	0xcc
 	.uaword	0x6aaf
 	.uaword	.LLST12
-	.uleb128 0x35
+	.uleb128 0x37
 	.uaword	0x944a
-	.uaword	.LBB113
-	.uaword	.LBE113
+	.uaword	.LBB120
+	.uaword	.LBE120
 	.byte	0x1
-	.byte	0xcc
-	.uleb128 0x2f
+	.byte	0xd0
+	.uleb128 0x31
 	.uaword	0x946e
 	.uaword	.LLST13
-	.uleb128 0x2f
+	.uleb128 0x31
 	.uaword	0x946e
 	.uaword	.LLST13
-	.uleb128 0x33
+	.uleb128 0x35
 	.uaword	0x93f9
-	.uaword	.LBB114
-	.uaword	.LBE114
+	.uaword	.LBB121
+	.uaword	.LBE121
 	.byte	0x4
 	.uahalf	0x4d3
-	.uleb128 0x2f
+	.uleb128 0x31
 	.uaword	0x9425
 	.uaword	.LLST15
-	.uleb128 0x2e
+	.uleb128 0x30
 	.uaword	0x9419
-	.uleb128 0x36
-	.uaword	.LBB115
-	.uaword	.LBE115
-	.uleb128 0x37
+	.uleb128 0x38
+	.uaword	.LBB122
+	.uaword	.LBE122
+	.uleb128 0x39
 	.uaword	0x9437
 	.byte	0
 	.byte	0
 	.byte	0
 	.byte	0
-	.uleb128 0x2c
+	.uleb128 0x2e
 	.uaword	0x9525
-	.uaword	.LBB117
+	.uaword	.LBB124
 	.uaword	.Ldebug_ranges0+0x148
 	.byte	0x1
-	.byte	0xd4
-	.uaword	0x982a
-	.uleb128 0x30
+	.byte	0xd8
+	.uaword	0x986f
+	.uleb128 0x32
 	.uaword	0x955c
 	.uaword	0x10000
-	.uleb128 0x2e
+	.uleb128 0x30
 	.uaword	0x9550
-	.uleb128 0x2f
+	.uleb128 0x31
 	.uaword	0x9543
 	.uaword	.LLST16
 	.byte	0
-	.uleb128 0x2c
+	.uleb128 0x2e
 	.uaword	0x9525
-	.uaword	.LBB125
+	.uaword	.LBB132
 	.uaword	.Ldebug_ranges0+0x170
 	.byte	0x1
-	.byte	0xd5
-	.uaword	0x9853
-	.uleb128 0x30
+	.byte	0xd9
+	.uaword	0x9898
+	.uleb128 0x32
 	.uaword	0x955c
 	.uaword	0x10000
-	.uleb128 0x2e
+	.uleb128 0x30
 	.uaword	0x9550
-	.uleb128 0x32
+	.uleb128 0x34
 	.uaword	0x9543
 	.byte	0x1
 	.byte	0x6f
 	.byte	0
-	.uleb128 0x38
+	.uleb128 0x3a
 	.uaword	.LVL5
-	.uaword	0xa32e
-	.uleb128 0x38
+	.uaword	0xa49a
+	.uleb128 0x3a
 	.uaword	.LVL10
-	.uaword	0xa32e
-	.uleb128 0x38
+	.uaword	0xa49a
+	.uleb128 0x3a
 	.uaword	.LVL15
-	.uaword	0xa32e
-	.uleb128 0x38
+	.uaword	0xa49a
+	.uleb128 0x3a
 	.uaword	.LVL22
-	.uaword	0xa32e
-	.uleb128 0x38
+	.uaword	0xa49a
+	.uleb128 0x3a
 	.uaword	.LVL27
-	.uaword	0xa32e
+	.uaword	0xa49a
 	.byte	0
-	.uleb128 0x29
+	.uleb128 0x2b
 	.byte	0x1
 	.string	"CopyPrevLine"
 	.byte	0x1
-	.byte	0xe3
+	.byte	0xe7
 	.byte	0x1
 	.uaword	.LFB429
 	.uaword	.LFE429
 	.byte	0x1
 	.byte	0x9c
 	.byte	0x1
-	.uaword	0x98d8
-	.uleb128 0x39
+	.uaword	0x991d
+	.uleb128 0x3b
 	.string	"_cam_info"
 	.byte	0x1
-	.byte	0xe3
-	.uaword	0x98d8
+	.byte	0xe7
+	.uaword	0x991d
 	.byte	0x1
 	.byte	0x64
-	.uleb128 0x39
+	.uleb128 0x3b
 	.string	"_prev_info"
 	.byte	0x1
-	.byte	0xe3
+	.byte	0xe7
 	.uaword	0x937f
 	.byte	0x2
 	.byte	0x85
 	.sleb128 0
-	.uleb128 0x2a
+	.uleb128 0x2c
 	.string	"i"
 	.byte	0x1
-	.byte	0xe4
+	.byte	0xe8
 	.uaword	0x20a
 	.uaword	.LLST17
 	.byte	0
 	.uleb128 0x6
 	.byte	0x4
 	.uaword	0x937f
-	.uleb128 0x3a
+	.uleb128 0x3c
 	.byte	0x1
 	.string	"GetMedian"
 	.byte	0x1
-	.byte	0xea
+	.byte	0xee
 	.byte	0x1
 	.uaword	0x20a
 	.uaword	.LFB430
@@ -16271,131 +16420,131 @@ g_VadcAutoScan:
 	.byte	0x1
 	.byte	0x9c
 	.byte	0x1
-	.uaword	0x993b
-	.uleb128 0x39
+	.uaword	0x9980
+	.uleb128 0x3b
 	.string	"_array"
 	.byte	0x1
-	.byte	0xea
-	.uaword	0x993b
+	.byte	0xee
+	.uaword	0x9980
 	.byte	0x1
 	.byte	0x64
-	.uleb128 0x2a
+	.uleb128 0x2c
 	.string	"i"
 	.byte	0x1
-	.byte	0xeb
+	.byte	0xef
 	.uaword	0x20a
 	.uaword	.LLST18
-	.uleb128 0x2a
+	.uleb128 0x2c
 	.string	"j"
 	.byte	0x1
-	.byte	0xeb
+	.byte	0xef
 	.uaword	0x20a
 	.uaword	.LLST19
-	.uleb128 0x2a
+	.uleb128 0x2c
 	.string	"temp"
 	.byte	0x1
-	.byte	0xeb
+	.byte	0xef
 	.uaword	0x20a
 	.uaword	.LLST20
 	.byte	0
 	.uleb128 0x6
 	.byte	0x4
 	.uaword	0x20a
-	.uleb128 0x29
+	.uleb128 0x2b
 	.byte	0x1
 	.string	"Stretching"
 	.byte	0x1
-	.byte	0xf8
+	.byte	0xfc
 	.byte	0x1
 	.uaword	.LFB431
 	.uaword	.LFE431
 	.byte	0x1
 	.byte	0x9c
 	.byte	0x1
-	.uaword	0x99a9
-	.uleb128 0x3b
-	.uaword	.LASF43
+	.uaword	0x99ee
+	.uleb128 0x3d
+	.uaword	.LASF45
 	.byte	0x1
-	.byte	0xf8
-	.uaword	0x99a9
+	.byte	0xfc
+	.uaword	0x99ee
 	.byte	0x1
 	.byte	0x64
-	.uleb128 0x3c
+	.uleb128 0x3e
 	.string	"_max"
 	.byte	0x1
-	.byte	0xf8
+	.byte	0xfc
 	.uaword	0x20a
 	.uaword	.LLST21
-	.uleb128 0x2a
+	.uleb128 0x2c
 	.string	"i"
 	.byte	0x1
-	.byte	0xf9
+	.byte	0xfd
 	.uaword	0x20a
 	.uaword	.LLST22
-	.uleb128 0x2a
+	.uleb128 0x2c
 	.string	"max"
 	.byte	0x1
-	.byte	0xf9
+	.byte	0xfd
 	.uaword	0x20a
 	.uaword	.LLST23
-	.uleb128 0x2a
+	.uleb128 0x2c
 	.string	"min"
 	.byte	0x1
-	.byte	0xf9
+	.byte	0xfd
 	.uaword	0x20a
 	.uaword	.LLST24
 	.byte	0
 	.uleb128 0x6
 	.byte	0x4
 	.uaword	0x936f
-	.uleb128 0x3d
+	.uleb128 0x3f
 	.byte	0x1
 	.string	"MedianFiltering"
 	.byte	0x1
-	.uahalf	0x103
+	.uahalf	0x107
 	.byte	0x1
 	.uaword	.LFB432
 	.uaword	.LFE432
 	.byte	0x1
 	.byte	0x9c
 	.byte	0x1
-	.uaword	0x9a30
-	.uleb128 0x3e
-	.uaword	.LASF43
+	.uaword	0x9a75
+	.uleb128 0x40
+	.uaword	.LASF45
 	.byte	0x1
-	.uahalf	0x103
-	.uaword	0x99a9
+	.uahalf	0x107
+	.uaword	0x99ee
 	.uaword	.LLST25
-	.uleb128 0x3f
+	.uleb128 0x41
 	.string	"i"
 	.byte	0x1
-	.uahalf	0x104
+	.uahalf	0x108
 	.uaword	0x20a
 	.uaword	.LLST26
-	.uleb128 0x3f
+	.uleb128 0x41
 	.string	"j"
 	.byte	0x1
-	.uahalf	0x104
+	.uahalf	0x108
 	.uaword	0x20a
 	.uaword	.LLST27
-	.uleb128 0x3f
+	.uleb128 0x41
 	.string	"t"
 	.byte	0x1
-	.uahalf	0x104
+	.uahalf	0x108
 	.uaword	0x20a
 	.uaword	.LLST28
-	.uleb128 0x40
+	.uleb128 0x42
 	.string	"array"
 	.byte	0x1
-	.uahalf	0x105
-	.uaword	0x9a30
+	.uahalf	0x109
+	.uaword	0x9a75
 	.byte	0x2
 	.byte	0x91
 	.sleb128 -20
-	.uleb128 0x41
+	.uleb128 0x43
 	.uaword	.LVL68
-	.uaword	0x98de
-	.uleb128 0x42
+	.uaword	0x9923
+	.uleb128 0x44
 	.byte	0x1
 	.byte	0x64
 	.byte	0x2
@@ -16405,216 +16554,257 @@ g_VadcAutoScan:
 	.byte	0
 	.uleb128 0x3
 	.uaword	0x20a
-	.uaword	0x9a40
+	.uaword	0x9a85
 	.uleb128 0x4
 	.uaword	0x268
 	.byte	0x4
 	.byte	0
-	.uleb128 0x3d
+	.uleb128 0x3f
 	.byte	0x1
 	.string	"Sharpening"
 	.byte	0x1
-	.uahalf	0x10c
+	.uahalf	0x110
 	.byte	0x1
 	.uaword	.LFB433
 	.uaword	.LFE433
 	.byte	0x1
 	.byte	0x9c
 	.byte	0x1
-	.uaword	0x9ad1
-	.uleb128 0x43
-	.uaword	.LASF43
+	.uaword	0x9b16
+	.uleb128 0x45
+	.uaword	.LASF45
 	.byte	0x1
-	.uahalf	0x10c
-	.uaword	0x99a9
+	.uahalf	0x110
+	.uaword	0x99ee
 	.byte	0x1
 	.byte	0x64
-	.uleb128 0x3f
+	.uleb128 0x41
 	.string	"i"
 	.byte	0x1
-	.uahalf	0x10d
+	.uahalf	0x111
 	.uaword	0x20a
 	.uaword	.LLST29
-	.uleb128 0x3f
+	.uleb128 0x41
 	.string	"j"
 	.byte	0x1
-	.uahalf	0x10d
+	.uahalf	0x111
 	.uaword	0x20a
 	.uaword	.LLST30
-	.uleb128 0x3f
+	.uleb128 0x41
 	.string	"minus"
 	.byte	0x1
-	.uahalf	0x10e
+	.uahalf	0x112
 	.uaword	0x20a
 	.uaword	.LLST31
-	.uleb128 0x3f
+	.uleb128 0x41
 	.string	"add"
 	.byte	0x1
-	.uahalf	0x10e
+	.uahalf	0x112
 	.uaword	0x20a
 	.uaword	.LLST32
-	.uleb128 0x3f
+	.uleb128 0x41
 	.string	"square"
 	.byte	0x1
-	.uahalf	0x10e
+	.uahalf	0x112
 	.uaword	0x20a
 	.uaword	.LLST33
-	.uleb128 0x40
+	.uleb128 0x42
 	.string	"temp"
 	.byte	0x1
-	.uahalf	0x10f
+	.uahalf	0x113
 	.uaword	0x936f
 	.byte	0x3
 	.byte	0x91
 	.sleb128 -512
 	.byte	0
-	.uleb128 0x44
+	.uleb128 0x46
 	.byte	0x1
 	.string	"Camera_Initialization"
 	.byte	0x1
-	.uahalf	0x124
+	.uahalf	0x128
 	.uaword	.LFB434
 	.uaword	.LFE434
 	.byte	0x1
 	.byte	0x9c
 	.byte	0x1
-	.uaword	0x9b18
-	.uleb128 0x3f
+	.uaword	0x9bb7
+	.uleb128 0x41
 	.string	"i"
 	.byte	0x1
-	.uahalf	0x125
+	.uahalf	0x129
 	.uaword	0x20a
 	.uaword	.LLST34
-	.uleb128 0x3f
+	.uleb128 0x41
 	.string	"j"
 	.byte	0x1
-	.uahalf	0x125
+	.uahalf	0x129
 	.uaword	0x20a
 	.uaword	.LLST35
+	.uleb128 0x47
+	.byte	0x1
+	.uaword	.LASF43
+	.byte	0x1
+	.uahalf	0x136
+	.uaword	0x20a
+	.byte	0x1
+	.uaword	0x9b70
+	.uleb128 0x48
 	.byte	0
-	.uleb128 0x29
+	.uleb128 0x47
+	.byte	0x1
+	.uaword	.LASF44
+	.byte	0x1
+	.uahalf	0x137
+	.uaword	0x20a
+	.byte	0x1
+	.uaword	0x9b84
+	.uleb128 0x48
+	.byte	0
+	.uleb128 0x49
+	.uaword	0x957a
+	.uaword	.LBB136
+	.uaword	.LBE136
+	.byte	0x1
+	.uahalf	0x136
+	.uaword	0x9b9f
+	.uleb128 0x2f
+	.uaword	0x9589
+	.byte	0
+	.byte	0
+	.uleb128 0x35
+	.uaword	0x9596
+	.uaword	.LBB138
+	.uaword	.LBE138
+	.byte	0x1
+	.uahalf	0x137
+	.uleb128 0x2f
+	.uaword	0x95a5
+	.byte	0
+	.byte	0
+	.byte	0
+	.uleb128 0x2b
 	.byte	0x1
 	.string	"BasicLineScan_init"
 	.byte	0x1
-	.byte	0x41
+	.byte	0x45
 	.byte	0x1
 	.uaword	.LFB427
 	.uaword	.LFE427
 	.byte	0x1
 	.byte	0x9c
 	.byte	0x1
-	.uaword	0x9e42
-	.uleb128 0x2b
+	.uaword	0x9ee1
+	.uleb128 0x2d
 	.string	"adcConfig"
 	.byte	0x1
-	.byte	0x46
+	.byte	0x4a
 	.uaword	0x91e8
 	.byte	0x3
 	.byte	0x91
 	.sleb128 -164
-	.uleb128 0x2b
+	.uleb128 0x2d
 	.string	"adcGroupConfig"
 	.byte	0x1
-	.byte	0x4d
+	.byte	0x51
 	.uaword	0x92ce
 	.byte	0x3
 	.byte	0x91
 	.sleb128 -128
-	.uleb128 0x2a
+	.uleb128 0x2c
 	.string	"chnIx"
 	.byte	0x1
-	.byte	0x61
+	.byte	0x65
 	.uaword	0x2a5
 	.uaword	.LLST36
-	.uleb128 0x45
+	.uleb128 0x4a
 	.uaword	.LASF42
 	.byte	0x1
-	.byte	0x62
+	.byte	0x66
 	.uaword	0x211
 	.uaword	.LLST37
-	.uleb128 0x2a
+	.uleb128 0x2c
 	.string	"mask"
 	.byte	0x1
-	.byte	0x63
+	.byte	0x67
 	.uaword	0x211
 	.uaword	.LLST37
-	.uleb128 0x2b
+	.uleb128 0x2d
 	.string	"adcChannelConfig"
 	.byte	0x1
-	.byte	0x65
-	.uaword	0x9e42
+	.byte	0x69
+	.uaword	0x9ee1
 	.byte	0x3
 	.byte	0x91
 	.sleb128 -72
-	.uleb128 0x2c
+	.uleb128 0x2e
 	.uaword	0x9485
-	.uaword	.LBB129
+	.uaword	.LBB140
 	.uaword	.Ldebug_ranges0+0x188
 	.byte	0x1
-	.byte	0x74
-	.uaword	0x9bf5
-	.uleb128 0x32
+	.byte	0x78
+	.uaword	0x9c94
+	.uleb128 0x34
 	.uaword	0x94a3
 	.byte	0x6
 	.byte	0x3
 	.uaword	g_VadcAutoScan+4
 	.byte	0x9f
-	.uleb128 0x2f
+	.uleb128 0x31
 	.uaword	0x94bb
 	.uaword	.LLST39
-	.uleb128 0x2f
+	.uleb128 0x31
 	.uaword	0x94af
 	.uaword	.LLST39
-	.uleb128 0x38
-	.uaword	.LVL103
-	.uaword	0xa347
+	.uleb128 0x3a
+	.uaword	.LVL105
+	.uaword	0xa4b3
 	.byte	0
-	.uleb128 0x2c
+	.uleb128 0x2e
 	.uaword	0x9485
-	.uaword	.LBB133
+	.uaword	.LBB144
 	.uaword	.Ldebug_ranges0+0x1a0
 	.byte	0x1
-	.byte	0x81
-	.uaword	0x9c30
-	.uleb128 0x32
+	.byte	0x85
+	.uaword	0x9ccf
+	.uleb128 0x34
 	.uaword	0x94a3
 	.byte	0x6
 	.byte	0x3
 	.uaword	g_VadcAutoScan+4
 	.byte	0x9f
-	.uleb128 0x2f
+	.uleb128 0x31
 	.uaword	0x94bb
 	.uaword	.LLST41
-	.uleb128 0x2f
+	.uleb128 0x31
 	.uaword	0x94af
 	.uaword	.LLST41
-	.uleb128 0x38
-	.uaword	.LVL107
-	.uaword	0xa347
+	.uleb128 0x3a
+	.uaword	.LVL109
+	.uaword	0xa4b3
 	.byte	0
-	.uleb128 0x2c
+	.uleb128 0x2e
 	.uaword	0x9485
-	.uaword	.LBB137
+	.uaword	.LBB148
 	.uaword	.Ldebug_ranges0+0x1b8
 	.byte	0x1
-	.byte	0x8e
-	.uaword	0x9c7c
-	.uleb128 0x32
+	.byte	0x92
+	.uaword	0x9d1b
+	.uleb128 0x34
 	.uaword	0x94a3
 	.byte	0x6
 	.byte	0x3
 	.uaword	g_VadcAutoScan+4
 	.byte	0x9f
-	.uleb128 0x2f
+	.uleb128 0x31
 	.uaword	0x94bb
 	.uaword	.LLST43
-	.uleb128 0x2f
+	.uleb128 0x31
 	.uaword	0x94af
 	.uaword	.LLST43
-	.uleb128 0x41
-	.uaword	.LVL111
-	.uaword	0xa347
-	.uleb128 0x42
+	.uleb128 0x43
+	.uaword	.LVL113
+	.uaword	0xa4b3
+	.uleb128 0x44
 	.byte	0x1
 	.byte	0x55
 	.byte	0x4
@@ -16622,7 +16812,7 @@ g_VadcAutoScan:
 	.byte	0x7f
 	.sleb128 0
 	.byte	0x24
-	.uleb128 0x42
+	.uleb128 0x44
 	.byte	0x1
 	.byte	0x54
 	.byte	0x4
@@ -16632,270 +16822,270 @@ g_VadcAutoScan:
 	.byte	0x24
 	.byte	0
 	.byte	0
-	.uleb128 0x2c
+	.uleb128 0x2e
 	.uaword	0x9525
-	.uaword	.LBB141
+	.uaword	.LBB152
 	.uaword	.Ldebug_ranges0+0x1d0
 	.byte	0x1
-	.byte	0x97
-	.uaword	0x9ca7
-	.uleb128 0x30
+	.byte	0x9b
+	.uaword	0x9d46
+	.uleb128 0x32
 	.uaword	0x955c
 	.uaword	0x10000
-	.uleb128 0x2e
+	.uleb128 0x30
 	.uaword	0x9550
-	.uleb128 0x2f
+	.uleb128 0x31
 	.uaword	0x9543
 	.uaword	.LLST45
 	.byte	0
-	.uleb128 0x2c
+	.uleb128 0x2e
 	.uaword	0x9525
-	.uaword	.LBB147
+	.uaword	.LBB158
 	.uaword	.Ldebug_ranges0+0x1f0
 	.byte	0x1
-	.byte	0x9b
-	.uaword	0x9cd2
-	.uleb128 0x30
+	.byte	0x9f
+	.uaword	0x9d71
+	.uleb128 0x32
 	.uaword	0x955c
 	.uaword	0x10000
-	.uleb128 0x2e
+	.uleb128 0x30
 	.uaword	0x9550
-	.uleb128 0x2f
+	.uleb128 0x31
 	.uaword	0x9543
 	.uaword	.LLST46
 	.byte	0
-	.uleb128 0x46
-	.uaword	.LVL96
-	.uaword	0xa372
-	.uaword	0x9cf1
-	.uleb128 0x42
+	.uleb128 0x4b
+	.uaword	.LVL98
+	.uaword	0xa4de
+	.uaword	0x9d90
+	.uleb128 0x44
 	.byte	0x1
 	.byte	0x65
 	.byte	0x6
 	.byte	0x11
 	.sleb128 -268304384
-	.uleb128 0x42
+	.uleb128 0x44
 	.byte	0x1
 	.byte	0x64
 	.byte	0x3
 	.byte	0x91
 	.sleb128 -164
 	.byte	0
-	.uleb128 0x46
-	.uaword	.LVL97
-	.uaword	0xa3ab
-	.uaword	0x9d0c
-	.uleb128 0x42
-	.byte	0x1
-	.byte	0x65
-	.byte	0x3
-	.byte	0x91
-	.sleb128 -164
-	.uleb128 0x42
-	.byte	0x1
-	.byte	0x64
-	.byte	0x2
-	.byte	0x8f
-	.sleb128 0
-	.byte	0
-	.uleb128 0x46
-	.uaword	.LVL98
-	.uaword	0xa3ed
-	.uaword	0x9d27
-	.uleb128 0x42
-	.byte	0x1
-	.byte	0x65
-	.byte	0x2
-	.byte	0x8f
-	.sleb128 0
-	.uleb128 0x42
-	.byte	0x1
-	.byte	0x64
-	.byte	0x3
-	.byte	0x91
-	.sleb128 -128
-	.byte	0
-	.uleb128 0x46
+	.uleb128 0x4b
 	.uaword	.LVL99
-	.uaword	0xa425
-	.uaword	0x9d42
-	.uleb128 0x42
+	.uaword	0xa517
+	.uaword	0x9dab
+	.uleb128 0x44
+	.byte	0x1
+	.byte	0x65
+	.byte	0x3
+	.byte	0x91
+	.sleb128 -164
+	.uleb128 0x44
+	.byte	0x1
+	.byte	0x64
+	.byte	0x2
+	.byte	0x8f
+	.sleb128 0
+	.byte	0
+	.uleb128 0x4b
+	.uaword	.LVL100
+	.uaword	0xa559
+	.uaword	0x9dc6
+	.uleb128 0x44
+	.byte	0x1
+	.byte	0x65
+	.byte	0x2
+	.byte	0x8f
+	.sleb128 0
+	.uleb128 0x44
+	.byte	0x1
+	.byte	0x64
+	.byte	0x3
+	.byte	0x91
+	.sleb128 -128
+	.byte	0
+	.uleb128 0x4b
+	.uaword	.LVL101
+	.uaword	0xa591
+	.uaword	0x9de1
+	.uleb128 0x44
 	.byte	0x1
 	.byte	0x65
 	.byte	0x3
 	.byte	0x91
 	.sleb128 -128
-	.uleb128 0x42
+	.uleb128 0x44
 	.byte	0x1
 	.byte	0x64
 	.byte	0x2
 	.byte	0x8c
 	.sleb128 0
 	.byte	0
-	.uleb128 0x46
-	.uaword	.LVL100
-	.uaword	0xa460
-	.uaword	0x9d5d
-	.uleb128 0x42
+	.uleb128 0x4b
+	.uaword	.LVL102
+	.uaword	0xa5cc
+	.uaword	0x9dfc
+	.uleb128 0x44
 	.byte	0x1
 	.byte	0x65
 	.byte	0x2
 	.byte	0x8c
 	.sleb128 0
-	.uleb128 0x42
+	.uleb128 0x44
 	.byte	0x1
 	.byte	0x64
 	.byte	0x3
 	.byte	0x91
 	.sleb128 -72
 	.byte	0
-	.uleb128 0x46
-	.uaword	.LVL101
-	.uaword	0xa49a
-	.uaword	0x9d78
-	.uleb128 0x42
+	.uleb128 0x4b
+	.uaword	.LVL103
+	.uaword	0xa606
+	.uaword	0x9e17
+	.uleb128 0x44
 	.byte	0x1
 	.byte	0x65
 	.byte	0x3
 	.byte	0x91
 	.sleb128 -72
-	.uleb128 0x42
+	.uleb128 0x44
 	.byte	0x1
 	.byte	0x64
 	.byte	0x2
 	.byte	0x8f
 	.sleb128 16
 	.byte	0
-	.uleb128 0x46
-	.uaword	.LVL104
-	.uaword	0xa460
-	.uaword	0x9d92
-	.uleb128 0x42
+	.uleb128 0x4b
+	.uaword	.LVL106
+	.uaword	0xa5cc
+	.uaword	0x9e31
+	.uleb128 0x44
 	.byte	0x1
 	.byte	0x65
 	.byte	0x2
 	.byte	0x8c
 	.sleb128 0
-	.uleb128 0x42
+	.uleb128 0x44
 	.byte	0x1
 	.byte	0x64
 	.byte	0x2
 	.byte	0x91
 	.sleb128 -48
 	.byte	0
-	.uleb128 0x46
-	.uaword	.LVL105
-	.uaword	0xa49a
-	.uaword	0x9dac
-	.uleb128 0x42
+	.uleb128 0x4b
+	.uaword	.LVL107
+	.uaword	0xa606
+	.uaword	0x9e4b
+	.uleb128 0x44
 	.byte	0x1
 	.byte	0x65
 	.byte	0x2
 	.byte	0x91
 	.sleb128 -48
-	.uleb128 0x42
+	.uleb128 0x44
 	.byte	0x1
 	.byte	0x64
 	.byte	0x2
 	.byte	0x8f
 	.sleb128 24
 	.byte	0
-	.uleb128 0x46
-	.uaword	.LVL108
-	.uaword	0xa460
-	.uaword	0x9dc6
-	.uleb128 0x42
+	.uleb128 0x4b
+	.uaword	.LVL110
+	.uaword	0xa5cc
+	.uaword	0x9e65
+	.uleb128 0x44
 	.byte	0x1
 	.byte	0x65
 	.byte	0x2
 	.byte	0x8c
 	.sleb128 0
-	.uleb128 0x42
+	.uleb128 0x44
 	.byte	0x1
 	.byte	0x64
 	.byte	0x2
 	.byte	0x91
 	.sleb128 -24
 	.byte	0
-	.uleb128 0x46
-	.uaword	.LVL109
-	.uaword	0xa49a
-	.uaword	0x9de0
-	.uleb128 0x42
+	.uleb128 0x4b
+	.uaword	.LVL111
+	.uaword	0xa606
+	.uaword	0x9e7f
+	.uleb128 0x44
 	.byte	0x1
 	.byte	0x65
 	.byte	0x2
 	.byte	0x91
 	.sleb128 -24
-	.uleb128 0x42
+	.uleb128 0x44
 	.byte	0x1
 	.byte	0x64
 	.byte	0x2
 	.byte	0x8f
 	.sleb128 32
 	.byte	0
-	.uleb128 0x38
-	.uaword	.LVL112
-	.uaword	0xa4d7
-	.uleb128 0x46
-	.uaword	.LVL113
-	.uaword	0xa4e6
-	.uaword	0x9dfd
-	.uleb128 0x42
-	.byte	0x1
-	.byte	0x55
-	.byte	0x2
-	.byte	0x9
-	.byte	0x80
-	.byte	0
-	.uleb128 0x46
+	.uleb128 0x3a
 	.uaword	.LVL114
-	.uaword	0xa514
-	.uaword	0x9e10
-	.uleb128 0x42
-	.byte	0x1
-	.byte	0x55
-	.byte	0x1
-	.byte	0x30
-	.byte	0
-	.uleb128 0x46
-	.uaword	.LVL118
-	.uaword	0xa4e6
-	.uaword	0x9e24
-	.uleb128 0x42
+	.uaword	0xa643
+	.uleb128 0x4b
+	.uaword	.LVL115
+	.uaword	0xa652
+	.uaword	0x9e9c
+	.uleb128 0x44
 	.byte	0x1
 	.byte	0x55
 	.byte	0x2
 	.byte	0x9
 	.byte	0x80
 	.byte	0
-	.uleb128 0x46
-	.uaword	.LVL119
-	.uaword	0xa514
-	.uaword	0x9e37
-	.uleb128 0x42
+	.uleb128 0x4b
+	.uaword	.LVL116
+	.uaword	0xa680
+	.uaword	0x9eaf
+	.uleb128 0x44
 	.byte	0x1
 	.byte	0x55
 	.byte	0x1
 	.byte	0x30
 	.byte	0
-	.uleb128 0x47
-	.uaword	.LVL122
+	.uleb128 0x4b
+	.uaword	.LVL120
+	.uaword	0xa652
+	.uaword	0x9ec3
+	.uleb128 0x44
 	.byte	0x1
-	.uaword	0x9ad1
+	.byte	0x55
+	.byte	0x2
+	.byte	0x9
+	.byte	0x80
+	.byte	0
+	.uleb128 0x4b
+	.uaword	.LVL121
+	.uaword	0xa680
+	.uaword	0x9ed6
+	.uleb128 0x44
+	.byte	0x1
+	.byte	0x55
+	.byte	0x1
+	.byte	0x30
+	.byte	0
+	.uleb128 0x4c
+	.uaword	.LVL124
+	.byte	0x1
+	.uaword	0x9b16
 	.byte	0
 	.uleb128 0x3
 	.uaword	0x9105
-	.uaword	0x9e52
+	.uaword	0x9ef1
 	.uleb128 0x4
 	.uaword	0x268
 	.byte	0x2
 	.byte	0
-	.uleb128 0x48
+	.uleb128 0x4d
 	.byte	0x1
 	.string	"FindCenter"
 	.byte	0x1
-	.uahalf	0x162
+	.uahalf	0x184
 	.byte	0x1
 	.uaword	0x20a
 	.uaword	.LFB436
@@ -16903,50 +17093,69 @@ g_VadcAutoScan:
 	.byte	0x1
 	.byte	0x9c
 	.byte	0x1
-	.uaword	0x9ee2
-	.uleb128 0x43
-	.uaword	.LASF43
+	.uaword	0x9fab
+	.uleb128 0x45
+	.uaword	.LASF45
 	.byte	0x1
-	.uahalf	0x162
-	.uaword	0x99a9
+	.uahalf	0x184
+	.uaword	0x99ee
 	.byte	0x1
 	.byte	0x64
-	.uleb128 0x3f
+	.uleb128 0x41
 	.string	"i"
 	.byte	0x1
-	.uahalf	0x163
+	.uahalf	0x185
 	.uaword	0x20a
 	.uaword	.LLST47
-	.uleb128 0x3f
+	.uleb128 0x41
 	.string	"index"
 	.byte	0x1
-	.uahalf	0x163
+	.uahalf	0x185
 	.uaword	0x20a
 	.uaword	.LLST48
-	.uleb128 0x3f
+	.uleb128 0x41
 	.string	"leftIndex"
 	.byte	0x1
-	.uahalf	0x163
+	.uahalf	0x185
 	.uaword	0x20a
 	.uaword	.LLST49
-	.uleb128 0x3f
+	.uleb128 0x41
 	.string	"rightIndex"
 	.byte	0x1
-	.uahalf	0x163
+	.uahalf	0x185
 	.uaword	0x20a
 	.uaword	.LLST50
-	.uleb128 0x49
-	.uaword	.LASF44
+	.uleb128 0x4e
+	.uaword	.LASF46
 	.byte	0x1
-	.uahalf	0x163
+	.uahalf	0x185
 	.uaword	0x20a
 	.uaword	.LLST51
-	.byte	0
+	.uleb128 0x4f
+	.uaword	.Ldebug_ranges0+0x208
+	.uleb128 0x47
+	.byte	0x1
+	.uaword	.LASF47
+	.byte	0x1
+	.uahalf	0x1a0
+	.uaword	0x20a
+	.byte	0x1
+	.uaword	0x9f99
 	.uleb128 0x48
+	.byte	0
+	.uleb128 0x50
+	.uaword	0x956c
+	.uaword	.LBB163
+	.uaword	.LBE163
+	.byte	0x1
+	.uahalf	0x1a0
+	.byte	0
+	.byte	0
+	.uleb128 0x4d
 	.byte	0x1
 	.string	"FindOneLine"
 	.byte	0x1
-	.uahalf	0x196
+	.uahalf	0x1ba
 	.byte	0x1
 	.uaword	0x20a
 	.uaword	.LFB437
@@ -16954,38 +17163,38 @@ g_VadcAutoScan:
 	.byte	0x1
 	.byte	0x9c
 	.byte	0x1
-	.uaword	0x9f4b
-	.uleb128 0x4a
+	.uaword	0xa014
+	.uleb128 0x51
 	.string	"line"
 	.byte	0x1
-	.uahalf	0x196
-	.uaword	0x993b
+	.uahalf	0x1ba
+	.uaword	0x9980
 	.byte	0x1
 	.byte	0x64
-	.uleb128 0x3f
+	.uleb128 0x41
 	.string	"i"
 	.byte	0x1
-	.uahalf	0x197
+	.uahalf	0x1bb
 	.uaword	0x20a
 	.uaword	.LLST52
-	.uleb128 0x49
-	.uaword	.LASF44
+	.uleb128 0x4e
+	.uaword	.LASF46
 	.byte	0x1
-	.uahalf	0x197
+	.uahalf	0x1bb
 	.uaword	0x20a
 	.uaword	.LLST53
-	.uleb128 0x3f
+	.uleb128 0x41
 	.string	"lineIndex"
 	.byte	0x1
-	.uahalf	0x198
+	.uahalf	0x1bc
 	.uaword	0x20a
 	.uaword	.LLST54
 	.byte	0
-	.uleb128 0x48
+	.uleb128 0x4d
 	.byte	0x1
 	.string	"GetCameraCenter"
 	.byte	0x1
-	.uahalf	0x133
+	.uahalf	0x13a
 	.byte	0x1
 	.uaword	0x20a
 	.uaword	.LFB435
@@ -16993,53 +17202,53 @@ g_VadcAutoScan:
 	.byte	0x1
 	.byte	0x9c
 	.byte	0x1
-	.uaword	0xa045
-	.uleb128 0x4b
+	.uaword	0xa10e
+	.uleb128 0x52
 	.string	"prevServo"
 	.byte	0x1
-	.uahalf	0x133
+	.uahalf	0x13a
 	.uaword	0x20a
 	.uaword	.LLST55
-	.uleb128 0x4b
+	.uleb128 0x52
 	.string	"cntDiff"
 	.byte	0x1
-	.uahalf	0x133
+	.uahalf	0x13a
 	.uaword	0x20a
 	.uaword	.LLST56
-	.uleb128 0x3f
+	.uleb128 0x41
 	.string	"i"
 	.byte	0x1
-	.uahalf	0x134
+	.uahalf	0x13b
 	.uaword	0x20a
 	.uaword	.LLST57
-	.uleb128 0x46
-	.uaword	.LVL167
-	.uaword	0x9941
-	.uaword	0x9fc1
-	.uleb128 0x42
+	.uleb128 0x4b
+	.uaword	.LVL170
+	.uaword	0x9986
+	.uaword	0xa08a
+	.uleb128 0x44
 	.byte	0x1
 	.byte	0x54
 	.byte	0x3
 	.byte	0xa
 	.uahalf	0x1000
 	.byte	0
-	.uleb128 0x38
-	.uaword	.LVL168
-	.uaword	0x99af
-	.uleb128 0x38
-	.uaword	.LVL169
-	.uaword	0x9a40
-	.uleb128 0x46
-	.uaword	.LVL170
-	.uaword	0x9941
-	.uaword	0x9ff3
-	.uleb128 0x42
+	.uleb128 0x3a
+	.uaword	.LVL171
+	.uaword	0x99f4
+	.uleb128 0x3a
+	.uaword	.LVL172
+	.uaword	0x9a85
+	.uleb128 0x4b
+	.uaword	.LVL173
+	.uaword	0x9986
+	.uaword	0xa0bc
+	.uleb128 0x44
 	.byte	0x1
 	.byte	0x54
 	.byte	0x5
 	.byte	0xc
 	.uaword	0x186a0
-	.uleb128 0x42
+	.uleb128 0x44
 	.byte	0x1
 	.byte	0x64
 	.byte	0x5
@@ -17049,22 +17258,22 @@ g_VadcAutoScan:
 	.sleb128 0
 	.byte	0x22
 	.byte	0
-	.uleb128 0x46
-	.uaword	.LVL171
-	.uaword	0x9e52
-	.uaword	0xa007
-	.uleb128 0x42
+	.uleb128 0x4b
+	.uaword	.LVL174
+	.uaword	0x9ef1
+	.uaword	0xa0d0
+	.uleb128 0x44
 	.byte	0x1
 	.byte	0x64
 	.byte	0x2
 	.byte	0x8c
 	.sleb128 0
 	.byte	0
-	.uleb128 0x46
-	.uaword	.LVL172
-	.uaword	0x9ee2
-	.uaword	0xa021
-	.uleb128 0x42
+	.uleb128 0x4b
+	.uaword	.LVL175
+	.uaword	0x9fab
+	.uaword	0xa0ea
+	.uleb128 0x44
 	.byte	0x1
 	.byte	0x64
 	.byte	0x8
@@ -17076,11 +17285,11 @@ g_VadcAutoScan:
 	.byte	0x23
 	.uleb128 0xa14
 	.byte	0
-	.uleb128 0x46
-	.uaword	.LVL173
-	.uaword	0x9ee2
-	.uaword	0xa03b
-	.uleb128 0x42
+	.uleb128 0x4b
+	.uaword	.LVL176
+	.uaword	0x9fab
+	.uaword	0xa104
+	.uleb128 0x44
 	.byte	0x1
 	.byte	0x64
 	.byte	0x8
@@ -17092,88 +17301,132 @@ g_VadcAutoScan:
 	.byte	0x23
 	.uleb128 0x1428
 	.byte	0
-	.uleb128 0x38
-	.uaword	.LVL184
-	.uaword	0x9881
+	.uleb128 0x3a
+	.uaword	.LVL187
+	.uaword	0x98c6
 	.byte	0
-	.uleb128 0x3d
+	.uleb128 0x3f
 	.byte	0x1
 	.string	"CheckLimitZone"
 	.byte	0x1
-	.uahalf	0x1b0
+	.uahalf	0x1d7
 	.byte	0x1
 	.uaword	.LFB438
 	.uaword	.LFE438
 	.byte	0x1
 	.byte	0x9c
 	.byte	0x1
-	.uaword	0xa08d
-	.uleb128 0x4b
+	.uaword	0xa156
+	.uleb128 0x52
 	.string	"nowState"
 	.byte	0x1
-	.uahalf	0x1b0
+	.uahalf	0x1d7
 	.uaword	0x20a
 	.uaword	.LLST58
-	.uleb128 0x3f
+	.uleb128 0x41
 	.string	"i"
 	.byte	0x1
-	.uahalf	0x1b1
+	.uahalf	0x1d8
 	.uaword	0x20a
 	.uaword	.LLST59
 	.byte	0
-	.uleb128 0x4c
+	.uleb128 0x53
 	.byte	0x1
 	.string	"IsLimitZone"
 	.byte	0x1
-	.uahalf	0x1bb
+	.uahalf	0x1e2
 	.uaword	0x20a
 	.uaword	.LFB439
 	.uaword	.LFE439
 	.byte	0x1
 	.byte	0x9c
 	.byte	0x1
-	.uleb128 0x4c
+	.uleb128 0x53
 	.byte	0x1
 	.string	"GetDashLine"
 	.byte	0x1
-	.uahalf	0x1bf
+	.uahalf	0x1e6
 	.uaword	0x20a
 	.uaword	.LFB440
 	.uaword	.LFE440
 	.byte	0x1
 	.byte	0x9c
 	.byte	0x1
+	.uleb128 0x54
+	.uaword	0x956c
+	.uaword	.LFB441
+	.uaword	.LFE441
+	.byte	0x1
+	.byte	0x9c
+	.byte	0x1
+	.uleb128 0x55
+	.uaword	0x957a
+	.uaword	.LFB442
+	.uaword	.LFE442
+	.byte	0x1
+	.byte	0x9c
+	.byte	0x1
+	.uaword	0xa1c2
+	.uleb128 0x34
+	.uaword	0x9589
+	.byte	0x1
+	.byte	0x54
+	.byte	0
+	.uleb128 0x53
+	.byte	0x1
+	.string	"GetDottedLine"
+	.byte	0x1
+	.uahalf	0x1f0
+	.uaword	0x20a
+	.uaword	.LFB443
+	.uaword	.LFE443
+	.byte	0x1
+	.byte	0x9c
+	.byte	0x1
+	.uleb128 0x55
+	.uaword	0x9596
+	.uaword	.LFB444
+	.uaword	.LFE444
+	.byte	0x1
+	.byte	0x9c
+	.byte	0x1
+	.uaword	0xa200
+	.uleb128 0x34
+	.uaword	0x95a5
+	.byte	0x1
+	.byte	0x54
+	.byte	0
 	.uleb128 0x3
 	.uaword	0x344
-	.uaword	0xa0dd
+	.uaword	0xa210
 	.uleb128 0x4
 	.uaword	0x268
 	.byte	0x2
 	.byte	0
-	.uleb128 0x4d
+	.uleb128 0x56
 	.string	"IfxCpu_cfg_indexMap"
 	.byte	0x8
 	.byte	0x96
-	.uaword	0xa0fa
+	.uaword	0xa22d
 	.byte	0x1
 	.byte	0x1
 	.uleb128 0x20
-	.uaword	0xa0cd
-	.uleb128 0x4d
+	.uaword	0xa200
+	.uleb128 0x56
 	.string	"Assert_verboseLevel"
 	.byte	0xd
 	.byte	0x79
 	.uaword	0x2a5
 	.byte	0x1
 	.byte	0x1
-	.uleb128 0x4d
+	.uleb128 0x56
 	.string	"IfxPort_P14_0"
 	.byte	0xe
 	.byte	0x62
 	.uaword	0x2bd6
 	.byte	0x1
 	.byte	0x1
-	.uleb128 0x4d
+	.uleb128 0x56
 	.string	"IfxPort_P14_1"
 	.byte	0xe
 	.byte	0x63
@@ -17182,19 +17435,19 @@ g_VadcAutoScan:
 	.byte	0x1
 	.uleb128 0x3
 	.uaword	0x2f9
-	.uaword	0xa15a
+	.uaword	0xa28d
 	.uleb128 0x4
 	.uaword	0x268
 	.byte	0xa
 	.byte	0
-	.uleb128 0x4d
+	.uleb128 0x56
 	.string	"TimeConst"
 	.byte	0xf
 	.byte	0x94
-	.uaword	0xa14a
+	.uaword	0xa27d
 	.byte	0x1
 	.byte	0x1
-	.uleb128 0x4e
+	.uleb128 0x57
 	.string	"IR_LineScan"
 	.byte	0x1
 	.byte	0x2d
@@ -17203,7 +17456,7 @@ g_VadcAutoScan:
 	.byte	0x5
 	.byte	0x3
 	.uaword	IR_LineScan
-	.uleb128 0x4e
+	.uleb128 0x57
 	.string	"g_VadcAutoScan"
 	.byte	0x1
 	.byte	0x2b
@@ -17212,7 +17465,7 @@ g_VadcAutoScan:
 	.byte	0x5
 	.byte	0x3
 	.uaword	g_VadcAutoScan
-	.uleb128 0x4e
+	.uleb128 0x57
 	.string	"FILTERED_CENTER_LINE"
 	.byte	0x1
 	.byte	0x3f
@@ -17221,7 +17474,7 @@ g_VadcAutoScan:
 	.byte	0x5
 	.byte	0x3
 	.uaword	FILTERED_CENTER_LINE
-	.uleb128 0x4e
+	.uleb128 0x57
 	.string	"Zero_center_line"
 	.byte	0x1
 	.byte	0x40
@@ -17230,9 +17483,27 @@ g_VadcAutoScan:
 	.byte	0x5
 	.byte	0x3
 	.uaword	Zero_center_line
+	.uleb128 0x57
+	.string	"countPassedObject"
+	.byte	0x1
+	.byte	0x42
+	.uaword	0x20a
+	.byte	0x1
+	.byte	0x5
+	.byte	0x3
+	.uaword	countPassedObject
+	.uleb128 0x57
+	.string	"dottedLine"
+	.byte	0x1
+	.byte	0x43
+	.uaword	0x20a
+	.byte	0x1
+	.byte	0x5
+	.byte	0x3
+	.uaword	dottedLine
 	.uleb128 0x3
 	.uaword	0x937f
-	.uaword	0xa1fc
+	.uaword	0xa368
 	.uleb128 0x4
 	.uaword	0x268
 	.byte	0x2
@@ -17240,157 +17511,157 @@ g_VadcAutoScan:
 	.uaword	0x268
 	.byte	0x4
 	.byte	0
-	.uleb128 0x4e
+	.uleb128 0x57
 	.string	"cam_info"
 	.byte	0x1
-	.byte	0xda
-	.uaword	0xa1e6
+	.byte	0xde
+	.uaword	0xa352
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
 	.uaword	cam_info
-	.uleb128 0x4e
+	.uleb128 0x57
 	.string	"debugLine"
 	.byte	0x1
-	.byte	0xdb
+	.byte	0xdf
 	.uaword	0x936f
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
 	.uaword	debugLine
-	.uleb128 0x4e
+	.uleb128 0x57
 	.string	"speedLimitLine"
 	.byte	0x1
-	.byte	0xdb
+	.byte	0xdf
 	.uaword	0x936f
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
 	.uaword	speedLimitLine
-	.uleb128 0x4e
+	.uleb128 0x57
 	.string	"nowIndex"
-	.byte	0x1
-	.byte	0xdc
-	.uaword	0x20a
-	.byte	0x1
-	.byte	0x5
-	.byte	0x3
-	.uaword	nowIndex
-	.uleb128 0x4e
-	.string	"cntTotal"
-	.byte	0x1
-	.byte	0xdd
-	.uaword	0x20a
-	.byte	0x1
-	.byte	0x5
-	.byte	0x3
-	.uaword	cntTotal
-	.uleb128 0x4e
-	.string	"cntLeft"
-	.byte	0x1
-	.byte	0xdd
-	.uaword	0x20a
-	.byte	0x1
-	.byte	0x5
-	.byte	0x3
-	.uaword	cntLeft
-	.uleb128 0x4e
-	.string	"isLimitZone"
-	.byte	0x1
-	.byte	0xde
-	.uaword	0x20a
-	.byte	0x1
-	.byte	0x5
-	.byte	0x3
-	.uaword	isLimitZone
-	.uleb128 0x4e
-	.string	"dashLine"
-	.byte	0x1
-	.byte	0xde
-	.uaword	0x20a
-	.byte	0x1
-	.byte	0x5
-	.byte	0x3
-	.uaword	dashLine
-	.uleb128 0x4e
-	.string	"leftIndexCount"
-	.byte	0x1
-	.byte	0xdf
-	.uaword	0x20a
-	.byte	0x1
-	.byte	0x5
-	.byte	0x3
-	.uaword	leftIndexCount
-	.uleb128 0x4e
-	.string	"rightIndexCount"
-	.byte	0x1
-	.byte	0xdf
-	.uaword	0x20a
-	.byte	0x1
-	.byte	0x5
-	.byte	0x3
-	.uaword	rightIndexCount
-	.uleb128 0x4e
-	.string	"zeroCnt"
 	.byte	0x1
 	.byte	0xe0
 	.uaword	0x20a
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
-	.uaword	zeroCnt
-	.uleb128 0x4e
-	.string	"g_cameraDirection"
+	.uaword	nowIndex
+	.uleb128 0x57
+	.string	"cntTotal"
 	.byte	0x1
 	.byte	0xe1
 	.uaword	0x20a
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
+	.uaword	cntTotal
+	.uleb128 0x57
+	.string	"cntLeft"
+	.byte	0x1
+	.byte	0xe1
+	.uaword	0x20a
+	.byte	0x1
+	.byte	0x5
+	.byte	0x3
+	.uaword	cntLeft
+	.uleb128 0x57
+	.string	"isLimitZone"
+	.byte	0x1
+	.byte	0xe2
+	.uaword	0x20a
+	.byte	0x1
+	.byte	0x5
+	.byte	0x3
+	.uaword	isLimitZone
+	.uleb128 0x57
+	.string	"dashLine"
+	.byte	0x1
+	.byte	0xe2
+	.uaword	0x20a
+	.byte	0x1
+	.byte	0x5
+	.byte	0x3
+	.uaword	dashLine
+	.uleb128 0x57
+	.string	"leftIndexCount"
+	.byte	0x1
+	.byte	0xe3
+	.uaword	0x20a
+	.byte	0x1
+	.byte	0x5
+	.byte	0x3
+	.uaword	leftIndexCount
+	.uleb128 0x57
+	.string	"rightIndexCount"
+	.byte	0x1
+	.byte	0xe3
+	.uaword	0x20a
+	.byte	0x1
+	.byte	0x5
+	.byte	0x3
+	.uaword	rightIndexCount
+	.uleb128 0x57
+	.string	"zeroCnt"
+	.byte	0x1
+	.byte	0xe4
+	.uaword	0x20a
+	.byte	0x1
+	.byte	0x5
+	.byte	0x3
+	.uaword	zeroCnt
+	.uleb128 0x57
+	.string	"g_cameraDirection"
+	.byte	0x1
+	.byte	0xe5
+	.uaword	0x20a
+	.byte	0x1
+	.byte	0x5
+	.byte	0x3
 	.uaword	g_cameraDirection
-	.uleb128 0x4f
+	.uleb128 0x58
 	.byte	0x1
 	.string	"waitTime"
 	.byte	0xf
 	.byte	0xaa
 	.byte	0x1
 	.byte	0x1
-	.uaword	0xa347
-	.uleb128 0x50
+	.uaword	0xa4b3
+	.uleb128 0x59
 	.uaword	0x2f9
 	.byte	0
-	.uleb128 0x51
+	.uleb128 0x5a
 	.byte	0x1
 	.string	"IfxVadc_setScan"
 	.byte	0x3
 	.uahalf	0x39d
 	.byte	0x1
 	.byte	0x1
-	.uaword	0xa372
-	.uleb128 0x50
+	.uaword	0xa4de
+	.uleb128 0x59
 	.uaword	0x8df6
-	.uleb128 0x50
+	.uleb128 0x59
 	.uaword	0x2a5
-	.uleb128 0x50
+	.uleb128 0x59
 	.uaword	0x2a5
 	.byte	0
-	.uleb128 0x51
+	.uleb128 0x5a
 	.byte	0x1
 	.string	"IfxVadc_Adc_initModuleConfig"
 	.byte	0x4
 	.uahalf	0x28c
 	.byte	0x1
 	.byte	0x1
-	.uaword	0xa3a5
-	.uleb128 0x50
-	.uaword	0xa3a5
-	.uleb128 0x50
+	.uaword	0xa511
+	.uleb128 0x59
+	.uaword	0xa511
+	.uleb128 0x59
 	.uaword	0x795d
 	.byte	0
 	.uleb128 0x6
 	.byte	0x4
 	.uaword	0x91e8
-	.uleb128 0x52
+	.uleb128 0x5b
 	.byte	0x1
 	.string	"IfxVadc_Adc_initModule"
 	.byte	0x4
@@ -17398,37 +17669,37 @@ g_VadcAutoScan:
 	.byte	0x1
 	.uaword	0x88eb
 	.byte	0x1
-	.uaword	0xa3dc
-	.uleb128 0x50
-	.uaword	0xa3dc
-	.uleb128 0x50
-	.uaword	0xa3e2
+	.uaword	0xa548
+	.uleb128 0x59
+	.uaword	0xa548
+	.uleb128 0x59
+	.uaword	0xa54e
 	.byte	0
 	.uleb128 0x6
 	.byte	0x4
 	.uaword	0x8ba3
 	.uleb128 0x6
 	.byte	0x4
-	.uaword	0xa3e8
+	.uaword	0xa554
 	.uleb128 0x20
 	.uaword	0x91e8
-	.uleb128 0x51
+	.uleb128 0x5a
 	.byte	0x1
 	.string	"IfxVadc_Adc_initGroupConfig"
 	.byte	0x4
 	.uahalf	0x33d
 	.byte	0x1
 	.byte	0x1
-	.uaword	0xa41f
-	.uleb128 0x50
-	.uaword	0xa41f
-	.uleb128 0x50
-	.uaword	0xa3dc
+	.uaword	0xa58b
+	.uleb128 0x59
+	.uaword	0xa58b
+	.uleb128 0x59
+	.uaword	0xa548
 	.byte	0
 	.uleb128 0x6
 	.byte	0x4
 	.uaword	0x92ce
-	.uleb128 0x52
+	.uleb128 0x5b
 	.byte	0x1
 	.string	"IfxVadc_Adc_initGroup"
 	.byte	0x4
@@ -17436,34 +17707,34 @@ g_VadcAutoScan:
 	.byte	0x1
 	.uaword	0x88eb
 	.byte	0x1
-	.uaword	0xa455
-	.uleb128 0x50
+	.uaword	0xa5c1
+	.uleb128 0x59
 	.uaword	0x94c9
-	.uleb128 0x50
-	.uaword	0xa455
+	.uleb128 0x59
+	.uaword	0xa5c1
 	.byte	0
 	.uleb128 0x6
 	.byte	0x4
-	.uaword	0xa45b
+	.uaword	0xa5c7
 	.uleb128 0x20
 	.uaword	0x92ce
-	.uleb128 0x51
+	.uleb128 0x5a
 	.byte	0x1
 	.string	"IfxVadc_Adc_initChannelConfig"
 	.byte	0x4
 	.uahalf	0x388
 	.byte	0x1
 	.byte	0x1
-	.uaword	0xa494
-	.uleb128 0x50
-	.uaword	0xa494
-	.uleb128 0x50
+	.uaword	0xa600
+	.uleb128 0x59
+	.uaword	0xa600
+	.uleb128 0x59
 	.uaword	0x8f28
 	.byte	0
 	.uleb128 0x6
 	.byte	0x4
 	.uaword	0x9105
-	.uleb128 0x52
+	.uleb128 0x5b
 	.byte	0x1
 	.string	"IfxVadc_Adc_initChannel"
 	.byte	0x4
@@ -17471,51 +17742,51 @@ g_VadcAutoScan:
 	.byte	0x1
 	.uaword	0x88eb
 	.byte	0x1
-	.uaword	0xa4cc
-	.uleb128 0x50
+	.uaword	0xa638
+	.uleb128 0x59
 	.uaword	0x947f
-	.uleb128 0x50
-	.uaword	0xa4cc
+	.uleb128 0x59
+	.uaword	0xa638
 	.byte	0
 	.uleb128 0x6
 	.byte	0x4
-	.uaword	0xa4d2
+	.uaword	0xa63e
 	.uleb128 0x20
 	.uaword	0x9105
-	.uleb128 0x53
+	.uleb128 0x5c
 	.byte	0x1
 	.string	"initTime"
 	.byte	0xf
 	.byte	0xa1
 	.byte	0x1
 	.byte	0x1
-	.uleb128 0x51
+	.uleb128 0x5a
 	.byte	0x1
 	.string	"IfxPort_setPinMode"
 	.byte	0x2
 	.uahalf	0x163
 	.byte	0x1
 	.byte	0x1
-	.uaword	0xa514
-	.uleb128 0x50
+	.uaword	0xa680
+	.uleb128 0x59
 	.uaword	0x26c2
-	.uleb128 0x50
+	.uleb128 0x59
 	.uaword	0x27c
-	.uleb128 0x50
+	.uleb128 0x59
 	.uaword	0x2968
 	.byte	0
-	.uleb128 0x54
+	.uleb128 0x5d
 	.byte	0x1
 	.string	"IfxPort_setPinPadDriver"
 	.byte	0x2
 	.uahalf	0x172
 	.byte	0x1
 	.byte	0x1
-	.uleb128 0x50
+	.uleb128 0x59
 	.uaword	0x26c2
-	.uleb128 0x50
+	.uleb128 0x59
 	.uaword	0x27c
-	.uleb128 0x50
+	.uleb128 0x59
 	.uaword	0x2b1d
 	.byte	0
 	.byte	0
@@ -18069,6 +18340,42 @@ g_VadcAutoScan:
 	.byte	0
 	.uleb128 0x29
 	.uleb128 0x2e
+	.byte	0
+	.uleb128 0x3f
+	.uleb128 0xc
+	.uleb128 0x3
+	.uleb128 0xe
+	.uleb128 0x3a
+	.uleb128 0xb
+	.uleb128 0x3b
+	.uleb128 0x5
+	.uleb128 0x49
+	.uleb128 0x13
+	.uleb128 0x20
+	.uleb128 0xb
+	.byte	0
+	.byte	0
+	.uleb128 0x2a
+	.uleb128 0x2e
+	.byte	0x1
+	.uleb128 0x3f
+	.uleb128 0xc
+	.uleb128 0x3
+	.uleb128 0xe
+	.uleb128 0x3a
+	.uleb128 0xb
+	.uleb128 0x3b
+	.uleb128 0x5
+	.uleb128 0x27
+	.uleb128 0xc
+	.uleb128 0x20
+	.uleb128 0xb
+	.uleb128 0x1
+	.uleb128 0x13
+	.byte	0
+	.byte	0
+	.uleb128 0x2b
+	.uleb128 0x2e
 	.byte	0x1
 	.uleb128 0x3f
 	.uleb128 0xc
@@ -18092,7 +18399,7 @@ g_VadcAutoScan:
 	.uleb128 0x13
 	.byte	0
 	.byte	0
-	.uleb128 0x2a
+	.uleb128 0x2c
 	.uleb128 0x34
 	.byte	0
 	.uleb128 0x3
@@ -18107,7 +18414,7 @@ g_VadcAutoScan:
 	.uleb128 0x6
 	.byte	0
 	.byte	0
-	.uleb128 0x2b
+	.uleb128 0x2d
 	.uleb128 0x34
 	.byte	0
 	.uleb128 0x3
@@ -18122,7 +18429,7 @@ g_VadcAutoScan:
 	.uleb128 0xa
 	.byte	0
 	.byte	0
-	.uleb128 0x2c
+	.uleb128 0x2e
 	.uleb128 0x1d
 	.byte	0x1
 	.uleb128 0x31
@@ -18139,29 +18446,13 @@ g_VadcAutoScan:
 	.uleb128 0x13
 	.byte	0
 	.byte	0
-	.uleb128 0x2d
+	.uleb128 0x2f
 	.uleb128 0x5
 	.byte	0
 	.uleb128 0x31
 	.uleb128 0x13
 	.uleb128 0x1c
 	.uleb128 0xb
-	.byte	0
-	.byte	0
-	.uleb128 0x2e
-	.uleb128 0x5
-	.byte	0
-	.uleb128 0x31
-	.uleb128 0x13
-	.byte	0
-	.byte	0
-	.uleb128 0x2f
-	.uleb128 0x5
-	.byte	0
-	.uleb128 0x31
-	.uleb128 0x13
-	.uleb128 0x2
-	.uleb128 0x6
 	.byte	0
 	.byte	0
 	.uleb128 0x30
@@ -18169,25 +18460,15 @@ g_VadcAutoScan:
 	.byte	0
 	.uleb128 0x31
 	.uleb128 0x13
-	.uleb128 0x1c
+	.byte	0
+	.byte	0
+	.uleb128 0x31
+	.uleb128 0x5
+	.byte	0
+	.uleb128 0x31
+	.uleb128 0x13
+	.uleb128 0x2
 	.uleb128 0x6
-	.byte	0
-	.byte	0
-	.uleb128 0x31
-	.uleb128 0x1d
-	.byte	0x1
-	.uleb128 0x31
-	.uleb128 0x13
-	.uleb128 0x11
-	.uleb128 0x1
-	.uleb128 0x12
-	.uleb128 0x1
-	.uleb128 0x58
-	.uleb128 0xb
-	.uleb128 0x59
-	.uleb128 0xb
-	.uleb128 0x1
-	.uleb128 0x13
 	.byte	0
 	.byte	0
 	.uleb128 0x32
@@ -18195,8 +18476,8 @@ g_VadcAutoScan:
 	.byte	0
 	.uleb128 0x31
 	.uleb128 0x13
-	.uleb128 0x2
-	.uleb128 0xa
+	.uleb128 0x1c
+	.uleb128 0x6
 	.byte	0
 	.byte	0
 	.uleb128 0x33
@@ -18211,16 +18492,18 @@ g_VadcAutoScan:
 	.uleb128 0x58
 	.uleb128 0xb
 	.uleb128 0x59
-	.uleb128 0x5
+	.uleb128 0xb
+	.uleb128 0x1
+	.uleb128 0x13
 	.byte	0
 	.byte	0
 	.uleb128 0x34
-	.uleb128 0xb
-	.byte	0x1
-	.uleb128 0x55
-	.uleb128 0x6
-	.uleb128 0x1
+	.uleb128 0x5
+	.byte	0
+	.uleb128 0x31
 	.uleb128 0x13
+	.uleb128 0x2
+	.uleb128 0xa
 	.byte	0
 	.byte	0
 	.uleb128 0x35
@@ -18235,10 +18518,34 @@ g_VadcAutoScan:
 	.uleb128 0x58
 	.uleb128 0xb
 	.uleb128 0x59
-	.uleb128 0xb
+	.uleb128 0x5
 	.byte	0
 	.byte	0
 	.uleb128 0x36
+	.uleb128 0xb
+	.byte	0x1
+	.uleb128 0x55
+	.uleb128 0x6
+	.uleb128 0x1
+	.uleb128 0x13
+	.byte	0
+	.byte	0
+	.uleb128 0x37
+	.uleb128 0x1d
+	.byte	0x1
+	.uleb128 0x31
+	.uleb128 0x13
+	.uleb128 0x11
+	.uleb128 0x1
+	.uleb128 0x12
+	.uleb128 0x1
+	.uleb128 0x58
+	.uleb128 0xb
+	.uleb128 0x59
+	.uleb128 0xb
+	.byte	0
+	.byte	0
+	.uleb128 0x38
 	.uleb128 0xb
 	.byte	0x1
 	.uleb128 0x11
@@ -18247,14 +18554,14 @@ g_VadcAutoScan:
 	.uleb128 0x1
 	.byte	0
 	.byte	0
-	.uleb128 0x37
+	.uleb128 0x39
 	.uleb128 0x34
 	.byte	0
 	.uleb128 0x31
 	.uleb128 0x13
 	.byte	0
 	.byte	0
-	.uleb128 0x38
+	.uleb128 0x3a
 	.uleb128 0x4109
 	.byte	0
 	.uleb128 0x11
@@ -18263,53 +18570,11 @@ g_VadcAutoScan:
 	.uleb128 0x13
 	.byte	0
 	.byte	0
-	.uleb128 0x39
-	.uleb128 0x5
-	.byte	0
-	.uleb128 0x3
-	.uleb128 0x8
-	.uleb128 0x3a
-	.uleb128 0xb
-	.uleb128 0x3b
-	.uleb128 0xb
-	.uleb128 0x49
-	.uleb128 0x13
-	.uleb128 0x2
-	.uleb128 0xa
-	.byte	0
-	.byte	0
-	.uleb128 0x3a
-	.uleb128 0x2e
-	.byte	0x1
-	.uleb128 0x3f
-	.uleb128 0xc
-	.uleb128 0x3
-	.uleb128 0x8
-	.uleb128 0x3a
-	.uleb128 0xb
-	.uleb128 0x3b
-	.uleb128 0xb
-	.uleb128 0x27
-	.uleb128 0xc
-	.uleb128 0x49
-	.uleb128 0x13
-	.uleb128 0x11
-	.uleb128 0x1
-	.uleb128 0x12
-	.uleb128 0x1
-	.uleb128 0x40
-	.uleb128 0xa
-	.uleb128 0x2117
-	.uleb128 0xc
-	.uleb128 0x1
-	.uleb128 0x13
-	.byte	0
-	.byte	0
 	.uleb128 0x3b
 	.uleb128 0x5
 	.byte	0
 	.uleb128 0x3
-	.uleb128 0xe
+	.uleb128 0x8
 	.uleb128 0x3a
 	.uleb128 0xb
 	.uleb128 0x3b
@@ -18321,6 +18586,48 @@ g_VadcAutoScan:
 	.byte	0
 	.byte	0
 	.uleb128 0x3c
+	.uleb128 0x2e
+	.byte	0x1
+	.uleb128 0x3f
+	.uleb128 0xc
+	.uleb128 0x3
+	.uleb128 0x8
+	.uleb128 0x3a
+	.uleb128 0xb
+	.uleb128 0x3b
+	.uleb128 0xb
+	.uleb128 0x27
+	.uleb128 0xc
+	.uleb128 0x49
+	.uleb128 0x13
+	.uleb128 0x11
+	.uleb128 0x1
+	.uleb128 0x12
+	.uleb128 0x1
+	.uleb128 0x40
+	.uleb128 0xa
+	.uleb128 0x2117
+	.uleb128 0xc
+	.uleb128 0x1
+	.uleb128 0x13
+	.byte	0
+	.byte	0
+	.uleb128 0x3d
+	.uleb128 0x5
+	.byte	0
+	.uleb128 0x3
+	.uleb128 0xe
+	.uleb128 0x3a
+	.uleb128 0xb
+	.uleb128 0x3b
+	.uleb128 0xb
+	.uleb128 0x49
+	.uleb128 0x13
+	.uleb128 0x2
+	.uleb128 0xa
+	.byte	0
+	.byte	0
+	.uleb128 0x3e
 	.uleb128 0x5
 	.byte	0
 	.uleb128 0x3
@@ -18335,7 +18642,7 @@ g_VadcAutoScan:
 	.uleb128 0x6
 	.byte	0
 	.byte	0
-	.uleb128 0x3d
+	.uleb128 0x3f
 	.uleb128 0x2e
 	.byte	0x1
 	.uleb128 0x3f
@@ -18360,7 +18667,7 @@ g_VadcAutoScan:
 	.uleb128 0x13
 	.byte	0
 	.byte	0
-	.uleb128 0x3e
+	.uleb128 0x40
 	.uleb128 0x5
 	.byte	0
 	.uleb128 0x3
@@ -18375,7 +18682,7 @@ g_VadcAutoScan:
 	.uleb128 0x6
 	.byte	0
 	.byte	0
-	.uleb128 0x3f
+	.uleb128 0x41
 	.uleb128 0x34
 	.byte	0
 	.uleb128 0x3
@@ -18390,7 +18697,7 @@ g_VadcAutoScan:
 	.uleb128 0x6
 	.byte	0
 	.byte	0
-	.uleb128 0x40
+	.uleb128 0x42
 	.uleb128 0x34
 	.byte	0
 	.uleb128 0x3
@@ -18405,7 +18712,7 @@ g_VadcAutoScan:
 	.uleb128 0xa
 	.byte	0
 	.byte	0
-	.uleb128 0x41
+	.uleb128 0x43
 	.uleb128 0x4109
 	.byte	0x1
 	.uleb128 0x11
@@ -18414,7 +18721,7 @@ g_VadcAutoScan:
 	.uleb128 0x13
 	.byte	0
 	.byte	0
-	.uleb128 0x42
+	.uleb128 0x44
 	.uleb128 0x410a
 	.byte	0
 	.uleb128 0x2
@@ -18423,7 +18730,7 @@ g_VadcAutoScan:
 	.uleb128 0xa
 	.byte	0
 	.byte	0
-	.uleb128 0x43
+	.uleb128 0x45
 	.uleb128 0x5
 	.byte	0
 	.uleb128 0x3
@@ -18438,7 +18745,7 @@ g_VadcAutoScan:
 	.uleb128 0xa
 	.byte	0
 	.byte	0
-	.uleb128 0x44
+	.uleb128 0x46
 	.uleb128 0x2e
 	.byte	0x1
 	.uleb128 0x3f
@@ -18461,7 +18768,48 @@ g_VadcAutoScan:
 	.uleb128 0x13
 	.byte	0
 	.byte	0
-	.uleb128 0x45
+	.uleb128 0x47
+	.uleb128 0x2e
+	.byte	0x1
+	.uleb128 0x3f
+	.uleb128 0xc
+	.uleb128 0x3
+	.uleb128 0xe
+	.uleb128 0x3a
+	.uleb128 0xb
+	.uleb128 0x3b
+	.uleb128 0x5
+	.uleb128 0x49
+	.uleb128 0x13
+	.uleb128 0x3c
+	.uleb128 0xc
+	.uleb128 0x1
+	.uleb128 0x13
+	.byte	0
+	.byte	0
+	.uleb128 0x48
+	.uleb128 0x18
+	.byte	0
+	.byte	0
+	.byte	0
+	.uleb128 0x49
+	.uleb128 0x1d
+	.byte	0x1
+	.uleb128 0x31
+	.uleb128 0x13
+	.uleb128 0x11
+	.uleb128 0x1
+	.uleb128 0x12
+	.uleb128 0x1
+	.uleb128 0x58
+	.uleb128 0xb
+	.uleb128 0x59
+	.uleb128 0x5
+	.uleb128 0x1
+	.uleb128 0x13
+	.byte	0
+	.byte	0
+	.uleb128 0x4a
 	.uleb128 0x34
 	.byte	0
 	.uleb128 0x3
@@ -18476,7 +18824,7 @@ g_VadcAutoScan:
 	.uleb128 0x6
 	.byte	0
 	.byte	0
-	.uleb128 0x46
+	.uleb128 0x4b
 	.uleb128 0x4109
 	.byte	0x1
 	.uleb128 0x11
@@ -18487,7 +18835,7 @@ g_VadcAutoScan:
 	.uleb128 0x13
 	.byte	0
 	.byte	0
-	.uleb128 0x47
+	.uleb128 0x4c
 	.uleb128 0x4109
 	.byte	0
 	.uleb128 0x11
@@ -18498,7 +18846,7 @@ g_VadcAutoScan:
 	.uleb128 0x13
 	.byte	0
 	.byte	0
-	.uleb128 0x48
+	.uleb128 0x4d
 	.uleb128 0x2e
 	.byte	0x1
 	.uleb128 0x3f
@@ -18525,7 +18873,7 @@ g_VadcAutoScan:
 	.uleb128 0x13
 	.byte	0
 	.byte	0
-	.uleb128 0x49
+	.uleb128 0x4e
 	.uleb128 0x34
 	.byte	0
 	.uleb128 0x3
@@ -18540,7 +18888,29 @@ g_VadcAutoScan:
 	.uleb128 0x6
 	.byte	0
 	.byte	0
-	.uleb128 0x4a
+	.uleb128 0x4f
+	.uleb128 0xb
+	.byte	0x1
+	.uleb128 0x55
+	.uleb128 0x6
+	.byte	0
+	.byte	0
+	.uleb128 0x50
+	.uleb128 0x1d
+	.byte	0
+	.uleb128 0x31
+	.uleb128 0x13
+	.uleb128 0x11
+	.uleb128 0x1
+	.uleb128 0x12
+	.uleb128 0x1
+	.uleb128 0x58
+	.uleb128 0xb
+	.uleb128 0x59
+	.uleb128 0x5
+	.byte	0
+	.byte	0
+	.uleb128 0x51
 	.uleb128 0x5
 	.byte	0
 	.uleb128 0x3
@@ -18555,7 +18925,7 @@ g_VadcAutoScan:
 	.uleb128 0xa
 	.byte	0
 	.byte	0
-	.uleb128 0x4b
+	.uleb128 0x52
 	.uleb128 0x5
 	.byte	0
 	.uleb128 0x3
@@ -18568,129 +18938,6 @@ g_VadcAutoScan:
 	.uleb128 0x13
 	.uleb128 0x2
 	.uleb128 0x6
-	.byte	0
-	.byte	0
-	.uleb128 0x4c
-	.uleb128 0x2e
-	.byte	0
-	.uleb128 0x3f
-	.uleb128 0xc
-	.uleb128 0x3
-	.uleb128 0x8
-	.uleb128 0x3a
-	.uleb128 0xb
-	.uleb128 0x3b
-	.uleb128 0x5
-	.uleb128 0x49
-	.uleb128 0x13
-	.uleb128 0x11
-	.uleb128 0x1
-	.uleb128 0x12
-	.uleb128 0x1
-	.uleb128 0x40
-	.uleb128 0xa
-	.uleb128 0x2117
-	.uleb128 0xc
-	.byte	0
-	.byte	0
-	.uleb128 0x4d
-	.uleb128 0x34
-	.byte	0
-	.uleb128 0x3
-	.uleb128 0x8
-	.uleb128 0x3a
-	.uleb128 0xb
-	.uleb128 0x3b
-	.uleb128 0xb
-	.uleb128 0x49
-	.uleb128 0x13
-	.uleb128 0x3f
-	.uleb128 0xc
-	.uleb128 0x3c
-	.uleb128 0xc
-	.byte	0
-	.byte	0
-	.uleb128 0x4e
-	.uleb128 0x34
-	.byte	0
-	.uleb128 0x3
-	.uleb128 0x8
-	.uleb128 0x3a
-	.uleb128 0xb
-	.uleb128 0x3b
-	.uleb128 0xb
-	.uleb128 0x49
-	.uleb128 0x13
-	.uleb128 0x3f
-	.uleb128 0xc
-	.uleb128 0x2
-	.uleb128 0xa
-	.byte	0
-	.byte	0
-	.uleb128 0x4f
-	.uleb128 0x2e
-	.byte	0x1
-	.uleb128 0x3f
-	.uleb128 0xc
-	.uleb128 0x3
-	.uleb128 0x8
-	.uleb128 0x3a
-	.uleb128 0xb
-	.uleb128 0x3b
-	.uleb128 0xb
-	.uleb128 0x27
-	.uleb128 0xc
-	.uleb128 0x3c
-	.uleb128 0xc
-	.uleb128 0x1
-	.uleb128 0x13
-	.byte	0
-	.byte	0
-	.uleb128 0x50
-	.uleb128 0x5
-	.byte	0
-	.uleb128 0x49
-	.uleb128 0x13
-	.byte	0
-	.byte	0
-	.uleb128 0x51
-	.uleb128 0x2e
-	.byte	0x1
-	.uleb128 0x3f
-	.uleb128 0xc
-	.uleb128 0x3
-	.uleb128 0x8
-	.uleb128 0x3a
-	.uleb128 0xb
-	.uleb128 0x3b
-	.uleb128 0x5
-	.uleb128 0x27
-	.uleb128 0xc
-	.uleb128 0x3c
-	.uleb128 0xc
-	.uleb128 0x1
-	.uleb128 0x13
-	.byte	0
-	.byte	0
-	.uleb128 0x52
-	.uleb128 0x2e
-	.byte	0x1
-	.uleb128 0x3f
-	.uleb128 0xc
-	.uleb128 0x3
-	.uleb128 0x8
-	.uleb128 0x3a
-	.uleb128 0xb
-	.uleb128 0x3b
-	.uleb128 0x5
-	.uleb128 0x27
-	.uleb128 0xc
-	.uleb128 0x49
-	.uleb128 0x13
-	.uleb128 0x3c
-	.uleb128 0xc
-	.uleb128 0x1
-	.uleb128 0x13
 	.byte	0
 	.byte	0
 	.uleb128 0x53
@@ -18703,6 +18950,161 @@ g_VadcAutoScan:
 	.uleb128 0x3a
 	.uleb128 0xb
 	.uleb128 0x3b
+	.uleb128 0x5
+	.uleb128 0x49
+	.uleb128 0x13
+	.uleb128 0x11
+	.uleb128 0x1
+	.uleb128 0x12
+	.uleb128 0x1
+	.uleb128 0x40
+	.uleb128 0xa
+	.uleb128 0x2117
+	.uleb128 0xc
+	.byte	0
+	.byte	0
+	.uleb128 0x54
+	.uleb128 0x2e
+	.byte	0
+	.uleb128 0x31
+	.uleb128 0x13
+	.uleb128 0x11
+	.uleb128 0x1
+	.uleb128 0x12
+	.uleb128 0x1
+	.uleb128 0x40
+	.uleb128 0xa
+	.uleb128 0x2117
+	.uleb128 0xc
+	.byte	0
+	.byte	0
+	.uleb128 0x55
+	.uleb128 0x2e
+	.byte	0x1
+	.uleb128 0x31
+	.uleb128 0x13
+	.uleb128 0x11
+	.uleb128 0x1
+	.uleb128 0x12
+	.uleb128 0x1
+	.uleb128 0x40
+	.uleb128 0xa
+	.uleb128 0x2117
+	.uleb128 0xc
+	.uleb128 0x1
+	.uleb128 0x13
+	.byte	0
+	.byte	0
+	.uleb128 0x56
+	.uleb128 0x34
+	.byte	0
+	.uleb128 0x3
+	.uleb128 0x8
+	.uleb128 0x3a
+	.uleb128 0xb
+	.uleb128 0x3b
+	.uleb128 0xb
+	.uleb128 0x49
+	.uleb128 0x13
+	.uleb128 0x3f
+	.uleb128 0xc
+	.uleb128 0x3c
+	.uleb128 0xc
+	.byte	0
+	.byte	0
+	.uleb128 0x57
+	.uleb128 0x34
+	.byte	0
+	.uleb128 0x3
+	.uleb128 0x8
+	.uleb128 0x3a
+	.uleb128 0xb
+	.uleb128 0x3b
+	.uleb128 0xb
+	.uleb128 0x49
+	.uleb128 0x13
+	.uleb128 0x3f
+	.uleb128 0xc
+	.uleb128 0x2
+	.uleb128 0xa
+	.byte	0
+	.byte	0
+	.uleb128 0x58
+	.uleb128 0x2e
+	.byte	0x1
+	.uleb128 0x3f
+	.uleb128 0xc
+	.uleb128 0x3
+	.uleb128 0x8
+	.uleb128 0x3a
+	.uleb128 0xb
+	.uleb128 0x3b
+	.uleb128 0xb
+	.uleb128 0x27
+	.uleb128 0xc
+	.uleb128 0x3c
+	.uleb128 0xc
+	.uleb128 0x1
+	.uleb128 0x13
+	.byte	0
+	.byte	0
+	.uleb128 0x59
+	.uleb128 0x5
+	.byte	0
+	.uleb128 0x49
+	.uleb128 0x13
+	.byte	0
+	.byte	0
+	.uleb128 0x5a
+	.uleb128 0x2e
+	.byte	0x1
+	.uleb128 0x3f
+	.uleb128 0xc
+	.uleb128 0x3
+	.uleb128 0x8
+	.uleb128 0x3a
+	.uleb128 0xb
+	.uleb128 0x3b
+	.uleb128 0x5
+	.uleb128 0x27
+	.uleb128 0xc
+	.uleb128 0x3c
+	.uleb128 0xc
+	.uleb128 0x1
+	.uleb128 0x13
+	.byte	0
+	.byte	0
+	.uleb128 0x5b
+	.uleb128 0x2e
+	.byte	0x1
+	.uleb128 0x3f
+	.uleb128 0xc
+	.uleb128 0x3
+	.uleb128 0x8
+	.uleb128 0x3a
+	.uleb128 0xb
+	.uleb128 0x3b
+	.uleb128 0x5
+	.uleb128 0x27
+	.uleb128 0xc
+	.uleb128 0x49
+	.uleb128 0x13
+	.uleb128 0x3c
+	.uleb128 0xc
+	.uleb128 0x1
+	.uleb128 0x13
+	.byte	0
+	.byte	0
+	.uleb128 0x5c
+	.uleb128 0x2e
+	.byte	0
+	.uleb128 0x3f
+	.uleb128 0xc
+	.uleb128 0x3
+	.uleb128 0x8
+	.uleb128 0x3a
+	.uleb128 0xb
+	.uleb128 0x3b
 	.uleb128 0xb
 	.uleb128 0x27
 	.uleb128 0xc
@@ -18710,7 +19112,7 @@ g_VadcAutoScan:
 	.uleb128 0xc
 	.byte	0
 	.byte	0
-	.uleb128 0x54
+	.uleb128 0x5d
 	.uleb128 0x2e
 	.byte	0x1
 	.uleb128 0x3f
@@ -19269,17 +19671,17 @@ g_VadcAutoScan:
 	.uaword	0
 	.uaword	0
 .LLST36:
-	.uaword	.LVL99
-	.uaword	.LVL103
+	.uaword	.LVL101
+	.uaword	.LVL105
 	.uahalf	0x2
 	.byte	0x30
 	.byte	0x9f
-	.uaword	.LVL103
-	.uaword	.LVL107
+	.uaword	.LVL105
+	.uaword	.LVL109
 	.uahalf	0x2
 	.byte	0x31
 	.byte	0x9f
-	.uaword	.LVL107
+	.uaword	.LVL109
 	.uaword	.LFE427
 	.uahalf	0x2
 	.byte	0x32
@@ -19287,20 +19689,20 @@ g_VadcAutoScan:
 	.uaword	0
 	.uaword	0
 .LLST37:
-	.uaword	.LVL102
-	.uaword	.LVL103-1
+	.uaword	.LVL104
+	.uaword	.LVL105-1
 	.uahalf	0x1
 	.byte	0x54
-	.uaword	.LVL106
-	.uaword	.LVL107-1
+	.uaword	.LVL108
+	.uaword	.LVL109-1
 	.uahalf	0x1
 	.byte	0x54
-	.uaword	.LVL110
-	.uaword	.LVL111-1
+	.uaword	.LVL112
+	.uaword	.LVL113-1
 	.uahalf	0x1
 	.byte	0x54
-	.uaword	.LVL111-1
-	.uaword	.LVL115
+	.uaword	.LVL113-1
+	.uaword	.LVL117
 	.uahalf	0x5
 	.byte	0x31
 	.byte	0x7f
@@ -19310,26 +19712,26 @@ g_VadcAutoScan:
 	.uaword	0
 	.uaword	0
 .LLST39:
-	.uaword	.LVL102
-	.uaword	.LVL103-1
+	.uaword	.LVL104
+	.uaword	.LVL105-1
 	.uahalf	0x1
 	.byte	0x54
 	.uaword	0
 	.uaword	0
 .LLST41:
-	.uaword	.LVL106
-	.uaword	.LVL107-1
+	.uaword	.LVL108
+	.uaword	.LVL109-1
 	.uahalf	0x1
 	.byte	0x54
 	.uaword	0
 	.uaword	0
 .LLST43:
-	.uaword	.LVL110
-	.uaword	.LVL111-1
+	.uaword	.LVL112
+	.uaword	.LVL113-1
 	.uahalf	0x1
 	.byte	0x54
-	.uaword	.LVL111-1
-	.uaword	.LVL115
+	.uaword	.LVL113-1
+	.uaword	.LVL117
 	.uahalf	0x5
 	.byte	0x31
 	.byte	0x7f
@@ -19339,48 +19741,30 @@ g_VadcAutoScan:
 	.uaword	0
 	.uaword	0
 .LLST45:
-	.uaword	.LVL116
-	.uaword	.LVL118-1
+	.uaword	.LVL118
+	.uaword	.LVL120-1
 	.uahalf	0x1
 	.byte	0x62
 	.uaword	0
 	.uaword	0
 .LLST46:
-	.uaword	.LVL120
-	.uaword	.LVL122-1
+	.uaword	.LVL122
+	.uaword	.LVL124-1
 	.uahalf	0x1
 	.byte	0x62
 	.uaword	0
 	.uaword	0
 .LLST47:
-	.uaword	.LVL123
-	.uaword	.LVL124
+	.uaword	.LVL125
+	.uaword	.LVL126
 	.uahalf	0x2
 	.byte	0x30
 	.byte	0x9f
-	.uaword	.LVL124
-	.uaword	.LVL127
+	.uaword	.LVL126
+	.uaword	.LVL129
 	.uahalf	0x1
 	.byte	0x5f
-	.uaword	.LVL128
-	.uaword	.LVL131
-	.uahalf	0x6
-	.byte	0x8
-	.byte	0x3b
-	.byte	0x7f
-	.sleb128 0
-	.byte	0x1c
-	.byte	0x9f
-	.uaword	.LVL131
-	.uaword	.LVL132
-	.uahalf	0x6
-	.byte	0x8
-	.byte	0x3c
-	.byte	0x7f
-	.sleb128 0
-	.byte	0x1c
-	.byte	0x9f
-	.uaword	.LVL132
+	.uaword	.LVL130
 	.uaword	.LVL133
 	.uahalf	0x6
 	.byte	0x8
@@ -19389,12 +19773,17 @@ g_VadcAutoScan:
 	.sleb128 0
 	.byte	0x1c
 	.byte	0x9f
-	.uaword	.LVL136
-	.uaword	.LVL138
-	.uahalf	0x1
-	.byte	0x5f
-	.uaword	.LVL138
-	.uaword	.LVL140
+	.uaword	.LVL133
+	.uaword	.LVL134
+	.uahalf	0x6
+	.byte	0x8
+	.byte	0x3c
+	.byte	0x7f
+	.sleb128 0
+	.byte	0x1c
+	.byte	0x9f
+	.uaword	.LVL134
+	.uaword	.LVL135
 	.uahalf	0x6
 	.byte	0x8
 	.byte	0x3b
@@ -19402,11 +19791,24 @@ g_VadcAutoScan:
 	.sleb128 0
 	.byte	0x1c
 	.byte	0x9f
+	.uaword	.LVL138
 	.uaword	.LVL140
-	.uaword	.LVL141
 	.uahalf	0x1
 	.byte	0x5f
-	.uaword	.LVL147
+	.uaword	.LVL140
+	.uaword	.LVL142
+	.uahalf	0x6
+	.byte	0x8
+	.byte	0x3b
+	.byte	0x7f
+	.sleb128 0
+	.byte	0x1c
+	.byte	0x9f
+	.uaword	.LVL142
+	.uaword	.LVL143
+	.uahalf	0x1
+	.byte	0x5f
+	.uaword	.LVL149
 	.uaword	.LFE436
 	.uahalf	0x6
 	.byte	0x8
@@ -19418,43 +19820,43 @@ g_VadcAutoScan:
 	.uaword	0
 	.uaword	0
 .LLST48:
-	.uaword	.LVL123
-	.uaword	.LVL134
+	.uaword	.LVL125
+	.uaword	.LVL136
 	.uahalf	0x2
 	.byte	0x30
 	.byte	0x9f
-	.uaword	.LVL134
-	.uaword	.LVL135
+	.uaword	.LVL136
+	.uaword	.LVL137
 	.uahalf	0x3
 	.byte	0x73
 	.sleb128 55
 	.byte	0x9f
-	.uaword	.LVL135
-	.uaword	.LVL136
+	.uaword	.LVL137
+	.uaword	.LVL138
 	.uahalf	0x1
 	.byte	0x52
-	.uaword	.LVL136
-	.uaword	.LVL142
+	.uaword	.LVL138
+	.uaword	.LVL144
 	.uahalf	0x2
 	.byte	0x30
 	.byte	0x9f
-	.uaword	.LVL142
-	.uaword	.LVL143
+	.uaword	.LVL144
+	.uaword	.LVL145
 	.uahalf	0x3
 	.byte	0x72
 	.sleb128 -55
 	.byte	0x9f
-	.uaword	.LVL143
-	.uaword	.LVL144
+	.uaword	.LVL145
+	.uaword	.LVL146
 	.uahalf	0x1
 	.byte	0x52
-	.uaword	.LVL144
 	.uaword	.LVL146
+	.uaword	.LVL148
 	.uahalf	0x3
 	.byte	0x9
 	.byte	0xff
 	.byte	0x9f
-	.uaword	.LVL146
+	.uaword	.LVL148
 	.uaword	.LFE436
 	.uahalf	0x2
 	.byte	0x30
@@ -19462,43 +19864,43 @@ g_VadcAutoScan:
 	.uaword	0
 	.uaword	0
 .LLST49:
-	.uaword	.LVL123
-	.uaword	.LVL128
-	.uahalf	0x2
-	.byte	0x30
-	.byte	0x9f
-	.uaword	.LVL128
-	.uaword	.LVL129
-	.uahalf	0x1
-	.byte	0x53
-	.uaword	.LVL129
+	.uaword	.LVL125
 	.uaword	.LVL130
 	.uahalf	0x2
 	.byte	0x30
 	.byte	0x9f
 	.uaword	.LVL130
-	.uaword	.LVL136
+	.uaword	.LVL131
 	.uahalf	0x1
 	.byte	0x53
-	.uaword	.LVL136
-	.uaword	.LVL138
+	.uaword	.LVL131
+	.uaword	.LVL132
 	.uahalf	0x2
 	.byte	0x30
 	.byte	0x9f
+	.uaword	.LVL132
 	.uaword	.LVL138
-	.uaword	.LVL140
 	.uahalf	0x1
 	.byte	0x53
+	.uaword	.LVL138
 	.uaword	.LVL140
-	.uaword	.LVL141
 	.uahalf	0x2
 	.byte	0x30
 	.byte	0x9f
-	.uaword	.LVL141
-	.uaword	.LVL147
+	.uaword	.LVL140
+	.uaword	.LVL142
 	.uahalf	0x1
 	.byte	0x53
-	.uaword	.LVL147
+	.uaword	.LVL142
+	.uaword	.LVL143
+	.uahalf	0x2
+	.byte	0x30
+	.byte	0x9f
+	.uaword	.LVL143
+	.uaword	.LVL149
+	.uahalf	0x1
+	.byte	0x53
+	.uaword	.LVL149
 	.uaword	.LFE436
 	.uahalf	0x2
 	.byte	0x30
@@ -19506,111 +19908,111 @@ g_VadcAutoScan:
 	.uaword	0
 	.uaword	0
 .LLST50:
-	.uaword	.LVL123
-	.uaword	.LVL128
+	.uaword	.LVL125
+	.uaword	.LVL130
 	.uahalf	0x3
 	.byte	0x8
 	.byte	0x7f
 	.byte	0x9f
-	.uaword	.LVL128
-	.uaword	.LVL135
+	.uaword	.LVL130
+	.uaword	.LVL137
 	.uahalf	0x1
 	.byte	0x52
-	.uaword	.LVL136
 	.uaword	.LVL138
+	.uaword	.LVL140
 	.uahalf	0x3
 	.byte	0x8
 	.byte	0x7f
 	.byte	0x9f
-	.uaword	.LVL138
-	.uaword	.LVL139
-	.uahalf	0x1
-	.byte	0x52
 	.uaword	.LVL140
 	.uaword	.LVL141
+	.uahalf	0x1
+	.byte	0x52
+	.uaword	.LVL142
+	.uaword	.LVL143
 	.uahalf	0x3
 	.byte	0x8
 	.byte	0x7f
 	.byte	0x9f
-	.uaword	.LVL141
 	.uaword	.LVL143
+	.uaword	.LVL145
 	.uahalf	0x1
 	.byte	0x52
-	.uaword	.LVL143
-	.uaword	.LVL144
+	.uaword	.LVL145
+	.uaword	.LVL146
 	.uahalf	0x3
 	.byte	0x72
 	.sleb128 55
 	.byte	0x9f
-	.uaword	.LVL144
-	.uaword	.LVL145
+	.uaword	.LVL146
+	.uaword	.LVL147
 	.uahalf	0x1
 	.byte	0x52
-	.uaword	.LVL146
+	.uaword	.LVL148
 	.uaword	.LFE436
 	.uahalf	0x1
 	.byte	0x52
 	.uaword	0
 	.uaword	0
 .LLST51:
-	.uaword	.LVL123
-	.uaword	.LVL124
+	.uaword	.LVL125
+	.uaword	.LVL126
 	.uahalf	0x2
 	.byte	0x30
 	.byte	0x9f
-	.uaword	.LVL124
 	.uaword	.LVL126
+	.uaword	.LVL128
 	.uahalf	0x1
 	.byte	0x55
-	.uaword	.LVL136
 	.uaword	.LVL138
+	.uaword	.LVL140
 	.uahalf	0x1
 	.byte	0x55
 	.uaword	0
 	.uaword	0
 .LLST52:
-	.uaword	.LVL148
-	.uaword	.LVL149
+	.uaword	.LVL150
+	.uaword	.LVL151
+	.uahalf	0x2
+	.byte	0x30
+	.byte	0x9f
+	.uaword	.LVL153
+	.uaword	.LVL156
+	.uahalf	0x1
+	.byte	0x52
+	.uaword	.LVL160
+	.uaword	.LFE437
+	.uahalf	0x1
+	.byte	0x52
+	.uaword	0
+	.uaword	0
+.LLST53:
+	.uaword	.LVL150
+	.uaword	.LVL151
 	.uahalf	0x2
 	.byte	0x30
 	.byte	0x9f
 	.uaword	.LVL151
-	.uaword	.LVL154
-	.uahalf	0x1
-	.byte	0x55
-	.uaword	.LVL157
-	.uaword	.LFE437
-	.uahalf	0x1
-	.byte	0x55
-	.uaword	0
-	.uaword	0
-.LLST53:
-	.uaword	.LVL148
-	.uaword	.LVL149
-	.uahalf	0x2
-	.byte	0x30
-	.byte	0x9f
-	.uaword	.LVL149
-	.uaword	.LVL150
+	.uaword	.LVL152
 	.uahalf	0x1
 	.byte	0x54
-	.uaword	.LVL155
-	.uaword	.LVL157
+	.uaword	.LVL158
+	.uaword	.LVL160
 	.uahalf	0x1
 	.byte	0x54
 	.uaword	0
 	.uaword	0
 .LLST54:
-	.uaword	.LVL148
-	.uaword	.LVL151
+	.uaword	.LVL150
+	.uaword	.LVL153
 	.uahalf	0x2
 	.byte	0x30
 	.byte	0x9f
-	.uaword	.LVL151
-	.uaword	.LVL154
+	.uaword	.LVL153
+	.uaword	.LVL157
 	.uahalf	0x1
-	.byte	0x52
-	.uaword	.LVL155
+	.byte	0x55
+	.uaword	.LVL158
 	.uaword	.LFE437
 	.uahalf	0x2
 	.byte	0x30
@@ -19618,11 +20020,11 @@ g_VadcAutoScan:
 	.uaword	0
 	.uaword	0
 .LLST55:
-	.uaword	.LVL158
-	.uaword	.LVL159
+	.uaword	.LVL161
+	.uaword	.LVL162
 	.uahalf	0x1
 	.byte	0x54
-	.uaword	.LVL159
+	.uaword	.LVL162
 	.uaword	.LFE435
 	.uahalf	0x4
 	.byte	0xf3
@@ -19632,22 +20034,22 @@ g_VadcAutoScan:
 	.uaword	0
 	.uaword	0
 .LLST56:
-	.uaword	.LVL158
-	.uaword	.LVL160
+	.uaword	.LVL161
+	.uaword	.LVL163
 	.uahalf	0x1
 	.byte	0x55
-	.uaword	.LVL160
-	.uaword	.LVL182
+	.uaword	.LVL163
+	.uaword	.LVL185
 	.uahalf	0x4
 	.byte	0xf3
 	.uleb128 0x1
 	.byte	0x55
 	.byte	0x9f
-	.uaword	.LVL182
-	.uaword	.LVL183
+	.uaword	.LVL185
+	.uaword	.LVL186
 	.uahalf	0x1
 	.byte	0x55
-	.uaword	.LVL183
+	.uaword	.LVL186
 	.uaword	.LFE435
 	.uahalf	0x4
 	.byte	0xf3
@@ -19657,73 +20059,73 @@ g_VadcAutoScan:
 	.uaword	0
 	.uaword	0
 .LLST57:
-	.uaword	.LVL158
 	.uaword	.LVL161
+	.uaword	.LVL164
 	.uahalf	0x2
 	.byte	0x30
 	.byte	0x9f
-	.uaword	.LVL161
-	.uaword	.LVL163
+	.uaword	.LVL164
+	.uaword	.LVL166
 	.uahalf	0x1
 	.byte	0x5f
-	.uaword	.LVL164
-	.uaword	.LVL165
+	.uaword	.LVL167
+	.uaword	.LVL168
 	.uahalf	0x2
 	.byte	0x30
 	.byte	0x9f
-	.uaword	.LVL165
-	.uaword	.LVL166
+	.uaword	.LVL168
+	.uaword	.LVL169
 	.uahalf	0x1
 	.byte	0x59
-	.uaword	.LVL166
-	.uaword	.LVL170
+	.uaword	.LVL169
+	.uaword	.LVL173
 	.uahalf	0x3
 	.byte	0x79
 	.sleb128 -1
 	.byte	0x9f
-	.uaword	.LVL170
-	.uaword	.LVL174
-	.uahalf	0x1
-	.byte	0x59
-	.uaword	.LVL174
-	.uaword	.LVL175
-	.uahalf	0x2
-	.byte	0x30
-	.byte	0x9f
-	.uaword	.LVL175
+	.uaword	.LVL173
 	.uaword	.LVL177
 	.uahalf	0x1
-	.byte	0x5f
+	.byte	0x59
+	.uaword	.LVL177
 	.uaword	.LVL178
-	.uaword	.LVL179
 	.uahalf	0x2
 	.byte	0x30
 	.byte	0x9f
-	.uaword	.LVL179
-	.uaword	.LVL181
+	.uaword	.LVL178
+	.uaword	.LVL180
 	.uahalf	0x1
 	.byte	0x5f
+	.uaword	.LVL181
 	.uaword	.LVL182
-	.uaword	.LVL183
+	.uahalf	0x2
+	.byte	0x30
+	.byte	0x9f
+	.uaword	.LVL182
+	.uaword	.LVL184
+	.uahalf	0x1
+	.byte	0x5f
+	.uaword	.LVL185
+	.uaword	.LVL186
 	.uahalf	0x2
 	.byte	0x30
 	.byte	0x9f
 	.uaword	0
 	.uaword	0
 .LLST58:
-	.uaword	.LVL185
 	.uaword	.LVL188
+	.uaword	.LVL191
 	.uahalf	0x1
 	.byte	0x54
-	.uaword	.LVL188
-	.uaword	.LVL189
+	.uaword	.LVL191
+	.uaword	.LVL192
 	.uahalf	0x5
 	.byte	0x74
 	.sleb128 0
 	.byte	0x31
 	.byte	0x27
 	.byte	0x9f
-	.uaword	.LVL189
+	.uaword	.LVL192
 	.uaword	.LFE438
 	.uahalf	0x4
 	.byte	0xf3
@@ -19733,19 +20135,19 @@ g_VadcAutoScan:
 	.uaword	0
 	.uaword	0
 .LLST59:
-	.uaword	.LVL185
-	.uaword	.LVL186
+	.uaword	.LVL188
+	.uaword	.LVL189
 	.uahalf	0x2
 	.byte	0x30
 	.byte	0x9f
-	.uaword	.LVL186
+	.uaword	.LVL189
 	.uaword	.LFE438
 	.uahalf	0x1
 	.byte	0x5f
 	.uaword	0
 	.uaword	0
 .section .debug_aranges,"",@progbits
-	.uaword	0x84
+	.uaword	0xa4
 	.uahalf	0x2
 	.uaword	.Ldebug_info0
 	.byte	0x4
@@ -19780,138 +20182,152 @@ g_VadcAutoScan:
 	.uaword	.LFE439-.LFB439
 	.uaword	.LFB440
 	.uaword	.LFE440-.LFB440
+	.uaword	.LFB441
+	.uaword	.LFE441-.LFB441
+	.uaword	.LFB442
+	.uaword	.LFE442-.LFB442
+	.uaword	.LFB443
+	.uaword	.LFE443-.LFB443
+	.uaword	.LFB444
+	.uaword	.LFE444-.LFB444
 	.uaword	0
 	.uaword	0
 .section .debug_ranges,"",@progbits
 .Ldebug_ranges0:
-	.uaword	.LBB53
-	.uaword	.LBE53
-	.uaword	.LBB58
-	.uaword	.LBE58
-	.uaword	.LBB59
-	.uaword	.LBE59
 	.uaword	.LBB60
 	.uaword	.LBE60
-	.uaword	0
-	.uaword	0
-	.uaword	.LBB61
-	.uaword	.LBE61
+	.uaword	.LBB65
+	.uaword	.LBE65
 	.uaword	.LBB66
 	.uaword	.LBE66
 	.uaword	.LBB67
 	.uaword	.LBE67
+	.uaword	0
+	.uaword	0
 	.uaword	.LBB68
 	.uaword	.LBE68
-	.uaword	0
-	.uaword	0
-	.uaword	.LBB69
-	.uaword	.LBE69
+	.uaword	.LBB73
+	.uaword	.LBE73
 	.uaword	.LBB74
 	.uaword	.LBE74
 	.uaword	.LBB75
 	.uaword	.LBE75
-	.uaword	.LBB80
-	.uaword	.LBE80
 	.uaword	0
 	.uaword	0
 	.uaword	.LBB76
 	.uaword	.LBE76
-	.uaword	.LBB98
-	.uaword	.LBE98
-	.uaword	.LBB99
-	.uaword	.LBE99
-	.uaword	0
-	.uaword	0
 	.uaword	.LBB81
 	.uaword	.LBE81
-	.uaword	.LBB84
-	.uaword	.LBE84
+	.uaword	.LBB82
+	.uaword	.LBE82
+	.uaword	.LBB87
+	.uaword	.LBE87
 	.uaword	0
 	.uaword	0
-	.uaword	.LBB85
-	.uaword	.LBE85
-	.uaword	.LBB89
-	.uaword	.LBE89
-	.uaword	.LBB90
-	.uaword	.LBE90
+	.uaword	.LBB83
+	.uaword	.LBE83
+	.uaword	.LBB105
+	.uaword	.LBE105
+	.uaword	.LBB106
+	.uaword	.LBE106
 	.uaword	0
 	.uaword	0
+	.uaword	.LBB88
+	.uaword	.LBE88
 	.uaword	.LBB91
 	.uaword	.LBE91
-	.uaword	.LBB94
-	.uaword	.LBE94
 	.uaword	0
 	.uaword	0
-	.uaword	.LBB100
-	.uaword	.LBE100
-	.uaword	.LBB103
-	.uaword	.LBE103
+	.uaword	.LBB92
+	.uaword	.LBE92
+	.uaword	.LBB96
+	.uaword	.LBE96
+	.uaword	.LBB97
+	.uaword	.LBE97
 	.uaword	0
 	.uaword	0
-	.uaword	.LBB104
-	.uaword	.LBE104
+	.uaword	.LBB98
+	.uaword	.LBE98
+	.uaword	.LBB101
+	.uaword	.LBE101
+	.uaword	0
+	.uaword	0
 	.uaword	.LBB107
 	.uaword	.LBE107
+	.uaword	.LBB110
+	.uaword	.LBE110
 	.uaword	0
 	.uaword	0
-	.uaword	.LBB108
-	.uaword	.LBE108
 	.uaword	.LBB111
 	.uaword	.LBE111
+	.uaword	.LBB114
+	.uaword	.LBE114
 	.uaword	0
 	.uaword	0
-	.uaword	.LBB112
-	.uaword	.LBE112
-	.uaword	.LBB116
-	.uaword	.LBE116
+	.uaword	.LBB115
+	.uaword	.LBE115
+	.uaword	.LBB118
+	.uaword	.LBE118
 	.uaword	0
 	.uaword	0
-	.uaword	.LBB117
-	.uaword	.LBE117
-	.uaword	.LBB122
-	.uaword	.LBE122
+	.uaword	.LBB119
+	.uaword	.LBE119
 	.uaword	.LBB123
 	.uaword	.LBE123
+	.uaword	0
+	.uaword	0
 	.uaword	.LBB124
 	.uaword	.LBE124
-	.uaword	0
-	.uaword	0
-	.uaword	.LBB125
-	.uaword	.LBE125
-	.uaword	.LBB128
-	.uaword	.LBE128
-	.uaword	0
-	.uaword	0
 	.uaword	.LBB129
 	.uaword	.LBE129
+	.uaword	.LBB130
+	.uaword	.LBE130
+	.uaword	.LBB131
+	.uaword	.LBE131
+	.uaword	0
+	.uaword	0
 	.uaword	.LBB132
 	.uaword	.LBE132
+	.uaword	.LBB135
+	.uaword	.LBE135
 	.uaword	0
 	.uaword	0
-	.uaword	.LBB133
-	.uaword	.LBE133
-	.uaword	.LBB136
-	.uaword	.LBE136
-	.uaword	0
-	.uaword	0
-	.uaword	.LBB137
-	.uaword	.LBE137
 	.uaword	.LBB140
 	.uaword	.LBE140
+	.uaword	.LBB143
+	.uaword	.LBE143
 	.uaword	0
 	.uaword	0
-	.uaword	.LBB141
-	.uaword	.LBE141
-	.uaword	.LBB145
-	.uaword	.LBE145
-	.uaword	.LBB146
-	.uaword	.LBE146
-	.uaword	0
-	.uaword	0
+	.uaword	.LBB144
+	.uaword	.LBE144
 	.uaword	.LBB147
 	.uaword	.LBE147
-	.uaword	.LBB150
-	.uaword	.LBE150
+	.uaword	0
+	.uaword	0
+	.uaword	.LBB148
+	.uaword	.LBE148
+	.uaword	.LBB151
+	.uaword	.LBE151
+	.uaword	0
+	.uaword	0
+	.uaword	.LBB152
+	.uaword	.LBE152
+	.uaword	.LBB156
+	.uaword	.LBE156
+	.uaword	.LBB157
+	.uaword	.LBE157
+	.uaword	0
+	.uaword	0
+	.uaword	.LBB158
+	.uaword	.LBE158
+	.uaword	.LBB161
+	.uaword	.LBE161
+	.uaword	0
+	.uaword	0
+	.uaword	.LBB162
+	.uaword	.LBE162
+	.uaword	.LBB165
+	.uaword	.LBE165
 	.uaword	0
 	.uaword	0
 	.uaword	.LFB428
@@ -19942,6 +20358,14 @@ g_VadcAutoScan:
 	.uaword	.LFE439
 	.uaword	.LFB440
 	.uaword	.LFE440
+	.uaword	.LFB441
+	.uaword	.LFE441
+	.uaword	.LFB442
+	.uaword	.LFE442
+	.uaword	.LFB443
+	.uaword	.LFE443
+	.uaword	.LFB444
+	.uaword	.LFE444
 	.uaword	0
 	.uaword	0
 .section .debug_line,"",@progbits
@@ -19961,6 +20385,10 @@ g_VadcAutoScan:
 	.string	"group"
 .LASF42:
 	.string	"channels"
+.LASF47:
+	.string	"GetCountPassedObject"
+.LASF43:
+	.string	"SetCountPassedObject"
 .LASF38:
 	.string	"requestSlotPrio"
 .LASF41:
@@ -20001,10 +20429,12 @@ g_VadcAutoScan:
 	.string	"reserved_29"
 .LASF36:
 	.string	"reserved_1A0"
-.LASF44:
+.LASF46:
 	.string	"zeroCount"
 .LASF30:
 	.string	"REQCHNR"
+.LASF44:
+	.string	"SetDottedLine"
 .LASF1:
 	.string	"reserved_0"
 .LASF33:
@@ -20033,7 +20463,7 @@ g_VadcAutoScan:
 	.string	"requestSlotStartMode"
 .LASF35:
 	.string	"reserved_144"
-.LASF43:
+.LASF45:
 	.string	"_line"
 .LASF32:
 	.string	"RESULT"

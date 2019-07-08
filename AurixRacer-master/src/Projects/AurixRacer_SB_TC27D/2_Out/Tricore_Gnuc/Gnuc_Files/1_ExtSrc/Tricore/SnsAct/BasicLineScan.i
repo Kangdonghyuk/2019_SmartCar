@@ -28019,6 +28019,10 @@ IR_LineScan_t IR_LineScan;
 # 63 "../../MyApp/AurixRacer/0_Src/AppSw/Tricore/SnsAct/BasicLineScan.c"
 int FILTERED_CENTER_LINE[128];
 int Zero_center_line[128];
+
+int countPassedObject;
+int dottedLine;
+
 void BasicLineScan_init(void)
 {
 
@@ -28259,10 +28263,14 @@ void Camera_Initialization() {
  nowIndex = 0;
  cntTotal = 0;
  cntLeft = 0;
+
+ SetCountPassedObject(0);
+ SetDottedLine(0);
 }
 
 int GetCameraCenter(int prevServo, int cntDiff) {
  int i=0;
+
 
  if(cntDiff >= 2) {
   if(prevServo >= 60)
@@ -28292,12 +28300,13 @@ int GetCameraCenter(int prevServo, int cntDiff) {
   speedLimitLine[i] = cam_info[0][nowIndex].cam_scan[i];
 
  if(cam_info[0][nowIndex].center == -1 || cam_info[0][nowIndex].center == 0) {
+# 354 "../../MyApp/AurixRacer/0_Src/AppSw/Tricore/SnsAct/BasicLineScan.c"
   CopyPrevLine(&(cam_info[0][nowIndex]), cam_info[0][(nowIndex + 5 - 1) % 5]);
   cam_info[0][nowIndex].center = cam_info[0][(nowIndex + 5 - 1) % 5].center;
-  if(g_cameraDirection == 0)
-   cam_info[0][nowIndex].center = cam_info[1][nowIndex].center + 40;
-  else if(g_cameraDirection == 1)
-   cam_info[0][nowIndex].center = cam_info[2][nowIndex].center - 40;
+
+
+
+
  }
 
  for(i=0; i<128; i++)
@@ -28307,7 +28316,7 @@ int GetCameraCenter(int prevServo, int cntDiff) {
 
  return cam_info[0][(nowIndex + 4) % 5].center;
 }
-
+# 388 "../../MyApp/AurixRacer/0_Src/AppSw/Tricore/SnsAct/BasicLineScan.c"
 int FindCenter(int(*_line)[128]) {
  int i, index = 0, leftIndex = 0, rightIndex = 127, zeroCount = 0;
 
@@ -28336,10 +28345,12 @@ int FindCenter(int(*_line)[128]) {
  }
 
  if(isLimitZone == 1) {
-  if(leftIndex == 0)
-   leftIndexCount++;
-  if(rightIndex == 127)
-   rightIndexCount++;
+  if(GetCountPassedObject() == 0){
+   if(leftIndex == 0)
+    leftIndexCount++;
+   if(rightIndex == 127)
+    rightIndexCount++;
+  }
  }
 
  if(rightIndex <= 126) {
@@ -28373,7 +28384,8 @@ int FindOneLine(int line[128]) {
   }
  }
 
- if(zeroCount <= 122)
+
+ if(zeroCount >= 122)
   return -1;
 
  for(i=2; i<126; i++) {
@@ -28382,6 +28394,8 @@ int FindOneLine(int line[128]) {
   else if(lineIndex != 0 && line[i] != 0 && line[i+1] == 0 && line[lineIndex] <= line[i])
    lineIndex = i;
  }
+ if(lineIndex <= 3 || lineIndex >= 123)
+  lineIndex = -1;
 
  return lineIndex;
 }
@@ -28403,4 +28417,17 @@ int IsLimitZone() {
 
 int GetDashLine() {
  return leftIndexCount >= rightIndexCount ? -1 : 1;
+}
+
+int GetCountPassedObject(){
+ return countPassedObject;
+}
+void SetCountPassedObject(int cpo){
+ countPassedObject = cpo;
+}
+int GetDottedLine(){
+ return dottedLine;
+}
+void SetDottedLine(int dl){
+ dottedLine = dl;
 }

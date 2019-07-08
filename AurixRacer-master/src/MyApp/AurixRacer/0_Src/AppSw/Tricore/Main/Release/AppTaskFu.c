@@ -19,11 +19,14 @@ ZONE zoneState = SPEED, beforeZoneState = SPEED;
 
 int delayCountForCheckDetectZone = 0;
 int delayCountForIsDetectZone = 0;
+int delayCountForPassedObject = 0;
 
 int g_nowCenterIndex = 60;
 int g_prevCenterIndex = 60;
 int g_cntDiffNowPrevCenterIndex = 0;
 float g_servoValue = 60.0f;
+
+float objectSrvAngle = 0.0f;
 
 void appTaskfu_init(void){
 	BasicLineScan_init();
@@ -65,10 +68,12 @@ void appTaskfu_1ms(void)
 
 }
 float g_line_center_value = 0;
-
 float servoValue = 0.0f;
 void appTaskfu_10ms(void)
 {
+	int dottedLine;
+	int countPassedObject;
+
 	task_cnt_10m++;
 	if(task_cnt_10m == 1000){
 		task_cnt_10m = 0;
@@ -86,7 +91,7 @@ void appTaskfu_10ms(void)
 		FollowingLine();
 
 		if(delayCountForCheckDetectZone == 0)
-			CheckLimitZone(zoneState);
+			CheckLimitZone(zoneState);  // 109 limit zone
 
 		if(delayCountForIsDetectZone == 0) {
 			delayCountForIsDetectZone += 4; // delay 400ms
@@ -101,25 +106,54 @@ void appTaskfu_10ms(void)
 
 		if(zoneState == SPEED) {
 			IR_setMotor0Vol(0.72f);
-			IR_setSrvAngle((((float)g_nowCenterIndex - 60.0f) / 100.0f) * 2.5f + 0.1953f);
+			IR_setSrvAngle((((float)g_nowCenterIndex - 60.0f) / 100.0f) * 1.5f + 0.1953f);
 			if(g_nowCenterIndex >= 55 && g_nowCenterIndex < 66)
 				IR_setSrvAngle(0.1953);
 			else if(g_nowCenterIndex< 58 || g_nowCenterIndex >= 63)
 				IR_setMotor0Vol(0.35f);
+			/*
+			else if(g_nowCenterIndex == -1)
+				IR_setSrvAngle(-0.2f);
+			else if(g_nowCenterIndex == -2)
+				IR_setSrvAngle(0.6f);
+			 */
 			servoValue = IR_getSrvAngle();
 			// AEB
-			if(GetInfraredSensorValue() > 300) {
+			if(GetInfraredSensorValue() > 120) {
 				IR_setMotor0Vol(0.0f);
+				IR_setMotor0En(0);
 			}
 		}
 		else if(zoneState == LIMIT) {
+			dottedLine = GetDottedLine();
+			countPassedObject = GetCountPassedObject();
 			IR_setMotor0Vol(0.35f);
-			IR_setSrvAngle((((float)g_nowCenterIndex - 60.0f) / 100.0f) * 2.5f + 0.1953f);
-			if(g_nowCenterIndex >= 55 && g_nowCenterIndex < 66)
-					IR_setSrvAngle(0.1953);
-			if(GetInfraredSensorValue() > 200)
-				IR_setSrvAngle(0.1953f + GetDashLine() * 0.3f);
+			IR_setSrvAngle((((float)g_nowCenterIndex - 60.0f) / 100.0f) * 2.2f + 0.1953f);
+
+			if(g_nowCenterIndex >= 55 && g_nowCenterIndex < 66) {
+				IR_setSrvAngle(0.1953);
+			}
+
+			if(delayCountForPassedObject == 0) {
+				if(GetInfraredSensorValue() > 120){
+					if(countPassedObject == 0){
+						dottedLine = GetDashLine();
+						countPassedObject += 1;
+					}
+					delayCountForPassedObject += 8;
+					dottedLine *= -1;
+					SetCountPassedObject(countPassedObject);
+					SetDottedLine(dottedLine);
+				}
+			}
+
+			if(delayCountForPassedObject > 0) {
+				objectSrvAngle = 0.1953f + -dottedLine * 0.3f;
+				IR_setSrvAngle(objectSrvAngle);
+			}
 		}
+
+
 
 
 		if(IR_Ctrl.basicTest == FALSE){
@@ -131,7 +165,7 @@ void appTaskfu_10ms(void)
 
 			#endif
 		}
-		//AsclinShellInterface_runLineScan();
+		AsclinShellInterface_runLineScan();
 	}
 }
 
@@ -142,7 +176,7 @@ void FollowingLine() {
 	if(g_nowCenterIndex >= 65 || g_nowCenterIndex < 55) {
 		if(DABS(g_nowCenterIndex - g_prevCenterIndex) >= 30) {
 			g_cntDiffNowPrevCenterIndex += 1;
-			if(g_cntDiffNowPrevCenterIndex >= 20) {
+			if(g_cntDiffNowPrevCenterIndex >= 15) {
 				g_prevCenterIndex = g_nowCenterIndex;
 				g_cntDiffNowPrevCenterIndex = 0;
 			}
@@ -176,6 +210,13 @@ void appTaskfu_100ms(void)
 	if(delayCountForCheckDetectZone < 0)
 		delayCountForCheckDetectZone = 0;
 
+	if(delayCountForPassedObject > 0)
+		delayCountForPassedObject -= 1;
+
+	if(delayCountForPassedObject < 0)
+		delayCountForPassedObject = 0;
+
+
 	task_cnt_100m++;
 	if(task_cnt_100m == 1000){
 		task_cnt_100m = 0;
@@ -192,9 +233,10 @@ void appTaskfu_100ms(void)
 
 volatile int velocity = 0;
 volatile int state = -1;
-volatile int start = 0;
+volatile float start = 1;
 void appTaskfu_1000ms(void)
 {
+//	test_srv_operation();
 	task_cnt_1000m++;
 	if(task_cnt_1000m == 1000){
 		task_cnt_1000m = 0;
@@ -216,3 +258,22 @@ void appIsrCb_1ms(void){
 	BasicGpt12Enc_run();
 }
 
+
+void test_srv_operation(void){
+	// init : state -1(int), start 1(float)
+	IR_setSrvAngle(start);
+		if (start <-1){
+			state = 1;
+			start += 0.3;
+		}
+		if ((-1<= start && start <=1) && state ==-1){
+			start -=0.3;
+		}
+		if ((-1 <= start && start <=1) && state == 1){
+			start += 0.3;
+		}
+		if (start > 1){
+			state = -1;
+			start -= 0.3;
+		}
+}
