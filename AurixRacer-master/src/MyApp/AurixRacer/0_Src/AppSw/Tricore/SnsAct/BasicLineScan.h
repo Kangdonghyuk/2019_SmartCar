@@ -13,6 +13,8 @@
 #include <Vadc/Std/IfxVadc.h>
 #include <Vadc/Adc/IfxVadc_Adc.h>
 
+#include "Basic.h"
+
 /******************************************************************************/
 /*-----------------------------------Macros-----------------------------------*/
 /******************************************************************************/
@@ -46,7 +48,7 @@ IFX_EXTERN void BasicLineScan_run(void);
 #define MAXVALUE 4096
 #define DABS(n) ((n < 0) ? -n : n)
 #define DSQUARE(n) (n*n)
-#define THRESHOLD 50000
+#define THRESHOLD 85000
 #define C_THRESHOLD 70000
 //#define THRESHOLD 3500
 //#define C_THRESHOLD 1700
@@ -61,6 +63,7 @@ typedef struct CAM_INFOMATION {
    int center;
 }cam_infomation;
 
+int AdjustBySides();
 void Camera_Initialization();
 int GetCameraCenter(int prevServo, int cntDiff);
 enum DIRECTION GetCameraDash();

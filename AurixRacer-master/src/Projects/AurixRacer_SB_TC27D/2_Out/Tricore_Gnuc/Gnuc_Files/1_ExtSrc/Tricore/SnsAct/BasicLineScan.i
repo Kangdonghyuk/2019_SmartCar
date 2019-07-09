@@ -17032,53 +17032,20 @@ static inline __attribute__ ((always_inline)) Ifx_VADC_G_RESD IfxVadc_Adc_getDeb
     return IfxVadc_getDebugResult(channel->group->group, channel->resultreg);
 }
 # 15 "../../MyApp/AurixRacer/0_Src/AppSw/Tricore/SnsAct/BasicLineScan.h" 2
-# 27 "../../MyApp/AurixRacer/0_Src/AppSw/Tricore/SnsAct/BasicLineScan.h"
-typedef struct{
- uint32 adcResult[3][128];
-}IR_LineScan_t;
+
+# 1 "../../MyApp/AurixRacer/0_Src/AppSw/Tricore/SnsAct/Basic.h" 1
 
 
 
+# 1 "../../MyApp/AurixRacer/0_Src/AppSw/Tricore/SnsAct/BasicLineScan.h" 1
+# 5 "../../MyApp/AurixRacer/0_Src/AppSw/Tricore/SnsAct/Basic.h" 2
+# 1 "../../MyApp/AurixRacer/0_Src/AppSw/Tricore/SnsAct/BasicPort.h" 1
+# 13 "../../MyApp/AurixRacer/0_Src/AppSw/Tricore/SnsAct/BasicPort.h"
+# 1 "../../_LibSrc/iLLD_1_0_1_8_0__TC27D/Src/BaseSw/iLLD/TC27D/Tricore/Cpu/Std/Ifx_Types.h" 1
+# 14 "../../MyApp/AurixRacer/0_Src/AppSw/Tricore/SnsAct/BasicPort.h" 2
 
-extern IR_LineScan_t IR_LineScan;
-
-
-
-
-extern void BasicLineScan_init(void);
-extern void BasicLineScan_run(void);
-# 59 "../../MyApp/AurixRacer/0_Src/AppSw/Tricore/SnsAct/BasicLineScan.h"
-typedef struct CAM_INFOMATION {
-   int cam_scan[128];
-   int center;
-}cam_infomation;
-
-void Camera_Initialization();
-int GetCameraCenter(int prevServo, int cntDiff);
-enum DIRECTION GetCameraDash();
-
-void GetCamera(cam_infomation * _cam_info);
-void CopyPrevLine(cam_infomation * _cam_info, cam_infomation _prev_info);
-
-int GetMedian(int _array[5]);
-void Stretching(int(*_line)[128], int _max);
-void MedianFiltering(int(*_line)[128]);
-void Sharpening(int(*_line)[128]);
-extern int FindCenter(int(*line)[128]);
-
-
-void MakeIdxZero(int(*_line)[128], int threshold);
-void MakeIdxMax(int(*_line)[128], int threshold);
-extern void CheckLimitZone(int nowState);
-extern int IsLimitZone();
-extern int GetDashLine();
-extern int FindCenter(int(*_line)[128]);
-extern int FindOneLine(int line[128]);
-extern int GetCountPassedObject();
-extern void SetCountPassedObject(int cpo);
-extern int GetDottedLine();
-extern void SetDottedLine(int dl);
-# 19 "../../MyApp/AurixRacer/0_Src/AppSw/Tricore/SnsAct/BasicLineScan.c" 2
+# 1 "../../_LibSrc/iLLD_1_0_1_8_0__TC27D/Src/BaseSw/Service/CpuGeneric/SysSe/Bsp/Bsp.h" 1
+# 16 "../../MyApp/AurixRacer/0_Src/AppSw/Tricore/SnsAct/BasicPort.h" 2
 # 1 "../../MyApp/AurixRacer/0_Src/AppSw/Tricore/Cfg_Illd/Configuration.h" 1
 # 13 "../../MyApp/AurixRacer/0_Src/AppSw/Tricore/Cfg_Illd/Configuration.h"
 # 1 "../../MyApp/AurixRacer/0_Src/AppSw/Tricore/Cfg_Illd/ConfigurationIsr.h" 1
@@ -27962,7 +27929,3512 @@ extern IfxGtm_Tom_ToutMap IfxGtm_TOM2_9_TOUT132_P22_6_OUT;
 extern IfxGtm_Tom_ToutMap IfxGtm_TOM2_9_TOUT52_P21_1_OUT;
 extern IfxGtm_Tom_ToutMap IfxGtm_TOM2_9_TOUT69_P20_13_OUT;
 # 19 "../../MyApp/AurixRacer/0_Src/AppSw/Tricore/Cfg_Illd/Configuration.h" 2
-# 20 "../../MyApp/AurixRacer/0_Src/AppSw/Tricore/SnsAct/BasicLineScan.c" 2
+# 17 "../../MyApp/AurixRacer/0_Src/AppSw/Tricore/SnsAct/BasicPort.h" 2
+# 1 "../../MyApp/AurixRacer/0_Src/AppSw/Tricore/Cfg_Illd/ConfigurationIsr.h" 1
+# 18 "../../MyApp/AurixRacer/0_Src/AppSw/Tricore/SnsAct/BasicPort.h" 2
+# 1 "../../_LibSrc/iLLD_1_0_1_8_0__TC27D/Src/BaseSw/iLLD/TC27D/Tricore/Cpu/Irq/IfxCpu_Irq.h" 1
+# 84 "../../_LibSrc/iLLD_1_0_1_8_0__TC27D/Src/BaseSw/iLLD/TC27D/Tricore/Cpu/Irq/IfxCpu_Irq.h"
+static inline __attribute__ ((always_inline)) IfxSrc_Tos IfxCpu_Irq_getTos(IfxCpu_ResourceCpu coreId)
+{
+    return (IfxSrc_Tos)coreId;
+}
+# 19 "../../MyApp/AurixRacer/0_Src/AppSw/Tricore/SnsAct/BasicPort.h" 2
+# 1 "../../_LibSrc/iLLD_1_0_1_8_0__TC27D/Src/BaseSw/iLLD/TC27D/Tricore/Port/Std/IfxPort.h" 1
+# 20 "../../MyApp/AurixRacer/0_Src/AppSw/Tricore/SnsAct/BasicPort.h" 2
+# 1 "../../MyApp/AurixRacer/0_Src/AppSw/Tricore/Main/Release/Cpu0_Main.h" 1
+# 26 "../../MyApp/AurixRacer/0_Src/AppSw/Tricore/Main/Release/Cpu0_Main.h"
+typedef struct
+{
+    float32 sysFreq;
+    float32 cpuFreq;
+    float32 pllFreq;
+    float32 stmFreq;
+} AppInfo;
+
+
+typedef struct
+{
+    AppInfo info;
+} App_Cpu;
+
+
+
+
+extern App_Cpu g_AppCpu0;
+# 21 "../../MyApp/AurixRacer/0_Src/AppSw/Tricore/SnsAct/BasicPort.h" 2
+# 46 "../../MyApp/AurixRacer/0_Src/AppSw/Tricore/SnsAct/BasicPort.h"
+typedef struct
+{
+ volatile boolean led0;
+ volatile boolean led1;
+ volatile boolean led2;
+ volatile boolean port00_0;
+ volatile boolean port00_1;
+
+
+
+
+
+
+
+ volatile boolean m_inh_u;
+ volatile boolean m_inh_v;
+ volatile boolean m_inh_w;
+
+} Basic_Port;
+
+typedef struct{
+
+
+
+
+ boolean Motor0Enable;
+
+} IR_MotorEn_t;
+
+
+
+
+extern Basic_Port IR_Port;
+extern IR_MotorEn_t IR_MotorEn;
+
+
+
+
+extern void IR_setLed0(boolean led);
+extern void IR_setLed1(boolean led);
+extern void IR_setLed2(boolean led);
+
+
+
+
+
+extern void IR_setMotor0En(boolean enable);
+
+
+extern void BasicPort_init(void);
+extern void BasicPort_run(void);
+# 6 "../../MyApp/AurixRacer/0_Src/AppSw/Tricore/SnsAct/Basic.h" 2
+# 1 "../../MyApp/AurixRacer/0_Src/AppSw/Tricore/SnsAct/BasicGtmTom.h" 1
+# 18 "../../MyApp/AurixRacer/0_Src/AppSw/Tricore/SnsAct/BasicGtmTom.h"
+# 1 "../../_LibSrc/iLLD_1_0_1_8_0__TC27D/Src/BaseSw/iLLD/TC27D/Tricore/Gtm/Tom/PwmHl/IfxGtm_Tom_PwmHl.h" 1
+# 119 "../../_LibSrc/iLLD_1_0_1_8_0__TC27D/Src/BaseSw/iLLD/TC27D/Tricore/Gtm/Tom/PwmHl/IfxGtm_Tom_PwmHl.h"
+# 1 "../../_LibSrc/iLLD_1_0_1_8_0__TC27D/Src/BaseSw/Service/CpuGeneric/StdIf/IfxStdIf_PwmHl.h" 1
+# 58 "../../_LibSrc/iLLD_1_0_1_8_0__TC27D/Src/BaseSw/Service/CpuGeneric/StdIf/IfxStdIf_PwmHl.h"
+# 1 "../../_LibSrc/iLLD_1_0_1_8_0__TC27D/Src/BaseSw/Service/CpuGeneric/StdIf/IfxStdIf_Timer.h" 1
+# 54 "../../_LibSrc/iLLD_1_0_1_8_0__TC27D/Src/BaseSw/Service/CpuGeneric/StdIf/IfxStdIf_Timer.h"
+typedef enum
+{
+    IfxStdIf_Timer_Output_disabled,
+    IfxStdIf_Timer_Output_enabled
+
+
+
+
+
+
+
+} IfxStdIf_Timer_OutputEvent;
+
+
+typedef enum
+{
+    IfxStdIf_Timer_CountDir_up,
+    IfxStdIf_Timer_CountDir_upAndDown,
+    IfxStdIf_Timer_CountDir_down
+} IfxStdIf_Timer_CountDir;
+
+
+typedef struct IfxStdIf_Timer_ IfxStdIf_Timer;
+
+
+
+
+
+typedef float32 (*IfxStdIf_Timer_GetFrequency)(IfxStdIf_InterfaceDriver stdIf);
+
+
+
+
+
+typedef Ifx_TimerValue (*IfxStdIf_Timer_GetPeriod)(IfxStdIf_InterfaceDriver stdIf);
+
+
+
+
+
+typedef float32 (*IfxStdIf_Timer_GetResolution)(IfxStdIf_InterfaceDriver stdIf);
+
+
+
+
+
+typedef Ifx_TimerValue (*IfxStdIf_Timer_GetTrigger)(IfxStdIf_InterfaceDriver stdIf);
+
+
+
+
+
+
+
+typedef boolean (*IfxStdIf_Timer_SetFrequency)(IfxStdIf_InterfaceDriver stdIf, float32 frequency);
+
+
+
+
+
+typedef void (*IfxStdIf_Timer_UpdateInputFrequency)(IfxStdIf_InterfaceDriver stdIf);
+# 135 "../../_LibSrc/iLLD_1_0_1_8_0__TC27D/Src/BaseSw/Service/CpuGeneric/StdIf/IfxStdIf_Timer.h"
+typedef void (*IfxStdIf_Timer_ApplyUpdate)(IfxStdIf_InterfaceDriver stdIf);
+# 152 "../../_LibSrc/iLLD_1_0_1_8_0__TC27D/Src/BaseSw/Service/CpuGeneric/StdIf/IfxStdIf_Timer.h"
+typedef void (*IfxStdIf_Timer_DisableUpdate)(IfxStdIf_InterfaceDriver stdIf);
+
+
+
+
+
+typedef float32 (*IfxStdIf_Timer_GetInputFrequency)(IfxStdIf_InterfaceDriver stdIf);
+# 167 "../../_LibSrc/iLLD_1_0_1_8_0__TC27D/Src/BaseSw/Service/CpuGeneric/StdIf/IfxStdIf_Timer.h"
+typedef void (*IfxStdIf_Timer_Run)(IfxStdIf_InterfaceDriver stdIf);
+# 177 "../../_LibSrc/iLLD_1_0_1_8_0__TC27D/Src/BaseSw/Service/CpuGeneric/StdIf/IfxStdIf_Timer.h"
+typedef boolean (*IfxStdIf_Timer_SetPeriod)(IfxStdIf_InterfaceDriver stdIf, Ifx_TimerValue period);
+# 186 "../../_LibSrc/iLLD_1_0_1_8_0__TC27D/Src/BaseSw/Service/CpuGeneric/StdIf/IfxStdIf_Timer.h"
+typedef void (*IfxStdIf_Timer_SetSingleMode)(IfxStdIf_InterfaceDriver stdIf, boolean enabled);
+# 198 "../../_LibSrc/iLLD_1_0_1_8_0__TC27D/Src/BaseSw/Service/CpuGeneric/StdIf/IfxStdIf_Timer.h"
+typedef void (*IfxStdIf_Timer_SetTrigger)(IfxStdIf_InterfaceDriver stdIf, Ifx_TimerValue triggerPoint);
+
+
+
+
+
+typedef void (*IfxStdIf_Timer_Stop)(IfxStdIf_InterfaceDriver stdIf);
+
+
+
+
+
+typedef boolean (*IfxStdIf_Timer_AckTimerIrq)(IfxStdIf_InterfaceDriver stdIf);
+
+
+
+
+
+typedef boolean (*IfxStdIf_Timer_AckTriggerIrq)(IfxStdIf_InterfaceDriver stdIf);
+
+
+
+struct IfxStdIf_Timer_
+{
+    IfxStdIf_InterfaceDriver driver;
+    IfxStdIf_Timer_GetFrequency getFrequency;
+    IfxStdIf_Timer_GetPeriod getPeriod;
+    IfxStdIf_Timer_GetResolution getResolution;
+    IfxStdIf_Timer_GetTrigger getTrigger;
+    IfxStdIf_Timer_SetFrequency setFrequency;
+    IfxStdIf_Timer_UpdateInputFrequency updateInputFrequency;
+    IfxStdIf_Timer_ApplyUpdate applyUpdate;
+    IfxStdIf_Timer_DisableUpdate disableUpdate;
+    IfxStdIf_Timer_GetInputFrequency getInputFrequency;
+    IfxStdIf_Timer_Run run;
+    IfxStdIf_Timer_SetPeriod setPeriod;
+    IfxStdIf_Timer_SetSingleMode setSingleMode;
+    IfxStdIf_Timer_SetTrigger setTrigger;
+    IfxStdIf_Timer_Stop stop;
+    IfxStdIf_Timer_AckTimerIrq ackTimerIrq;
+    IfxStdIf_Timer_AckTriggerIrq ackTriggerIrq;
+};
+
+
+typedef struct
+{
+    boolean enabled;
+    Ifx_TimerValue triggerPoint;
+    Ifx_Priority isrPriority;
+    IfxSrc_Tos isrProvider;
+    IfxPort_OutputMode outputMode;
+    IfxPort_PadDriver outputDriver;
+    boolean risingEdgeAtPeriod;
+    boolean outputEnabled;
+} IfxStdIf_Timer_TrigConfig;
+
+
+typedef struct
+{
+    float32 frequency;
+    Ifx_Priority isrPriority;
+    IfxSrc_Tos isrProvider;
+    float32 minResolution;
+    IfxStdIf_Timer_TrigConfig trigger;
+    IfxStdIf_Timer_CountDir countDir;
+    float32 startOffset;
+} IfxStdIf_Timer_Config;
+
+
+
+
+
+
+
+static inline __attribute__ ((always_inline)) float32 IfxStdIf_Timer_getFrequency(IfxStdIf_Timer *stdIf)
+{
+    return stdIf->getFrequency(stdIf->driver);
+}
+
+
+
+
+
+static inline __attribute__ ((always_inline)) Ifx_TimerValue IfxStdIf_Timer_getPeriod(IfxStdIf_Timer *stdIf)
+{
+    return stdIf->getPeriod(stdIf->driver);
+}
+
+
+
+
+
+static inline __attribute__ ((always_inline)) Ifx_TimerValue IfxStdIf_Timer_getTrigger(IfxStdIf_Timer *stdIf)
+{
+    return stdIf->getTrigger(stdIf->driver);
+}
+
+
+
+
+
+static inline __attribute__ ((always_inline)) float32 IfxStdIf_Timer_getResolution(IfxStdIf_Timer *stdIf)
+{
+    return stdIf->getResolution(stdIf->driver);
+}
+
+
+
+
+
+static inline __attribute__ ((always_inline)) boolean IfxStdIf_Timer_setFrequency(IfxStdIf_Timer *stdIf, float32 frequency)
+{
+    return stdIf->setFrequency(stdIf->driver, frequency);
+}
+
+
+
+
+
+static inline __attribute__ ((always_inline)) void IfxStdIf_Timer_updateInputFrequency(IfxStdIf_Timer *stdIf)
+{
+    stdIf->updateInputFrequency(stdIf->driver);
+}
+
+
+
+
+
+static inline __attribute__ ((always_inline)) void IfxStdIf_Timer_applyUpdate(IfxStdIf_Timer *stdIf)
+{
+    stdIf->applyUpdate(stdIf->driver);
+}
+
+
+
+
+
+static inline __attribute__ ((always_inline)) void IfxStdIf_Timer_disableUpdate(IfxStdIf_Timer *stdIf)
+{
+    stdIf->disableUpdate(stdIf->driver);
+}
+
+
+
+
+
+static inline __attribute__ ((always_inline)) float32 IfxStdIf_Timer_getInputFrequency(IfxStdIf_Timer *stdIf)
+{
+    return stdIf->getInputFrequency(stdIf->driver);
+}
+
+
+
+
+
+static inline __attribute__ ((always_inline)) void IfxStdIf_Timer_run(IfxStdIf_Timer *stdIf)
+{
+    stdIf->run(stdIf->driver);
+}
+
+
+
+
+
+static inline __attribute__ ((always_inline)) boolean IfxStdIf_Timer_setPeriod(IfxStdIf_Timer *stdIf, Ifx_TimerValue period)
+{
+    return stdIf->setPeriod(stdIf->driver, period);
+}
+
+
+
+
+
+static inline __attribute__ ((always_inline)) void IfxStdIf_Timer_setSingleMode(IfxStdIf_Timer *stdIf, boolean enabled)
+{
+    stdIf->setSingleMode(stdIf->driver, enabled);
+}
+
+
+
+
+
+static inline __attribute__ ((always_inline)) void IfxStdIf_Timer_setTrigger(IfxStdIf_Timer *stdIf, Ifx_TimerValue triggerPoint)
+{
+    stdIf->setTrigger(stdIf->driver, triggerPoint);
+}
+
+
+
+
+
+static inline __attribute__ ((always_inline)) void IfxStdIf_Timer_stop(IfxStdIf_Timer *stdIf)
+{
+    stdIf->stop(stdIf->driver);
+}
+
+
+
+
+
+static inline __attribute__ ((always_inline)) boolean IfxStdIf_Timer_ackTimerIrq(IfxStdIf_Timer *stdIf)
+{
+    return stdIf->ackTimerIrq(stdIf->driver);
+}
+
+
+
+
+
+static inline __attribute__ ((always_inline)) boolean IfxStdIf_Timer_ackTriggerIrq(IfxStdIf_Timer *stdIf)
+{
+    return stdIf->ackTriggerIrq(stdIf->driver);
+}
+
+
+
+
+
+
+
+static inline __attribute__ ((always_inline)) float32 IfxStdIf_Timer_tickToS(float32 clockFreq, Ifx_TimerValue ticks)
+{
+    return ticks / clockFreq;
+}
+
+
+
+
+
+
+
+static inline __attribute__ ((always_inline)) Ifx_TimerValue IfxStdIf_Timer_sToTick(float32 clockFreq, float32 seconds)
+{
+    return seconds * clockFreq;
+}
+
+
+
+
+
+static inline __attribute__ ((always_inline)) float32 IfxStdIf_Timer_getPeriodSecond(IfxStdIf_Timer *stdIf)
+{
+    return IfxStdIf_Timer_tickToS(IfxStdIf_Timer_getInputFrequency(stdIf), stdIf->getPeriod(stdIf->driver));
+}
+# 451 "../../_LibSrc/iLLD_1_0_1_8_0__TC27D/Src/BaseSw/Service/CpuGeneric/StdIf/IfxStdIf_Timer.h"
+extern void IfxStdIf_Timer_initConfig(IfxStdIf_Timer_Config *config);
+
+
+
+
+
+
+
+extern void IfxStdIf_Timer_initStdIf(IfxStdIf_Timer *stdIf, IfxStdIf_InterfaceDriver driver);
+# 59 "../../_LibSrc/iLLD_1_0_1_8_0__TC27D/Src/BaseSw/Service/CpuGeneric/StdIf/IfxStdIf_PwmHl.h" 2
+
+
+typedef struct IfxStdIf_PwmHl_ IfxStdIf_PwmHl;
+
+
+
+
+
+
+
+typedef boolean (*IfxStdIf_PwmHl_SetDeadtime)(IfxStdIf_InterfaceDriver stdIf, float32 deadtime);
+
+
+
+
+
+
+
+typedef float32 (*IfxStdIf_PwmHl_GetDeadtime)(IfxStdIf_InterfaceDriver stdIf);
+
+
+
+
+
+
+
+typedef boolean (*IfxStdIf_PwmHl_SetMinPulse)(IfxStdIf_InterfaceDriver stdIf, float32 minPulse);
+
+
+
+
+
+
+
+typedef float32 (*IfxStdIf_PwmHl_GetMinPulse)(IfxStdIf_InterfaceDriver stdIf);
+
+
+
+
+
+
+
+typedef Ifx_Pwm_Mode (*IfxStdIf_PwmHl_GetMode)(IfxStdIf_InterfaceDriver stdIf);
+
+
+
+
+
+
+
+typedef boolean (*IfxStdIf_PwmHl_SetMode)(IfxStdIf_InterfaceDriver stdIf, Ifx_Pwm_Mode mode);
+
+
+
+
+
+
+typedef void (*IfxStdIf_PwmHl_SetOnTime)(IfxStdIf_InterfaceDriver stdIf, Ifx_TimerValue *tOn);
+
+
+
+
+
+
+
+typedef void (*IfxStdIf_PwmHl_SetOnTimeAndShift)(IfxStdIf_InterfaceDriver stdIf, Ifx_TimerValue *tOn, Ifx_TimerValue *shift);
+
+
+
+
+
+
+
+typedef void (*IfxStdIf_PwmHl_SetPulse)(IfxStdIf_InterfaceDriver stdIf, float32 *tOn, float32 *offset);
+# 151 "../../_LibSrc/iLLD_1_0_1_8_0__TC27D/Src/BaseSw/Service/CpuGeneric/StdIf/IfxStdIf_PwmHl.h"
+typedef void (*IfxStdIf_PwmHl_SetupChannels)(IfxStdIf_InterfaceDriver stdIf, boolean *activeCh, boolean *stuckSt);
+
+
+
+struct IfxStdIf_PwmHl_
+{
+    IfxStdIf_InterfaceDriver driver;
+
+
+    IfxStdIf_PwmHl_SetDeadtime setDeadtime;
+    IfxStdIf_PwmHl_GetDeadtime getDeadtime;
+    IfxStdIf_PwmHl_SetMinPulse setMinPulse;
+    IfxStdIf_PwmHl_GetMinPulse getMinPulse;
+    IfxStdIf_PwmHl_GetMode getMode;
+    IfxStdIf_PwmHl_SetMode setMode;
+    IfxStdIf_PwmHl_SetOnTime setOnTime;
+    IfxStdIf_PwmHl_SetOnTimeAndShift setOnTimeAndShift;
+    IfxStdIf_PwmHl_SetPulse setPulse;
+    IfxStdIf_PwmHl_SetupChannels setupChannels;
+
+    IfxStdIf_Timer timer;
+};
+
+
+typedef struct
+{
+    float32 deadtime;
+    float32 minPulse;
+    uint8 channelCount;
+    boolean emergencyEnabled;
+
+    IfxPort_OutputMode outputMode;
+    IfxPort_PadDriver outputDriver;
+
+    Ifx_ActiveState ccxActiveState;
+    Ifx_ActiveState coutxActiveState;
+} IfxStdIf_PwmHl_Config;
+# 196 "../../_LibSrc/iLLD_1_0_1_8_0__TC27D/Src/BaseSw/Service/CpuGeneric/StdIf/IfxStdIf_PwmHl.h"
+static inline __attribute__ ((always_inline)) boolean IfxStdIf_PwmHl_setDeadtime(IfxStdIf_PwmHl *stdIf, float32 deadtime)
+{
+    return stdIf->setDeadtime(stdIf->driver, deadtime);
+}
+
+
+
+
+
+static inline __attribute__ ((always_inline)) float32 IfxStdIf_PwmHl_getDeadtime(IfxStdIf_PwmHl *stdIf)
+{
+    return stdIf->getDeadtime(stdIf->driver);
+}
+
+
+
+
+
+static inline __attribute__ ((always_inline)) boolean IfxStdIf_PwmHl_setMinPulse(IfxStdIf_PwmHl *stdIf, float32 minPulse)
+{
+    return stdIf->setMinPulse(stdIf->driver, minPulse);
+}
+
+
+
+
+
+static inline __attribute__ ((always_inline)) float32 IfxStdIf_PwmHl_getMinPulse(IfxStdIf_PwmHl *stdIf)
+{
+    return stdIf->getMinPulse(stdIf->driver);
+}
+
+
+
+
+
+static inline __attribute__ ((always_inline)) Ifx_Pwm_Mode IfxStdIf_PwmHl_getMode(IfxStdIf_PwmHl *stdIf)
+{
+    return stdIf->getMode(stdIf->driver);
+}
+
+
+
+
+
+static inline __attribute__ ((always_inline)) boolean IfxStdIf_PwmHl_setMode(IfxStdIf_PwmHl *stdIf, Ifx_Pwm_Mode mode)
+{
+    return stdIf->setMode(stdIf->driver, mode);
+}
+
+
+
+
+
+static inline __attribute__ ((always_inline)) void IfxStdIf_PwmHl_setOnTime(IfxStdIf_PwmHl *stdIf, Ifx_TimerValue *tOn)
+{
+    stdIf->setOnTime(stdIf->driver, tOn);
+}
+
+
+
+
+
+static inline __attribute__ ((always_inline)) void IfxStdIf_PwmHl_setOnTimeAndShift(IfxStdIf_PwmHl *stdIf, Ifx_TimerValue *tOn, Ifx_TimerValue *shift)
+{
+    stdIf->setOnTimeAndShift(stdIf->driver, tOn, shift);
+}
+
+
+
+
+
+static inline __attribute__ ((always_inline)) void IfxStdIf_PwmHl_setPulse(IfxStdIf_PwmHl *stdIf, float32 *tOn, float32 *offset)
+{
+    stdIf->setPulse(stdIf->driver, tOn, offset);
+}
+
+
+
+
+static inline __attribute__ ((always_inline)) void IfxStdIf_PwmHl_setupChannels(IfxStdIf_PwmHl *stdIf, boolean *activeCh, boolean *stuckSt)
+{}
+
+
+
+
+
+static inline __attribute__ ((always_inline)) IfxStdIf_Timer *IfxStdIf_PwmHl_getTimer(IfxStdIf_PwmHl *stdIf)
+{
+    return &stdIf->timer;
+}
+# 296 "../../_LibSrc/iLLD_1_0_1_8_0__TC27D/Src/BaseSw/Service/CpuGeneric/StdIf/IfxStdIf_PwmHl.h"
+extern void IfxStdIf_PwmHl_initConfig(IfxStdIf_PwmHl_Config *config);
+# 120 "../../_LibSrc/iLLD_1_0_1_8_0__TC27D/Src/BaseSw/iLLD/TC27D/Tricore/Gtm/Tom/PwmHl/IfxGtm_Tom_PwmHl.h" 2
+# 1 "../../_LibSrc/iLLD_1_0_1_8_0__TC27D/Src/BaseSw/iLLD/TC27D/Tricore/Gtm/Tom/Timer/IfxGtm_Tom_Timer.h" 1
+# 118 "../../_LibSrc/iLLD_1_0_1_8_0__TC27D/Src/BaseSw/iLLD/TC27D/Tricore/Gtm/Tom/Timer/IfxGtm_Tom_Timer.h"
+# 1 "../../_LibSrc/iLLD_1_0_1_8_0__TC27D/Src/BaseSw/iLLD/TC27D/Tricore/Gtm/Std/IfxGtm_Cmu.h" 1
+# 119 "../../_LibSrc/iLLD_1_0_1_8_0__TC27D/Src/BaseSw/iLLD/TC27D/Tricore/Gtm/Tom/Timer/IfxGtm_Tom_Timer.h" 2
+# 1 "../../_LibSrc/iLLD_1_0_1_8_0__TC27D/Src/BaseSw/Service/CpuGeneric/StdIf/IfxStdIf_Timer.h" 1
+# 120 "../../_LibSrc/iLLD_1_0_1_8_0__TC27D/Src/BaseSw/iLLD/TC27D/Tricore/Gtm/Tom/Timer/IfxGtm_Tom_Timer.h" 2
+# 129 "../../_LibSrc/iLLD_1_0_1_8_0__TC27D/Src/BaseSw/iLLD/TC27D/Tricore/Gtm/Tom/Timer/IfxGtm_Tom_Timer.h"
+typedef struct
+{
+    Ifx_TimerValue period;
+    boolean triggerEnabled;
+    float32 clockFreq;
+    IfxStdIf_Timer_CountDir countDir;
+} IfxGtm_Tom_Timer_Base;
+
+
+
+
+
+
+
+typedef struct
+{
+    IfxGtm_Tom_Timer_Base base;
+    Ifx_GTM *gtm;
+    Ifx_GTM_TOM *tom;
+    Ifx_GTM_TOM_TGC *tgc[2];
+    IfxGtm_Tom tomIndex;
+    IfxGtm_Tom_Ch timerChannel;
+    IfxGtm_Tom_Ch triggerChannel;
+    uint16 channelsMask[2];
+    Ifx_TimerValue offset;
+    uint32 tgcGlobalControlDisableUpdate[2];
+    uint32 tgcGlobalControlApplyUpdate[2];
+} IfxGtm_Tom_Timer;
+
+
+
+typedef struct
+{
+    IfxStdIf_Timer_Config base;
+    Ifx_GTM *gtm;
+    IfxGtm_Tom tom;
+    IfxGtm_Tom_Ch timerChannel;
+    IfxGtm_Tom_ToutMap *triggerOut;
+    IfxGtm_Tom_Ch_ClkSrc clock;
+    IfxGtm_IrqMode irqModeTimer;
+    IfxGtm_IrqMode irqModeTrigger;
+} IfxGtm_Tom_Timer_Config;
+# 185 "../../_LibSrc/iLLD_1_0_1_8_0__TC27D/Src/BaseSw/iLLD/TC27D/Tricore/Gtm/Tom/Timer/IfxGtm_Tom_Timer.h"
+extern Ifx_TimerValue IfxGtm_Tom_Timer_getOffset(IfxGtm_Tom_Timer *driver);
+
+
+
+
+
+extern volatile uint32 *IfxGtm_Tom_Timer_getPointer(IfxGtm_Tom_Timer *driver);
+
+
+
+
+
+extern volatile uint32 *IfxGtm_Tom_Timer_getTriggerPointer(IfxGtm_Tom_Timer *driver);
+
+
+
+
+
+
+extern boolean IfxGtm_Tom_Timer_init(IfxGtm_Tom_Timer *driver, const IfxGtm_Tom_Timer_Config *config);
+
+
+
+
+
+
+extern void IfxGtm_Tom_Timer_initConfig(IfxGtm_Tom_Timer_Config *config, Ifx_GTM *gtm);
+# 227 "../../_LibSrc/iLLD_1_0_1_8_0__TC27D/Src/BaseSw/iLLD/TC27D/Tricore/Gtm/Tom/Timer/IfxGtm_Tom_Timer.h"
+extern boolean IfxGtm_Tom_Timer_acknowledgeTimerIrq(IfxGtm_Tom_Timer *driver);
+
+
+
+
+
+
+extern boolean IfxGtm_Tom_Timer_acknowledgeTriggerIrq(IfxGtm_Tom_Timer *driver);
+# 243 "../../_LibSrc/iLLD_1_0_1_8_0__TC27D/Src/BaseSw/iLLD/TC27D/Tricore/Gtm/Tom/Timer/IfxGtm_Tom_Timer.h"
+extern void IfxGtm_Tom_Timer_addToChannelMask(IfxGtm_Tom_Timer *driver, IfxGtm_Tom_Ch channel);
+
+
+
+
+
+
+
+extern void IfxGtm_Tom_Timer_applyUpdate(IfxGtm_Tom_Timer *driver);
+
+
+
+
+
+
+
+extern void IfxGtm_Tom_Timer_disableUpdate(IfxGtm_Tom_Timer *driver);
+
+
+
+
+
+
+extern float32 IfxGtm_Tom_Timer_getFrequency(IfxGtm_Tom_Timer *driver);
+
+
+
+
+
+extern float32 IfxGtm_Tom_Timer_getInputFrequency(IfxGtm_Tom_Timer *driver);
+
+
+
+
+
+
+extern Ifx_TimerValue IfxGtm_Tom_Timer_getPeriod(IfxGtm_Tom_Timer *driver);
+
+
+
+
+
+
+extern float32 IfxGtm_Tom_Timer_getResolution(IfxGtm_Tom_Timer *driver);
+
+
+
+
+
+extern Ifx_TimerValue IfxGtm_Tom_Timer_getTrigger(IfxGtm_Tom_Timer *driver);
+
+
+
+
+
+
+extern void IfxGtm_Tom_Timer_run(IfxGtm_Tom_Timer *driver);
+
+
+
+
+
+
+
+extern boolean IfxGtm_Tom_Timer_setFrequency(IfxGtm_Tom_Timer *driver, float32 frequency);
+
+
+
+
+
+
+
+extern boolean IfxGtm_Tom_Timer_setPeriod(IfxGtm_Tom_Timer *driver, Ifx_TimerValue period);
+
+
+
+
+
+
+
+extern void IfxGtm_Tom_Timer_setSingleMode(IfxGtm_Tom_Timer *driver, boolean enabled);
+
+
+
+
+
+
+
+extern void IfxGtm_Tom_Timer_setTrigger(IfxGtm_Tom_Timer *driver, Ifx_TimerValue triggerPoint);
+
+
+
+
+
+
+extern boolean IfxGtm_Tom_Timer_stdIfTimerInit(IfxStdIf_Timer *stdif, IfxGtm_Tom_Timer *driver);
+
+
+
+
+
+
+extern void IfxGtm_Tom_Timer_stop(IfxGtm_Tom_Timer *driver);
+
+
+
+
+
+
+extern void IfxGtm_Tom_Timer_updateInputFrequency(IfxGtm_Tom_Timer *driver);
+# 121 "../../_LibSrc/iLLD_1_0_1_8_0__TC27D/Src/BaseSw/iLLD/TC27D/Tricore/Gtm/Tom/PwmHl/IfxGtm_Tom_PwmHl.h" 2
+# 135 "../../_LibSrc/iLLD_1_0_1_8_0__TC27D/Src/BaseSw/iLLD/TC27D/Tricore/Gtm/Tom/PwmHl/IfxGtm_Tom_PwmHl.h"
+typedef struct IfxGtm_Tom_PwmHl_s IfxGtm_Tom_PwmHl;
+
+typedef void (*IfxGtm_Tom_PwmHl_Update)(IfxGtm_Tom_PwmHl *driver, Ifx_TimerValue *tOn);
+
+typedef void (*IfxGtm_Tom_PwmHl_UpdateShift)(IfxGtm_Tom_PwmHl *driver, Ifx_TimerValue *tOn, Ifx_TimerValue *shift);
+
+typedef void (*IfxGtm_Tom_PwmHl_UpdatePulse)(IfxGtm_Tom_PwmHl *driver, float32 *tOn, float32 *offset);
+# 151 "../../_LibSrc/iLLD_1_0_1_8_0__TC27D/Src/BaseSw/iLLD/TC27D/Tricore/Gtm/Tom/PwmHl/IfxGtm_Tom_PwmHl.h"
+typedef struct
+{
+    Ifx_TimerValue deadtime;
+    Ifx_TimerValue minPulse;
+    Ifx_TimerValue maxPulse;
+    Ifx_Pwm_Mode mode;
+    sint8 setMode;
+    Ifx_ActiveState ccxActiveState;
+    Ifx_ActiveState coutxActiveState;
+    boolean inverted;
+    uint8 channelCount;
+} IfxGtm_Tom_PwmHl_Base;
+
+
+
+
+
+
+
+typedef struct
+{
+    IfxStdIf_PwmHl_Config base;
+    IfxGtm_Tom_Timer *timer;
+    IfxGtm_Tom tom;
+    const IfxGtm_Tom_ToutMapP *ccx;
+    const IfxGtm_Tom_ToutMapP *coutx;
+} IfxGtm_Tom_PwmHl_Config;
+
+
+
+typedef struct
+{
+    Ifx_Pwm_Mode mode;
+    boolean inverted;
+    IfxGtm_Tom_PwmHl_Update update;
+    IfxGtm_Tom_PwmHl_UpdateShift updateAndShift;
+    IfxGtm_Tom_PwmHl_UpdatePulse updatePulse;
+} IfxGtm_Tom_PwmHl_Mode;
+
+
+
+struct IfxGtm_Tom_PwmHl_s
+{
+    IfxGtm_Tom_PwmHl_Base base;
+    IfxGtm_Tom_Timer *timer;
+    IfxGtm_Tom_PwmHl_Update update;
+    IfxGtm_Tom_PwmHl_UpdateShift updateAndShift;
+    IfxGtm_Tom_PwmHl_UpdatePulse updatePulse;
+    Ifx_GTM_TOM *tom;
+    Ifx_GTM_TOM_TGC *tgc;
+    IfxGtm_Tom_Ch ccx[(3)];
+    IfxGtm_Tom_Ch coutx[(3)];
+    IfxGtm_Tom_Ch *ccxTemp;
+    IfxGtm_Tom_Ch *coutxTemp;
+};
+# 224 "../../_LibSrc/iLLD_1_0_1_8_0__TC27D/Src/BaseSw/iLLD/TC27D/Tricore/Gtm/Tom/PwmHl/IfxGtm_Tom_PwmHl.h"
+extern boolean IfxGtm_Tom_PwmHl_init(IfxGtm_Tom_PwmHl *driver, const IfxGtm_Tom_PwmHl_Config *config);
+
+
+
+
+
+extern void IfxGtm_Tom_PwmHl_initConfig(IfxGtm_Tom_PwmHl_Config *config);
+# 246 "../../_LibSrc/iLLD_1_0_1_8_0__TC27D/Src/BaseSw/iLLD/TC27D/Tricore/Gtm/Tom/PwmHl/IfxGtm_Tom_PwmHl.h"
+extern float32 IfxGtm_Tom_PwmHl_getDeadtime(IfxGtm_Tom_PwmHl *driver);
+
+
+
+
+
+
+extern float32 IfxGtm_Tom_PwmHl_getMinPulse(IfxGtm_Tom_PwmHl *driver);
+
+
+
+
+
+
+extern Ifx_Pwm_Mode IfxGtm_Tom_PwmHl_getMode(IfxGtm_Tom_PwmHl *driver);
+
+
+
+
+
+
+
+extern boolean IfxGtm_Tom_PwmHl_setDeadtime(IfxGtm_Tom_PwmHl *driver, float32 deadtime);
+
+
+
+
+
+
+
+extern boolean IfxGtm_Tom_PwmHl_setMinPulse(IfxGtm_Tom_PwmHl *driver, float32 minPulse);
+
+
+
+
+
+
+
+extern boolean IfxGtm_Tom_PwmHl_setMode(IfxGtm_Tom_PwmHl *driver, Ifx_Pwm_Mode mode);
+
+
+
+
+
+
+
+extern void IfxGtm_Tom_PwmHl_setOnTime(IfxGtm_Tom_PwmHl *driver, Ifx_TimerValue *tOn);
+
+
+
+
+
+
+
+extern void IfxGtm_Tom_PwmHl_setOnTimeAndShift(IfxGtm_Tom_PwmHl *driver, Ifx_TimerValue *tOn, Ifx_TimerValue *shift);
+
+
+
+
+
+
+
+extern void IfxGtm_Tom_PwmHl_setPulse(IfxGtm_Tom_PwmHl *driver, float32 *tOn, float32 *offset);
+# 317 "../../_LibSrc/iLLD_1_0_1_8_0__TC27D/Src/BaseSw/iLLD/TC27D/Tricore/Gtm/Tom/PwmHl/IfxGtm_Tom_PwmHl.h"
+extern void IfxGtm_Tom_PwmHl_setupChannels(IfxGtm_Tom_PwmHl *driver, boolean *activeCh, boolean *stuckSt);
+
+
+
+
+
+
+extern boolean IfxGtm_Tom_PwmHl_stdIfPwmHlInit(IfxStdIf_PwmHl *stdif, IfxGtm_Tom_PwmHl *driver);
+# 19 "../../MyApp/AurixRacer/0_Src/AppSw/Tricore/SnsAct/BasicGtmTom.h" 2
+# 95 "../../MyApp/AurixRacer/0_Src/AppSw/Tricore/SnsAct/BasicGtmTom.h"
+typedef struct{
+ float32 Motor0Vol;
+ float32 Motor0VolU;
+ float32 Motor0VolV;
+ float32 Motor0VolW;
+}IR_Motor_t;
+
+typedef struct{
+ float32 Angle;
+}IR_Srv_t;
+
+
+
+
+extern IR_Motor_t IR_Motor;
+extern IR_Srv_t IR_Srv;
+extern IR_Srv_t IR_SrvScan;
+
+
+
+
+extern void IR_setMotor0Vol(float32 vol);
+
+extern void IR_setSrvAngle(float32 angle);
+extern void IR_setSrvScanAngle(float32 angle);
+
+
+
+extern void BasicGtmTom_init(void);
+extern void BasicGtmTom_run(void);
+# 7 "../../MyApp/AurixRacer/0_Src/AppSw/Tricore/SnsAct/Basic.h" 2
+# 1 "../../MyApp/AurixRacer/0_Src/AppSw/Tricore/SnsAct/BasicVadcBgScan.h" 1
+# 34 "../../MyApp/AurixRacer/0_Src/AppSw/Tricore/SnsAct/BasicVadcBgScan.h"
+extern float32 IR_AdcResult[];
+
+
+
+
+
+
+extern void BasicVadcBgScan_init(void);
+extern void BasicVadcBgScan_run(void);
+extern int GetInfraredSensorValue(void);
+# 8 "../../MyApp/AurixRacer/0_Src/AppSw/Tricore/SnsAct/Basic.h" 2
+# 1 "../../MyApp/AurixRacer/0_Src/AppSw/Tricore/SnsAct/BasicGpt12Enc.h" 1
+# 16 "../../MyApp/AurixRacer/0_Src/AppSw/Tricore/SnsAct/BasicGpt12Enc.h"
+# 1 "../../_LibSrc/iLLD_1_0_1_8_0__TC27D/Src/BaseSw/iLLD/TC27D/Tricore/Gpt12/IncrEnc/IfxGpt12_IncrEnc.h" 1
+# 174 "../../_LibSrc/iLLD_1_0_1_8_0__TC27D/Src/BaseSw/iLLD/TC27D/Tricore/Gpt12/IncrEnc/IfxGpt12_IncrEnc.h"
+# 1 "../../_LibSrc/iLLD_1_0_1_8_0__TC27D/Src/BaseSw/Service/CpuGeneric/StdIf/IfxStdIf_Pos.h" 1
+# 46 "../../_LibSrc/iLLD_1_0_1_8_0__TC27D/Src/BaseSw/Service/CpuGeneric/StdIf/IfxStdIf_Pos.h"
+# 1 "../../_LibSrc/iLLD_1_0_1_8_0__TC27D/Src/BaseSw/Service/CpuGeneric/StdIf/IfxStdIf_DPipe.h" 1
+# 47 "../../_LibSrc/iLLD_1_0_1_8_0__TC27D/Src/BaseSw/Service/CpuGeneric/StdIf/IfxStdIf_Pos.h" 2
+
+
+typedef enum
+{
+    IfxStdIf_Pos_MotionType_rotating,
+    IfxStdIf_Pos_MotionType_linear
+} IfxStdIf_Pos_MotionType;
+
+
+typedef enum
+{
+    IfxStdIf_Pos_ResolutionFactor_oneFold = 1,
+    IfxStdIf_Pos_ResolutionFactor_twoFold = 2,
+    IfxStdIf_Pos_ResolutionFactor_fourFold = 4
+} IfxStdIf_Pos_ResolutionFactor;
+
+
+typedef enum
+{
+    IfxStdIf_Pos_SensorType_encoder,
+    IfxStdIf_Pos_SensorType_hall,
+    IfxStdIf_Pos_SensorType_resolver,
+    IfxStdIf_Pos_SensorType_angletrk,
+    IfxStdIf_Pos_SensorType_igmr,
+    IfxStdIf_Pos_SensorType_virtual
+} IfxStdIf_Pos_SensorType;
+
+
+typedef enum
+{
+    IfxStdIf_Pos_Dir_forward,
+    IfxStdIf_Pos_Dir_backward,
+    IfxStdIf_Pos_Dir_unknown
+} IfxStdIf_Pos_Dir;
+
+
+typedef union
+{
+    uint32 status;
+    struct
+    {
+        uint32 notSynchronised : 1;
+        uint32 signalLoss : 1;
+        uint32 signalDegradation : 1;
+        uint32 trackingLoss : 1;
+        uint32 commError : 1;
+    } B;
+} IfxStdIf_Pos_Status;
+
+typedef sint32 IfxStdIf_Pos_RawAngle;
+
+
+typedef struct IfxStdIf_Pos_ IfxStdIf_Pos;
+# 109 "../../_LibSrc/iLLD_1_0_1_8_0__TC27D/Src/BaseSw/Service/CpuGeneric/StdIf/IfxStdIf_Pos.h"
+typedef float32 (*IfxStdIf_Pos_GetAbsolutePosition)(IfxStdIf_InterfaceDriver stdIf);
+
+
+
+
+
+typedef void (*IfxStdIf_Pos_OnZeroIrq)(IfxStdIf_InterfaceDriver stdIf);
+
+
+
+
+
+
+typedef sint32 (*IfxStdIf_Pos_GetOffset)(IfxStdIf_InterfaceDriver stdIf);
+# 132 "../../_LibSrc/iLLD_1_0_1_8_0__TC27D/Src/BaseSw/Service/CpuGeneric/StdIf/IfxStdIf_Pos.h"
+typedef float32 (*IfxStdIf_Pos_GetPosition)(IfxStdIf_InterfaceDriver stdIf);
+# 141 "../../_LibSrc/iLLD_1_0_1_8_0__TC27D/Src/BaseSw/Service/CpuGeneric/StdIf/IfxStdIf_Pos.h"
+typedef IfxStdIf_Pos_Dir (*IfxStdIf_Pos_GetDirection)(IfxStdIf_InterfaceDriver stdIf);
+
+
+
+
+
+
+typedef IfxStdIf_Pos_Status (*IfxStdIf_Pos_GetFault)(IfxStdIf_InterfaceDriver stdIf);
+
+
+
+
+
+
+typedef uint16 (*IfxStdIf_Pos_GetPeriodPerRotation)(IfxStdIf_InterfaceDriver stdIf);
+# 164 "../../_LibSrc/iLLD_1_0_1_8_0__TC27D/Src/BaseSw/Service/CpuGeneric/StdIf/IfxStdIf_Pos.h"
+typedef sint32 (*IfxStdIf_Pos_GetRawPosition)(IfxStdIf_InterfaceDriver stdIf);
+
+
+
+
+
+typedef float32 (*IfxStdIf_Pos_GetRefreshPeriod)(IfxStdIf_InterfaceDriver stdIf);
+
+
+
+
+
+typedef sint32 (*IfxStdIf_Pos_GetResolution)(IfxStdIf_InterfaceDriver stdIf);
+
+
+
+
+
+typedef IfxStdIf_Pos_SensorType (*IfxStdIf_Pos_GetSensorType)(IfxStdIf_InterfaceDriver stdIf);
+
+
+
+
+
+typedef float32 (*IfxStdIf_Pos_GetSpeed)(IfxStdIf_InterfaceDriver stdIf);
+
+
+
+
+
+typedef sint32 (*IfxStdIf_Pos_GetTurn)(IfxStdIf_InterfaceDriver stdIf);
+
+
+
+
+
+
+typedef void (*IfxStdIf_Pos_OnEventA)(IfxStdIf_InterfaceDriver stdIf);
+# 210 "../../_LibSrc/iLLD_1_0_1_8_0__TC27D/Src/BaseSw/Service/CpuGeneric/StdIf/IfxStdIf_Pos.h"
+typedef void (*IfxStdIf_Pos_Update)(IfxStdIf_InterfaceDriver stdIf);
+# 219 "../../_LibSrc/iLLD_1_0_1_8_0__TC27D/Src/BaseSw/Service/CpuGeneric/StdIf/IfxStdIf_Pos.h"
+typedef void (*IfxStdIf_Pos_Reset)(IfxStdIf_InterfaceDriver stdIf);
+# 228 "../../_LibSrc/iLLD_1_0_1_8_0__TC27D/Src/BaseSw/Service/CpuGeneric/StdIf/IfxStdIf_Pos.h"
+typedef void (*IfxStdIf_Pos_ResetFaults)(IfxStdIf_InterfaceDriver stdIf);
+
+
+
+
+
+
+typedef void (*IfxStdIf_Pos_SetOffset)(IfxStdIf_InterfaceDriver stdIf, sint32 offset);
+
+
+
+
+
+
+typedef void (*IfxStdIf_Pos_SetPosition)(IfxStdIf_InterfaceDriver stdIf, float32 position);
+
+
+
+
+
+typedef void (*IfxStdIf_Pos_SetRawPosition)(IfxStdIf_InterfaceDriver stdIf, sint32 position);
+
+
+
+
+
+
+typedef void (*IfxStdIf_Pos_SetSpeed)(IfxStdIf_InterfaceDriver stdIf, float32 speed);
+
+
+
+
+
+
+typedef void (*IfxStdIf_Pos_SetRefreshPeriod)(IfxStdIf_InterfaceDriver stdIf, float32 updatePeriod);
+
+
+
+struct IfxStdIf_Pos_
+{
+    IfxStdIf_InterfaceDriver driver;
+    IfxStdIf_Pos_OnZeroIrq onZeroIrq;
+    IfxStdIf_Pos_GetAbsolutePosition getAbsolutePosition;
+    IfxStdIf_Pos_GetOffset getOffset;
+    IfxStdIf_Pos_GetPosition getPosition;
+    IfxStdIf_Pos_GetDirection getDirection;
+    IfxStdIf_Pos_GetFault getFault;
+    IfxStdIf_Pos_GetRawPosition getRawPosition;
+    IfxStdIf_Pos_GetPeriodPerRotation getPeriodPerRotation;
+    IfxStdIf_Pos_GetRefreshPeriod getRefreshPeriod;
+    IfxStdIf_Pos_GetResolution getResolution;
+    IfxStdIf_Pos_GetSensorType getSensorType;
+    IfxStdIf_Pos_GetTurn getTurn;
+    IfxStdIf_Pos_OnEventA onEventA;
+    IfxStdIf_Pos_Reset reset;
+    IfxStdIf_Pos_ResetFaults resetFaults;
+    IfxStdIf_Pos_GetSpeed getSpeed;
+    IfxStdIf_Pos_Update update;
+    IfxStdIf_Pos_SetOffset setOffset;
+    IfxStdIf_Pos_SetPosition setPosition;
+    IfxStdIf_Pos_SetRawPosition setRawPosition;
+    IfxStdIf_Pos_SetSpeed setSpeed;
+    IfxStdIf_Pos_SetRefreshPeriod setRefreshPeriod;
+};
+
+
+typedef struct
+{
+    sint32 offset;
+    boolean reversed;
+    sint32 resolution;
+    uint16 periodPerRotation;
+    IfxStdIf_Pos_ResolutionFactor resolutionFactor;
+    float32 updatePeriod;
+    float32 speedModeThreshold;
+    float32 minSpeed;
+    float32 maxSpeed;
+    boolean speedFilterEnabled;
+    float32 speedFilerCutOffFrequency;
+} IfxStdIf_Pos_Config;
+
+
+
+
+
+
+
+static inline __attribute__ ((always_inline)) void IfxStdIf_Pos_onZeroIrq(IfxStdIf_Pos *stdIf)
+{
+    stdIf->onZeroIrq(stdIf->driver);
+}
+
+
+
+
+
+static inline __attribute__ ((always_inline)) float32 IfxStdIf_Pos_getAbsolutePosition(IfxStdIf_Pos *stdIf)
+{
+    return stdIf->getAbsolutePosition(stdIf->driver);
+}
+
+
+
+
+
+static inline __attribute__ ((always_inline)) IfxStdIf_Pos_Status IfxStdIf_Pos_getFault(IfxStdIf_Pos *stdIf)
+{
+    return stdIf->getFault(stdIf->driver);
+}
+
+
+
+
+
+static inline __attribute__ ((always_inline)) sint32 IfxStdIf_Pos_getOffset(IfxStdIf_Pos *stdIf)
+{
+    return stdIf->getOffset(stdIf->driver);
+}
+
+
+
+
+
+static inline __attribute__ ((always_inline)) float32 IfxStdIf_Pos_getPosition(IfxStdIf_Pos *stdIf)
+{
+    return stdIf->getPosition(stdIf->driver);
+}
+
+
+
+
+
+static inline __attribute__ ((always_inline)) IfxStdIf_Pos_Dir IfxStdIf_Pos_getDirection(IfxStdIf_Pos *stdIf)
+{
+    return stdIf->getDirection(stdIf->driver);
+}
+
+
+
+
+
+static inline __attribute__ ((always_inline)) uint16 IfxStdIf_Pos_getPeriodPerRotation(IfxStdIf_Pos *stdIf)
+{
+    return stdIf->getPeriodPerRotation(stdIf->driver);
+}
+
+
+
+
+
+static inline __attribute__ ((always_inline)) sint32 IfxStdIf_Pos_getRawPosition(IfxStdIf_Pos *stdIf)
+{
+    return stdIf->getRawPosition(stdIf->driver);
+}
+
+
+
+
+
+static inline __attribute__ ((always_inline)) float32 IfxStdIf_Pos_getRefreshPeriod(IfxStdIf_Pos *stdIf)
+{
+    return stdIf->getRefreshPeriod(stdIf->driver);
+}
+
+
+
+
+
+static inline __attribute__ ((always_inline)) sint32 IfxStdIf_Pos_getResolution(IfxStdIf_Pos *stdIf)
+{
+    return stdIf->getResolution(stdIf->driver);
+}
+
+
+
+
+
+static inline __attribute__ ((always_inline)) sint32 IfxStdIf_Pos_getTurn(IfxStdIf_Pos *stdIf)
+{
+    return stdIf->getTurn(stdIf->driver);
+}
+
+
+
+
+
+static inline __attribute__ ((always_inline)) IfxStdIf_Pos_SensorType IfxStdIf_Pos_getSensorType(IfxStdIf_Pos *stdIf)
+{
+    return stdIf->getSensorType(stdIf->driver);
+}
+
+
+
+
+
+static inline __attribute__ ((always_inline)) float32 IfxStdIf_Pos_getSpeed(IfxStdIf_Pos *stdIf)
+{
+    return stdIf->getSpeed(stdIf->driver);
+}
+
+
+
+
+
+static inline __attribute__ ((always_inline)) boolean IfxStdIf_Pos_isFault(IfxStdIf_Pos *stdIf)
+{
+    return IfxStdIf_Pos_getFault(stdIf).status != 0;
+}
+
+
+
+
+
+static inline __attribute__ ((always_inline)) void IfxStdIf_Pos_onEventA(IfxStdIf_Pos *stdIf)
+{
+    stdIf->onEventA(stdIf->driver);
+}
+
+
+
+
+
+static inline __attribute__ ((always_inline)) void IfxStdIf_Pos_update(IfxStdIf_Pos *stdIf)
+{
+    stdIf->update(stdIf->driver);
+}
+
+
+
+
+
+static inline __attribute__ ((always_inline)) void IfxStdIf_Pos_reset(IfxStdIf_Pos *stdIf)
+{
+    stdIf->reset(stdIf->driver);
+}
+
+
+
+
+
+static inline __attribute__ ((always_inline)) void IfxStdIf_Pos_resetFaults(IfxStdIf_Pos *stdIf)
+{
+    stdIf->resetFaults(stdIf->driver);
+}
+
+
+
+
+
+static inline __attribute__ ((always_inline)) void IfxStdIf_Pos_setOffset(IfxStdIf_Pos *stdIf, sint32 offset)
+{
+    stdIf->setOffset(stdIf->driver, offset);
+}
+
+
+
+
+
+static inline __attribute__ ((always_inline)) void IfxStdIf_Pos_setPosition(IfxStdIf_Pos *stdIf, float32 position)
+{
+    stdIf->setPosition(stdIf->driver, position);
+}
+
+
+
+
+
+static inline __attribute__ ((always_inline)) void IfxStdIf_Pos_setRawPosition(IfxStdIf_Pos *stdIf, sint32 position)
+{
+    stdIf->setRawPosition(stdIf->driver, position);
+}
+
+
+
+
+
+static inline __attribute__ ((always_inline)) void IfxStdIf_Pos_setSpeed(IfxStdIf_Pos *stdIf, float32 speed)
+{
+    stdIf->setSpeed(stdIf->driver, speed);
+}
+
+
+
+
+
+static inline __attribute__ ((always_inline)) void IfxStdIf_Pos_setRefreshPeriod(IfxStdIf_Pos *stdIf, float32 updatePeriod)
+{
+    stdIf->setRefreshPeriod(stdIf->driver, updatePeriod);
+}
+# 528 "../../_LibSrc/iLLD_1_0_1_8_0__TC27D/Src/BaseSw/Service/CpuGeneric/StdIf/IfxStdIf_Pos.h"
+static inline __attribute__ ((always_inline)) float32 IfxStdIf_Pos_radsToRpm(float32 speed)
+{
+    return (60.0 / (2.0 * (3.1415926535897932384626433832795f))) * speed;
+}
+# 541 "../../_LibSrc/iLLD_1_0_1_8_0__TC27D/Src/BaseSw/Service/CpuGeneric/StdIf/IfxStdIf_Pos.h"
+static inline __attribute__ ((always_inline)) float32 IfxStdIf_Pos_rpmToRads(float32 speed)
+{
+    return speed * ((2.0 * (3.1415926535897932384626433832795f)) / 60.0);
+}
+
+
+
+
+
+
+
+extern void IfxStdIf_Pos_initConfig(IfxStdIf_Pos_Config *config);
+
+
+
+
+
+
+
+extern void IfxStdIf_Pos_printStatus(IfxStdIf_Pos *driver, IfxStdIf_DPipe *io);
+# 175 "../../_LibSrc/iLLD_1_0_1_8_0__TC27D/Src/BaseSw/iLLD/TC27D/Tricore/Gpt12/IncrEnc/IfxGpt12_IncrEnc.h" 2
+# 1 "../../_LibSrc/iLLD_1_0_1_8_0__TC27D/Src/BaseSw/Service/CpuGeneric/SysSe/Math/Ifx_LowPassPt1F32.h" 1
+# 44 "../../_LibSrc/iLLD_1_0_1_8_0__TC27D/Src/BaseSw/Service/CpuGeneric/SysSe/Math/Ifx_LowPassPt1F32.h"
+typedef struct
+{
+    float32 a;
+    float32 b;
+    float32 out;
+} Ifx_LowPassPt1F32;
+
+
+typedef struct
+{
+    float32 cutOffFrequency;
+    float32 gain;
+    float32 samplingTime;
+} Ifx_LowPassPt1F32_Config;
+
+
+
+
+
+extern void Ifx_LowPassPt1F32_init(Ifx_LowPassPt1F32 *filter, const Ifx_LowPassPt1F32_Config *config);
+static inline __attribute__ ((always_inline)) void Ifx_LowPassPt1F32_reset(Ifx_LowPassPt1F32 *filter);
+extern float32 Ifx_LowPassPt1F32_do(Ifx_LowPassPt1F32 *filter, float32 input);
+
+
+
+
+
+
+
+static inline __attribute__ ((always_inline)) void Ifx_LowPassPt1F32_reset(Ifx_LowPassPt1F32 *filter)
+{
+    filter->out = 0.0;
+}
+# 176 "../../_LibSrc/iLLD_1_0_1_8_0__TC27D/Src/BaseSw/iLLD/TC27D/Tricore/Gpt12/IncrEnc/IfxGpt12_IncrEnc.h" 2
+# 1 "../../_LibSrc/iLLD_1_0_1_8_0__TC27D/Src/BaseSw/iLLD/TC27D/Tricore/Gpt12/Std/IfxGpt12.h" 1
+# 43 "../../_LibSrc/iLLD_1_0_1_8_0__TC27D/Src/BaseSw/iLLD/TC27D/Tricore/Gpt12/Std/IfxGpt12.h"
+# 1 "../../_LibSrc/iLLD_1_0_1_8_0__TC27D/Src/BaseSw/iLLD/TC27D/Tricore/_Impl/IfxGpt12_cfg.h" 1
+# 44 "../../_LibSrc/iLLD_1_0_1_8_0__TC27D/Src/BaseSw/iLLD/TC27D/Tricore/Gpt12/Std/IfxGpt12.h" 2
+
+
+
+# 1 "../../_LibSrc/iLLD_1_0_1_8_0__TC27D/Src/BaseSw/Infra/Sfr/TC27D/_Reg/IfxGpt12_reg.h" 1
+# 36 "../../_LibSrc/iLLD_1_0_1_8_0__TC27D/Src/BaseSw/Infra/Sfr/TC27D/_Reg/IfxGpt12_reg.h"
+# 1 "../../_LibSrc/iLLD_1_0_1_8_0__TC27D/Src/BaseSw/Infra/Sfr/TC27D/_Reg/IfxGpt12_regdef.h" 1
+# 45 "../../_LibSrc/iLLD_1_0_1_8_0__TC27D/Src/BaseSw/Infra/Sfr/TC27D/_Reg/IfxGpt12_regdef.h"
+typedef struct _Ifx_GPT12_ACCEN0_Bits
+{
+    unsigned int EN0:1;
+    unsigned int EN1:1;
+    unsigned int EN2:1;
+    unsigned int EN3:1;
+    unsigned int EN4:1;
+    unsigned int EN5:1;
+    unsigned int EN6:1;
+    unsigned int EN7:1;
+    unsigned int EN8:1;
+    unsigned int EN9:1;
+    unsigned int EN10:1;
+    unsigned int EN11:1;
+    unsigned int EN12:1;
+    unsigned int EN13:1;
+    unsigned int EN14:1;
+    unsigned int EN15:1;
+    unsigned int EN16:1;
+    unsigned int EN17:1;
+    unsigned int EN18:1;
+    unsigned int EN19:1;
+    unsigned int EN20:1;
+    unsigned int EN21:1;
+    unsigned int EN22:1;
+    unsigned int EN23:1;
+    unsigned int EN24:1;
+    unsigned int EN25:1;
+    unsigned int EN26:1;
+    unsigned int EN27:1;
+    unsigned int EN28:1;
+    unsigned int EN29:1;
+    unsigned int EN30:1;
+    unsigned int EN31:1;
+} Ifx_GPT12_ACCEN0_Bits;
+
+
+typedef struct _Ifx_GPT12_ACCEN1_Bits
+{
+    unsigned int reserved_0:32;
+} Ifx_GPT12_ACCEN1_Bits;
+
+
+typedef struct _Ifx_GPT12_CAPREL_Bits
+{
+    unsigned int CAPREL:16;
+    unsigned int reserved_16:16;
+} Ifx_GPT12_CAPREL_Bits;
+
+
+typedef struct _Ifx_GPT12_CLC_Bits
+{
+    unsigned int DISR:1;
+    unsigned int DISS:1;
+    unsigned int reserved_2:1;
+    unsigned int EDIS:1;
+    unsigned int reserved_4:28;
+} Ifx_GPT12_CLC_Bits;
+
+
+typedef struct _Ifx_GPT12_ID_Bits
+{
+    unsigned int MODREV:8;
+    unsigned int MODTYPE:8;
+    unsigned int MODNUMBER:16;
+} Ifx_GPT12_ID_Bits;
+
+
+typedef struct _Ifx_GPT12_KRST0_Bits
+{
+    unsigned int RST:1;
+    unsigned int RSTSTAT:1;
+    unsigned int reserved_2:30;
+} Ifx_GPT12_KRST0_Bits;
+
+
+typedef struct _Ifx_GPT12_KRST1_Bits
+{
+    unsigned int RST:1;
+    unsigned int reserved_1:31;
+} Ifx_GPT12_KRST1_Bits;
+
+
+typedef struct _Ifx_GPT12_KRSTCLR_Bits
+{
+    unsigned int CLR:1;
+    unsigned int reserved_1:31;
+} Ifx_GPT12_KRSTCLR_Bits;
+
+
+typedef struct _Ifx_GPT12_OCS_Bits
+{
+    unsigned int reserved_0:24;
+    unsigned int SUS:4;
+    unsigned int SUS_P:1;
+    unsigned int SUSSTA:1;
+    unsigned int reserved_30:2;
+} Ifx_GPT12_OCS_Bits;
+
+
+typedef struct _Ifx_GPT12_PISEL_Bits
+{
+    unsigned int IST2IN:1;
+    unsigned int IST2EUD:1;
+    unsigned int IST3IN:2;
+    unsigned int IST3EUD:2;
+    unsigned int IST4IN:2;
+    unsigned int IST4EUD:2;
+    unsigned int IST5IN:1;
+    unsigned int IST5EUD:1;
+    unsigned int IST6IN:1;
+    unsigned int IST6EUD:1;
+    unsigned int ISCAPIN:2;
+    unsigned int reserved_16:16;
+} Ifx_GPT12_PISEL_Bits;
+
+
+typedef struct _Ifx_GPT12_T2_Bits
+{
+    unsigned int T2:16;
+    unsigned int reserved_16:16;
+} Ifx_GPT12_T2_Bits;
+
+
+typedef struct _Ifx_GPT12_T2CON_Bits
+{
+    unsigned int T2I:3;
+    unsigned int T2M:3;
+    unsigned int T2R:1;
+    unsigned int T2UD:1;
+    unsigned int T2UDE:1;
+    unsigned int T2RC:1;
+    unsigned int reserved_10:2;
+    unsigned int T2IRDIS:1;
+    unsigned int T2EDGE:1;
+    unsigned int T2CHDIR:1;
+    unsigned int T2RDIR:1;
+    unsigned int reserved_16:16;
+} Ifx_GPT12_T2CON_Bits;
+
+
+typedef struct _Ifx_GPT12_T3_Bits
+{
+    unsigned int T3:16;
+    unsigned int reserved_16:16;
+} Ifx_GPT12_T3_Bits;
+
+
+typedef struct _Ifx_GPT12_T3CON_Bits
+{
+    unsigned int T3I:3;
+    unsigned int T3M:3;
+    unsigned int T3R:1;
+    unsigned int T3UD:1;
+    unsigned int T3UDE:1;
+    unsigned int T3OE:1;
+    unsigned int T3OTL:1;
+    unsigned int BPS1:2;
+    unsigned int T3EDGE:1;
+    unsigned int T3CHDIR:1;
+    unsigned int T3RDIR:1;
+    unsigned int reserved_16:16;
+} Ifx_GPT12_T3CON_Bits;
+
+
+typedef struct _Ifx_GPT12_T4_Bits
+{
+    unsigned int T4:16;
+    unsigned int reserved_16:16;
+} Ifx_GPT12_T4_Bits;
+
+
+typedef struct _Ifx_GPT12_T4CON_Bits
+{
+    unsigned int T4I:3;
+    unsigned int T4M:3;
+    unsigned int T4R:1;
+    unsigned int T4UD:1;
+    unsigned int T4UDE:1;
+    unsigned int T4RC:1;
+    unsigned int CLRT2EN:1;
+    unsigned int CLRT3EN:1;
+    unsigned int T4IRDIS:1;
+    unsigned int T4EDGE:1;
+    unsigned int T4CHDIR:1;
+    unsigned int T4RDIR:1;
+    unsigned int reserved_16:16;
+} Ifx_GPT12_T4CON_Bits;
+
+
+typedef struct _Ifx_GPT12_T5_Bits
+{
+    unsigned int T5:16;
+    unsigned int reserved_16:16;
+} Ifx_GPT12_T5_Bits;
+
+
+typedef struct _Ifx_GPT12_T5CON_Bits
+{
+    unsigned int T5I:3;
+    unsigned int T5M:3;
+    unsigned int T5R:1;
+    unsigned int T5UD:1;
+    unsigned int T5UDE:1;
+    unsigned int T5RC:1;
+    unsigned int CT3:1;
+    unsigned int reserved_11:1;
+    unsigned int CI:2;
+    unsigned int T5CLR:1;
+    unsigned int T5SC:1;
+    unsigned int reserved_16:16;
+} Ifx_GPT12_T5CON_Bits;
+
+
+typedef struct _Ifx_GPT12_T6_Bits
+{
+    unsigned int T6:16;
+    unsigned int reserved_16:16;
+} Ifx_GPT12_T6_Bits;
+
+
+typedef struct _Ifx_GPT12_T6CON_Bits
+{
+    unsigned int T6I:3;
+    unsigned int T6M:3;
+    unsigned int T6R:1;
+    unsigned int T6UD:1;
+    unsigned int T6UDE:1;
+    unsigned int T6OE:1;
+    unsigned int T6OTL:1;
+    unsigned int BPS2:2;
+    unsigned int reserved_13:1;
+    unsigned int T6CLR:1;
+    unsigned int T6SR:1;
+    unsigned int reserved_16:16;
+} Ifx_GPT12_T6CON_Bits;
+
+
+
+
+
+
+
+typedef union
+{
+    unsigned int U;
+    signed int I;
+    Ifx_GPT12_ACCEN0_Bits B;
+} Ifx_GPT12_ACCEN0;
+
+
+typedef union
+{
+    unsigned int U;
+    signed int I;
+    Ifx_GPT12_ACCEN1_Bits B;
+} Ifx_GPT12_ACCEN1;
+
+
+typedef union
+{
+    unsigned int U;
+    signed int I;
+    Ifx_GPT12_CAPREL_Bits B;
+} Ifx_GPT12_CAPREL;
+
+
+typedef union
+{
+    unsigned int U;
+    signed int I;
+    Ifx_GPT12_CLC_Bits B;
+} Ifx_GPT12_CLC;
+
+
+typedef union
+{
+    unsigned int U;
+    signed int I;
+    Ifx_GPT12_ID_Bits B;
+} Ifx_GPT12_ID;
+
+
+typedef union
+{
+    unsigned int U;
+    signed int I;
+    Ifx_GPT12_KRST0_Bits B;
+} Ifx_GPT12_KRST0;
+
+
+typedef union
+{
+    unsigned int U;
+    signed int I;
+    Ifx_GPT12_KRST1_Bits B;
+} Ifx_GPT12_KRST1;
+
+
+typedef union
+{
+    unsigned int U;
+    signed int I;
+    Ifx_GPT12_KRSTCLR_Bits B;
+} Ifx_GPT12_KRSTCLR;
+
+
+typedef union
+{
+    unsigned int U;
+    signed int I;
+    Ifx_GPT12_OCS_Bits B;
+} Ifx_GPT12_OCS;
+
+
+typedef union
+{
+    unsigned int U;
+    signed int I;
+    Ifx_GPT12_PISEL_Bits B;
+} Ifx_GPT12_PISEL;
+
+
+typedef union
+{
+    unsigned int U;
+    signed int I;
+    Ifx_GPT12_T2_Bits B;
+} Ifx_GPT12_T2;
+
+
+typedef union
+{
+    unsigned int U;
+    signed int I;
+    Ifx_GPT12_T2CON_Bits B;
+} Ifx_GPT12_T2CON;
+
+
+typedef union
+{
+    unsigned int U;
+    signed int I;
+    Ifx_GPT12_T3_Bits B;
+} Ifx_GPT12_T3;
+
+
+typedef union
+{
+    unsigned int U;
+    signed int I;
+    Ifx_GPT12_T3CON_Bits B;
+} Ifx_GPT12_T3CON;
+
+
+typedef union
+{
+    unsigned int U;
+    signed int I;
+    Ifx_GPT12_T4_Bits B;
+} Ifx_GPT12_T4;
+
+
+typedef union
+{
+    unsigned int U;
+    signed int I;
+    Ifx_GPT12_T4CON_Bits B;
+} Ifx_GPT12_T4CON;
+
+
+typedef union
+{
+    unsigned int U;
+    signed int I;
+    Ifx_GPT12_T5_Bits B;
+} Ifx_GPT12_T5;
+
+
+typedef union
+{
+    unsigned int U;
+    signed int I;
+    Ifx_GPT12_T5CON_Bits B;
+} Ifx_GPT12_T5CON;
+
+
+typedef union
+{
+    unsigned int U;
+    signed int I;
+    Ifx_GPT12_T6_Bits B;
+} Ifx_GPT12_T6;
+
+
+typedef union
+{
+    unsigned int U;
+    signed int I;
+    Ifx_GPT12_T6CON_Bits B;
+} Ifx_GPT12_T6CON;
+# 456 "../../_LibSrc/iLLD_1_0_1_8_0__TC27D/Src/BaseSw/Infra/Sfr/TC27D/_Reg/IfxGpt12_regdef.h"
+typedef volatile struct _Ifx_GPT12
+{
+    Ifx_GPT12_CLC CLC;
+    Ifx_GPT12_PISEL PISEL;
+    Ifx_GPT12_ID ID;
+    unsigned char reserved_C[4];
+    Ifx_GPT12_T2CON T2CON;
+    Ifx_GPT12_T3CON T3CON;
+    Ifx_GPT12_T4CON T4CON;
+    Ifx_GPT12_T5CON T5CON;
+    Ifx_GPT12_T6CON T6CON;
+    unsigned char reserved_24[12];
+    Ifx_GPT12_CAPREL CAPREL;
+    Ifx_GPT12_T2 T2;
+    Ifx_GPT12_T3 T3;
+    Ifx_GPT12_T4 T4;
+    Ifx_GPT12_T5 T5;
+    Ifx_GPT12_T6 T6;
+    unsigned char reserved_48[160];
+    Ifx_GPT12_OCS OCS;
+    Ifx_GPT12_KRSTCLR KRSTCLR;
+    Ifx_GPT12_KRST1 KRST1;
+    Ifx_GPT12_KRST0 KRST0;
+    Ifx_GPT12_ACCEN1 ACCEN1;
+    Ifx_GPT12_ACCEN0 ACCEN0;
+} Ifx_GPT12;
+# 37 "../../_LibSrc/iLLD_1_0_1_8_0__TC27D/Src/BaseSw/Infra/Sfr/TC27D/_Reg/IfxGpt12_reg.h" 2
+# 48 "../../_LibSrc/iLLD_1_0_1_8_0__TC27D/Src/BaseSw/iLLD/TC27D/Tricore/Gpt12/Std/IfxGpt12.h" 2
+# 1 "../../_LibSrc/iLLD_1_0_1_8_0__TC27D/Src/BaseSw/iLLD/TC27D/Tricore/_PinMap/IfxGpt12_PinMap.h" 1
+# 39 "../../_LibSrc/iLLD_1_0_1_8_0__TC27D/Src/BaseSw/iLLD/TC27D/Tricore/_PinMap/IfxGpt12_PinMap.h"
+typedef const struct
+{
+    Ifx_GPT12* module;
+    IfxPort_Pin pin;
+    Ifx_RxSel select;
+} IfxGpt12_Capin_In;
+
+
+typedef const struct
+{
+    Ifx_GPT12* module;
+    uint8 timer;
+    IfxPort_Pin pin;
+    Ifx_RxSel select;
+} IfxGpt12_TxEud_In;
+
+
+typedef const struct
+{
+    Ifx_GPT12* module;
+    uint8 timer;
+    IfxPort_Pin pin;
+    Ifx_RxSel select;
+} IfxGpt12_TxIn_In;
+
+
+typedef const struct
+{
+    Ifx_GPT12* module;
+    uint8 timer;
+    IfxPort_Pin pin;
+    IfxPort_OutputIdx select;
+} IfxGpt12_TxOut_Out;
+
+extern IfxGpt12_Capin_In IfxGpt120_CAPINA_P13_2_IN;
+extern IfxGpt12_TxEud_In IfxGpt120_T2EUDA_P00_8_IN;
+extern IfxGpt12_TxEud_In IfxGpt120_T2EUDB_P33_6_IN;
+extern IfxGpt12_TxEud_In IfxGpt120_T3EUDA_P02_7_IN;
+extern IfxGpt12_TxEud_In IfxGpt120_T3EUDB_P10_7_IN;
+extern IfxGpt12_TxEud_In IfxGpt120_T4EUDA_P00_9_IN;
+extern IfxGpt12_TxEud_In IfxGpt120_T4EUDB_P33_5_IN;
+extern IfxGpt12_TxEud_In IfxGpt120_T5EUDA_P21_6_IN;
+extern IfxGpt12_TxEud_In IfxGpt120_T5EUDB_P10_1_IN;
+extern IfxGpt12_TxEud_In IfxGpt120_T6EUDA_P20_0_IN;
+extern IfxGpt12_TxEud_In IfxGpt120_T6EUDB_P10_0_IN;
+extern IfxGpt12_TxIn_In IfxGpt120_T2INA_P00_7_IN;
+extern IfxGpt12_TxIn_In IfxGpt120_T2INB_P33_7_IN;
+extern IfxGpt12_TxIn_In IfxGpt120_T3INA_P02_6_IN;
+extern IfxGpt12_TxIn_In IfxGpt120_T3INB_P10_4_IN;
+extern IfxGpt12_TxIn_In IfxGpt120_T4INA_P02_8_IN;
+extern IfxGpt12_TxIn_In IfxGpt120_T4INB_P10_8_IN;
+extern IfxGpt12_TxIn_In IfxGpt120_T5INA_P21_7_IN;
+extern IfxGpt12_TxIn_In IfxGpt120_T5INB_P10_3_IN;
+extern IfxGpt12_TxIn_In IfxGpt120_T6INA_P20_3_IN;
+extern IfxGpt12_TxIn_In IfxGpt120_T6INB_P10_2_IN;
+extern IfxGpt12_TxOut_Out IfxGpt120_T3OUT_P10_6_OUT;
+extern IfxGpt12_TxOut_Out IfxGpt120_T3OUT_P21_6_OUT;
+extern IfxGpt12_TxOut_Out IfxGpt120_T6OUT_P10_5_OUT;
+extern IfxGpt12_TxOut_Out IfxGpt120_T6OUT_P21_7_OUT;
+# 109 "../../_LibSrc/iLLD_1_0_1_8_0__TC27D/Src/BaseSw/iLLD/TC27D/Tricore/_PinMap/IfxGpt12_PinMap.h"
+extern const IfxGpt12_Capin_In *IfxGpt12_Capin_In_pinTable[1][1];
+
+
+extern const IfxGpt12_TxEud_In *IfxGpt12_TxEud_In_pinTable[1][7][2];
+
+
+extern const IfxGpt12_TxIn_In *IfxGpt12_TxIn_In_pinTable[1][7][2];
+
+
+extern const IfxGpt12_TxOut_Out *IfxGpt12_TxOut_Out_pinTable[1][7][2];
+# 49 "../../_LibSrc/iLLD_1_0_1_8_0__TC27D/Src/BaseSw/iLLD/TC27D/Tricore/Gpt12/Std/IfxGpt12.h" 2
+# 59 "../../_LibSrc/iLLD_1_0_1_8_0__TC27D/Src/BaseSw/iLLD/TC27D/Tricore/Gpt12/Std/IfxGpt12.h"
+typedef enum
+{
+    IfxGpt12_CaptureInput_A = 0,
+    IfxGpt12_CaptureInput_B = 1,
+    IfxGpt12_CaptureInput_C = 2,
+    IfxGpt12_CaptureInput_D = 3
+} IfxGpt12_CaptureInput;
+
+
+
+typedef enum
+{
+    IfxGpt12_CaptureInputMode_none = 0,
+    IfxGpt12_CaptureInputMode_risingEdgeTxIN = 1,
+    IfxGpt12_CaptureInputMode_fallingEdgeTxIN = 2,
+    IfxGpt12_CaptureInputMode_bothEdgesTxIN = 3
+} IfxGpt12_CaptureInputMode;
+
+
+
+
+typedef enum
+{
+    IfxGpt12_CaptureTrigger_capin = 0,
+    IfxGpt12_CaptureTrigger_t3inOrT3EUD = 1
+} IfxGpt12_CaptureTrigger;
+
+
+
+
+typedef enum
+{
+    IfxGpt12_CaptureTriggerMode_disabled = 0,
+    IfxGpt12_CaptureTriggerMode_risingEdge = 1,
+    IfxGpt12_CaptureTriggerMode_fallingEdge = 2,
+    IfxGpt12_CaptureTriggerMode_randomEdge = 3
+} IfxGpt12_CaptureTriggerMode;
+
+
+
+
+typedef enum
+{
+    IfxGpt12_CounterInputMode_counterDisabled = 0,
+    IfxGpt12_CounterInputMode_risingEdgeTxIN = 1,
+    IfxGpt12_CounterInputMode_fallingEdgeTxIN = 2,
+    IfxGpt12_CounterInputMode_bothEdgesTxIN = 3,
+    IfxGpt12_CounterInputMode_risingEdgeTxOTL = 5,
+    IfxGpt12_CounterInputMode_fallingEdgeTxOTL = 6,
+    IfxGpt12_CounterInputMode_bothEdgesTxOTL = 7
+} IfxGpt12_CounterInputMode;
+
+
+
+
+typedef enum
+{
+    IfxGpt12_EudInput_A = 0,
+    IfxGpt12_EudInput_B = 1,
+    IfxGpt12_EudInput_C = 2,
+    IfxGpt12_EudInput_D = 3
+} IfxGpt12_EudInput;
+
+
+
+
+typedef enum
+{
+    IfxGpt12_Gpt1BlockPrescaler_8 = 0,
+    IfxGpt12_Gpt1BlockPrescaler_4 = 1,
+    IfxGpt12_Gpt1BlockPrescaler_32 = 2,
+    IfxGpt12_Gpt1BlockPrescaler_16 = 3
+} IfxGpt12_Gpt1BlockPrescaler;
+
+
+
+
+typedef enum
+{
+    IfxGpt12_Gpt2BlockPrescaler_4 = 0,
+    IfxGpt12_Gpt2BlockPrescaler_2 = 1,
+    IfxGpt12_Gpt2BlockPrescaler_16 = 2,
+    IfxGpt12_Gpt2BlockPrescaler_8 = 3
+} IfxGpt12_Gpt2BlockPrescaler;
+
+
+
+
+typedef enum
+{
+    IfxGpt12_IncrementalInterfaceInputMode_stopCounterTx = 0,
+    IfxGpt12_IncrementalInterfaceInputMode_bothEdgesTxIN = 1,
+    IfxGpt12_IncrementalInterfaceInputMode_bothEdgesTxEUD = 2,
+    IfxGpt12_IncrementalInterfaceInputMode_bothEdgesTxINOrTxEUD = 3
+} IfxGpt12_IncrementalInterfaceInputMode;
+
+
+
+
+typedef enum
+{
+    IfxGpt12_Input_A = 0,
+    IfxGpt12_Input_B = 1,
+    IfxGpt12_Input_C = 2,
+    IfxGpt12_Input_D = 3
+} IfxGpt12_Input;
+
+
+
+
+typedef enum
+{
+    IfxGpt12_Mode_timer = 0,
+    IfxGpt12_Mode_counter = 1,
+    IfxGpt12_Mode_lowGatedTimer = 2,
+    IfxGpt12_Mode_highGatedTimer = 3,
+    IfxGpt12_Mode_reload = 4,
+    IfxGpt12_Mode_capture = 5,
+    IfxGpt12_Mode_incrementalInterfaceRotationDetection = 6,
+    IfxGpt12_Mode_incrementalInterfaceEdgeDetection = 7
+} IfxGpt12_Mode;
+
+
+
+
+typedef enum
+{
+    IfxGpt12_ReloadInputMode_counterDisabled = 0,
+    IfxGpt12_ReloadInputMode_risingEdgeTxIN = 1,
+    IfxGpt12_ReloadInputMode_fallingEdgeTxIN = 2,
+    IfxGpt12_ReloadInputMode_bothEdgesTxIN = 3,
+    IfxGpt12_ReloadInputMode_risingEdgeTxOTL = 5,
+    IfxGpt12_ReloadInputMode_fallingEdgeTxOTL = 6,
+    IfxGpt12_ReloadInputMode_bothEdgesTxOTL = 7
+} IfxGpt12_ReloadInputMode;
+
+
+
+
+typedef enum
+{
+    IfxGpt12_SleepMode_enable = 0,
+    IfxGpt12_SleepMode_disable = 1
+} IfxGpt12_SleepMode;
+
+
+
+typedef enum
+{
+    IfxGpt12_SuspendMode_none = 0,
+    IfxGpt12_SuspendMode_hard = 1,
+    IfxGpt12_SuspendMode_soft = 2
+} IfxGpt12_SuspendMode;
+
+
+
+
+typedef enum
+{
+    IfxGpt12_TimerDirection_up = 0,
+    IfxGpt12_TimerDirection_down = 1
+} IfxGpt12_TimerDirection;
+
+
+
+
+typedef enum
+{
+    IfxGpt12_TimerDirectionSource_internal = 0,
+    IfxGpt12_TimerDirectionSource_external = 1
+} IfxGpt12_TimerDirectionSource;
+
+
+
+
+typedef enum
+{
+    IfxGpt12_TimerInputPrescaler_1 = 0,
+    IfxGpt12_TimerInputPrescaler_2 = 1,
+    IfxGpt12_TimerInputPrescaler_4 = 2,
+    IfxGpt12_TimerInputPrescaler_8 = 3,
+    IfxGpt12_TimerInputPrescaler_16 = 4,
+    IfxGpt12_TimerInputPrescaler_32 = 5,
+    IfxGpt12_TimerInputPrescaler_64 = 6,
+    IfxGpt12_TimerInputPrescaler_128 = 7
+} IfxGpt12_TimerInputPrescaler;
+
+
+
+
+typedef enum
+{
+    IfxGpt12_TimerReloadMode_disable,
+    IfxGpt12_TimerReloadMode_enable
+} IfxGpt12_TimerReloadMode;
+
+
+
+
+typedef enum
+{
+    IfxGpt12_TimerRemoteControl_off = 0,
+    IfxGpt12_TimerRemoteControl_on = 1
+} IfxGpt12_TimerRemoteControl;
+
+
+
+
+typedef enum
+{
+    IfxGpt12_TimerRun_stop = 0,
+    IfxGpt12_TimerRun_start = 1
+} IfxGpt12_TimerRun;
+# 286 "../../_LibSrc/iLLD_1_0_1_8_0__TC27D/Src/BaseSw/iLLD/TC27D/Tricore/Gpt12/Std/IfxGpt12.h"
+static inline __attribute__ ((always_inline)) volatile Ifx_SRC_SRCR *IfxGpt12_T2_getSrc(Ifx_GPT12 *gpt12);
+
+
+
+
+
+static inline __attribute__ ((always_inline)) volatile Ifx_SRC_SRCR *IfxGpt12_T3_getSrc(Ifx_GPT12 *gpt12);
+
+
+
+
+
+static inline __attribute__ ((always_inline)) volatile Ifx_SRC_SRCR *IfxGpt12_T4_getSrc(Ifx_GPT12 *gpt12);
+
+
+
+
+
+static inline __attribute__ ((always_inline)) volatile Ifx_SRC_SRCR *IfxGpt12_T5_getSrc(Ifx_GPT12 *gpt12);
+
+
+
+
+
+static inline __attribute__ ((always_inline)) volatile Ifx_SRC_SRCR *IfxGpt12_T6_getSrc(Ifx_GPT12 *gpt12);
+
+
+
+
+
+static inline __attribute__ ((always_inline)) volatile Ifx_SRC_SRCR *IfxGpt12_getCaptureSrc(Ifx_GPT12 *gpt12);
+# 332 "../../_LibSrc/iLLD_1_0_1_8_0__TC27D/Src/BaseSw/iLLD/TC27D/Tricore/Gpt12/Std/IfxGpt12.h"
+static inline __attribute__ ((always_inline)) void IfxGpt12_T2_setCaptureInputMode(Ifx_GPT12 *gpt12, IfxGpt12_CaptureInputMode inputMode);
+
+
+
+
+
+
+static inline __attribute__ ((always_inline)) void IfxGpt12_T2_setCounterInputMode(Ifx_GPT12 *gpt12, IfxGpt12_CounterInputMode inputMode);
+
+
+
+
+
+
+static inline __attribute__ ((always_inline)) void IfxGpt12_T2_setDirectionSource(Ifx_GPT12 *gpt12, IfxGpt12_TimerDirectionSource source);
+
+
+
+
+
+
+static inline __attribute__ ((always_inline)) void IfxGpt12_T2_setEudInput(Ifx_GPT12 *gpt12, IfxGpt12_EudInput input);
+
+
+
+
+
+
+static inline __attribute__ ((always_inline)) void IfxGpt12_T2_setIncrementalInterfaceInputMode(Ifx_GPT12 *gpt12, IfxGpt12_IncrementalInterfaceInputMode inputMode);
+
+
+
+
+
+
+static inline __attribute__ ((always_inline)) void IfxGpt12_T2_setInput(Ifx_GPT12 *gpt12, IfxGpt12_Input input);
+
+
+
+
+
+
+static inline __attribute__ ((always_inline)) void IfxGpt12_T2_setInterruptEnable(Ifx_GPT12 *gpt12, boolean enabled);
+
+
+
+
+
+
+static inline __attribute__ ((always_inline)) void IfxGpt12_T2_setMode(Ifx_GPT12 *gpt12, IfxGpt12_Mode mode);
+
+
+
+
+
+
+static inline __attribute__ ((always_inline)) void IfxGpt12_T2_setReloadInputMode(Ifx_GPT12 *gpt12, IfxGpt12_ReloadInputMode inputMode);
+
+
+
+
+
+
+static inline __attribute__ ((always_inline)) void IfxGpt12_T2_setRemoteControl(Ifx_GPT12 *gpt12, IfxGpt12_TimerRemoteControl control);
+
+
+
+
+
+
+static inline __attribute__ ((always_inline)) void IfxGpt12_T2_setTimerDirection(Ifx_GPT12 *gpt12, IfxGpt12_TimerDirection direction);
+
+
+
+
+
+
+static inline __attribute__ ((always_inline)) void IfxGpt12_T2_setTimerPrescaler(Ifx_GPT12 *gpt12, IfxGpt12_TimerInputPrescaler inputPrescaler);
+
+
+
+
+
+
+static inline __attribute__ ((always_inline)) void IfxGpt12_T3_enableOutput(Ifx_GPT12 *gpt12, boolean enable);
+
+
+
+
+
+
+static inline __attribute__ ((always_inline)) void IfxGpt12_T3_setCounterInputMode(Ifx_GPT12 *gpt12, IfxGpt12_CounterInputMode inputMode);
+
+
+
+
+
+
+static inline __attribute__ ((always_inline)) void IfxGpt12_T3_setDirectionSource(Ifx_GPT12 *gpt12, IfxGpt12_TimerDirectionSource source);
+
+
+
+
+
+
+static inline __attribute__ ((always_inline)) void IfxGpt12_T3_setEudInput(Ifx_GPT12 *gpt12, IfxGpt12_EudInput input);
+
+
+
+
+
+
+static inline __attribute__ ((always_inline)) void IfxGpt12_T3_setIncrementalInterfaceInputMode(Ifx_GPT12 *gpt12, IfxGpt12_IncrementalInterfaceInputMode inputMode);
+
+
+
+
+
+
+static inline __attribute__ ((always_inline)) void IfxGpt12_T3_setInput(Ifx_GPT12 *gpt12, IfxGpt12_Input input);
+
+
+
+
+
+
+static inline __attribute__ ((always_inline)) void IfxGpt12_T3_setMode(Ifx_GPT12 *gpt12, IfxGpt12_Mode mode);
+
+
+
+
+
+
+static inline __attribute__ ((always_inline)) void IfxGpt12_T3_setTimerDirection(Ifx_GPT12 *gpt12, IfxGpt12_TimerDirection direction);
+
+
+
+
+
+
+static inline __attribute__ ((always_inline)) void IfxGpt12_T3_setTimerPrescaler(Ifx_GPT12 *gpt12, IfxGpt12_TimerInputPrescaler inputPrescaler);
+
+
+
+
+
+
+static inline __attribute__ ((always_inline)) void IfxGpt12_T4_enableClearTimerT2(Ifx_GPT12 *gpt12, boolean enabled);
+
+
+
+
+
+
+static inline __attribute__ ((always_inline)) void IfxGpt12_T4_enableClearTimerT3(Ifx_GPT12 *gpt12, boolean enabled);
+
+
+
+
+
+
+static inline __attribute__ ((always_inline)) void IfxGpt12_T4_setCaptureInputMode(Ifx_GPT12 *gpt12, IfxGpt12_CaptureInputMode inputMode);
+
+
+
+
+
+
+static inline __attribute__ ((always_inline)) void IfxGpt12_T4_setCounterInputMode(Ifx_GPT12 *gpt12, IfxGpt12_CounterInputMode inputMode);
+
+
+
+
+
+
+static inline __attribute__ ((always_inline)) void IfxGpt12_T4_setDirectionSource(Ifx_GPT12 *gpt12, IfxGpt12_TimerDirectionSource source);
+
+
+
+
+
+
+static inline __attribute__ ((always_inline)) void IfxGpt12_T4_setEudInput(Ifx_GPT12 *gpt12, IfxGpt12_EudInput input);
+
+
+
+
+
+
+static inline __attribute__ ((always_inline)) void IfxGpt12_T4_setIncrementalInterfaceInputMode(Ifx_GPT12 *gpt12, IfxGpt12_IncrementalInterfaceInputMode inputMode);
+
+
+
+
+
+
+static inline __attribute__ ((always_inline)) void IfxGpt12_T4_setInput(Ifx_GPT12 *gpt12, IfxGpt12_Input input);
+
+
+
+
+
+
+static inline __attribute__ ((always_inline)) void IfxGpt12_T4_setInterruptEnable(Ifx_GPT12 *gpt12, boolean enabled);
+
+
+
+
+
+
+static inline __attribute__ ((always_inline)) void IfxGpt12_T4_setMode(Ifx_GPT12 *gpt12, IfxGpt12_Mode mode);
+
+
+
+
+
+
+static inline __attribute__ ((always_inline)) void IfxGpt12_T4_setReloadInputMode(Ifx_GPT12 *gpt12, IfxGpt12_ReloadInputMode inputMode);
+
+
+
+
+
+
+static inline __attribute__ ((always_inline)) void IfxGpt12_T4_setRemoteControl(Ifx_GPT12 *gpt12, IfxGpt12_TimerRemoteControl control);
+
+
+
+
+
+
+static inline __attribute__ ((always_inline)) void IfxGpt12_T4_setTimerDirection(Ifx_GPT12 *gpt12, IfxGpt12_TimerDirection direction);
+
+
+
+
+
+
+static inline __attribute__ ((always_inline)) void IfxGpt12_T4_setTimerPrescaler(Ifx_GPT12 *gpt12, IfxGpt12_TimerInputPrescaler inputPrescaler);
+
+
+
+
+
+
+static inline __attribute__ ((always_inline)) void IfxGpt12_T5_enableClearTimer(Ifx_GPT12 *gpt12, boolean enabled);
+
+
+
+
+
+
+static inline __attribute__ ((always_inline)) void IfxGpt12_T5_setCaptureTrigger(Ifx_GPT12 *gpt12, IfxGpt12_CaptureTrigger trigger);
+
+
+
+
+
+
+static inline __attribute__ ((always_inline)) void IfxGpt12_T5_setCaptureTriggerEnable(Ifx_GPT12 *gpt12, boolean enabled);
+
+
+
+
+
+
+static inline __attribute__ ((always_inline)) void IfxGpt12_T5_setCaptureTriggerMode(Ifx_GPT12 *gpt12, IfxGpt12_CaptureTriggerMode mode);
+
+
+
+
+
+
+static inline __attribute__ ((always_inline)) void IfxGpt12_T5_setCounterInputMode(Ifx_GPT12 *gpt12, IfxGpt12_CounterInputMode inputMode);
+
+
+
+
+
+
+static inline __attribute__ ((always_inline)) void IfxGpt12_T5_setDirectionSource(Ifx_GPT12 *gpt12, IfxGpt12_TimerDirectionSource source);
+
+
+
+
+
+
+static inline __attribute__ ((always_inline)) void IfxGpt12_T5_setEudInput(Ifx_GPT12 *gpt12, IfxGpt12_EudInput input);
+
+
+
+
+
+
+static inline __attribute__ ((always_inline)) void IfxGpt12_T5_setInput(Ifx_GPT12 *gpt12, IfxGpt12_Input input);
+
+
+
+
+
+
+static inline __attribute__ ((always_inline)) void IfxGpt12_T5_setMode(Ifx_GPT12 *gpt12, IfxGpt12_Mode mode);
+
+
+
+
+
+
+static inline __attribute__ ((always_inline)) void IfxGpt12_T5_setRemoteControl(Ifx_GPT12 *gpt12, IfxGpt12_TimerRemoteControl control);
+
+
+
+
+
+
+static inline __attribute__ ((always_inline)) void IfxGpt12_T5_setTimerDirection(Ifx_GPT12 *gpt12, IfxGpt12_TimerDirection direction);
+
+
+
+
+
+
+static inline __attribute__ ((always_inline)) void IfxGpt12_T5_setTimerPrescaler(Ifx_GPT12 *gpt12, IfxGpt12_TimerInputPrescaler inputPrescaler);
+
+
+
+
+
+
+static inline __attribute__ ((always_inline)) void IfxGpt12_T6_enableClearTimer(Ifx_GPT12 *gpt12, boolean enabled);
+
+
+
+
+
+
+static inline __attribute__ ((always_inline)) void IfxGpt12_T6_setCounterInputMode(Ifx_GPT12 *gpt12, IfxGpt12_CounterInputMode inputMode);
+
+
+
+
+
+
+static inline __attribute__ ((always_inline)) void IfxGpt12_T6_setDirectionSource(Ifx_GPT12 *gpt12, IfxGpt12_TimerDirectionSource source);
+
+
+
+
+
+
+static inline __attribute__ ((always_inline)) void IfxGpt12_T6_setEudInput(Ifx_GPT12 *gpt12, IfxGpt12_EudInput input);
+
+
+
+
+
+
+static inline __attribute__ ((always_inline)) void IfxGpt12_T6_setInput(Ifx_GPT12 *gpt12, IfxGpt12_Input input);
+
+
+
+
+
+
+static inline __attribute__ ((always_inline)) void IfxGpt12_T6_setMode(Ifx_GPT12 *gpt12, IfxGpt12_Mode mode);
+
+
+
+
+
+
+static inline __attribute__ ((always_inline)) void IfxGpt12_T6_setReloadMode(Ifx_GPT12 *gpt12, IfxGpt12_TimerReloadMode mode);
+
+
+
+
+
+
+static inline __attribute__ ((always_inline)) void IfxGpt12_T6_setTimerDirection(Ifx_GPT12 *gpt12, IfxGpt12_TimerDirection direction);
+
+
+
+
+
+
+static inline __attribute__ ((always_inline)) void IfxGpt12_T6_setTimerPrescaler(Ifx_GPT12 *gpt12, IfxGpt12_TimerInputPrescaler inputPrescaler);
+
+
+
+
+
+
+static inline __attribute__ ((always_inline)) void IfxGpt12_initCapInPin(const IfxGpt12_TxIn_In *capIn, IfxPort_InputMode inputMode);
+
+
+
+
+
+
+
+static inline __attribute__ ((always_inline)) void IfxGpt12_initTxOutPin(const IfxGpt12_TxOut_Out *txOut, IfxPort_OutputMode outputMode, IfxPort_PadDriver padDriver);
+
+
+
+
+
+
+static inline __attribute__ ((always_inline)) void IfxGpt12_setCaptureInput(Ifx_GPT12 *gpt12, IfxGpt12_CaptureInput input);
+
+
+
+
+
+
+static inline __attribute__ ((always_inline)) void IfxGpt12_setGpt1BlockPrescaler(Ifx_GPT12 *gpt12, IfxGpt12_Gpt1BlockPrescaler bps1);
+
+
+
+
+
+
+static inline __attribute__ ((always_inline)) void IfxGpt12_setGpt2BlockPrescaler(Ifx_GPT12 *gpt12, IfxGpt12_Gpt2BlockPrescaler bps2);
+# 763 "../../_LibSrc/iLLD_1_0_1_8_0__TC27D/Src/BaseSw/iLLD/TC27D/Tricore/Gpt12/Std/IfxGpt12.h"
+extern void IfxGpt12_disableModule(Ifx_GPT12 *gpt12);
+
+
+
+
+
+extern void IfxGpt12_enableModule(Ifx_GPT12 *gpt12);
+
+
+
+
+
+
+extern void IfxGpt12_initTxEudInPin(const IfxGpt12_TxEud_In *txEudIn, IfxPort_InputMode inputMode);
+
+
+
+
+
+
+extern void IfxGpt12_initTxInPin(const IfxGpt12_TxIn_In *txIn, IfxPort_InputMode inputMode);
+# 798 "../../_LibSrc/iLLD_1_0_1_8_0__TC27D/Src/BaseSw/iLLD/TC27D/Tricore/Gpt12/Std/IfxGpt12.h"
+static inline __attribute__ ((always_inline)) IfxGpt12_Mode IfxGpt12_T2_getMode(Ifx_GPT12 *gpt12);
+
+
+
+
+
+static inline __attribute__ ((always_inline)) uint16 IfxGpt12_T2_getTimerValue(Ifx_GPT12 *gpt12);
+
+
+
+
+
+static inline __attribute__ ((always_inline)) IfxGpt12_Mode IfxGpt12_T3_getMode(Ifx_GPT12 *gpt12);
+
+
+
+
+
+static inline __attribute__ ((always_inline)) uint16 IfxGpt12_T3_getTimerValue(Ifx_GPT12 *gpt12);
+
+
+
+
+
+static inline __attribute__ ((always_inline)) IfxGpt12_Mode IfxGpt12_T4_getMode(Ifx_GPT12 *gpt12);
+
+
+
+
+
+static inline __attribute__ ((always_inline)) uint16 IfxGpt12_T4_getTimerValue(Ifx_GPT12 *gpt12);
+
+
+
+
+
+static inline __attribute__ ((always_inline)) IfxGpt12_Mode IfxGpt12_T5_getMode(Ifx_GPT12 *gpt12);
+
+
+
+
+
+static inline __attribute__ ((always_inline)) uint16 IfxGpt12_T5_getTimerValue(Ifx_GPT12 *gpt12);
+
+
+
+
+
+static inline __attribute__ ((always_inline)) IfxGpt12_Mode IfxGpt12_T6_getMode(Ifx_GPT12 *gpt12);
+
+
+
+
+
+static inline __attribute__ ((always_inline)) uint16 IfxGpt12_T6_getTimerValue(Ifx_GPT12 *gpt12);
+
+
+
+
+
+static inline __attribute__ ((always_inline)) float32 IfxGpt12_getModuleFrequency(Ifx_GPT12 *gpt12);
+# 868 "../../_LibSrc/iLLD_1_0_1_8_0__TC27D/Src/BaseSw/iLLD/TC27D/Tricore/Gpt12/Std/IfxGpt12.h"
+extern float32 IfxGpt12_T2_getFrequency(Ifx_GPT12 *gpt12);
+
+
+
+
+
+extern float32 IfxGpt12_T3_getFrequency(Ifx_GPT12 *gpt12);
+
+
+
+
+
+extern float32 IfxGpt12_T4_getFrequency(Ifx_GPT12 *gpt12);
+
+
+
+
+
+extern float32 IfxGpt12_T5_getFrequency(Ifx_GPT12 *gpt12);
+
+
+
+
+
+extern float32 IfxGpt12_T6_getFrequency(Ifx_GPT12 *gpt12);
+# 908 "../../_LibSrc/iLLD_1_0_1_8_0__TC27D/Src/BaseSw/iLLD/TC27D/Tricore/Gpt12/Std/IfxGpt12.h"
+static inline __attribute__ ((always_inline)) void IfxGpt12_T2_run(Ifx_GPT12 *gpt12, IfxGpt12_TimerRun runTimer);
+
+
+
+
+
+
+static inline __attribute__ ((always_inline)) void IfxGpt12_T2_setTimerValue(Ifx_GPT12 *gpt12, uint16 value);
+
+
+
+
+
+
+static inline __attribute__ ((always_inline)) void IfxGpt12_T3_run(Ifx_GPT12 *gpt12, IfxGpt12_TimerRun runTimer);
+
+
+
+
+
+
+static inline __attribute__ ((always_inline)) void IfxGpt12_T3_setTimerValue(Ifx_GPT12 *gpt12, uint16 value);
+
+
+
+
+
+
+static inline __attribute__ ((always_inline)) void IfxGpt12_T4_run(Ifx_GPT12 *gpt12, IfxGpt12_TimerRun runTimer);
+
+
+
+
+
+
+static inline __attribute__ ((always_inline)) void IfxGpt12_T4_setTimerValue(Ifx_GPT12 *gpt12, uint16 value);
+
+
+
+
+
+
+static inline __attribute__ ((always_inline)) void IfxGpt12_T5_run(Ifx_GPT12 *gpt12, IfxGpt12_TimerRun runTimer);
+
+
+
+
+
+
+static inline __attribute__ ((always_inline)) void IfxGpt12_T5_setTimerValue(Ifx_GPT12 *gpt12, uint16 value);
+
+
+
+
+
+
+static inline __attribute__ ((always_inline)) void IfxGpt12_T6_run(Ifx_GPT12 *gpt12, IfxGpt12_TimerRun runTimer);
+
+
+
+
+
+
+static inline __attribute__ ((always_inline)) void IfxGpt12_T6_setTimerValue(Ifx_GPT12 *gpt12, uint16 value);
+
+
+
+
+
+
+static inline __attribute__ ((always_inline)) void IfxGpt12_setCaptureReload(Ifx_GPT12 *gpt12, IfxGpt12_SleepMode value);
+
+
+
+
+
+
+static inline __attribute__ ((always_inline)) void IfxGpt12_setSleepMode(Ifx_GPT12 *gpt12, IfxGpt12_SleepMode mode);
+
+
+
+
+
+
+
+static inline __attribute__ ((always_inline)) void IfxGpt12_setSuspendMode(Ifx_GPT12 *gpt12, IfxGpt12_SuspendMode mode);
+# 1003 "../../_LibSrc/iLLD_1_0_1_8_0__TC27D/Src/BaseSw/iLLD/TC27D/Tricore/Gpt12/Std/IfxGpt12.h"
+extern void IfxGpt12_resetModule(Ifx_GPT12 *gpt12);
+# 1017 "../../_LibSrc/iLLD_1_0_1_8_0__TC27D/Src/BaseSw/iLLD/TC27D/Tricore/Gpt12/Std/IfxGpt12.h"
+static inline __attribute__ ((always_inline)) void IfxGpt12_initCapInPinWithPadLevel(const IfxGpt12_TxIn_In *capIn, IfxPort_InputMode inputMode, IfxPort_PadDriver padDriver);
+
+
+
+
+
+
+
+static inline __attribute__ ((always_inline)) boolean IfxGpt12_isModuleSuspended(Ifx_GPT12 *gpt12);
+# 1037 "../../_LibSrc/iLLD_1_0_1_8_0__TC27D/Src/BaseSw/iLLD/TC27D/Tricore/Gpt12/Std/IfxGpt12.h"
+extern void IfxGpt12_initTxEudInPinWithPadLevel(const IfxGpt12_TxEud_In *txEudIn, IfxPort_InputMode inputMode, IfxPort_PadDriver padDriver);
+
+
+
+
+
+
+
+extern void IfxGpt12_initTxInPinWithPadLevel(const IfxGpt12_TxIn_In *txIn, IfxPort_InputMode inputMode, IfxPort_PadDriver padDriver);
+
+
+
+
+
+static inline __attribute__ ((always_inline)) IfxGpt12_Mode IfxGpt12_T2_getMode(Ifx_GPT12 *gpt12)
+{
+    return (IfxGpt12_Mode)gpt12->T2CON.B.T2M;
+}
+
+
+static inline __attribute__ ((always_inline)) volatile Ifx_SRC_SRCR *IfxGpt12_T2_getSrc(Ifx_GPT12 *gpt12)
+{
+    return &(*(Ifx_SRC*)0xF0038000u).GPT12.GPT12[0].T2;
+}
+
+
+static inline __attribute__ ((always_inline)) uint16 IfxGpt12_T2_getTimerValue(Ifx_GPT12 *gpt12)
+{
+    return (uint16)gpt12->T2.U;
+}
+
+
+static inline __attribute__ ((always_inline)) void IfxGpt12_T2_run(Ifx_GPT12 *gpt12, IfxGpt12_TimerRun runTimer)
+{
+    gpt12->T2CON.B.T2R = runTimer;
+}
+
+
+static inline __attribute__ ((always_inline)) void IfxGpt12_T2_setCaptureInputMode(Ifx_GPT12 *gpt12, IfxGpt12_CaptureInputMode inputMode)
+{
+    gpt12->T2CON.B.T2I = inputMode;
+}
+
+
+static inline __attribute__ ((always_inline)) void IfxGpt12_T2_setCounterInputMode(Ifx_GPT12 *gpt12, IfxGpt12_CounterInputMode inputMode)
+{
+    gpt12->T2CON.B.T2I = inputMode;
+}
+
+
+static inline __attribute__ ((always_inline)) void IfxGpt12_T2_setDirectionSource(Ifx_GPT12 *gpt12, IfxGpt12_TimerDirectionSource source)
+{
+    gpt12->T2CON.B.T2UDE = source;
+}
+
+
+static inline __attribute__ ((always_inline)) void IfxGpt12_T2_setEudInput(Ifx_GPT12 *gpt12, IfxGpt12_EudInput input)
+{
+    (((input <= 1) || ((2) > Assert_verboseLevel)) ? ((void)0) : Ifx_Assert_doLevel((2),"input <= 1", "../../_LibSrc/iLLD_1_0_1_8_0__TC27D/Src/BaseSw/iLLD/TC27D/Tricore/Gpt12/Std/IfxGpt12.h", 1095, __func__));
+    gpt12->PISEL.B.IST2EUD = input;
+}
+
+
+static inline __attribute__ ((always_inline)) void IfxGpt12_T2_setIncrementalInterfaceInputMode(Ifx_GPT12 *gpt12, IfxGpt12_IncrementalInterfaceInputMode inputMode)
+{
+    gpt12->T2CON.B.T2I = inputMode;
+}
+
+
+static inline __attribute__ ((always_inline)) void IfxGpt12_T2_setInput(Ifx_GPT12 *gpt12, IfxGpt12_Input input)
+{
+    (((input <= 1) || ((2) > Assert_verboseLevel)) ? ((void)0) : Ifx_Assert_doLevel((2),"input <= 1", "../../_LibSrc/iLLD_1_0_1_8_0__TC27D/Src/BaseSw/iLLD/TC27D/Tricore/Gpt12/Std/IfxGpt12.h", 1108, __func__));
+    gpt12->PISEL.B.IST2IN = input;
+}
+
+
+static inline __attribute__ ((always_inline)) void IfxGpt12_T2_setInterruptEnable(Ifx_GPT12 *gpt12, boolean enabled)
+{
+    gpt12->T2CON.B.T2IRDIS = enabled ? 0 : 1;
+}
+
+
+static inline __attribute__ ((always_inline)) void IfxGpt12_T2_setMode(Ifx_GPT12 *gpt12, IfxGpt12_Mode mode)
+{
+    gpt12->T2CON.B.T2M = mode;
+}
+
+
+static inline __attribute__ ((always_inline)) void IfxGpt12_T2_setReloadInputMode(Ifx_GPT12 *gpt12, IfxGpt12_ReloadInputMode inputMode)
+{
+    gpt12->T2CON.B.T2I = inputMode;
+}
+
+
+static inline __attribute__ ((always_inline)) void IfxGpt12_T2_setRemoteControl(Ifx_GPT12 *gpt12, IfxGpt12_TimerRemoteControl control)
+{
+    gpt12->T2CON.B.T2RC = control;
+}
+
+
+static inline __attribute__ ((always_inline)) void IfxGpt12_T2_setTimerDirection(Ifx_GPT12 *gpt12, IfxGpt12_TimerDirection direction)
+{
+    gpt12->T2CON.B.T2UD = direction;
+}
+
+
+static inline __attribute__ ((always_inline)) void IfxGpt12_T2_setTimerPrescaler(Ifx_GPT12 *gpt12, IfxGpt12_TimerInputPrescaler inputPrescaler)
+{
+    gpt12->T2CON.B.T2I = inputPrescaler;
+}
+
+
+static inline __attribute__ ((always_inline)) void IfxGpt12_T2_setTimerValue(Ifx_GPT12 *gpt12, uint16 value)
+{
+    gpt12->T2.U = value;
+}
+
+
+static inline __attribute__ ((always_inline)) void IfxGpt12_T3_enableOutput(Ifx_GPT12 *gpt12, boolean enable)
+{
+    gpt12->T3CON.B.T3OE = enable ? 1 : 0;
+}
+
+
+static inline __attribute__ ((always_inline)) IfxGpt12_Mode IfxGpt12_T3_getMode(Ifx_GPT12 *gpt12)
+{
+    return (IfxGpt12_Mode)gpt12->T3CON.B.T3M;
+}
+
+
+static inline __attribute__ ((always_inline)) volatile Ifx_SRC_SRCR *IfxGpt12_T3_getSrc(Ifx_GPT12 *gpt12)
+{
+    return &(*(Ifx_SRC*)0xF0038000u).GPT12.GPT12[0].T3;
+}
+
+
+static inline __attribute__ ((always_inline)) uint16 IfxGpt12_T3_getTimerValue(Ifx_GPT12 *gpt12)
+{
+    return (uint16)gpt12->T3.U;
+}
+
+
+static inline __attribute__ ((always_inline)) void IfxGpt12_T3_run(Ifx_GPT12 *gpt12, IfxGpt12_TimerRun runTimer)
+{
+    gpt12->T3CON.B.T3R = runTimer;
+}
+
+
+static inline __attribute__ ((always_inline)) void IfxGpt12_T3_setCounterInputMode(Ifx_GPT12 *gpt12, IfxGpt12_CounterInputMode inputMode)
+{
+    (((inputMode <= IfxGpt12_CounterInputMode_bothEdgesTxIN) || ((2) > Assert_verboseLevel)) ? ((void)0) : Ifx_Assert_doLevel((2),"inputMode <= IfxGpt12_CounterInputMode_bothEdgesTxIN", "../../_LibSrc/iLLD_1_0_1_8_0__TC27D/Src/BaseSw/iLLD/TC27D/Tricore/Gpt12/Std/IfxGpt12.h", 1187, __func__));
+    gpt12->T3CON.B.T3I = inputMode;
+}
+
+
+static inline __attribute__ ((always_inline)) void IfxGpt12_T3_setDirectionSource(Ifx_GPT12 *gpt12, IfxGpt12_TimerDirectionSource source)
+{
+    gpt12->T3CON.B.T3UDE = source;
+}
+
+
+static inline __attribute__ ((always_inline)) void IfxGpt12_T3_setEudInput(Ifx_GPT12 *gpt12, IfxGpt12_EudInput input)
+{
+    gpt12->PISEL.B.IST3EUD = input;
+}
+
+
+static inline __attribute__ ((always_inline)) void IfxGpt12_T3_setIncrementalInterfaceInputMode(Ifx_GPT12 *gpt12, IfxGpt12_IncrementalInterfaceInputMode inputMode)
+{
+    gpt12->T3CON.B.T3I = inputMode;
+}
+
+
+static inline __attribute__ ((always_inline)) void IfxGpt12_T3_setInput(Ifx_GPT12 *gpt12, IfxGpt12_Input input)
+{
+    gpt12->PISEL.B.IST3IN = input;
+}
+
+
+static inline __attribute__ ((always_inline)) void IfxGpt12_T3_setMode(Ifx_GPT12 *gpt12, IfxGpt12_Mode mode)
+{
+    (((((mode != IfxGpt12_Mode_reload) && (mode != IfxGpt12_Mode_capture))) || ((2) > Assert_verboseLevel)) ? ((void)0) : Ifx_Assert_doLevel((2),"((mode != IfxGpt12_Mode_reload) && (mode != IfxGpt12_Mode_capture))", "../../_LibSrc/iLLD_1_0_1_8_0__TC27D/Src/BaseSw/iLLD/TC27D/Tricore/Gpt12/Std/IfxGpt12.h", 1218, __func__));
+    gpt12->T3CON.B.T3M = mode;
+}
+
+
+static inline __attribute__ ((always_inline)) void IfxGpt12_T3_setTimerDirection(Ifx_GPT12 *gpt12, IfxGpt12_TimerDirection direction)
+{
+    gpt12->T3CON.B.T3UD = direction;
+}
+
+
+static inline __attribute__ ((always_inline)) void IfxGpt12_T3_setTimerPrescaler(Ifx_GPT12 *gpt12, IfxGpt12_TimerInputPrescaler inputPrescaler)
+{
+    gpt12->T3CON.B.T3I = inputPrescaler;
+}
+
+
+static inline __attribute__ ((always_inline)) void IfxGpt12_T3_setTimerValue(Ifx_GPT12 *gpt12, uint16 value)
+{
+    gpt12->T3.U = value;
+}
+
+
+static inline __attribute__ ((always_inline)) void IfxGpt12_T4_enableClearTimerT2(Ifx_GPT12 *gpt12, boolean enabled)
+{
+    gpt12->T4CON.B.CLRT2EN = enabled ? 1 : 0;
+}
+
+
+static inline __attribute__ ((always_inline)) void IfxGpt12_T4_enableClearTimerT3(Ifx_GPT12 *gpt12, boolean enabled)
+{
+    gpt12->T4CON.B.CLRT3EN = enabled ? 1 : 0;
+}
+
+
+static inline __attribute__ ((always_inline)) IfxGpt12_Mode IfxGpt12_T4_getMode(Ifx_GPT12 *gpt12)
+{
+    return (IfxGpt12_Mode)gpt12->T4CON.B.T4M;
+}
+
+
+static inline __attribute__ ((always_inline)) volatile Ifx_SRC_SRCR *IfxGpt12_T4_getSrc(Ifx_GPT12 *gpt12)
+{
+    return &(*(Ifx_SRC*)0xF0038000u).GPT12.GPT12[0].T4;
+}
+
+
+static inline __attribute__ ((always_inline)) uint16 IfxGpt12_T4_getTimerValue(Ifx_GPT12 *gpt12)
+{
+    return (uint16)gpt12->T4.U;
+}
+
+
+static inline __attribute__ ((always_inline)) void IfxGpt12_T4_run(Ifx_GPT12 *gpt12, IfxGpt12_TimerRun runTimer)
+{
+    gpt12->T4CON.B.T4R = runTimer;
+}
+
+
+static inline __attribute__ ((always_inline)) void IfxGpt12_T4_setCaptureInputMode(Ifx_GPT12 *gpt12, IfxGpt12_CaptureInputMode inputMode)
+{
+    gpt12->T4CON.B.T4I = inputMode;
+}
+
+
+static inline __attribute__ ((always_inline)) void IfxGpt12_T4_setCounterInputMode(Ifx_GPT12 *gpt12, IfxGpt12_CounterInputMode inputMode)
+{
+    gpt12->T4CON.B.T4I = inputMode;
+}
+
+
+static inline __attribute__ ((always_inline)) void IfxGpt12_T4_setDirectionSource(Ifx_GPT12 *gpt12, IfxGpt12_TimerDirectionSource source)
+{
+    gpt12->T4CON.B.T4UDE = source;
+}
+
+
+static inline __attribute__ ((always_inline)) void IfxGpt12_T4_setEudInput(Ifx_GPT12 *gpt12, IfxGpt12_EudInput input)
+{
+    gpt12->PISEL.B.IST4EUD = input;
+}
+
+
+static inline __attribute__ ((always_inline)) void IfxGpt12_T4_setIncrementalInterfaceInputMode(Ifx_GPT12 *gpt12, IfxGpt12_IncrementalInterfaceInputMode inputMode)
+{
+    gpt12->T4CON.B.T4I = inputMode;
+}
+
+
+static inline __attribute__ ((always_inline)) void IfxGpt12_T4_setInput(Ifx_GPT12 *gpt12, IfxGpt12_Input input)
+{
+    gpt12->PISEL.B.IST4IN = input;
+}
+
+
+static inline __attribute__ ((always_inline)) void IfxGpt12_T4_setInterruptEnable(Ifx_GPT12 *gpt12, boolean enabled)
+{
+    gpt12->T4CON.B.T4IRDIS = enabled ? 0 : 1;
+}
+
+
+static inline __attribute__ ((always_inline)) void IfxGpt12_T4_setMode(Ifx_GPT12 *gpt12, IfxGpt12_Mode mode)
+{
+    gpt12->T4CON.B.T4M = mode;
+}
+
+
+static inline __attribute__ ((always_inline)) void IfxGpt12_T4_setReloadInputMode(Ifx_GPT12 *gpt12, IfxGpt12_ReloadInputMode inputMode)
+{
+    gpt12->T4CON.B.T4I = inputMode;
+}
+
+
+static inline __attribute__ ((always_inline)) void IfxGpt12_T4_setRemoteControl(Ifx_GPT12 *gpt12, IfxGpt12_TimerRemoteControl control)
+{
+    gpt12->T4CON.B.T4RC = control;
+}
+
+
+static inline __attribute__ ((always_inline)) void IfxGpt12_T4_setTimerDirection(Ifx_GPT12 *gpt12, IfxGpt12_TimerDirection direction)
+{
+    gpt12->T4CON.B.T4UD = direction;
+}
+
+
+static inline __attribute__ ((always_inline)) void IfxGpt12_T4_setTimerPrescaler(Ifx_GPT12 *gpt12, IfxGpt12_TimerInputPrescaler inputPrescaler)
+{
+    gpt12->T4CON.B.T4I = inputPrescaler;
+}
+
+
+static inline __attribute__ ((always_inline)) void IfxGpt12_T4_setTimerValue(Ifx_GPT12 *gpt12, uint16 value)
+{
+    gpt12->T4.U = value;
+}
+
+
+static inline __attribute__ ((always_inline)) void IfxGpt12_T5_enableClearTimer(Ifx_GPT12 *gpt12, boolean enabled)
+{
+    gpt12->T5CON.B.T5CLR = enabled ? 1 : 0;
+}
+
+
+static inline __attribute__ ((always_inline)) IfxGpt12_Mode IfxGpt12_T5_getMode(Ifx_GPT12 *gpt12)
+{
+    return (IfxGpt12_Mode)gpt12->T5CON.B.T5M;
+}
+
+
+static inline __attribute__ ((always_inline)) volatile Ifx_SRC_SRCR *IfxGpt12_T5_getSrc(Ifx_GPT12 *gpt12)
+{
+    return &(*(Ifx_SRC*)0xF0038000u).GPT12.GPT12[0].T5;
+}
+
+
+static inline __attribute__ ((always_inline)) uint16 IfxGpt12_T5_getTimerValue(Ifx_GPT12 *gpt12)
+{
+    return (uint16)gpt12->T5.U;
+}
+
+
+static inline __attribute__ ((always_inline)) void IfxGpt12_T5_run(Ifx_GPT12 *gpt12, IfxGpt12_TimerRun runTimer)
+{
+    gpt12->T5CON.B.T5R = runTimer;
+}
+
+
+static inline __attribute__ ((always_inline)) void IfxGpt12_T5_setCaptureTrigger(Ifx_GPT12 *gpt12, IfxGpt12_CaptureTrigger trigger)
+{
+    gpt12->T5CON.B.CT3 = trigger;
+}
+
+
+static inline __attribute__ ((always_inline)) void IfxGpt12_T5_setCaptureTriggerEnable(Ifx_GPT12 *gpt12, boolean enabled)
+{
+    gpt12->T5CON.B.T5SC = enabled;
+}
+
+
+static inline __attribute__ ((always_inline)) void IfxGpt12_T5_setCaptureTriggerMode(Ifx_GPT12 *gpt12, IfxGpt12_CaptureTriggerMode mode)
+{
+    gpt12->T5CON.B.CI = mode;
+}
+
+
+static inline __attribute__ ((always_inline)) void IfxGpt12_T5_setCounterInputMode(Ifx_GPT12 *gpt12, IfxGpt12_CounterInputMode inputMode)
+{
+    gpt12->T5CON.B.T5I = inputMode;
+}
+
+
+static inline __attribute__ ((always_inline)) void IfxGpt12_T5_setDirectionSource(Ifx_GPT12 *gpt12, IfxGpt12_TimerDirectionSource source)
+{
+    gpt12->T5CON.B.T5UDE = source;
+}
+
+
+static inline __attribute__ ((always_inline)) void IfxGpt12_T5_setEudInput(Ifx_GPT12 *gpt12, IfxGpt12_EudInput input)
+{
+    (((input <= 1) || ((2) > Assert_verboseLevel)) ? ((void)0) : Ifx_Assert_doLevel((2),"input <= 1", "../../_LibSrc/iLLD_1_0_1_8_0__TC27D/Src/BaseSw/iLLD/TC27D/Tricore/Gpt12/Std/IfxGpt12.h", 1417, __func__));
+    gpt12->PISEL.B.IST5EUD = input;
+}
+
+
+static inline __attribute__ ((always_inline)) void IfxGpt12_T5_setInput(Ifx_GPT12 *gpt12, IfxGpt12_Input input)
+{
+    (((input <= 1) || ((2) > Assert_verboseLevel)) ? ((void)0) : Ifx_Assert_doLevel((2),"input <= 1", "../../_LibSrc/iLLD_1_0_1_8_0__TC27D/Src/BaseSw/iLLD/TC27D/Tricore/Gpt12/Std/IfxGpt12.h", 1424, __func__));
+    gpt12->PISEL.B.IST5IN = input;
+}
+
+
+static inline __attribute__ ((always_inline)) void IfxGpt12_T5_setMode(Ifx_GPT12 *gpt12, IfxGpt12_Mode mode)
+{
+    (((mode <= IfxGpt12_Mode_highGatedTimer) || ((2) > Assert_verboseLevel)) ? ((void)0) : Ifx_Assert_doLevel((2),"mode <= IfxGpt12_Mode_highGatedTimer", "../../_LibSrc/iLLD_1_0_1_8_0__TC27D/Src/BaseSw/iLLD/TC27D/Tricore/Gpt12/Std/IfxGpt12.h", 1431, __func__));
+    gpt12->T5CON.B.T5M = mode;
+}
+
+
+static inline __attribute__ ((always_inline)) void IfxGpt12_T5_setRemoteControl(Ifx_GPT12 *gpt12, IfxGpt12_TimerRemoteControl control)
+{
+    gpt12->T5CON.B.T5RC = control;
+}
+
+
+static inline __attribute__ ((always_inline)) void IfxGpt12_T5_setTimerDirection(Ifx_GPT12 *gpt12, IfxGpt12_TimerDirection direction)
+{
+    gpt12->T5CON.B.T5UD = direction;
+}
+
+
+static inline __attribute__ ((always_inline)) void IfxGpt12_T5_setTimerPrescaler(Ifx_GPT12 *gpt12, IfxGpt12_TimerInputPrescaler inputPrescaler)
+{
+    gpt12->T5CON.B.T5I = inputPrescaler;
+}
+
+
+static inline __attribute__ ((always_inline)) void IfxGpt12_T5_setTimerValue(Ifx_GPT12 *gpt12, uint16 value)
+{
+    gpt12->T5.U = value;
+}
+
+
+static inline __attribute__ ((always_inline)) void IfxGpt12_T6_enableClearTimer(Ifx_GPT12 *gpt12, boolean enabled)
+{
+    gpt12->T6CON.B.T6CLR = enabled ? 1 : 0;
+}
+
+
+static inline __attribute__ ((always_inline)) IfxGpt12_Mode IfxGpt12_T6_getMode(Ifx_GPT12 *gpt12)
+{
+    return (IfxGpt12_Mode)gpt12->T6CON.B.T6M;
+}
+
+
+static inline __attribute__ ((always_inline)) volatile Ifx_SRC_SRCR *IfxGpt12_T6_getSrc(Ifx_GPT12 *gpt12)
+{
+    return &(*(Ifx_SRC*)0xF0038000u).GPT12.GPT12[0].T6;
+}
+
+
+static inline __attribute__ ((always_inline)) uint16 IfxGpt12_T6_getTimerValue(Ifx_GPT12 *gpt12)
+{
+    return (uint16)gpt12->T6.U;
+}
+
+
+static inline __attribute__ ((always_inline)) void IfxGpt12_T6_run(Ifx_GPT12 *gpt12, IfxGpt12_TimerRun runTimer)
+{
+    gpt12->T6CON.B.T6R = runTimer;
+}
+
+
+static inline __attribute__ ((always_inline)) void IfxGpt12_T6_setCounterInputMode(Ifx_GPT12 *gpt12, IfxGpt12_CounterInputMode inputMode)
+{
+    (((inputMode <= IfxGpt12_CounterInputMode_bothEdgesTxIN) || ((2) > Assert_verboseLevel)) ? ((void)0) : Ifx_Assert_doLevel((2),"inputMode <= IfxGpt12_CounterInputMode_bothEdgesTxIN", "../../_LibSrc/iLLD_1_0_1_8_0__TC27D/Src/BaseSw/iLLD/TC27D/Tricore/Gpt12/Std/IfxGpt12.h", 1492, __func__));
+    gpt12->T6CON.B.T6I = inputMode;
+}
+
+
+static inline __attribute__ ((always_inline)) void IfxGpt12_T6_setDirectionSource(Ifx_GPT12 *gpt12, IfxGpt12_TimerDirectionSource source)
+{
+    gpt12->T6CON.B.T6UDE = source;
+}
+
+
+static inline __attribute__ ((always_inline)) void IfxGpt12_T6_setEudInput(Ifx_GPT12 *gpt12, IfxGpt12_EudInput input)
+{
+    (((input <= 1) || ((2) > Assert_verboseLevel)) ? ((void)0) : Ifx_Assert_doLevel((2),"input <= 1", "../../_LibSrc/iLLD_1_0_1_8_0__TC27D/Src/BaseSw/iLLD/TC27D/Tricore/Gpt12/Std/IfxGpt12.h", 1505, __func__));
+    gpt12->PISEL.B.IST6EUD = input;
+}
+
+
+static inline __attribute__ ((always_inline)) void IfxGpt12_T6_setInput(Ifx_GPT12 *gpt12, IfxGpt12_Input input)
+{
+    (((input <= 1) || ((2) > Assert_verboseLevel)) ? ((void)0) : Ifx_Assert_doLevel((2),"input <= 1", "../../_LibSrc/iLLD_1_0_1_8_0__TC27D/Src/BaseSw/iLLD/TC27D/Tricore/Gpt12/Std/IfxGpt12.h", 1512, __func__));
+    gpt12->PISEL.B.IST6IN = input;
+}
+
+
+static inline __attribute__ ((always_inline)) void IfxGpt12_T6_setMode(Ifx_GPT12 *gpt12, IfxGpt12_Mode mode)
+{
+    (((mode <= IfxGpt12_Mode_highGatedTimer) || ((2) > Assert_verboseLevel)) ? ((void)0) : Ifx_Assert_doLevel((2),"mode <= IfxGpt12_Mode_highGatedTimer", "../../_LibSrc/iLLD_1_0_1_8_0__TC27D/Src/BaseSw/iLLD/TC27D/Tricore/Gpt12/Std/IfxGpt12.h", 1519, __func__));
+    gpt12->T6CON.B.T6M = mode;
+}
+
+
+static inline __attribute__ ((always_inline)) void IfxGpt12_T6_setReloadMode(Ifx_GPT12 *gpt12, IfxGpt12_TimerReloadMode mode)
+{
+    gpt12->T6CON.B.T6SR = mode;
+}
+
+
+static inline __attribute__ ((always_inline)) void IfxGpt12_T6_setTimerDirection(Ifx_GPT12 *gpt12, IfxGpt12_TimerDirection direction)
+{
+    gpt12->T6CON.B.T6UD = direction;
+}
+
+
+static inline __attribute__ ((always_inline)) void IfxGpt12_T6_setTimerPrescaler(Ifx_GPT12 *gpt12, IfxGpt12_TimerInputPrescaler inputPrescaler)
+{
+    gpt12->T6CON.B.T6I = inputPrescaler;
+}
+
+
+static inline __attribute__ ((always_inline)) void IfxGpt12_T6_setTimerValue(Ifx_GPT12 *gpt12, uint16 value)
+{
+    gpt12->T6.U = value;
+}
+
+
+static inline __attribute__ ((always_inline)) volatile Ifx_SRC_SRCR *IfxGpt12_getCaptureSrc(Ifx_GPT12 *gpt12)
+{
+    return &(*(Ifx_SRC*)0xF0038000u).GPT12.GPT12[0].CIRQ;
+}
+
+
+static inline __attribute__ ((always_inline)) float32 IfxGpt12_getModuleFrequency(Ifx_GPT12 *gpt12)
+{
+    return IfxScuCcu_getSpbFrequency();
+}
+
+
+static inline __attribute__ ((always_inline)) void IfxGpt12_initCapInPin(const IfxGpt12_TxIn_In *capIn, IfxPort_InputMode inputMode)
+{
+    IfxPort_setPinModeInput(capIn->pin.port, capIn->pin.pinIndex, inputMode);
+    IfxGpt12_setCaptureInput(capIn->module, (IfxGpt12_CaptureInput)capIn->select);
+}
+
+
+static inline __attribute__ ((always_inline)) void IfxGpt12_initCapInPinWithPadLevel(const IfxGpt12_TxIn_In *capIn, IfxPort_InputMode inputMode, IfxPort_PadDriver padDriver)
+{
+    IfxPort_setPinModeInput(capIn->pin.port, capIn->pin.pinIndex, inputMode);
+    IfxPort_setPinPadDriver(capIn->pin.port, capIn->pin.pinIndex, padDriver);
+    IfxGpt12_setCaptureInput(capIn->module, (IfxGpt12_CaptureInput)capIn->select);
+}
+
+
+static inline __attribute__ ((always_inline)) void IfxGpt12_initTxOutPin(const IfxGpt12_TxOut_Out *txOut, IfxPort_OutputMode outputMode, IfxPort_PadDriver padDriver)
+{
+    IfxPort_setPinModeOutput(txOut->pin.port, txOut->pin.pinIndex, outputMode, txOut->select);
+    IfxPort_setPinPadDriver(txOut->pin.port, txOut->pin.pinIndex, padDriver);
+}
+
+
+static inline __attribute__ ((always_inline)) boolean IfxGpt12_isModuleSuspended(Ifx_GPT12 *gpt12)
+{
+    Ifx_GPT12_OCS ocs;
+
+
+    ocs.U = gpt12->OCS.U;
+
+
+    return ocs.B.SUSSTA;
+}
+
+
+static inline __attribute__ ((always_inline)) void IfxGpt12_setCaptureInput(Ifx_GPT12 *gpt12, IfxGpt12_CaptureInput input)
+{
+    gpt12->PISEL.B.ISCAPIN = input;
+}
+
+
+static inline __attribute__ ((always_inline)) void IfxGpt12_setCaptureReload(Ifx_GPT12 *gpt12, IfxGpt12_SleepMode value)
+{
+    gpt12->CAPREL.B.CAPREL = value;
+}
+
+
+static inline __attribute__ ((always_inline)) void IfxGpt12_setGpt1BlockPrescaler(Ifx_GPT12 *gpt12, IfxGpt12_Gpt1BlockPrescaler bps1)
+{
+    gpt12->T3CON.B.BPS1 = bps1;
+}
+
+
+static inline __attribute__ ((always_inline)) void IfxGpt12_setGpt2BlockPrescaler(Ifx_GPT12 *gpt12, IfxGpt12_Gpt2BlockPrescaler bps2)
+{
+    gpt12->T6CON.B.BPS2 = bps2;
+}
+
+
+static inline __attribute__ ((always_inline)) void IfxGpt12_setSleepMode(Ifx_GPT12 *gpt12, IfxGpt12_SleepMode mode)
+{
+    uint16 passwd = IfxScuWdt_getCpuWatchdogPassword();
+    IfxScuWdt_clearCpuEndinit(passwd);
+    gpt12->CLC.B.EDIS = mode;
+    IfxScuWdt_setCpuEndinit(passwd);
+}
+
+
+static inline __attribute__ ((always_inline)) void IfxGpt12_setSuspendMode(Ifx_GPT12 *gpt12, IfxGpt12_SuspendMode mode)
+{
+    Ifx_GPT12_OCS ocs;
+
+
+    ocs.B.SUS_P = 1;
+    ocs.B.SUS = mode;
+    gpt12->OCS.U = ocs.U;
+}
+# 177 "../../_LibSrc/iLLD_1_0_1_8_0__TC27D/Src/BaseSw/iLLD/TC27D/Tricore/Gpt12/IncrEnc/IfxGpt12_IncrEnc.h" 2
 # 1 "c:\\hightec\\toolchains\\tricore\\v4.9.1.0-infineon-2.0\\tricore\\include\\string.h" 1 3
 # 14 "c:\\hightec\\toolchains\\tricore\\v4.9.1.0-infineon-2.0\\tricore\\include\\string.h" 3
 # 1 "c:\\hightec\\toolchains\\tricore\\v4.9.1.0-infineon-2.0\\lib\\gcc\\tricore\\4.9.4\\include\\stddef.h" 1 3 4
@@ -28005,7 +31477,232 @@ size_t strxfrm (char *, const char *, size_t);
 # 101 "c:\\hightec\\toolchains\\tricore\\v4.9.1.0-infineon-2.0\\tricore\\include\\string.h" 2 3
 
 
-# 21 "../../MyApp/AurixRacer/0_Src/AppSw/Tricore/SnsAct/BasicLineScan.c" 2
+# 178 "../../_LibSrc/iLLD_1_0_1_8_0__TC27D/Src/BaseSw/iLLD/TC27D/Tricore/Gpt12/IncrEnc/IfxGpt12_IncrEnc.h" 2
+
+
+
+
+
+typedef IfxStdIf_Pos_Update IfxGpt12_IncrEnc_Update;
+# 193 "../../_LibSrc/iLLD_1_0_1_8_0__TC27D/Src/BaseSw/iLLD/TC27D/Tricore/Gpt12/IncrEnc/IfxGpt12_IncrEnc.h"
+typedef struct
+{
+    sint32 rawPosition;
+    float32 speed;
+    sint32 turn;
+    IfxStdIf_Pos_Dir direction;
+    IfxStdIf_Pos_Status status;
+    sint32 offset;
+    sint32 resolution;
+    float32 updatePeriod;
+    float32 speedConstPulseCount;
+    float32 speedConstTimeDiff;
+    float32 positionConst;
+    float32 speedModeThreshold;
+    sint32 speedModeThresholdTick;
+    Ifx_GPT12 *module;
+    float32 minSpeed;
+    float32 maxSpeed;
+    Ifx_LowPassPt1F32 speedLpf;
+    IfxGpt12_IncrEnc_Update update;
+    boolean speedFilterEnabled;
+} IfxGpt12_IncrEnc;
+
+
+
+typedef struct
+{
+    IfxStdIf_Pos_Config base;
+    Ifx_GPT12 *module;
+    IfxGpt12_TxIn_In *pinA;
+    IfxGpt12_TxEud_In *pinB;
+    IfxGpt12_TxIn_In *pinZ;
+    IfxPort_InputMode pinMode;
+    Ifx_Priority zeroIsrPriority;
+    IfxSrc_Tos zeroIsrProvider;
+    IfxPort_PadDriver pinDriver;
+} IfxGpt12_IncrEnc_Config;
+# 257 "../../_LibSrc/iLLD_1_0_1_8_0__TC27D/Src/BaseSw/iLLD/TC27D/Tricore/Gpt12/IncrEnc/IfxGpt12_IncrEnc.h"
+extern boolean IfxGpt12_IncrEnc_init(IfxGpt12_IncrEnc *driver, const IfxGpt12_IncrEnc_Config *config);
+# 267 "../../_LibSrc/iLLD_1_0_1_8_0__TC27D/Src/BaseSw/iLLD/TC27D/Tricore/Gpt12/IncrEnc/IfxGpt12_IncrEnc.h"
+extern void IfxGpt12_IncrEnc_initConfig(IfxGpt12_IncrEnc_Config *config, Ifx_GPT12 *gpt12);
+# 282 "../../_LibSrc/iLLD_1_0_1_8_0__TC27D/Src/BaseSw/iLLD/TC27D/Tricore/Gpt12/IncrEnc/IfxGpt12_IncrEnc.h"
+extern float32 IfxGpt12_IncrEnc_getAbsolutePosition(IfxGpt12_IncrEnc *driver);
+
+
+
+
+
+extern IfxStdIf_Pos_Dir IfxGpt12_IncrEnc_getDirection(IfxGpt12_IncrEnc *driver);
+
+
+
+
+
+extern IfxStdIf_Pos_Status IfxGpt12_IncrEnc_getFault(IfxGpt12_IncrEnc *driver);
+
+
+
+
+
+extern sint32 IfxGpt12_IncrEnc_getOffset(IfxGpt12_IncrEnc *driver);
+
+
+
+
+
+extern uint16 IfxGpt12_IncrEnc_getPeriodPerRotation(IfxGpt12_IncrEnc *driver);
+
+
+
+
+
+extern float32 IfxGpt12_IncrEnc_getPosition(IfxGpt12_IncrEnc *driver);
+
+
+
+
+
+extern sint32 IfxGpt12_IncrEnc_getRawPosition(IfxGpt12_IncrEnc *driver);
+
+
+
+
+
+extern float32 IfxGpt12_IncrEnc_getRefreshPeriod(IfxGpt12_IncrEnc *driver);
+
+
+
+
+
+extern sint32 IfxGpt12_IncrEnc_getResolution(IfxGpt12_IncrEnc *driver);
+
+
+
+
+
+extern IfxStdIf_Pos_SensorType IfxGpt12_IncrEnc_getSensorType(IfxGpt12_IncrEnc *driver);
+
+
+
+
+
+extern float32 IfxGpt12_IncrEnc_getSpeed(IfxGpt12_IncrEnc *driver);
+
+
+
+
+
+extern sint32 IfxGpt12_IncrEnc_getTurn(IfxGpt12_IncrEnc *driver);
+
+
+
+
+
+extern void IfxGpt12_IncrEnc_onZeroIrq(IfxGpt12_IncrEnc *driver);
+
+
+
+
+
+extern void IfxGpt12_IncrEnc_reset(IfxGpt12_IncrEnc *driver);
+
+
+
+
+
+extern void IfxGpt12_IncrEnc_resetFaults(IfxGpt12_IncrEnc *driver);
+
+
+
+
+
+
+extern void IfxGpt12_IncrEnc_setOffset(IfxGpt12_IncrEnc *driver, sint32 offset);
+
+
+
+
+
+
+extern void IfxGpt12_IncrEnc_setRefreshPeriod(IfxGpt12_IncrEnc *driver, float32 updatePeriod);
+
+
+
+
+
+extern void IfxGpt12_IncrEnc_update(IfxGpt12_IncrEnc *driver);
+# 399 "../../_LibSrc/iLLD_1_0_1_8_0__TC27D/Src/BaseSw/iLLD/TC27D/Tricore/Gpt12/IncrEnc/IfxGpt12_IncrEnc.h"
+extern boolean IfxGpt12_IncrEnc_stdIfPosInit(IfxStdIf_Pos *stdif, IfxGpt12_IncrEnc *driver);
+# 17 "../../MyApp/AurixRacer/0_Src/AppSw/Tricore/SnsAct/BasicGpt12Enc.h" 2
+# 32 "../../MyApp/AurixRacer/0_Src/AppSw/Tricore/SnsAct/BasicGpt12Enc.h"
+typedef struct{
+        float32 speed;
+        float32 rawPosition;
+        IfxStdIf_Pos_Dir direction;
+}IR_Encoder_t;
+
+
+
+
+extern IR_Encoder_t IR_Encoder;
+
+
+
+
+extern void BasicGpt12Enc_init(void);
+extern void BasicGpt12Enc_run(void);
+extern void PID_Control(double goal);
+# 9 "../../MyApp/AurixRacer/0_Src/AppSw/Tricore/SnsAct/Basic.h" 2
+# 17 "../../MyApp/AurixRacer/0_Src/AppSw/Tricore/SnsAct/BasicLineScan.h" 2
+# 29 "../../MyApp/AurixRacer/0_Src/AppSw/Tricore/SnsAct/BasicLineScan.h"
+typedef struct{
+ uint32 adcResult[3][128];
+}IR_LineScan_t;
+
+
+
+
+extern IR_LineScan_t IR_LineScan;
+
+
+
+
+extern void BasicLineScan_init(void);
+extern void BasicLineScan_run(void);
+# 61 "../../MyApp/AurixRacer/0_Src/AppSw/Tricore/SnsAct/BasicLineScan.h"
+typedef struct CAM_INFOMATION {
+   int cam_scan[128];
+   int center;
+}cam_infomation;
+
+int AdjustBySides();
+void Camera_Initialization();
+int GetCameraCenter(int prevServo, int cntDiff);
+enum DIRECTION GetCameraDash();
+
+void GetCamera(cam_infomation * _cam_info);
+void CopyPrevLine(cam_infomation * _cam_info, cam_infomation _prev_info);
+
+int GetMedian(int _array[5]);
+void Stretching(int(*_line)[128], int _max);
+void MedianFiltering(int(*_line)[128]);
+void Sharpening(int(*_line)[128]);
+extern int FindCenter(int(*line)[128]);
+
+
+void MakeIdxZero(int(*_line)[128], int threshold);
+void MakeIdxMax(int(*_line)[128], int threshold);
+extern void CheckLimitZone(int nowState);
+extern int IsLimitZone();
+extern int GetDashLine();
+extern int FindCenter(int(*_line)[128]);
+extern int FindOneLine(int line[128]);
+extern int GetCountPassedObject();
+extern void SetCountPassedObject(int cpo);
+extern int GetDottedLine();
+extern void SetDottedLine(int dl);
+# 19 "../../MyApp/AurixRacer/0_Src/AppSw/Tricore/SnsAct/BasicLineScan.c" 2
 # 33 "../../MyApp/AurixRacer/0_Src/AppSw/Tricore/SnsAct/BasicLineScan.c"
 typedef struct
 {
@@ -28273,6 +31970,8 @@ void Camera_Initialization() {
 }
 
 int GetCameraCenter(int prevServo, int cntDiff) {
+ int mode = 0;
+ int result = 0;
  int i=0;
 
 
@@ -28296,31 +31995,130 @@ int GetCameraCenter(int prevServo, int cntDiff) {
   Sharpening(&cam_info[i][nowIndex].cam_scan);
   Stretching(&(cam_info[i][nowIndex].cam_scan), 100000);
  }
- cam_info[0][nowIndex].center = FindCenter(&(cam_info[0][nowIndex].cam_scan));
- cam_info[1][nowIndex].center = FindOneLine(cam_info[1][nowIndex].cam_scan);
- cam_info[2][nowIndex].center = FindOneLine(cam_info[2][nowIndex].cam_scan);
 
  for(i=0; i<128; i++)
   speedLimitLine[i] = cam_info[0][nowIndex].cam_scan[i];
 
+ cam_info[0][nowIndex].center = FindCenter(&(cam_info[0][nowIndex].cam_scan));
+ cam_info[1][nowIndex].center = FindOneLine(cam_info[1][nowIndex].cam_scan);
+ cam_info[2][nowIndex].center = FindOneLine(cam_info[2][nowIndex].cam_scan);
+
  if(cam_info[0][nowIndex].center == -1 || cam_info[0][nowIndex].center == 0) {
-# 354 "../../MyApp/AurixRacer/0_Src/AppSw/Tricore/SnsAct/BasicLineScan.c"
+  mode = AdjustBySides();
+  if(mode == -1){
+   result = -100;
+  }
+# 367 "../../MyApp/AurixRacer/0_Src/AppSw/Tricore/SnsAct/BasicLineScan.c"
+ }
+ if(mode == 1 || mode == 0){
+  for(i=0; i<128; i++)
+   debugLine[i] = cam_info[0][nowIndex].cam_scan[i];
+
+  nowIndex = (nowIndex+1)%5;
+  result = cam_info[0][(nowIndex + 4) % 5].center;
+ }
+ return result;
+}
+# 396 "../../MyApp/AurixRacer/0_Src/AppSw/Tricore/SnsAct/BasicLineScan.c"
+int AdjustBySides(){
+ int mode = 0;
+ float currentSrvAngle = IR_Srv.Angle;
+ int lStdValue[4] = {25, 63, 67, 99};
+ int rStdValue[4] = {99, 67, 63, 25};
+ int lIndex = 0;
+ int rIndex = 0;
+ int lcount = 0;
+ int rcount = 0;
+ int totalCamera[232];
+ int i = 0;
+ for(i = 0; i < 116; i++) {
+   totalCamera[i] = IR_LineScan.adcResult[1][i + 6];
+ }
+ for(i = 0; i < 116; i++){
+   totalCamera[i + 116] = IR_LineScan.adcResult[2][i + 6];
+ }
+
+
+ Stretching(totalCamera, 4096);
+ MedianFiltering(totalCamera);
+ Sharpening(totalCamera);
+ Stretching(totalCamera, 100000);
+
+ for(i = 116; i > 0; --i){
+   if(totalCamera[i] >= 85000){
+    if(lcount == 0){
+     lIndex = i;
+    }
+   lcount++;
+   if(lcount > 3){
+    lIndex = -1;
+    break;
+   }
+   }
+ }
+ for(i = 116; i < 232; ++i){
+   if(totalCamera[i] >= 85000){
+    if(rcount == 0){
+     rIndex = i - 116;
+    }
+   rcount++;
+   if(rcount > 3){
+    rIndex = -1;
+    break;
+   }
+   }
+ }
+
+ if(lIndex == -1 && rIndex != -1){
+  mode = -1;
+  IR_setMotor0Vol(0.35f);
+  if (rIndex <= rStdValue[0]){
+   IR_setSrvAngle(currentSrvAngle - 0.03);
+  }
+  else if(rStdValue[0] < rIndex && rIndex <= rStdValue[1]){
+   IR_setSrvAngle(currentSrvAngle - 0.005);
+  }
+  else if(rStdValue[1] < rIndex && rIndex <= rStdValue[2]){
+   IR_setSrvAngle(0.1953);
+  }
+  else if(rStdValue[2] < rIndex && rIndex <= rStdValue[3]){
+   IR_setSrvAngle(currentSrvAngle + 0.005);
+  }
+  else{
+   IR_setSrvAngle(currentSrvAngle + 0.03);
+  }
+ }
+
+ else if(rIndex == -1 && lIndex != -1){
+  mode = -1;
+  IR_setMotor0Vol(0.35f);
+  if (lIndex <= lStdValue[0]){
+   IR_setSrvAngle(currentSrvAngle - 0.03);
+  }
+  else if(lStdValue[0] < lIndex && lIndex <= lStdValue[1]){
+   IR_setSrvAngle(currentSrvAngle - 0.005);
+  }
+  else if(lStdValue[1] < lIndex && lIndex <= lStdValue[2]){
+   IR_setSrvAngle(0.1953);
+  }
+  else if(lStdValue[2] < lIndex && lIndex <= lStdValue[3]){
+   IR_setSrvAngle(currentSrvAngle + 0.005);
+  }
+  else{
+   IR_setSrvAngle(currentSrvAngle + 0.03);
+  }
+
+ }
+   else{
+    mode = 1;
+    IR_setMotor0Vol(0.35f);
   CopyPrevLine(&(cam_info[0][nowIndex]), cam_info[0][(nowIndex + 5 - 1) % 5]);
   cam_info[0][nowIndex].center = cam_info[0][(nowIndex + 5 - 1) % 5].center;
 
-
-
-
- }
-
- for(i=0; i<128; i++)
-  debugLine[i] = cam_info[0][nowIndex].cam_scan[i];
-
- nowIndex = (nowIndex+1)%5;
-
- return cam_info[0][(nowIndex + 4) % 5].center;
+   }
+ return mode;
 }
-# 388 "../../MyApp/AurixRacer/0_Src/AppSw/Tricore/SnsAct/BasicLineScan.c"
+
 int FindCenter(int(*_line)[128]) {
  int i, index = 0, leftIndex = 0, rightIndex = 127, zeroCount = 0;
 
@@ -28333,6 +32131,11 @@ int FindCenter(int(*_line)[128]) {
    (*_line)[i] = 0;
   }
  }
+
+
+  for(i = 0; i < 128; i++){
+   Zero_center_line[i] = (*_line)[i];
+  }
 
 
  if(zeroCount <= 120) return -1;

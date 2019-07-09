@@ -80,6 +80,7 @@
  ../../_LibSrc/iLLD_1_0_1_8_0__TC27D/Src/BaseSw/Infra/Sfr/TC27D/_Reg/IfxCcu6_regdef.h \
  ../../_LibSrc/iLLD_1_0_1_8_0__TC27D/Src/BaseSw/Infra/Sfr/TC27D/_Reg/IfxCcu6_bf.h \
  ../../_LibSrc/iLLD_1_0_1_8_0__TC27D/Src/BaseSw/iLLD/TC27D/Tricore/Vadc/Adc/IfxVadc_Adc.h \
+ ../../MyApp/AurixRacer/0_Src/AppSw/Tricore/SnsAct/Basic.h \
  ../../MyApp/AurixRacer/0_Src/AppSw/Tricore/SnsAct/BasicPort.h \
  ../../MyApp/AurixRacer/0_Src/AppSw/Tricore/SnsAct/BasicGtmTom.h \
  ../../_LibSrc/iLLD_1_0_1_8_0__TC27D/Src/BaseSw/Service/CpuGeneric/SysSe/Bsp/Bsp.h \

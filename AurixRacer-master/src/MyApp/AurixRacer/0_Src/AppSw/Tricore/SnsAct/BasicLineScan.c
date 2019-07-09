@@ -312,6 +312,8 @@ void Camera_Initialization() {
 }
 
 int GetCameraCenter(int prevServo, int cntDiff) {
+	int mode = 0;
+	int result = 0;
 	int i=0;
 	// int lzcnt, rzcnt;
 
@@ -335,14 +337,19 @@ int GetCameraCenter(int prevServo, int cntDiff) {
 		Sharpening(&cam_info[i][nowIndex].cam_scan);
 		Stretching(&(cam_info[i][nowIndex].cam_scan), 100000);
 	}
-	cam_info[0][nowIndex].center = FindCenter(&(cam_info[0][nowIndex].cam_scan));
-	cam_info[1][nowIndex].center = FindOneLine(cam_info[1][nowIndex].cam_scan);
-	cam_info[2][nowIndex].center = FindOneLine(cam_info[2][nowIndex].cam_scan);
 
 	for(i=0; i<LINESIZE; i++)
 		speedLimitLine[i] = cam_info[0][nowIndex].cam_scan[i];
 
+	cam_info[0][nowIndex].center = FindCenter(&(cam_info[0][nowIndex].cam_scan));
+	cam_info[1][nowIndex].center = FindOneLine(cam_info[1][nowIndex].cam_scan);
+	cam_info[2][nowIndex].center = FindOneLine(cam_info[2][nowIndex].cam_scan);
+
 	if(cam_info[0][nowIndex].center == -1 || cam_info[0][nowIndex].center == 0) {
+		mode = AdjustBySides();
+		if(mode == -1){
+			result = -100;
+		}
 		/*
 		if(cam_info[1][nowIndex].center == -1 && cam_info[2][nowIndex].center)
 			return -1;
@@ -351,20 +358,21 @@ int GetCameraCenter(int prevServo, int cntDiff) {
 		*/
 //		CopyPrevLine(&(cam_info[0][nowIndex]), cam_info[0][(nowIndex + LINES - 2) % LINES]);
 //		cam_info[0][nowIndex].center = cam_info[0][(nowIndex + LINES - 2) % LINES].center;
-		CopyPrevLine(&(cam_info[0][nowIndex]), cam_info[0][(nowIndex + LINES - 1) % LINES]);
-		cam_info[0][nowIndex].center = cam_info[0][(nowIndex + LINES - 1) % LINES].center;
+		//CopyPrevLine(&(cam_info[0][nowIndex]), cam_info[0][(nowIndex + LINES - 1) % LINES]);
+		//cam_info[0][nowIndex].center = cam_info[0][(nowIndex + LINES - 1) % LINES].center;
 		/*if(g_cameraDirection == 0)
 			cam_info[0][nowIndex].center = cam_info[1][nowIndex].center + 40;
 		else if(g_cameraDirection == 1)
 			cam_info[0][nowIndex].center = cam_info[2][nowIndex].center - 40;*/
 	}
+	if(mode == 1 || mode == 0){
+		for(i=0; i<LINESIZE; i++)
+			debugLine[i] = cam_info[0][nowIndex].cam_scan[i];
 
-	for(i=0; i<LINESIZE; i++)
-		debugLine[i] = cam_info[0][nowIndex].cam_scan[i];
-
-	nowIndex = (nowIndex+1)%LINES;
-
-	return cam_info[0][(nowIndex + 4) % 5].center;
+		nowIndex = (nowIndex+1)%LINES;
+		result = cam_info[0][(nowIndex + 4) % 5].center;
+	}
+	return result;
 }
 
 /*
@@ -385,6 +393,105 @@ int MakeIdxZero(int(*_line)[LINESIZE]) {
 }
 */
 
+int AdjustBySides(){
+	int mode = 0; // -1: side , 1: prev center
+	float currentSrvAngle = IR_getSrvAngle();
+	int lStdValue[4] = {25, 63, 67, 99};
+	int rStdValue[4] = {99, 67, 63, 25};
+	int lIndex = 0;
+	int rIndex = 0;
+	int lcount = 0;
+	int rcount = 0;
+	int totalCamera[232];
+	int i = 0;
+	for(i = 0; i < 116; i++) {
+	  totalCamera[i] = IR_LineScan.adcResult[1][i + 6];
+	}
+	for(i = 0; i < 116; i++){
+	  totalCamera[i + 116] = IR_LineScan.adcResult[2][i + 6];
+	}
+
+
+	Stretching(totalCamera, 4096);
+	MedianFiltering(totalCamera);
+	Sharpening(totalCamera);
+	Stretching(totalCamera, 100000);
+
+	for(i = 116; i > 0; --i){
+	  if(totalCamera[i] >= THRESHOLD){
+		  if(lcount == 0){
+			  lIndex = i;
+		  }
+		 lcount++;
+		 if(lcount > 3){
+			 lIndex = -1;
+			 break;
+		 }
+	  }
+	}
+	for(i = 116; i < 232; ++i){
+	  if(totalCamera[i] >= THRESHOLD){
+		  if(rcount == 0){
+			  rIndex = i - 116;
+		  }
+		 rcount++;
+		 if(rcount > 3){
+			 rIndex = -1;
+			 break;
+		 }
+	  }
+	}
+
+	if(lIndex == -1 && rIndex != -1){
+		mode = -1;
+		IR_setMotor0Vol(0.35f);
+		if (rIndex <= rStdValue[0]){
+		 IR_setSrvAngle(currentSrvAngle - 0.03);
+		}
+		else if(rStdValue[0] < rIndex && rIndex <= rStdValue[1]){
+		 IR_setSrvAngle(currentSrvAngle - 0.005);// 0.005
+		}
+		else if(rStdValue[1] < rIndex && rIndex <= rStdValue[2]){
+		 IR_setSrvAngle(0.1953);
+		}
+		else if(rStdValue[2] < rIndex && rIndex <= rStdValue[3]){
+		 IR_setSrvAngle(currentSrvAngle + 0.005);
+		}
+		else{
+		 IR_setSrvAngle(currentSrvAngle + 0.03);
+		}
+	}
+
+	else if(rIndex == -1 && lIndex != -1){
+		mode = -1;
+		IR_setMotor0Vol(0.35f);
+		if (lIndex <= lStdValue[0]){
+		 IR_setSrvAngle(currentSrvAngle - 0.03);
+		}
+		else if(lStdValue[0] < lIndex && lIndex <= lStdValue[1]){
+		 IR_setSrvAngle(currentSrvAngle - 0.005);
+		}
+		else if(lStdValue[1] < lIndex && lIndex <= lStdValue[2]){
+		 IR_setSrvAngle(0.1953);
+		}
+		else if(lStdValue[2] < lIndex && lIndex <= lStdValue[3]){
+		 IR_setSrvAngle(currentSrvAngle + 0.005);
+		}
+		else{
+		 IR_setSrvAngle(currentSrvAngle + 0.03); // 0.03
+		}
+
+	}
+   else{
+	   mode = 1;
+	   IR_setMotor0Vol(0.35f);
+		CopyPrevLine(&(cam_info[0][nowIndex]), cam_info[0][(nowIndex + LINES - 1) % LINES]);
+		cam_info[0][nowIndex].center = cam_info[0][(nowIndex + LINES - 1) % LINES].center;
+//		   IR_setSrvAngle((((float)g_nowCenterIndex - 60.0f) / 100.0f) * 1.5f + 0.1953f);
+   }
+	return mode;
+}
+
 int FindCenter(int(*_line)[LINESIZE]) {
 	int i, index = 0, leftIndex = 0, rightIndex = 127, zeroCount = 0;
 
@@ -397,6 +504,11 @@ int FindCenter(int(*_line)[LINESIZE]) {
 			(*_line)[i] = 0;
 		}
 	}
+
+	//test
+	 for(i =  0; i < LINESIZE; i++){
+		 Zero_center_line[i] = (*_line)[i];
+	 }
 
 	//if(zeroCount <= 118) isLimitZone = 1;
 	if(zeroCount <= 120) return -1;

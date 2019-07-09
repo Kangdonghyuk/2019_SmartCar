@@ -27967,7 +27967,10 @@ static inline __attribute__ ((always_inline)) Ifx_VADC_G_RESD IfxVadc_Adc_getDeb
     return IfxVadc_getDebugResult(channel->group->group, channel->resultreg);
 }
 # 15 "../../MyApp/AurixRacer/0_Src/AppSw/Tricore/SnsAct/BasicLineScan.h" 2
-# 27 "../../MyApp/AurixRacer/0_Src/AppSw/Tricore/SnsAct/BasicLineScan.h"
+
+# 1 "../../MyApp/AurixRacer/0_Src/AppSw/Tricore/SnsAct/Basic.h" 1
+# 17 "../../MyApp/AurixRacer/0_Src/AppSw/Tricore/SnsAct/BasicLineScan.h" 2
+# 29 "../../MyApp/AurixRacer/0_Src/AppSw/Tricore/SnsAct/BasicLineScan.h"
 typedef struct{
  uint32 adcResult[3][128];
 }IR_LineScan_t;
@@ -27982,12 +27985,13 @@ extern IR_LineScan_t IR_LineScan;
 
 extern void BasicLineScan_init(void);
 extern void BasicLineScan_run(void);
-# 59 "../../MyApp/AurixRacer/0_Src/AppSw/Tricore/SnsAct/BasicLineScan.h"
+# 61 "../../MyApp/AurixRacer/0_Src/AppSw/Tricore/SnsAct/BasicLineScan.h"
 typedef struct CAM_INFOMATION {
    int cam_scan[128];
    int center;
 }cam_infomation;
 
+int AdjustBySides();
 void Camera_Initialization();
 int GetCameraCenter(int prevServo, int cntDiff);
 enum DIRECTION GetCameraDash();

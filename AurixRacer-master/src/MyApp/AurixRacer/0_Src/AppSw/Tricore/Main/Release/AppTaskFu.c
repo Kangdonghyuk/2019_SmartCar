@@ -75,10 +75,12 @@ void appTaskfu_10ms(void)
 {
 	int dottedLine;
 	int countPassedObject;
+
+	/*
 	//shin
 	float currentSrvAngle = IR_getSrvAngle();
 	int lStdValue[4] = {25, 63, 67, 99};
-	int rStdValue[4] = {25, 63, 67, 99};
+	int rStdValue[4] = {99, 67, 63, 25};
 	int lIndex = 0;
 	int rIndex = 0;
 	int lcount = 0;
@@ -86,7 +88,7 @@ void appTaskfu_10ms(void)
 	int totalCamera[232];
 	int i = 0;
 	//shin
-
+*/
 	task_cnt_10m++;
 	if(task_cnt_10m == 1000){
 		task_cnt_10m = 0;
@@ -117,15 +119,16 @@ void appTaskfu_10ms(void)
 			zoneState = beforeZoneState;
 		}
 
-		if(zoneState == SPEED) {
+		//if(zoneState == SPEED) { if 없애기
 			IR_setMotor0Vol(0.72f);
-
+/*
+			// m:0, l:1, r:2
 			//shin code
 			for(i = 0; i < 116; i++) {
 			  totalCamera[i] = IR_LineScan.adcResult[1][i + 6];
 		   }
 		   for(i = 0; i < 116; i++){
-			  totalCamera[i + 116] = IR_LineScan.adcResult[0][i + 6];
+			  totalCamera[i + 116] = IR_LineScan.adcResult[2][i + 6];
 		   }
 
 
@@ -142,7 +145,7 @@ void appTaskfu_10ms(void)
 					  lIndex = i;
 				  }
 				 lcount++;
-				 if(lcount > 4){
+				 if(lcount > 3){
 					 lIndex = -1;
 					 break;
 				 }
@@ -154,7 +157,7 @@ void appTaskfu_10ms(void)
 					  rIndex = i - 116;
 				  }
 				 rcount++;
-				 if(rcount > 4){
+				 if(rcount > 3){
 					 rIndex = -1;
 				 }
 			  }
@@ -162,11 +165,12 @@ void appTaskfu_10ms(void)
 
 
 			if(lIndex == -1 && rIndex != -1){
+				IR_setMotor0Vol(0.35f);
 			  if (rIndex <= rStdValue[0]){
 				 IR_setSrvAngle(currentSrvAngle - 0.03);
 			  }
 			  else if(rStdValue[0] < rIndex && rIndex <= rStdValue[1]){
-				 IR_setSrvAngle(currentSrvAngle - 0.005);
+				 IR_setSrvAngle(currentSrvAngle - 0.005);// 0.005
 			  }
 			  else if(rStdValue[1] < rIndex && rIndex <= rStdValue[2]){
 				 IR_setSrvAngle(0.1953);
@@ -180,6 +184,7 @@ void appTaskfu_10ms(void)
 		   }
 
 		   else if(rIndex == -1 && lIndex != -1){
+			   IR_setMotor0Vol(0.35f);
 			  if (lIndex <= lStdValue[0]){
 				 IR_setSrvAngle(currentSrvAngle - 0.03);
 			  }
@@ -193,33 +198,37 @@ void appTaskfu_10ms(void)
 				 IR_setSrvAngle(currentSrvAngle + 0.005);
 			  }
 			  else{
-				 IR_setSrvAngle(currentSrvAngle + 0.03);
+				 IR_setSrvAngle(currentSrvAngle + 0.03); // 0.03
 			  }
 		   }
 		   else if(rIndex != -1 && lIndex != -1){
 			   IR_setSrvAngle((((float)g_nowCenterIndex - 60.0f) / 100.0f) * 1.5f + 0.1953f);
+			   //IR_setSrvAngle(0.1953);
 		   }
 		   else{
+			   IR_setMotor0Vol(0.35f);
 			   IR_setSrvAngle((((float)g_nowCenterIndex - 60.0f) / 100.0f) * 1.5f + 0.1953f);
 		   }
 			//until here shin code
 
-			/* origin code
-			IR_setSrvAngle((((float)g_nowCenterIndex - 60.0f) / 100.0f) * 1.5f + 0.1953f);
-
-
-			if(g_nowCenterIndex >= 55 && g_nowCenterIndex < 66)
-				IR_setSrvAngle(0.1953);
-			else if(g_nowCenterIndex< 58 || g_nowCenterIndex >= 63)
-				IR_setMotor0Vol(0.35f);
-			*/
+	 	 	 */
+			//origin code
+			if(g_nowCenterIndex != -100){
+				IR_setSrvAngle((((float)g_nowCenterIndex - 60.0f) / 100.0f) * 1.5f + 0.1953f);
+				if(g_nowCenterIndex >= 55 && g_nowCenterIndex < 66)
+					IR_setSrvAngle(0.1953);
+				else if(g_nowCenterIndex< 58 || g_nowCenterIndex >= 63)
+					IR_setMotor0Vol(0.35f);
+			}
 			servoValue = IR_getSrvAngle();
+
 			// AEB
 			if(GetInfraredSensorValue() > 150) {//120
 				IR_setMotor0Vol(0.0f);
-				IR_setMotor0En(0);
+				//IR_setMotor0En(0);
 			}
-		}
+		//if없애기 }
+		/*
 		else if(zoneState == LIMIT) {
 			dottedLine = GetDottedLine();
 			countPassedObject = GetCountPassedObject();
@@ -247,7 +256,7 @@ void appTaskfu_10ms(void)
 				objectSrvAngle = 0.1953f + -dottedLine * 0.3f;
 				IR_setSrvAngle(objectSrvAngle);
 			}
-		}
+		}*/
 
 
 
@@ -263,9 +272,9 @@ void appTaskfu_10ms(void)
 		}
 		AsclinShellInterface_runLineScan();
 	}
-
-	g_leftIndex = lIndex;
-	g_rightIndex = rIndex;
+//
+//	g_leftIndex = lIndex;
+//	g_rightIndex = rIndex;
 }
 
 void FollowingLine() {
@@ -279,6 +288,7 @@ void FollowingLine() {
 				g_prevCenterIndex = g_nowCenterIndex;
 				g_cntDiffNowPrevCenterIndex = 0;
 			}
+			g_nowCenterIndex = g_prevCenterIndex;
 		}
 		else
 			g_cntDiffNowPrevCenterIndex = 0;
