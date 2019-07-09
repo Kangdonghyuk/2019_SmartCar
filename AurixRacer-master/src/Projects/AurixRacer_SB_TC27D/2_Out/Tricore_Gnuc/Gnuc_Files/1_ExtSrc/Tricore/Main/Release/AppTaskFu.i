@@ -1,5 +1,5 @@
 # 1 "../../MyApp/AurixRacer/0_Src/AppSw/Tricore/Main/Release/AppTaskFu.c"
-# 1 "C:\\Users\\kdh95\\Desktop\\SmartCar\\AurixRacer-master\\src\\Projects\\AurixRacer_SB_TC27D//"
+# 1 "C:\\Users\\kdh95\\Desktop\\SmartCarTest\\AurixRacer-master\\src\\Projects\\AurixRacer_SB_TC27D//"
 # 1 "<built-in>"
 # 1 "<command-line>"
 # 1 "../../MyApp/AurixRacer/0_Src/AppSw/Tricore/Main/Release/AppTaskFu.c"
@@ -15475,7 +15475,10 @@ static inline __attribute__ ((always_inline)) Ifx_VADC_G_RESD IfxVadc_Adc_getDeb
     return IfxVadc_getDebugResult(channel->group->group, channel->resultreg);
 }
 # 15 "../../MyApp/AurixRacer/0_Src/AppSw/Tricore/SnsAct/BasicLineScan.h" 2
-# 27 "../../MyApp/AurixRacer/0_Src/AppSw/Tricore/SnsAct/BasicLineScan.h"
+
+# 1 "../../MyApp/AurixRacer/0_Src/AppSw/Tricore/SnsAct/Basic.h" 1
+# 17 "../../MyApp/AurixRacer/0_Src/AppSw/Tricore/SnsAct/BasicLineScan.h" 2
+# 29 "../../MyApp/AurixRacer/0_Src/AppSw/Tricore/SnsAct/BasicLineScan.h"
 typedef struct{
  uint32 adcResult[3][128];
 }IR_LineScan_t;
@@ -15490,23 +15493,26 @@ extern IR_LineScan_t IR_LineScan;
 
 extern void BasicLineScan_init(void);
 extern void BasicLineScan_run(void);
-# 59 "../../MyApp/AurixRacer/0_Src/AppSw/Tricore/SnsAct/BasicLineScan.h"
-typedef struct CAM_INFOMATION {
-   int cam_scan[128];
-   int center;
-}cam_infomation;
+# 63 "../../MyApp/AurixRacer/0_Src/AppSw/Tricore/SnsAct/BasicLineScan.h"
+typedef struct CAM_INFORMATION {
+ int cam_scan[128];
+ int center;
+}cam_information;
 
+int AdjustBySides();
 void Camera_Initialization();
 int GetCameraCenter(int prevServo, int cntDiff);
 enum DIRECTION GetCameraDash();
 
-void GetCamera(cam_infomation * _cam_info);
-void CopyPrevLine(cam_infomation * _cam_info, cam_infomation _prev_info);
+void GetCamera(cam_information * _cam_info);
+void CopyPrevLine(cam_information * _cam_info, cam_information _prev_info);
 
 int GetMedian(int _array[5]);
+int GetMedianCenter(cam_information _cam_info[5]);
 void Stretching(int(*_line)[128], int _max);
 void MedianFiltering(int(*_line)[128]);
 void Sharpening(int(*_line)[128]);
+int IsNoise(cam_information _cam_info[5]);
 extern int FindCenter(int(*line)[128]);
 
 
@@ -15516,7 +15522,7 @@ extern void CheckLimitZone(int nowState);
 extern int IsLimitZone();
 extern int GetDashLine();
 extern int FindCenter(int(*_line)[128]);
-extern int FindOneLine(int line[128]);
+extern int FindOneLine(int line[128], int dir);
 extern int GetCountPassedObject();
 extern void SetCountPassedObject(int cpo);
 extern int GetDottedLine();
@@ -35619,6 +35625,8 @@ void appTaskfu_1000ms(void);
 void appTaskfu_idle(void);
 void appIsrCb_1ms(void);
 
+void test_srv_operation(void);
+
 extern void FollowingLine();
 # 2 "../../MyApp/AurixRacer/0_Src/AppSw/Tricore/Main/Release/AppTaskFu.c" 2
 
@@ -35642,38 +35650,44 @@ ZONE zoneState = SPEED, beforeZoneState = SPEED;
 int delayCountForCheckDetectZone = 0;
 int delayCountForIsDetectZone = 0;
 int delayCountForPassedObject = 0;
+int delayCountForRecovery = 0;
+int isRecovery = 0;
 
-int g_nowCenterIndex = 60;
-int g_prevCenterIndex = 60;
+int isFirst = 0;
+int initAvoidValue = 0;
+
+int g_nowCenterIndex = 70;
+int g_prevCenterIndex = 70;
 int g_cntDiffNowPrevCenterIndex = 0;
-float g_servoValue = 60.0f;
+float g_servoValue = 70.0f;
 
 float objectSrvAngle = 0.0f;
 
 void appTaskfu_init(void){
  BasicLineScan_init();
  BasicPort_init();
-    BasicGtmTom_init();
-    BasicVadcBgScan_init();
-    BasicGpt12Enc_init();
-    AsclinShellInterface_init();
+ BasicGtmTom_init();
+ BasicVadcBgScan_init();
+ BasicGpt12Enc_init();
+ AsclinShellInterface_init();
 
-    zoneState = SPEED;
-    beforeZoneState = SPEED;
-
-    delayCountForIsDetectZone = 1;
+ zoneState = SPEED;
+ beforeZoneState = SPEED;
 
 
-
-
-
-    IR_setSrvAngle(0.1953f);
-    IR_setMotor0En(1);
-    IR_setMotor0Vol(0.3f);
+ delayCountForIsDetectZone = 1;
 
 
 
-    InfineonRacer_init();
+
+
+ IR_setSrvAngle(0.1953f);
+ IR_setMotor0En(1);
+ IR_setMotor0Vol(0.3f);
+
+
+
+ InfineonRacer_init();
 
 
 
@@ -35698,17 +35712,6 @@ void appTaskfu_10ms(void)
  int dottedLine;
  int countPassedObject;
 
- float currentSrvAngle = IR_Srv.Angle;
- int lStdValue[4] = {25, 63, 67, 99};
- int rStdValue[4] = {25, 63, 67, 99};
- int lIndex = 0;
- int rIndex = 0;
- int lcount = 0;
- int rcount = 0;
- int totalCamera[232];
- int i = 0;
-
-
  task_cnt_10m++;
  if(task_cnt_10m == 1000){
   task_cnt_10m = 0;
@@ -35720,7 +35723,6 @@ void appTaskfu_10ms(void)
   BasicPort_run();
   BasicGtmTom_run();
   BasicVadcBgScan_run();
-
 
   g_nowCenterIndex = GetCameraCenter(g_prevCenterIndex, g_cntDiffNowPrevCenterIndex);
   FollowingLine();
@@ -35736,119 +35738,43 @@ void appTaskfu_10ms(void)
   if(beforeZoneState != zoneState) {
    delayCountForCheckDetectZone += 40;
    delayCountForIsDetectZone += 40;
-   zoneState = beforeZoneState;
+
   }
+  if(zoneState == SPEED){
+   IR_setMotor0Vol(0.5f);
 
-  if(zoneState == SPEED) {
-   IR_setMotor0Vol(0.72f);
-
-
-   for(i = 0; i < 116; i++) {
-     totalCamera[i] = IR_LineScan.adcResult[1][i + 6];
-     }
-     for(i = 0; i < 116; i++){
-     totalCamera[i + 116] = IR_LineScan.adcResult[0][i + 6];
-     }
-
-
-     Stretching(totalCamera, 4096);
-     MedianFiltering(totalCamera);
-     Sharpening(totalCamera);
-     Stretching(totalCamera, 100000);
-
-
-
-     for(i = 116; i > 0; --i){
-     if(totalCamera[i] >= 50000){
-      if(lcount == 0){
-       lIndex = i;
-      }
-     lcount++;
-     if(lcount > 4){
-      lIndex = -1;
-      break;
-     }
-     }
-     }
-     for(i = 116; i < 232; ++i){
-     if(totalCamera[i] >= 50000){
-      if(rcount == 0){
-       rIndex = i - 116;
-      }
-     rcount++;
-     if(rcount > 4){
-      rIndex = -1;
-     }
-     }
-     }
-
-
-   if(lIndex == -1 && rIndex != -1){
-     if (rIndex <= rStdValue[0]){
-     IR_setSrvAngle(currentSrvAngle - 0.03);
-     }
-     else if(rStdValue[0] < rIndex && rIndex <= rStdValue[1]){
-     IR_setSrvAngle(currentSrvAngle - 0.005);
-     }
-     else if(rStdValue[1] < rIndex && rIndex <= rStdValue[2]){
-     IR_setSrvAngle(0.1953);
-     }
-     else if(rStdValue[2] < rIndex && rIndex <= rStdValue[3]){
-     IR_setSrvAngle(currentSrvAngle + 0.005);
-     }
-     else{
-     IR_setSrvAngle(currentSrvAngle + 0.03);
-     }
-     }
-
-     else if(rIndex == -1 && lIndex != -1){
-     if (lIndex <= lStdValue[0]){
-     IR_setSrvAngle(currentSrvAngle - 0.03);
-     }
-     else if(lStdValue[0] < lIndex && lIndex <= lStdValue[1]){
-     IR_setSrvAngle(currentSrvAngle - 0.005);
-     }
-     else if(lStdValue[1] < lIndex && lIndex <= lStdValue[2]){
-     IR_setSrvAngle(0.1953);
-     }
-     else if(lStdValue[2] < lIndex && lIndex <= lStdValue[3]){
-     IR_setSrvAngle(currentSrvAngle + 0.005);
-     }
-     else{
-     IR_setSrvAngle(currentSrvAngle + 0.03);
-     }
-     }
-     else if(rIndex != -1 && lIndex != -1){
-      IR_setSrvAngle((((float)g_nowCenterIndex - 60.0f) / 100.0f) * 1.5f + 0.1953f);
-     }
-     else{
-      IR_setSrvAngle((((float)g_nowCenterIndex - 60.0f) / 100.0f) * 1.5f + 0.1953f);
-     }
-# 216 "../../MyApp/AurixRacer/0_Src/AppSw/Tricore/Main/Release/AppTaskFu.c"
+   if(g_nowCenterIndex >= 65 && g_nowCenterIndex <= 75)
+    IR_setSrvAngle(((float)g_nowCenterIndex - 70.0f) / 100.0f * 1.5f + 0.1953f);
+   else {
+    IR_setMotor0Vol(0.3f);
+    IR_setSrvAngle(((float)g_nowCenterIndex - 70.0f) / 100.0f * 2.5f + 0.1953f);
+   }
    servoValue = IR_Srv.Angle;
 
-   if(GetInfraredSensorValue() > 150) {
+
+   if(GetInfraredSensorValue() > (initAvoidValue + 150)) {
     IR_setMotor0Vol(0.0f);
-    IR_setMotor0En(0);
+
    }
   }
   else if(zoneState == LIMIT) {
    dottedLine = GetDottedLine();
    countPassedObject = GetCountPassedObject();
-   IR_setMotor0Vol(0.35f);
-   IR_setSrvAngle((((float)g_nowCenterIndex - 60.0f) / 100.0f) * 2.2f + 0.1953f);
+   IR_setMotor0Vol(0.4f);
 
-   if(g_nowCenterIndex >= 55 && g_nowCenterIndex < 66) {
-    IR_setSrvAngle(0.1953);
+   if(g_nowCenterIndex >= 65 && g_nowCenterIndex <= 75)
+    IR_setSrvAngle(((float)g_nowCenterIndex - 70.0f) / 100.0f * 1.5f + 0.1953f);
+   else {
+    IR_setSrvAngle(((float)g_nowCenterIndex - 70.0f) / 100.0f * 2.5f + 0.1953f);
    }
 
    if(delayCountForPassedObject == 0) {
-    if(GetInfraredSensorValue() > 150){
+    if(GetInfraredSensorValue() > (initAvoidValue + 185)){
      if(countPassedObject == 0){
       dottedLine = GetDashLine();
       countPassedObject += 1;
      }
-     delayCountForPassedObject += 8;
+     delayCountForPassedObject += 12;
      dottedLine *= -1;
      SetCountPassedObject(countPassedObject);
      SetDottedLine(dottedLine);
@@ -35856,13 +35782,21 @@ void appTaskfu_10ms(void)
    }
 
    if(delayCountForPassedObject > 0) {
-    objectSrvAngle = 0.1953f + -dottedLine * 0.3f;
+    IR_setMotor0Vol(0.3f);
+    objectSrvAngle = 0.1953f + (dottedLine * 0.3f);
+    IR_setSrvAngle(objectSrvAngle);
+    isRecovery = 1;
+   }
+   if(isRecovery == 1 && delayCountForPassedObject <= 0) {
+    isRecovery = 0;
+    delayCountForRecovery += 12;
+   }
+
+   if(delayCountForRecovery > 0) {
+    objectSrvAngle = 0.1953f + (-dottedLine * 0.3f);
     IR_setSrvAngle(objectSrvAngle);
    }
   }
-
-
-
 
   if(IR_Ctrl.basicTest == 0){
 
@@ -35875,22 +35809,20 @@ void appTaskfu_10ms(void)
   }
   AsclinShellInterface_runLineScan();
  }
-
- g_leftIndex = lIndex;
- g_rightIndex = rIndex;
 }
 
 void FollowingLine() {
  if(g_nowCenterIndex <= 0 || g_nowCenterIndex >= 200)
   g_nowCenterIndex = g_prevCenterIndex;
 
- if(g_nowCenterIndex >= 65 || g_nowCenterIndex < 55) {
+ if(g_nowCenterIndex >= 72 || g_nowCenterIndex < 68) {
   if(((g_nowCenterIndex - g_prevCenterIndex < 0) ? -g_nowCenterIndex - g_prevCenterIndex : g_nowCenterIndex - g_prevCenterIndex) >= 30) {
    g_cntDiffNowPrevCenterIndex += 1;
    if(g_cntDiffNowPrevCenterIndex >= 15) {
     g_prevCenterIndex = g_nowCenterIndex;
     g_cntDiffNowPrevCenterIndex = 0;
    }
+   g_nowCenterIndex = g_prevCenterIndex;
   }
   else
    g_cntDiffNowPrevCenterIndex = 0;
@@ -35909,6 +35841,13 @@ void LimitZone() {
 
 void appTaskfu_100ms(void)
 {
+ if(isFirst < 3)
+  isFirst += 1;
+
+ if(isFirst == 1)
+  initAvoidValue = GetInfraredSensorValue();
+
+
  if(delayCountForIsDetectZone > 0)
   delayCountForIsDetectZone -= 1;
 
@@ -35927,12 +35866,18 @@ void appTaskfu_100ms(void)
  if(delayCountForPassedObject < 0)
   delayCountForPassedObject = 0;
 
+ if(delayCountForRecovery > 0)
+  delayCountForRecovery -= 1;
+
+ if(delayCountForRecovery < 0)
+  delayCountForRecovery = 0;
+
 
  task_cnt_100m++;
  if(task_cnt_100m == 1000){
   task_cnt_100m = 0;
  }
-# 331 "../../MyApp/AurixRacer/0_Src/AppSw/Tricore/Main/Release/AppTaskFu.c"
+# 258 "../../MyApp/AurixRacer/0_Src/AppSw/Tricore/Main/Release/AppTaskFu.c"
 }
 
 volatile int velocity = 0;
@@ -35966,18 +35911,18 @@ void appIsrCb_1ms(void){
 void test_srv_operation(void){
 
  IR_setSrvAngle(start);
-  if (start <-1){
-   state = 1;
-   start += 0.3;
-  }
-  if ((-1<= start && start <=1) && state ==-1){
-   start -=0.3;
-  }
-  if ((-1 <= start && start <=1) && state == 1){
-   start += 0.3;
-  }
-  if (start > 1){
-   state = -1;
-   start -= 0.3;
-  }
+ if (start <-1){
+  state = 1;
+  start += 0.3;
+ }
+ if ((-1<= start && start <=1) && state ==-1){
+  start -=0.3;
+ }
+ if ((-1 <= start && start <=1) && state == 1){
+  start += 0.3;
+ }
+ if (start > 1){
+  state = -1;
+  start -= 0.3;
+ }
 }

@@ -13,6 +13,8 @@
 #include <Vadc/Std/IfxVadc.h>
 #include <Vadc/Adc/IfxVadc_Adc.h>
 
+#include "Basic.h"
+
 /******************************************************************************/
 /*-----------------------------------Macros-----------------------------------*/
 /******************************************************************************/
@@ -46,32 +48,37 @@ IFX_EXTERN void BasicLineScan_run(void);
 #define MAXVALUE 4096
 #define DABS(n) ((n < 0) ? -n : n)
 #define DSQUARE(n) (n*n)
-#define THRESHOLD 50000
+#define THRESHOLD 90000
+#define WHITETHRESHOLD 60000
 #define C_THRESHOLD 70000
 //#define THRESHOLD 3500
 //#define C_THRESHOLD 1700
 #define LEFTMAXCOUNT 300
 #define LEFTTHRESHOLD 197
-#define LINECENTER 60
+#define LINECENTER 70
 //#define LIMIT_THRESHOLD 44
-#define LIMIT_THRESHOLD 109
+//#define LIMIT_THRESHOLD 109
+#define LIMIT_THRESHOLD 4
 
-typedef struct CAM_INFOMATION {
-   int cam_scan[LINESIZE];
-   int center;
-}cam_infomation;
+typedef struct CAM_INFORMATION {
+	int cam_scan[LINESIZE];
+	int center;
+}cam_information;
 
+int AdjustBySides();
 void Camera_Initialization();
 int GetCameraCenter(int prevServo, int cntDiff);
 enum DIRECTION GetCameraDash();
 
-void GetCamera(cam_infomation * _cam_info);
-void CopyPrevLine(cam_infomation * _cam_info, cam_infomation _prev_info);
+void GetCamera(cam_information * _cam_info);
+void CopyPrevLine(cam_information * _cam_info, cam_information _prev_info);
 
 int GetMedian(int _array[5]);
+int GetMedianCenter(cam_information _cam_info[LINES]);
 void Stretching(int(*_line)[LINESIZE], int _max);
 void MedianFiltering(int(*_line)[LINESIZE]);
 void Sharpening(int(*_line)[LINESIZE]);
+int IsNoise(cam_information _cam_info[LINES]);
 IFX_EXTERN int FindCenter(int(*line)[LINESIZE]);
 
 //void MakeIdxZero(int(*_line)[LINESIZE]);
@@ -81,7 +88,7 @@ IFX_EXTERN void CheckLimitZone(int nowState);
 IFX_EXTERN int IsLimitZone();
 IFX_EXTERN int GetDashLine();
 IFX_EXTERN int FindCenter(int(*_line)[LINESIZE]);
-IFX_EXTERN int FindOneLine(int line[LINESIZE]);
+IFX_EXTERN int FindOneLine(int line[LINESIZE], int dir);
 IFX_EXTERN int GetCountPassedObject();
 IFX_EXTERN void SetCountPassedObject(int cpo);
 IFX_EXTERN int GetDottedLine();

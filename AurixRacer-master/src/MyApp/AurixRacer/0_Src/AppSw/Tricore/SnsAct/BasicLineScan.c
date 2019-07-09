@@ -134,8 +134,8 @@ void BasicLineScan_init(void)
 
 		chnIx = 2;
 		IfxVadc_Adc_initChannelConfig(&adcChannelConfig[chnIx], &g_VadcAutoScan.adcGroup);
-		adcChannelConfig[chnIx].channelId      = (IfxVadc_ChannelId)(TSL1401_AO_2);
-		adcChannelConfig[chnIx].resultRegister = (IfxVadc_ChannelResult)(TSL1401_AO_2);  /* use dedicated result register */
+		adcChannelConfig[chnIx].channelId      = (IfxVadc_ChannelId)(2);
+		adcChannelConfig[chnIx].resultRegister = (IfxVadc_ChannelResult)(2);  /* use dedicated result register */
 
 		/* initialize the channel */
 		IfxVadc_Adc_initChannel(&g_VadcAutoScan.adcChannel[chnIx], &adcChannelConfig[chnIx]);
@@ -209,6 +209,9 @@ void BasicLineScan_run(void)
 			} while (!conversionResult.B.VF);
 
 			IR_LineScan.adcResult[chnIx][idx] = conversionResult.B.RESULT;
+			if(IR_LineScan.adcResult[chnIx][idx] >= 2700){
+				IR_LineScan.adcResult[chnIx][idx] = 4096;
+			}
 		}
 
 	}
@@ -219,16 +222,17 @@ void BasicLineScan_run(void)
 
 }
 
-cam_infomation cam_info[CAMS][LINES];
-int debugLine[LINESIZE], speedLimitLine[LINESIZE];
+cam_information cam_info[CAMS][LINES];
+int debugLine[LINESIZE], speedLimitLine[3][LINESIZE];
 int nowIndex;
 int cntTotal, cntLeft;
 int isLimitZone = 0, dashLine = 0;
 int leftIndexCount = 0, rightIndexCount = 0;
 int zeroCnt = 0;
 int g_cameraDirection = 0;
+int cent[4] = {0, 0, 0, 0};
 
-void CopyPrevLine(cam_infomation * _cam_info, cam_infomation _prev_info) {
+void CopyPrevLine(cam_information * _cam_info, cam_information _prev_info) {
 	int i;
 	for (i = 0; i < LINESIZE; i++)
 		_cam_info->cam_scan[i] = _prev_info.cam_scan[i];
@@ -237,6 +241,25 @@ void CopyPrevLine(cam_infomation * _cam_info, cam_infomation _prev_info) {
 
 int GetMedian(int _array[5]) {
 	int i, j, temp;
+	for (i = 0; i < 5; i++) {
+		for (j = i; j < 5; j++) {
+			if (_array[i] > _array[j]) {
+				temp = _array[i];
+				_array[i] = _array[j];
+				_array[j] = temp;
+			}
+		}
+	}
+	return _array[2];
+}
+
+int GetMedianCenter(cam_information _cam_info[LINES]) {
+	int i, j, temp;
+	int _array[LINES];
+
+	for(i=0; i<LINES; i++)
+		_array[i] = _cam_info[i].center;
+
 	for (i = 0; i < 5; i++) {
 		for (j = i; j < 5; j++) {
 			if (_array[i] > _array[j]) {
@@ -293,6 +316,17 @@ void Sharpening(int(*_line)[LINESIZE]) {
 		(*_line)[i] = temp[i];
 }
 
+int IsNoise(cam_information _cam_info[LINES]) {
+	int noise = 0, i;
+
+	for(i=0; i<LINES; i++)
+		noise += DABS(_cam_info[i].center - _cam_info[(i+1)%LINES].center);
+
+	if(noise >= 50)
+		return 1;
+	return 0;
+}
+
 void Camera_Initialization() {
 	int i=0, j=0;
 	for(i=0; i<CAMS; i++) {
@@ -312,8 +346,10 @@ void Camera_Initialization() {
 }
 
 int GetCameraCenter(int prevServo, int cntDiff) {
-	int i=0;
-	// int lzcnt, rzcnt;
+	int result = 0;
+	int i=0, j=0;
+	int medianLeftCenter = 70, medianRightCenter = 70;
+	int isLeftNoise = 0, isRightNoise = 0;
 
 	if(cntDiff >= 2) {
 		if(prevServo >= 60)
@@ -335,58 +371,70 @@ int GetCameraCenter(int prevServo, int cntDiff) {
 		Sharpening(&cam_info[i][nowIndex].cam_scan);
 		Stretching(&(cam_info[i][nowIndex].cam_scan), 100000);
 	}
+
+
 	cam_info[0][nowIndex].center = FindCenter(&(cam_info[0][nowIndex].cam_scan));
-	cam_info[1][nowIndex].center = FindOneLine(cam_info[1][nowIndex].cam_scan);
-	cam_info[2][nowIndex].center = FindOneLine(cam_info[2][nowIndex].cam_scan);
+	cam_info[1][nowIndex].center = FindOneLine(cam_info[1][nowIndex].cam_scan, -1);
+	cam_info[2][nowIndex].center = FindOneLine(cam_info[2][nowIndex].cam_scan, 1);
 
-	for(i=0; i<LINESIZE; i++)
-		speedLimitLine[i] = cam_info[0][nowIndex].cam_scan[i];
 
-	if(cam_info[0][nowIndex].center == -1 || cam_info[0][nowIndex].center == 0) {
-		/*
-		if(cam_info[1][nowIndex].center == -1 && cam_info[2][nowIndex].center)
-			return -1;
-		else if(cam_info[2][nowIndex].center == -1 && cam_info[1][nowIndex].center)
-			return -2;
-		*/
-//		CopyPrevLine(&(cam_info[0][nowIndex]), cam_info[0][(nowIndex + LINES - 2) % LINES]);
-//		cam_info[0][nowIndex].center = cam_info[0][(nowIndex + LINES - 2) % LINES].center;
-		CopyPrevLine(&(cam_info[0][nowIndex]), cam_info[0][(nowIndex + LINES - 1) % LINES]);
-		cam_info[0][nowIndex].center = cam_info[0][(nowIndex + LINES - 1) % LINES].center;
-		/*if(g_cameraDirection == 0)
-			cam_info[0][nowIndex].center = cam_info[1][nowIndex].center + 40;
-		else if(g_cameraDirection == 1)
-			cam_info[0][nowIndex].center = cam_info[2][nowIndex].center - 40;*/
+	for(i=0; i<3; i++) {
+		for(j=0; j<128; j++)
+			speedLimitLine[i][j] = cam_info[i][nowIndex].cam_scan[j];
 	}
 
-	for(i=0; i<LINESIZE; i++)
-		debugLine[i] = cam_info[0][nowIndex].cam_scan[i];
+	/*if(cam_info[0][nowIndex].center == -1) {
+		CopyPrevLine(&cam_info[0][nowIndex], cam_info[0][(nowIndex + 4) % 5]);
+		cam_info[0][nowIndex].center = cam_info[0][(nowIndex+4)%5].center;
+	}*/
 
-	nowIndex = (nowIndex+1)%LINES;
+	if(cam_info[1][nowIndex].center == -1) {
+		CopyPrevLine(&cam_info[1][nowIndex], cam_info[1][(nowIndex + 4) % 5]);
+		cam_info[1][nowIndex].center = cam_info[1][(nowIndex+4)%5].center;
+	}
 
-	return cam_info[0][(nowIndex + 4) % 5].center;
-}
+	if(cam_info[2][nowIndex].center == -1) {
+		CopyPrevLine(&cam_info[2][nowIndex], cam_info[2][(nowIndex + 4) % 5]);
+		cam_info[2][nowIndex].center = cam_info[2][(nowIndex+4)%5].center;
+	}
 
-/*
-int MakeIdxZero(int(*_line)[LINESIZE]) {
-	int i;
-	int zerocnt = 0;
+	medianLeftCenter = GetMedianCenter(cam_info[1]);
+	medianRightCenter = GetMedianCenter(cam_info[2]);
 
-	for (i = 0; i < LINESIZE; i++){
-		if((*_line)[i] < 0)
-			(*_line)[i] = 0;
-		if((*_line)[i] < THRESHOLD) {
-			zerocnt++;
-			(*_line)[i] = 0;
+	isLeftNoise = IsNoise(cam_info[1]);
+	isRightNoise = IsNoise(cam_info[2]);
+
+	if(isLeftNoise == 1 && isRightNoise == 1)
+		result = 70;
+	else if(isLeftNoise == 1 && isRightNoise == 0)
+		result = medianRightCenter - 35;
+	else if(isLeftNoise == 0 && isRightNoise == 1)
+		result = medianLeftCenter + 35;
+	else {
+		if(DABS(cam_info[1][nowIndex].center - medianLeftCenter) >= 30)
+			cam_info[1][nowIndex].center = medianLeftCenter;
+		if(DABS(cam_info[2][nowIndex].center - medianRightCenter) >= 30)
+			cam_info[2][nowIndex].center = medianRightCenter;
+
+		if(DABS(medianLeftCenter - medianRightCenter) >= 60 && DABS(medianLeftCenter - medianRightCenter) <= 80) {
+			result = medianLeftCenter + medianRightCenter;
+			result = result / 2;
+		}
+		else {
+			result = DABS(70 - medianLeftCenter) <= DABS(70 - medianRightCenter) ?
+					medianLeftCenter + 35 : medianRightCenter - 35;
 		}
 	}
 
-	return zerocnt;
+	result = DABS(result - 70) > DABS(cam_info[0][nowIndex].center - 70) ? result : cam_info[0][nowIndex].center;
+
+	nowIndex = (nowIndex + 1) % LINES;
+
+	return result;
 }
-*/
 
 int FindCenter(int(*_line)[LINESIZE]) {
-	int i, index = 0, leftIndex = 0, rightIndex = 127, zeroCount = 0;
+	int i, index = 0, leftIndex = 0, rightIndex = 127, zeroCount = 0, whiteCount = 0;
 
 	// find points greater than THRESHOLD
 	for (i = 0; i < LINESIZE; i++) {
@@ -396,6 +444,12 @@ int FindCenter(int(*_line)[LINESIZE]) {
 			zeroCount++;
 			(*_line)[i] = 0;
 		}
+	}
+
+
+	//test
+	for(i =  0; i < LINESIZE; i++){
+		Zero_center_line[i] = (*_line)[i];
 	}
 
 	//if(zeroCount <= 118) isLimitZone = 1;
@@ -439,36 +493,77 @@ int FindCenter(int(*_line)[LINESIZE]) {
 	return index;
 }
 
-int FindOneLine(int line[LINESIZE]) {
-	int i, zeroCount = 0;
-	int lineIndex = 0;
+int countWhite[2] = {0, 0};
+int indexWhite = 0;
+int FindOneLine(int line[LINESIZE], int dir) {
+	int i, zeroCount = 0, whiteCount = 0;
+	int lineIndex = -1;
 
 	for (i = 0; i < LINESIZE; i++) {
 		if(line[i] < 0)
 			line[i] = 0;
-		if (line[i] < C_THRESHOLD) {
+		if(line[i] < WHITETHRESHOLD) {
+			whiteCount+=1;
+		}
+		if (line[i] < THRESHOLD) {
 			zeroCount+=1;
 			line[i] = 0;
 		}
 	}
 
+	countWhite[indexWhite] = whiteCount;
+	indexWhite = (indexWhite+1)%2;
+
 	// all white
-	if(zeroCount >= 122)
+	if(zeroCount <= 124 || whiteCount <= 115)
 		return -1;
 
-	for(i=2; i<126; i++) {
-		if(lineIndex == 0 && line[i] != 0 && line[i+1] == 0)
-			lineIndex = i;
-		else if(lineIndex != 0 && line[i] != 0 && line[i+1] == 0 && line[lineIndex] <= line[i])
-			lineIndex = i;
+	for(i=0; i<108; i++) {
+		if(dir == -1) {
+			if(lineIndex == -1 && line[i+5] != 0 && line[i+1+5] == 0)
+				lineIndex = i+5;
+			else if(lineIndex != -1 && line[i+5] != 0 && line[i+1+5] == 0 && line[lineIndex] <= line[i+5])
+				lineIndex = i+5;
+		}
+		else if(dir == 1) {
+			if(lineIndex == -1 && line[128 - i - 5] != 0 && line[128 - i - 5 - 1] == 0)
+				lineIndex = 128 - i - 5;
+			else if(lineIndex != -1 && line[128 - i - 5] != 0 && line[128 - i - 5 - 1] == 0 && line[lineIndex] <= line[128 - i - 5])
+				lineIndex = 128 - i - 5;
+		}
 	}
-	if(lineIndex <= 3 || lineIndex >= 123)
+
+	if(lineIndex <= 3 || lineIndex >= 124)
 		lineIndex = -1;
 
 	return lineIndex;
 }
-
+int limitCount = 0;
 void CheckLimitZone(int nowState) {
+	int i = 0;
+	int countiousLineCnt = 0;
+	int lineCnt = 0;
+	for(i = 0; i < LINESIZE-1; i++){
+		if(cam_info[0][nowIndex].cam_scan[i] != 0 && cam_info[0][nowIndex].cam_scan[i+1] != 0)
+			countiousLineCnt += 1;
+		else if(cam_info[0][nowIndex].cam_scan[i] == 0 && cam_info[0][nowIndex].cam_scan[i+1] == 0)
+			continue;
+		else{
+			if(countiousLineCnt >= 1){
+				lineCnt += 1;
+			}
+		}
+	}
+	if(lineCnt >= LIMIT_THRESHOLD){
+		if(limitCount <= 1){
+			limitCount++;
+		}
+		else{
+			isLimitZone = nowState ^ 1;
+			limitCount = 0;
+		}
+	}
+	/*
 	int i = 0;
 	zeroCnt = 0;
 	for(i = 0; i < LINESIZE; i++){
@@ -477,6 +572,8 @@ void CheckLimitZone(int nowState) {
 	}
 	if(zeroCnt <= LIMIT_THRESHOLD)
 		isLimitZone = nowState ^ 1;
+	 */
+
 }
 
 int IsLimitZone() {

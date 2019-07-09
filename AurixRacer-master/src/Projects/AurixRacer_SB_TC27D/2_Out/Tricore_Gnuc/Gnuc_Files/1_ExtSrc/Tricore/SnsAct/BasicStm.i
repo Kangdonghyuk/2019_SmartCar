@@ -1,5 +1,5 @@
 # 1 "../../MyApp/AurixRacer/0_Src/AppSw/Tricore/SnsAct/BasicStm.c"
-# 1 "C:\\Users\\kdh95\\Desktop\\SmartCar\\AurixRacer-master\\src\\Projects\\AurixRacer_SB_TC27D//"
+# 1 "C:\\Users\\kdh95\\Desktop\\SmartCarTest\\AurixRacer-master\\src\\Projects\\AurixRacer_SB_TC27D//"
 # 1 "<built-in>"
 # 1 "<command-line>"
 # 1 "../../MyApp/AurixRacer/0_Src/AppSw/Tricore/SnsAct/BasicStm.c"
@@ -27967,7 +27967,10 @@ static inline __attribute__ ((always_inline)) Ifx_VADC_G_RESD IfxVadc_Adc_getDeb
     return IfxVadc_getDebugResult(channel->group->group, channel->resultreg);
 }
 # 15 "../../MyApp/AurixRacer/0_Src/AppSw/Tricore/SnsAct/BasicLineScan.h" 2
-# 27 "../../MyApp/AurixRacer/0_Src/AppSw/Tricore/SnsAct/BasicLineScan.h"
+
+# 1 "../../MyApp/AurixRacer/0_Src/AppSw/Tricore/SnsAct/Basic.h" 1
+# 17 "../../MyApp/AurixRacer/0_Src/AppSw/Tricore/SnsAct/BasicLineScan.h" 2
+# 29 "../../MyApp/AurixRacer/0_Src/AppSw/Tricore/SnsAct/BasicLineScan.h"
 typedef struct{
  uint32 adcResult[3][128];
 }IR_LineScan_t;
@@ -27982,23 +27985,26 @@ extern IR_LineScan_t IR_LineScan;
 
 extern void BasicLineScan_init(void);
 extern void BasicLineScan_run(void);
-# 59 "../../MyApp/AurixRacer/0_Src/AppSw/Tricore/SnsAct/BasicLineScan.h"
-typedef struct CAM_INFOMATION {
-   int cam_scan[128];
-   int center;
-}cam_infomation;
+# 63 "../../MyApp/AurixRacer/0_Src/AppSw/Tricore/SnsAct/BasicLineScan.h"
+typedef struct CAM_INFORMATION {
+ int cam_scan[128];
+ int center;
+}cam_information;
 
+int AdjustBySides();
 void Camera_Initialization();
 int GetCameraCenter(int prevServo, int cntDiff);
 enum DIRECTION GetCameraDash();
 
-void GetCamera(cam_infomation * _cam_info);
-void CopyPrevLine(cam_infomation * _cam_info, cam_infomation _prev_info);
+void GetCamera(cam_information * _cam_info);
+void CopyPrevLine(cam_information * _cam_info, cam_information _prev_info);
 
 int GetMedian(int _array[5]);
+int GetMedianCenter(cam_information _cam_info[5]);
 void Stretching(int(*_line)[128], int _max);
 void MedianFiltering(int(*_line)[128]);
 void Sharpening(int(*_line)[128]);
+int IsNoise(cam_information _cam_info[5]);
 extern int FindCenter(int(*line)[128]);
 
 
@@ -28008,7 +28014,7 @@ extern void CheckLimitZone(int nowState);
 extern int IsLimitZone();
 extern int GetDashLine();
 extern int FindCenter(int(*_line)[128]);
-extern int FindOneLine(int line[128]);
+extern int FindOneLine(int line[128], int dir);
 extern int GetCountPassedObject();
 extern void SetCountPassedObject(int cpo);
 extern int GetDottedLine();
@@ -35633,6 +35639,8 @@ void appTaskfu_100ms(void);
 void appTaskfu_1000ms(void);
 void appTaskfu_idle(void);
 void appIsrCb_1ms(void);
+
+void test_srv_operation(void);
 
 extern void FollowingLine();
 # 17 "../../MyApp/AurixRacer/0_Src/AppSw/Tricore/SnsAct/BasicStm.c" 2

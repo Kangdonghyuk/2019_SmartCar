@@ -28,6 +28,8 @@ void appTaskfu_1000ms(void);
 void appTaskfu_idle(void);
 void appIsrCb_1ms(void);
 
+void test_srv_operation(void);
+
 IFX_EXTERN void FollowingLine();
 
 #endif /* APPTASKFU_H_ */
