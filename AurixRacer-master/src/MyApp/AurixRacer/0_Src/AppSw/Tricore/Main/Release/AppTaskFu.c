@@ -1,5 +1,6 @@
 #include "AppTaskFu.h"
 
+
 static sint32 task_cnt_1m = 0;
 static sint32 task_cnt_10m = 0;
 static sint32 task_cnt_100m = 0;
@@ -10,29 +11,57 @@ boolean task_flag_10m = FALSE;
 boolean task_flag_100m = FALSE;
 boolean task_flag_1000m = FALSE;
 
+typedef enum zone {
+	SPEED = 0, LIMIT = 1
+}ZONE;
+
+ZONE zoneState = SPEED, beforeZoneState = SPEED;
+
+int delayCountForCheckDetectZone = 0;
+int delayCountForIsDetectZone = 0;
+int delayCountForPassedObject = 0;
+int delayCountForRecovery = 0;
+int isRecovery = 0;
+
+int isFirst = 0;
+int initAvoidValue = 0;
+
+int g_nowCenterIndex = 70;
+int g_prevCenterIndex = 70;
+int g_cntDiffNowPrevCenterIndex = 0;
+float g_servoValue = 70.0f;
+
+float objectSrvAngle = 0.0f;
+
 void appTaskfu_init(void){
 	BasicLineScan_init();
 	BasicPort_init();
-    BasicGtmTom_init();
-    BasicVadcBgScan_init();
-    BasicGpt12Enc_init();
-    AsclinShellInterface_init();
+	BasicGtmTom_init();
+	BasicVadcBgScan_init();
+	BasicGpt12Enc_init();
+	AsclinShellInterface_init();
+
+	zoneState = SPEED;
+	beforeZoneState = SPEED;
+
+
+	delayCountForIsDetectZone = 1;
 
 #if BOARD == APPLICATION_KIT_TC237
-    tft_app_init(1);
-    perf_meas_init();
+	tft_app_init(1);
+	perf_meas_init();
 #elif BOARD == SHIELD_BUDDY
-    IR_setSrvAngle(0.1953f);
-    IR_setMotor0En(TRUE);
-    IR_setMotor0Vol(0.6f);
-    //IR_setMotor0Vol(1.0f);
-    //IR_setMotor0Vol(0.5f);
+
+	IR_setSrvAngle(0.1953f);
+	IR_setMotor0En(TRUE);
+	IR_setMotor0Vol(0.3f);
+
 #endif
 
 #if CODE == CODE_HAND
-    InfineonRacer_init();
+	InfineonRacer_init();
 #elif CODE == CODE_ERT
-    IR_Controller_initialize();
+	IR_Controller_initialize();
 #else
 
 #endif
@@ -47,9 +76,16 @@ void appTaskfu_1ms(void)
 
 }
 
-int AEB = 0;
+float g_line_center_value = 0;
+float servoValue = 0.0f;
+int g_leftIndex;
+int g_rightIndex;
+
 void appTaskfu_10ms(void)
 {
+	int dottedLine;
+	int countPassedObject;
+
 	task_cnt_10m++;
 	if(task_cnt_10m == 1000){
 		task_cnt_10m = 0;
@@ -62,36 +98,154 @@ void appTaskfu_10ms(void)
 		BasicGtmTom_run();
 		BasicVadcBgScan_run();
 
-		if(GetAvoid() >= 200) {
-			if(AEB <= 5) {
-				IR_setMotor0Vol(-1.0f);
-				AEB += 1;
+		g_nowCenterIndex = GetCameraCenter(g_prevCenterIndex, g_cntDiffNowPrevCenterIndex);
+		FollowingLine();
+
+		if(delayCountForCheckDetectZone == 0)
+			CheckLimitZone(zoneState);  // 109 limit zone
+
+		if(delayCountForIsDetectZone == 0) {
+			delayCountForIsDetectZone += 4; // delay 400ms
+			beforeZoneState = IsLimitZone();
+		}
+
+		if(beforeZoneState != zoneState) {
+			delayCountForCheckDetectZone += 40; // delay 4000ms
+			delayCountForIsDetectZone += 40;
+			//zoneState = beforeZoneState;
+		}
+		if(zoneState == SPEED){
+			IR_setMotor0Vol(0.5f);
+
+			if(g_nowCenterIndex >= 65 && g_nowCenterIndex <= 75)
+				IR_setSrvAngle(((float)g_nowCenterIndex - 70.0f) / 100.0f * 1.5f + 0.1953f);
+			else {
+				IR_setMotor0Vol(0.3f);
+				IR_setSrvAngle(((float)g_nowCenterIndex - 70.0f) / 100.0f * 2.5f + 0.1953f);
 			}
-			else if(AEB > 5) {
+			servoValue = IR_getSrvAngle();
+
+			// AEB
+			if(GetInfraredSensorValue() > (initAvoidValue + 150)) {//120
 				IR_setMotor0Vol(0.0f);
+				//IR_setMotor0En(0);
 			}
 		}
-		else {
-			IR_setMotor0Vol(0.6f);
-			AEB = 0;
+		else if(zoneState == LIMIT) {
+			dottedLine = GetDottedLine();
+			countPassedObject = GetCountPassedObject();
+			IR_setMotor0Vol(0.4f);
+
+			if(g_nowCenterIndex >= 65 && g_nowCenterIndex <= 75)
+				IR_setSrvAngle(((float)g_nowCenterIndex - 70.0f) / 100.0f * 1.5f + 0.1953f);
+			else {
+				IR_setSrvAngle(((float)g_nowCenterIndex - 70.0f) / 100.0f * 2.5f + 0.1953f);
+			}
+
+			if(delayCountForPassedObject == 0) {
+				if(GetInfraredSensorValue() > (initAvoidValue + 185)){//120
+					if(countPassedObject == 0){
+						dottedLine = GetDashLine();
+						countPassedObject += 1;
+					}
+					delayCountForPassedObject += 12;
+					dottedLine *= -1;
+					SetCountPassedObject(countPassedObject);
+					SetDottedLine(dottedLine);
+				}
+			}
+
+			if(delayCountForPassedObject > 0) {
+				IR_setMotor0Vol(0.3f);
+				objectSrvAngle = 0.1953f + (dottedLine * 0.3f);
+				IR_setSrvAngle(objectSrvAngle);
+				isRecovery = 1;
+			}
+			if(isRecovery == 1 && delayCountForPassedObject <= 0) {
+				isRecovery = 0;
+				delayCountForRecovery += 12;
+			}
+
+			if(delayCountForRecovery > 0) {
+				objectSrvAngle = 0.1953f + (-dottedLine * 0.3f);
+				IR_setSrvAngle(objectSrvAngle);
+			}
 		}
 
 		if(IR_Ctrl.basicTest == FALSE){
-			#if CODE == CODE_HAND
-				InfineonRacer_control();
-			#elif CODE == CODE_ERT
-				IR_Controller_step();
-			#else
+#if CODE == CODE_HAND
+			//InfineonRacer_control();
+#elif CODE == CODE_ERT
+			IR_Controller_step();
+#else
 
-			#endif
+#endif
 		}
 		AsclinShellInterface_runLineScan();
 	}
+}
+
+void FollowingLine() {
+	if(g_nowCenterIndex <= 0 || g_nowCenterIndex >= 200)
+		g_nowCenterIndex = g_prevCenterIndex;
+
+	if(g_nowCenterIndex >= 72 || g_nowCenterIndex < 68) {
+		if(DABS(g_nowCenterIndex - g_prevCenterIndex) >= 30) {
+			g_cntDiffNowPrevCenterIndex += 1;
+			if(g_cntDiffNowPrevCenterIndex >= 15) {
+				g_prevCenterIndex = g_nowCenterIndex;
+				g_cntDiffNowPrevCenterIndex = 0;
+			}
+			g_nowCenterIndex = g_prevCenterIndex;
+		}
+		else
+			g_cntDiffNowPrevCenterIndex = 0;
+	}
+
+	g_prevCenterIndex = g_nowCenterIndex;
+}
+
+void SpeedZone() {
+
+}
+
+void LimitZone() {
 
 }
 
 void appTaskfu_100ms(void)
 {
+	if(isFirst < 3)
+		isFirst += 1;
+
+	if(isFirst == 1)
+		initAvoidValue = GetInfraredSensorValue();
+
+
+	if(delayCountForIsDetectZone > 0)
+		delayCountForIsDetectZone -= 1;
+
+	if(delayCountForIsDetectZone < 0)
+		delayCountForIsDetectZone = 0;
+
+	if(delayCountForCheckDetectZone > 0)
+		delayCountForCheckDetectZone -= 1;
+
+	if(delayCountForCheckDetectZone < 0)
+		delayCountForCheckDetectZone = 0;
+
+	if(delayCountForPassedObject > 0)
+		delayCountForPassedObject -= 1;
+
+	if(delayCountForPassedObject < 0)
+		delayCountForPassedObject = 0;
+
+	if(delayCountForRecovery > 0)
+		delayCountForRecovery -= 1;
+
+	if(delayCountForRecovery < 0)
+		delayCountForRecovery = 0;
+
 
 	task_cnt_100m++;
 	if(task_cnt_100m == 1000){
@@ -109,32 +263,11 @@ void appTaskfu_100ms(void)
 
 volatile int velocity = 0;
 volatile int state = -1;
-volatile int start = 0;
+volatile float start = 1;
 void appTaskfu_1000ms(void)
 {
-	/*if(start == 10) {
-		IR_setMotor0En(TRUE);
-		IR_setMotor0Vol(-0.5f);
-	}
-	start += 1;
 
-		if(state == -1) {
-			IR_setSrvAngle(0.2f);
-		}
-		else if(state == 0) {
-			IR_setSrvAngle(0.3f);
-		}
-		else if(state == 1) {
-			IR_setSrvAngle(0.1f);
-		}
-		else if(state == 2) {
-			IR_setSrvAngle(0.1f);
-		}
-		else if(state == 3) {
-			IR_setSrvAngle(0.3f);
-		}
-
-		state = (state + 1) % 4;*/
+	//	test_srv_operation();
 
 	task_cnt_1000m++;
 	if(task_cnt_1000m == 1000){
@@ -157,3 +290,22 @@ void appIsrCb_1ms(void){
 	BasicGpt12Enc_run();
 }
 
+
+void test_srv_operation(void){
+	// init : state -1(int), start 1(float)
+	IR_setSrvAngle(start);
+	if (start <-1){
+		state = 1;
+		start += 0.3;
+	}
+	if ((-1<= start && start <=1) && state ==-1){
+		start -=0.3;
+	}
+	if ((-1 <= start && start <=1) && state == 1){
+		start += 0.3;
+	}
+	if (start > 1){
+		state = -1;
+		start -= 0.3;
+	}
+}

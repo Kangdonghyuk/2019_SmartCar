@@ -163,6 +163,8 @@ void BasicVadcBgScan_run(void)
         }
 }
 
-int GetAvoid(void) {
+
+int GetInfraredSensorValue(void) {
+
 	return avoidSen[3];
 }
