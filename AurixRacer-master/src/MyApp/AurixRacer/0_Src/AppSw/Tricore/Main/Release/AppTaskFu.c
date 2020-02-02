@@ -51,9 +51,11 @@ void appTaskfu_init(void){
 	tft_app_init(1);
 	perf_meas_init();
 #elif BOARD == SHIELD_BUDDY
+
 	IR_setSrvAngle(0.1953f);
 	IR_setMotor0En(TRUE);
 	IR_setMotor0Vol(0.3f);
+
 #endif
 
 #if CODE == CODE_HAND
@@ -73,10 +75,12 @@ void appTaskfu_1ms(void)
 	}
 
 }
+
 float g_line_center_value = 0;
 float servoValue = 0.0f;
 int g_leftIndex;
 int g_rightIndex;
+
 void appTaskfu_10ms(void)
 {
 	int dottedLine;
@@ -262,7 +266,9 @@ volatile int state = -1;
 volatile float start = 1;
 void appTaskfu_1000ms(void)
 {
+
 	//	test_srv_operation();
+
 	task_cnt_1000m++;
 	if(task_cnt_1000m == 1000){
 		task_cnt_1000m = 0;

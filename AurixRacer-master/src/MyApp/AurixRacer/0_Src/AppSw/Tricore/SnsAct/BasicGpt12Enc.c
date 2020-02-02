@@ -96,7 +96,7 @@ void BasicGpt12Enc_init(void)
         /* Test implementation with T3 as core */
         config.base.offset                    = 0;
         config.base.reversed                  = FALSE;
-        config.base.resolution                = 32; //1024; //2^n °³¼ö¸¸ Çã¿ë
+        config.base.resolution                = 32; //1024; //2^n Â°Â³Â¼Ã¶Â¸Â¸ Ã‡Ã£Â¿Ã«
         config.base.periodPerRotation         = 1;
         config.base.resolutionFactor          = IfxStdIf_Pos_ResolutionFactor_fourFold;
         config.base.updatePeriod              = 1.00e-3;//100e-6;
@@ -144,10 +144,12 @@ void BasicGpt12Enc_init(void)
  * This function is call from the main, background loop
  */
 
+
 uint32 bfencoder = 0;
 uint32 encoder = 0;
 
 void BasicGpt12Enc_run(void){
+
 
 	IfxGpt12_IncrEnc_update(&g_Gpt12Enc.incrEnc);
 
@@ -155,10 +157,48 @@ void BasicGpt12Enc_run(void){
 	IR_Encoder.rawPosition = (float32) IfxGpt12_IncrEnc_getRawPosition(&g_Gpt12Enc.incrEnc);
 	IR_Encoder.direction   = IfxGpt12_IncrEnc_getDirection(&g_Gpt12Enc.incrEnc);
 
+
 	encoder = (uint32) (IR_Encoder.speed - bfencoder + 8388607) % 8388607;
 	bfencoder = (uint32) IR_Encoder.speed;
+
 }
 
+double PID_PWM;
+double err, prev_err = 0;
+double Kp = 0.1, Ki = 1.0, Kd = 0.04; // PID gain value
+double Kp_tmp, Ki_tmp, Kd_tmp;
+double dt = 0.01;
+double dc_duty = 0.0, dc_pwm;
+double current = 0.0;
+
+void PID_Control(double goal){
+
+	current = encoder/(1.6*21.0*15);
+	// error
+	err = goal - current;
+
+	// P
+	Kp_tmp = Kp * err;
+
+	// I
+	Ki_tmp = Ki * (err * dt);
+
+	// D
+	Kd_tmp = Kd * ((err - prev_err)/dt);
+
+	prev_err = err;
+
+	PID_PWM = (Kp_tmp + Ki_tmp + Kd_tmp);
+
+	dc_duty += PID_PWM * 10;
+	if (dc_duty >= 2000) dc_duty = 2000;
+
+	// make range -1.0 ~ 1.0
+	// dc_pwm = tanh(dc_duty);
+	dc_duty /= 2000;
+
+	//IR_setMotor0Vol((float)dc_duty);
+}
 
 double PID_PWM;
 double err, prev_err = 0;
